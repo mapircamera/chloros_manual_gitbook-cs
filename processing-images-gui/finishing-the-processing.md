@@ -66,7 +66,7 @@ Podrobné pokyny najdete v části [Prohlížeč obrázků](../image-viewer-gui/
 2. Projděte si zprávy.
 3. Hledejte žlutá varování nebo červené chyby.
 4. Zkontrolujte všechny zaznamenané problémy.
-5. Obraťte se na podporu MAPIR s žádostí o pomoc.
+5. Obraťte se na podporu MAPIR a požádejte o pomoc.
 
 ### Uložení protokolu
 
@@ -148,7 +148,7 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 ## Použití zpracovaných snímků
 
-### Pro fotogrammetrii / vytvoření ortomozaiky
+### Pro fotogrammetrii / tvorbu ortomozaiky
 
 **Doporučený pracovní postup:**
 
@@ -177,7 +177,7 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 **Doporučený pracovní postup:**
 
 1. **Použijte indexové snímky s barvami LUT** pro vizuální reporty.
-2. **Extrahujte statistiky**: Průměr NDVI na pole/parcelu.
+2. **Extrahujte statistiky**: Průměrná hodnota NDVI na pole/parcelu.
 3. **Časové řady**: Porovnejte indexy napříč více relacemi
 4. **Generujte reporty**: Zahrňte mapy, statistiky a vizualizace
 
@@ -191,9 +191,9 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 * ✅ **Originální RAW/JPG obrázky** – archivujte na samostatném disku/v cloudu
 * ✅ **Zpracované výstupy** – uchovejte kalibrované obrázky a indexy
-* ✅ **Soubor projektu** – obsahuje všechna nastavení pro případné opětovné zpracování
+* ✅ **Projektový soubor** – obsahuje všechna nastavení pro případné opětovné zpracování
 * ✅ **Debugovací protokol** – dokumentuje podrobnosti zpracování
-* ✅ **Obrázky kalibračního cíle** – pro ověření a opětovné zpracování
+* ✅ **Kalibrační cílové obrázky** – pro ověření a opětovné zpracování
 
 **Doporučení pro ukládání:**
 
@@ -238,7 +238,7 @@ Pro více relací/datových sad:
 
 ***
 
-## Řešení problémů při následném zpracování
+## Řešení problémů s následným zpracováním
 
 ### Opakované zpracování s jinými nastaveními
 
@@ -301,6 +301,6 @@ Nyní jste dokončili celý pracovní postup zpracování Chloros:
 
 ### Podpora a vzdělávání
 
-* [**Často kladené otázky**](../faq.md) – Odpovědi na běžné otázky
+* [**Často kladené otázky**](../faq.md) – Odpovědi na časté otázky
 * [**Kalibrační cíle**](../calibration-targets.md) – Porozumění kalibraci odrazivosti
 * [**Podporované fotoaparáty**](../supported-cameras.md) – Kompatibilní hardware

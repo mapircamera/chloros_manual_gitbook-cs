@@ -54,30 +54,30 @@ Upravte zvětšení pro prohlížení detailů obrázku:
 
 **Přiblížení:**
 
-* Klikněte na tlačítko **+** (Plus)
+* Klikněte na tlačítko **+** (plus)
 * Stiskněte klávesu **+** nebo **=**
 * Posuňte kolečko myši **nahoru**
 
 **Oddalení:**
 
-* Klikněte na tlačítko **−** (Mínus)
-* Stiskněte klávesu **−** (Mínus)
+* Klikněte na tlačítko **−** (mínus)
+* Stiskněte klávesu **−** (mínus)
 * Posuňte kolečko myši **dolů**
 
 **Přizpůsobit obrazovce:**
 
 * Klikněte na tlačítko **↔** (Přizpůsobit)
-* Stiskněte klávesu **0** (nula)
+* Stiskněte klávesu **0** (Nula)
 * Poklepejte na obrázek
 
-#### Posun při přiblížení
+#### Posouvání při přiblížení
 
 Při přiblížení nad velikost obrazovky:
 
 1. Přesuňte kurzor myši nad obrázek
 2. Klikněte a **podržte levé tlačítko myši**
 3. **Přetažením** přesuňte obrázek
-4. Uvolněním zastavíte posouvání
+4. Uvolněním zastavíte posun
 
 **Alternativa**: Pomocí kláves se šipkami posouvejte obrázek po malých krocích
 
@@ -104,8 +104,8 @@ Při přesunutí kurzoru myši nad obrázek se v reálném čase zobrazí hodnot
 
 **Obrázky RAW + JPG z fotoaparátu:**
 
-* Zobrazí data RAW jako náhled
-* Zobrazí původní, neopravené hodnoty
+* Zobrazení dat RAW jako náhled
+* Zobrazení původních, neopravených hodnot
 * Užitečné pro kontrolu kvality obrázku před zpracováním
 
 ### Kalibrované obrázky odrazivosti
@@ -181,8 +181,8 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
    * **NDRE**: Vyšší hodnoty pro bujný růst
    * **GNDVI**: Podobné jako NDVI, ale citlivé na chlorofyl
 3. Zkontrolujte oblasti bez vegetace:
-   * **Půda**: Blízko 0 nebo mírně záporná
-   * **Voda**: Záporné hodnoty (-0,5 až 0)
+   * **Půda**: Blízko 0 nebo mírně záporná hodnota.
+   * **Voda**: Záporné hodnoty (-0,5 až 0).
 
 ***
 
@@ -192,18 +192,18 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 **Možné příčiny:**
 
-* Soubor byl během zpracování poškozen
-* Nepodporovaný formát souboru
-* Nedostatečná paměť pro velký obrázek
+* Soubor byl během zpracování poškozen.
+* Nepodporovaný formát souboru.
+* Nedostatečná paměť pro velký obrázek.
 
 **Řešení:**
 
 1. Zkuste soubor otevřít v externím prohlížeči a ověřte jeho integritu.
 2. Zkontrolujte, zda formát souboru odpovídá očekávanému typu.
-3. Ukončete ostatní aplikace, abyste uvolnili paměť.
+3. Zavřete ostatní aplikace, abyste uvolnili paměť.
 4. Zkuste menší/jiný obrázek.
 
-### Zobrazení černobílého obrázku
+### Černobílý obrázek
 
 **Možné příčiny:**
 
@@ -230,7 +230,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 1. Ověřte, zda prohlížíte zpracovaný výstup (zkontrolujte příponu souboru).
 2. Zkontrolujte stav tlačítka režimu procent.
-3. Porovnejte se známými dobrými obrázky ze stejného datového souboru.
+3. Porovnejte s obrázky ze stejného datového souboru, o kterých víte, že jsou v pořádku.
 
 ***
 
@@ -238,8 +238,8 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 Nyní, když můžete zobrazit obrázky na celou obrazovku:
 
-* [**Vrstvy obrázků**](image-layers.md) – informace o vizualizaci více pásem
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) – použití vlastních indexů a mapování barev
+* [**Vrstvy obrázků**](image-layers.md) – Informace o vizualizaci více pásem
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) – Použití vlastních indexů a mapování barev
 * [**Vzorec multispektrálního indexu**](../project-settings/multispectral-index-formulas.md) – porozumění dostupným indexům
 
 Pro pracovní postup zpracování viz:

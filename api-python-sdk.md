@@ -23,7 +23,7 @@
 | **Internet**         | Nutný pro aktivaci licence                                     |
 
 {% hint style=&quot;warning&quot; %}
-**Požadavky na licenci**: Python SDK vyžaduje placené předplatné Chloros+ pro přístup k API. Standardní (bezplatné) tarify nemají přístup k API/SDK. Chcete-li provést upgrade, navštivte [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing).
+**Požadavky na licenci**: Python SDK vyžaduje placené předplatné Chloros+ pro přístup k API. Standardní (bezplatné) plány nemají přístup k API/SDK. Chcete-li provést upgrade, navštivte [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing).
 {% endhint %}
 
 ## Rychlý start
@@ -132,7 +132,7 @@ SDK používá stejnou licenci jako Chloros, Chloros (prohlížeč) a Chloros CL
 3. Licence je uložena v místní mezipaměti (zůstává zachována i po restartu)
 
 {% hint style=&quot;success&quot; %}
-**Jednorázové nastavení**: Po přihlášení přes GUI nebo CLI SDK automaticky použije uloženou licenci. Není potřeba žádné další ověřování!
+**Jednorázové nastavení**: Po přihlášení přes GUI nebo CLI automaticky použije SDK uloženou licenci. Není potřeba žádné další ověření!
 {% endhint %}
 
 ### Test připojení
@@ -227,7 +227,7 @@ chloros.create_project("DroneField_A", camera="Survey3N_RGN")
 
 #### `import_images(folder_path, recursive=False)`
 
-Import obrázků ze složky.
+Importuje obrázky ze složky.
 
 **Parametry:**
 
@@ -261,7 +261,7 @@ Konfigurace nastavení zpracování.
 | `debayer`                 | str  | „Vysoká kvalita (rychlejší)“ | Metoda Debayer                  |
 | `vignette_correction`     | bool | `True`                  | Povolit korekci viněty      |
 | `reflectance_calibration` | bool | `True`                  | Povolit kalibraci odrazivosti  |
-| `indices`                 | list | `None`                  | Vegetační indexy pro výpočet |
+| `indices`                 | seznam | `None`                  | Vegetační indexy pro výpočet |
 | `export_format`           | str  | „TIFF (16 bitů)“         | Výstupní formát                   |
 | `ppk`                     | bool | `False`                 | Povolit korekce PPK          |
 | `custom_settings`         | dict | `None`                  | Pokročilá vlastní nastavení        |
@@ -311,7 +311,7 @@ Zpracujte obrázky projektu.
 | `mode`              | str      | `"parallel"` | Režim zpracování: „parallel“ nebo „serial“   |
 | `wait`              | bool     | `True`       | Čekání na dokončení                       |
 | `progress_callback` | callable | `None`       | Funkce zpětného volání průběhu (progress, msg) |
-| `poll_interval`     | float    | `2.0`        | Interval dotazování na průběh (sekundy)   |
+| `poll_interval`     | float    | `2.0`        | Interval dotazování průběhu (sekundy)   |
 
 **Vrací:** `dict` – Výsledky zpracování
 
@@ -345,7 +345,7 @@ chloros.process(wait=False)
 
 Získá aktuální konfiguraci projektu.
 
-**Vrací:** `dict` – aktuální konfiguraci projektu
+**Vrací:** `dict` – aktuální konfigurace projektu.
 
 **Příklad:**
 
@@ -360,7 +360,7 @@ print(config['Project Settings'])
 
 Získá informace o stavu backendu.
 
-**Vrací:** `dict` - Stav backendu
+**Vrací:** `dict` – stav backendu
 
 **Příklad:**
 
@@ -402,7 +402,7 @@ Jednořádková pomocná funkce pro zpracování složky.
 | `reflectance_calibration` | bool     | `True`          | Povolit kalibraci odrazivosti |
 | `export_format`           | str      | „TIFF (16bitový)“ | Výstupní formát                  |
 | `mode`                    | str      | `"parallel"`    | Režim zpracování                |
-| `progress_callback`       | callable | `None`          | Zpětné volání průběhu              |
+| `progress_callback`       | volatelný | `None`          | Zpětné volání průběhu              |
 
 **Vrací:** `dict` – Výsledky zpracování
 
@@ -892,7 +892,7 @@ for i in range(0, len(images), batch_size):
 
 ### Backend se nespustí
 
-**Problém:** SDK se nedaří spustit backend.
+**Problém:** SDK se nedaří spustit backend
 
 **Řešení:**
 
@@ -961,19 +961,19 @@ python -c "import sys; print(sys.path)"
 
 **Řešení:**
 
-1. Prodloužte časový limit:
+1. Prodloužit časový limit:
 
 ```python
 chloros = ChlorosLocal(timeout=120)  # 2 minutes
 ```
 
-2. Zpracujte menší dávky.
-3. Zkontrolujte dostupný prostor na disku.
-4. Sledujte systémové zdroje.
+2. Zpracovat menší dávky.
+3. Zkontrolovat dostupný prostor na disku.
+4. Sledovat systémové zdroje.
 
 ***
 
-### Port je již používán
+### Port již je používán
 
 **Problém:** Backend port 5000 je obsazen.
 
@@ -995,7 +995,7 @@ Get-NetTCPConnection -LocalPort 5000
 
 ## Tipy pro zvýšení výkonu
 
-### Optimalizujte rychlost zpracování
+### Optimalizace rychlosti zpracování
 
 1. **Použijte paralelní režim** (vyžaduje Chloros+)
 
@@ -1016,7 +1016,7 @@ chloros.configure(export_format="PNG (8-bit)")  # Faster than TIFF
 chloros.configure(indices=["NDVI"])  # Not all indices
 ```
 
-4. **Zpracovávejte na SSD** (nikoli na HDD)
+4. **Zpracujte na SSD** (nikoli HDD)
 
 ***
 
@@ -1141,7 +1141,7 @@ chloros.process(progress_callback=notebook_progress)
 
 | Funkce         | Desktop GUI | CLI Příkazový řádek | Python SDK  |
 | --------------- | ----------- | ---------------- | ----------- |
-| **Rozhraní**   | Ukazatel a kliknutí | Příkazový řádek | Python API  |
+| **Rozhraní**   | Ukazatel myši | Příkazový řádek | Python API  |
 | **Nejvhodnější pro**    | Vizuální práce | Skriptování        | Integrace |
 | **Automatizace**  | Omezená     | Dobrá             | Vynikající   |
 | **Flexibilita** | Základní       | Dobrá             | Maximální     |
@@ -1154,10 +1154,10 @@ chloros.process(progress_callback=notebook_progress)
 **Odpověď:** Kód SDK lze integrovat do vašich aplikací, ale:
 
 * Koncoví uživatelé musí mít nainstalovaný Chloros.
-* Koncoví uživatelé potřebují aktivní licence Chloros+.
+* Koncoví uživatelé musí mít aktivní licence Chloros+.
 * Komerční distribuce vyžaduje OEM licence.
 
-V případě dotazů ohledně OEM kontaktujte info@mapir.camera.
+Pro dotazy týkající se OEM kontaktujte info@mapir.camera.
 
 ***
 
@@ -1193,7 +1193,7 @@ from chloros_sdk import process_folder
 results = process_folder("C:\\Flights\\Today")
 ```
 
-Naplánujte pomocí plánovače úloh denní spuštění.
+Naplánujte pomocí plánovače úloh denní spouštění.
 
 ***
 
@@ -1229,7 +1229,7 @@ thread.start()
 
 ### Ukázkový kód
 
-Všechny zde uvedené příklady jsou otestovány a připraveny k použití. Zkopírujte je a přizpůsobte pro své použití.
+Všechny zde uvedené příklady jsou otestované a připravené k použití. Zkopírujte je a přizpůsobte pro své potřeby.
 
 ***
 

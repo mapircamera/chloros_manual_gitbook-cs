@@ -88,10 +88,10 @@ Odemkněte pokročilé funkce s předplatným Chloros+:
 
 * 🚀 **Vícevláknové zpracování** – paralelní zpracování obrazů
 * ⚡ **Akcelerace GPU (CUDA)** – Využijte výkon GPU NVIDIA
-* 💻 **Přístup CLI** – Automatizujte pomocí nástrojů příkazového řádku
+* 💻 **Přístup k CLI** – Automatizujte pomocí nástrojů příkazového řádku
 * 🐍 **Python SDK** – Programový přístup API
 * 📱 **Více zařízení** – Použití na 2–10+ zařízeních (v závislosti na plánu)
-* 🧮 **Vlastní vzorce** – Vytvářejte vlastní multispektrální indexy
+* 🧮 **Vlastní vzorce** – Vytváření vlastních multispektrálních indexů
 
 <p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Zobrazit plány a ceny Chloros+</a></p>***
 

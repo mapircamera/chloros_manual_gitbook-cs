@@ -18,7 +18,7 @@ Po aktivaci spustí tlačítko pro zpracování obrazu proces zpracování obraz
 
 V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, zobrazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
 
-V placeném licencovaném režimu Chloros+, který zpracovává všechny soubory současně, zobrazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud umístíte kurzor myši nad ukazatel průběhu Chloros+, rozbalí se rozšířený panel se 4 ukazateli průběhu, takže můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu se rozbalený panel zamrzne, dalším kliknutím se opět odblokuje.
+V placeném licencovaném režimu Chloros+, který zpracovává všechny soubory současně, zobrazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud umístíte kurzor myši nad ukazatel průběhu Chloros+, rozbalí se rozšířený panel se 4 ukazateli průběhu, takže můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu se rozbalený panel zamrzne, dalším kliknutím se opět odemkne.
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
 
@@ -32,7 +32,7 @@ Karta Nastavení projektu umožňuje upravit globální nastavení projektu a na
 
 #### <img src=".gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> Prohlížeč souborů
 
-Přidejte soubory/složky a odstraňte soubory z projektu. Duplicitní soubory jsou ignorovány. Zaškrtněte políčko cílové sloupce pro jakýkoli cílový obrázek a zpracování se zaměří pouze na zaškrtnuté obrázky jako cíle, což výrazně zrychlí dobu zpracování.
+Přidejte soubory/složky a odstraňte soubory z projektu. Duplicitní soubory jsou ignorovány. Zaškrtněte políčko cílové sloupce pro jakýkoli cílový obrázek a zpracování se bude zabývat pouze zaškrtnutými obrázky jako cíli, což výrazně zrychlí dobu zpracování.
 
 #### <img src=".gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> [Prohlížeč obrázků](image-viewer-gui/opening-an-image-full-screen.md)
 
@@ -40,7 +40,7 @@ Po kliknutí na obrázek v hlavním prohlížeči obrázků se obrázek otevře 
 
 #### <img src=".gitbook/assets/icon_log.JPG" alt="" data-size="line"> Logs pro ladění
 
-Při výskytu problémů zkontrolujte logy pro ladění. Zkopírujte/stáhněte logy a odešlete je na [MAPIR Support](https://www.mapir.camera/community/contact) za účelem získání pomoci.
+Při výskytu problémů zkontrolujte logy pro ladění. Zkopírujte/stáhněte log a odešlete jej na [MAPIR Support](https://www.mapir.camera/community/contact) za účelem získání pomoci.
 
 #### <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> [Přihlášení uživatele](chloros+-login.md)
 

@@ -14,7 +14,7 @@ Jakmile vytvoříte nebo otevřete projekt v Chloros, dalším krokem je přidá
 
 ***
 
-## Přidávání obrázků do projektu
+## Přidání obrázků do projektu
 
 Existují dva základní způsoby, jak přidat obrázky do projektu:
 
@@ -79,13 +79,13 @@ Chcete-li z projektu odstranit nepotřebné obrázky:
 
 1. Vyberte jeden nebo více obrázků v tabulce Prohlížeč souborů.
 2. Klikněte na tlačítko **„Odebrat vybrané“**.
-3. Potvrďte odstranění (soubory nejsou odstraněny z disku, pouze z projektu).
+3. Potvrďte odstranění (soubory nejsou smazány z disku, pouze odstraněny z projektu).
 
 ### Třídění a filtrování
 
 * **Třídění podle sloupce**: Kliknutím na záhlaví libovolného sloupce můžete obrázky seřadit.
 * **Seřazení podle časového razítka**: užitečné pro uspořádání chronologických sekvencí snímků.
-* **Filtr modelu fotoaparátu**: seskupte obrázky podle typu fotoaparátu, pokud používáte více fotoaparátů.
+* **Filtr modelu kamery**: seskupte obrázky podle typu kamery, pokud používáte více kamer.
 
 ***
 
@@ -101,8 +101,8 @@ Kliknutím na libovolnou miniaturu obrázku v prohlížeči souborů jej zobraz�
 
 ### Rychlá navigace
 
-* **Předchozí obrázek**: Klikněte na šipku vlevo nebo stiskněte klávesu ←
-* **Další obrázek**: Klikněte na šipku vpravo nebo stiskněte klávesu →
+* **Předchozí obrázek**: Klikněte na šipku doleva nebo stiskněte klávesu ←
+* **Další obrázek**: Klikněte na šipku doprava nebo stiskněte klávesu →
 * **Přiblížení/oddálení**: Použijte kolečko myši nebo tlačítka pro přiblížení
 * **Posun**: Po přiblížení klikněte na obrázek a přetáhněte jej
 
@@ -117,7 +117,7 @@ Chloros automaticky detekuje a ignoruje duplicitní soubory:
 * Při detekci duplicit se zobrazí varovná zpráva.
 
 {% hint style=&quot;warning&quot; %}
-**Důležité**: Před importem nepřejmenovávejte ani neměňte původní obrazové soubory. Chloros se pro správné zpracování spoléhá na původní názvy souborů a metadata.
+**Důležité**: Před importem nepřejmenovávejte ani neměňte původní obrazové soubory. Chloros se při správném zpracování spoléhá na původní názvy souborů a metadata.
 {% endhint %}
 
 ***
@@ -129,7 +129,7 @@ Pokud váš projekt obsahuje obrázky z více kamer MAPIR:
 1. Chloros automaticky detekuje každý model kamery.
 2. Každý typ kamery je zpracován pomocí příslušného kalibračního profilu.
 3. Prohlížeč souborů zobrazuje model kamery ve sloupci Model kamery.
-4. Zpracování aplikuje správná nastavení pro každý typ kamery.
+4. Zpracování použije správná nastavení pro každý typ kamery.
 
 **Příklad scénáře**: Survey3W RGN + Survey3N OCN nastavení dvou kamer
 

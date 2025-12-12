@@ -9,7 +9,7 @@ Před zpracováním obrázků je důležité nakonfigurovat nastavení projektu 
 3. Panel Nastavení projektu zobrazí všechny možnosti konfigurace
 
 {% hint style=&quot;info&quot; %}
-**Nastavení se ukládají automaticky** spolu s projektem. Při opětovném otevření projektu se všechna nastavení obnoví.
+**Nastavení se ukládají automaticky** s vaším projektem. Když projekt znovu otevřete, všechna nastavení se obnoví.
 {% endhint %}
 
 ***
@@ -25,7 +25,7 @@ Pro typické pracovní postupy s kamerou MAPIR Survey3 fungují dobře výchozí
 * ✅ **Metoda Debayer**: Vysoká kvalita (rychlejší)
 * ✅ **Formát exportu**: TIFF (16 bitů)
 
-Jednoduše importujte své snímky a začněte zpracovávat s těmito výchozími nastaveními.
+Jednoduše importujte své snímky a začněte je zpracovávat s těmito výchozími nastaveními.
 
 ***
 
@@ -35,18 +35,18 @@ Panel Nastavení projektu je rozdělen do několika kategorií. Níže je uveden
 
 ### Detekce cílů
 
-Ovládá způsob, jakým Chloros identifikuje kalibrační cíle ve vašich obrázcích.
+Ovládá způsob, jakým Chloros identifikuje kalibrační cíle ve vašich snímcích.
 
 **Klíčová nastavení:**
 
-* **Minimální plocha kalibračního vzorku**: Prahová hodnota velikosti pro detekci cílů (výchozí nastavení: 25 pixelů)
-* **Minimální shlukování cílů**: Prahová hodnota podobnosti pro seskupování cílových oblastí (výchozí nastavení: 60)
+* **Minimální plocha kalibračního vzorku**: Prahová hodnota velikosti pro detekci cílů (výchozí: 25 pixelů)
+* **Minimální seskupení cílů**: Prahová hodnota podobnosti pro seskupení cílových oblastí (výchozí: 60)
 
 **Kdy upravit:**
 
 * Zvětšete plochu vzorku, pokud dochází k falešným detekcím.
 * Zmenšete ji, pokud cíle nejsou detekovány.
-* Upravte shlukování, pokud jsou cíle rozděleny do více detekcí.
+* Upravte seskupení, pokud jsou cíle rozděleny do více detekcí.
 
 ### Zpracování
 
@@ -63,7 +63,7 @@ Hlavní možnosti zpracování obrazu a kalibrace.
 
 * **Časový posun světelného senzoru**: Pro synchronizaci času PPK (výchozí: 0)
 * **Použít korekce PPK**: Používá data GPS/expozice z souborů .daq
-* **Expoziční pin 1/2**: Přiřazuje kamery k expozičním pinům pro konfigurace se dvěma kamerami
+* **Expozice pin 1/2**: Přiřazuje kamery k expozičním pinům pro nastavení dvou kamer
 
 ### Index (multispektrální indexy)
 
@@ -87,7 +87,7 @@ Nakonfigurujte, které vegetační indexy se mají počítat a exportovat.
 **Vlastní vzorce (pouze Chloros+):**
 
 * Vytvořte vlastní vzorce multispektrálního indexu
-* Použijte matematiku pásem se všemi kanály obrazu
+* Použijte matematiku pásma se všemi kanály obrazu
 * Uložte vlastní vzorce pro opětovné použití
 
 Všechny dostupné indexy a vzorce najdete v části [Vzorce multispektrálního indexu](../project-settings/multispectral-index-formulas.md).
@@ -98,10 +98,10 @@ Ovládá formát a kvalitu výstupního souboru.
 
 **Dostupné formáty:**
 
-* **TIFF (16bitový)**: Doporučeno pro GIS a vědeckou analýzu (rozsah 0–65 535)
-* **TIFF (32bitový, procentní)**: Hodnoty odrazivosti s plovoucí desetinnou čárkou (rozsah 0,0–1,0)
-* **PNG (8bitový)**: Bezeztrátová komprese pro vizualizaci (rozsah 0–255)
-* **JPG (8bitový)**: Nejmenší soubory, ztrátová komprese (rozsah 0–255)
+* **TIFF (16 bitů)**: Doporučeno pro GIS a vědecké analýzy (rozsah 0–65 535)
+* **TIFF (32 bitů, procenta)**: Hodnoty odrazivosti s plovoucí desetinnou čárkou (rozsah 0,0–1,0)
+* **PNG (8 bitů)**: Bezeztrátová komprese pro vizualizaci (rozsah 0–255)
+* **JPG (8 bitů)**: Nejmenší soubory, ztrátová komprese (rozsah 0–255)
 
 ***
 
@@ -127,7 +127,7 @@ Vytvořte opakovaně použitelné šablony pro konzistentní pracovní postupy:
 Při vytváření nového projektu:
 
 1. V hlavním menu vyberte **„Nový projekt“**.
-2. Zvolte možnost **„Načíst ze šablony“**.
+2. Vyberte možnost **„Načíst ze šablony“**.
 3. Vyberte uloženou šablonu.
 4. Všechna nastavení se automaticky použijí.
 
@@ -138,9 +138,9 @@ Nastavení **„Uložit složku projektu“** určuje, kde se nové projekty vyt
 * **Výchozí umístění**: `C:\Users\[Username]\Chloros Projects`
 * **Změnit umístění**: Klikněte na ikonu úprav a vyberte novou složku.
 * **Kdy změnit**:
-  * Síťový disk pro spolupráci týmu
-  * Jiný disk s větším úložným prostorem
-  * Uspořádaná struktura složek podle roku/klienta
+  * Síťový disk pro spolupráci týmu.
+  * Jiný disk s větším úložným prostorem.
+  * Organizovaná struktura složek podle roku/klienta.
 
 ***
 
@@ -192,7 +192,7 @@ Při zpracování snímků z více kamer MAPIR v jednom projektu:
 
 Pro opakované průzkumy stejné oblasti v průběhu času:
 
-1. Vytvořte šablonu se svými standardními nastaveními.
+1. Vytvořte šablonu se standardními nastaveními.
 2. Používejte konzistentní nastavení kalibračního cíle pro každou relaci.
 3. Zpracovávejte každý datum jako samostatný projekt.
 4. Používejte identická nastavení pro srovnatelné výsledky.
@@ -214,8 +214,8 @@ Pro projekty s velkým počtem obrázků (500+):
 Před zahájením zpracování zkontrolujte tato klíčová nastavení:
 
 * [ ] Správně detekovaný model kamery v prohlížeči souborů
-* [ ] Povolena korekce viněty
-* [ ] Povolena kalibrace odrazivosti
+* [ ] Zapnutá korekce viněty
+* [ ] Zapnutá kalibrace odrazivosti
 * [ ] Importován alespoň jeden kalibrační cílový obrázek
 * [ ] Přidány požadované multispektrální indexy
 * [ ] Exportní formát vhodný pro váš pracovní postup
@@ -231,4 +231,4 @@ Jakmile jsou nastavení nakonfigurována:
 2. **Spusťte zpracování** – viz [Spuštění zpracování](starting-the-processing.md)
 3. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
 
-Úplné podrobnosti o všech dostupných nastaveních najdete v referenční dokumentaci [Nastavení projektu](../project-settings/project-settings.md).
+Podrobné informace o všech dostupných nastaveních najdete v referenční dokumentaci [Nastavení projektu](../project-settings/project-settings.md).

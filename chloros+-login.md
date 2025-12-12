@@ -34,10 +34,10 @@ chloros-cli login user@example.com 'MyP@ssw0rd123'
 
 ### Vypršení platnosti plánu
 
-Vypršení platnosti plánu v grafickém uživatelském rozhraní ukazuje, kdy vaše licence přestane být platná. U opakujících se měsíčních předplatných je platnost platná do konce měsíce. U ročních předplatných je platnost platná jeden rok od zahájení předplatného. Kontrola licence vyžaduje měsíční připojení k internetu, aby mohla být ověřena, s 30denní lhůtou.
+Vypršení platnosti plánu v grafickém uživatelském rozhraní ukazuje, kdy vaše licence přestane být platná. U opakujících se měsíčních předplatných je platnost platná do konce měsíce. U ročních předplatných je platnost platná jeden rok od zahájení předplatného. Kontrola licence vyžaduje měsíční připojení k internetu, aby bylo možné ověření provést, s 30denní lhůtou.
 
-### Limit zařízení
+### Omezení počtu zařízení
 
-Každý plán Chloros+ nabízí jiný počet registrovaných zařízení. Každé zařízení, ke kterému se přihlásíte pomocí účtu Chloros+, se započítává do počtu vašich registrovaných zařízení. Zařízení můžete přejmenovat a odstranit na stránce účtu MAPIR Cloud.
+Každý plán Chloros+ nabízí jiný počet registrovaných zařízení. Každé zařízení, ke kterému se přihlásíte pomocí účtu Chloros+, se započítává do počtu registrovaných zařízení. Zařízení můžete přejmenovat a odstranit na stránce účtu MAPIR Cloud.
 
 <table><thead><tr><th width="168.5999755859375" align="right">Plán Chloros</th><th align="center">COPPER</th><th align="center">BRONZE</th><th align="center">STŘÍBRO</th><th align="center">ZLATO</th></tr></thead><tbody><tr><td align="right">Podporovaná zařízení</td><td align="center">2</td><td align="center">2</td><td align="center">5</td><td align="center">10</td></tr></tbody></table>

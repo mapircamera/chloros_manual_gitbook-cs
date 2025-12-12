@@ -378,7 +378,7 @@ Chloros+ CLI **automaticky škálovat** paralelní zpracování tak, aby odpoví
 **Jak to funguje:**
 
 * Detekuje jádra CPU a RAM
-* Přiděluje pracovníky: **2× jádra CPU** (využívá hyperthreading)
+* Přiděluje pracovníky: **2× jádra CPU** (používá hyperthreading)
 * **Maximálně: 16 paralelních pracovníků** (pro stabilitu)
 
 **Úrovně systému:**
@@ -757,7 +757,7 @@ Přihlaste se na: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camer
 **Odpověď:** Ano! CLI běží zcela bez grafického rozhraní. Požadavky:
 
 * Windows Server 2016 nebo novější
-* Nainstalovaný balíček Visual C++ Redistributable
+* Nainstalovaný Visual C++ Redistributable
 * Dostatečná paměť RAM (minimálně 8 GB, doporučeno 16 GB)
 * Jednorázová aktivace licence GUI na libovolném počítači
 
@@ -919,7 +919,7 @@ chloros-cli process "C:\Input\Raw_Images" ^
 
 ### Příklad 6: Pracovní postup ověřování
 
-Dokončete pracovní postup ověřování:
+Dokončete proces ověřování:
 
 ```powershell
 # Step 1: Login

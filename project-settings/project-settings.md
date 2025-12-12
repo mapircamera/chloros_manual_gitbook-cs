@@ -14,7 +14,7 @@ Přístup k nastavení projektu:
 
 ## Detekce cílů
 
-Tato nastavení řídí, jak Chloros detekuje a zpracovává kalibrační cíle ve vašich obrázcích.
+Tato nastavení určují, jak Chloros detekuje a zpracovává kalibrační cíle ve vašich obrázcích.
 
 ### Minimální plocha kalibračního vzorku (px)
 
@@ -23,8 +23,8 @@ Tato nastavení řídí, jak Chloros detekuje a zpracovává kalibrační cíle 
 * **Výchozí**: 25 pixelů
 * **Popis**: Nastavuje minimální plochu (v pixelech) potřebnou k tomu, aby byla detekovaná oblast považována za platný kalibrační vzorek. Menší hodnoty detekují menší cíle, ale mohou zvýšit počet falešných pozitiv. Větší hodnoty vyžadují větší a jasnější cílové oblasti pro detekci.
 * **Kdy upravit**:
-  * Zvyšte, pokud dochází k falešným detekcím na malých artefaktech obrazu.
-  * Snižte, pokud se vaše kalibrační cíle jeví na obrázcích jako malé a nejsou detekovány.
+  * Zvyšte, pokud dochází k falešným detekcím malých artefaktů v obrázcích.
+  * Snižte, pokud se vaše kalibrační cíle v obrázcích jeví jako malé a nejsou detekovány.
 
 ### Minimální seskupení cílů (0–100)
 
@@ -34,7 +34,7 @@ Tato nastavení řídí, jak Chloros detekuje a zpracovává kalibrační cíle 
 * **Popis**: Řídí prahovou hodnotu shlukování pro seskupování podobných barevných oblastí při detekci kalibračních cílů. Vyšší hodnoty vyžadují seskupení více podobných barev, což vede k konzervativnější detekci cílů. Nižší hodnoty umožňují větší barevnou variabilitu v rámci cílové skupiny.
 * **Kdy upravit**:
   * Zvyšte, pokud jsou kalibrační cíle rozděleny do více detekcí.
-  * Snižte, pokud nejsou kalibrační cíle s barevnou variabilitou plně detekovány.
+  * Snižte, pokud kalibrační cíle s barevnou variabilitou nejsou plně detekovány.
 
 ***
 
@@ -45,24 +45,24 @@ Tato nastavení řídí, jak Chloros zpracovává a kalibruje vaše snímky.
 ### Korekce vinětace
 
 * **Typ**: Zaškrtávací políčko
-* **Výchozí**: Povoleno (zaškrtnuto)
-* **Popis**: Používá korekci vinětace k kompenzaci ztmavnutí objektivu na okrajích snímků. Vinětace je běžný optický jev, při kterém jsou rohy a okraje snímku tmavší než střed kvůli vlastnostem objektivu.
-* **Kdy deaktivovat**: Deaktivujte pouze v případě, že vaše kombinace fotoaparátu a objektivu již použila korekci vinětace, nebo pokud chcete vinětaci ručně opravit v postprodukci.
+* **Výchozí nastavení**: Povoleno (zaškrtnuto)
+* **Popis**: Použije korekci vinětace k vyrovnání ztmavnutí objektivu na okrajích snímků. Vigneta je běžný optický jev, při kterém jsou rohy a okraje snímku tmavší než střed kvůli vlastnostem objektivu.
+* **Kdy deaktivovat**: Deaktivujte pouze v případě, že vaše kombinace fotoaparátu a objektivu již použila korekci viněty, nebo pokud chcete vinětu ručně korigovat v postprodukci.
 
 ### Kalibrace odrazivosti / vyvážení bílé
 
 * **Typ**: Zaškrtávací políčko
 * **Výchozí nastavení**: Povoleno (zaškrtnuto)
-* **Popis**: Povoluje automatickou kalibraci odrazivosti pomocí detekovaných kalibračních cílů ve vašich snímcích. Tím se normalizují hodnoty odrazivosti v celém datovém souboru a zajistí se konzistentní měření bez ohledu na světelné podmínky.
-* **Kdy deaktivovat**: Deaktivujte pouze v případě, že chcete zpracovávat nekalibrované snímky v surovém formátu nebo pokud používáte jiný kalibrační pracovní postup.
+* **Popis**: Povoluje automatickou kalibraci odrazivosti pomocí detekovaných kalibračních cílů ve vašich snímcích. To normalizuje hodnoty odrazivosti v celém datovém souboru a zajišťuje konzistentní měření bez ohledu na světelné podmínky.
+* **Kdy deaktivovat**: Deaktivujte pouze v případě, že chcete zpracovat nekalibrované snímky v surovém formátu nebo pokud používáte jiný kalibrační pracovní postup.
 
-### Metoda debayerování
+### Metoda odstraňování Bayerova filtru
 
 * **Typ**: Rozbalovací nabídka
 * **Možnosti**:
   * Vysoká kvalita (rychlejší) – v současné době jediná dostupná možnost
 * **Výchozí nastavení**: Vysoká kvalita (rychlejší)
-* **Popis**: Vybere algoritmus demosaicingu používaný k převodu surových dat snímače s Bayerovým vzorem na plnobarevné snímky. Metoda „Vysoká kvalita (rychlejší)“ poskytuje optimální rovnováhu mezi rychlostí zpracování a kvalitou obrazu.
+* **Popis**: Vybere algoritmus demosaicingu použitý k převodu surových dat snímače s Bayerovým vzorem na plnobarevné snímky. Metoda „Vysoká kvalita (rychlejší)“ poskytuje optimální rovnováhu mezi rychlostí zpracování a kvalitou obrazu.
 * **Poznámka**: V budoucích verzích Chloros mohou být přidány další metody debayer.
 
 ### Minimální interval rekalibrace
@@ -70,7 +70,7 @@ Tato nastavení řídí, jak Chloros zpracovává a kalibruje vaše snímky.
 * **Typ**: Číslo
 * **Rozsah**: 0 až 3 600 sekund
 * **Výchozí**: 0 sekund
-* **Popis**: Nastavuje minimální časový interval (v sekundách) mezi použitím kalibračních cílů. Při nastavení na 0 bude Chloros používat všechny detekované kalibrační cíle. Při nastavení na vyšší hodnotu bude Chloros používat pouze kalibrační cíle, které jsou od sebe odděleny alespoň tímto počtem sekund, což zkracuje dobu zpracování datových sad s častým zachycováním kalibračních cílů.
+* **Popis**: Nastavuje minimální časový interval (v sekundách) mezi použitím kalibračních cílů. Při nastavení na 0 bude Chloros používat všechny detekované kalibrační cíle. Při nastavení na vyšší hodnotu bude Chloros používat pouze kalibrační cíle, které jsou od sebe odděleny alespoň tímto počtem sekund, čímž se zkrátí doba zpracování datových sad s častým zachycováním kalibračních cílů.
 * **Kdy upravit**:
   * Nastavte na 0 pro maximální přesnost kalibrace při měnících se světelných podmínkách.
   * Zvyšte (např. na 60–300 sekund) pro rychlejší zpracování, když je osvětlení konzistentní a máte časté snímky kalibračních cílů.
@@ -79,7 +79,7 @@ Tato nastavení řídí, jak Chloros zpracovává a kalibruje vaše snímky.
 
 * **Typ**: Číslo
 * **Rozsah**: -12 až +12 hodin
-* **Výchozí hodnota**: 0 hodin
+* **Výchozí**: 0 hodin
 * **Popis**: Určuje časový posun (v hodinách od UTC) pro časová razítka dat světelného senzoru. Používá se při zpracování datových souborů PPK (Post-Processed Kinematic) k zajištění správné časové synchronizace mezi snímky a daty GPS.
 * **Kdy upravit**: Nastavte tento parametr na posun vašeho místního časového pásma, pokud vaše data PPK používají místní čas namísto UTC. Například:
   * Pacifický čas: -8 nebo -7 (v závislosti na letním čase)
@@ -119,7 +119,7 @@ Tato nastavení řídí, jak Chloros zpracovává a kalibruje vaše snímky.
 * **Popis**: Při použití konfigurace se dvěma kamerami přiřadí konkrétní kameru k expozičnímu pinu 2 pro synchronizaci času PPK.
 * **Chování automatického výběru**:
   * Jedna kamera + jeden pin: Pin 2 automaticky nastaven na „Nepoužívat“
-  * Jedna kamera + dva piny: Pin 2 automaticky nastaven na „Nepoužívat“
+  * Jedna kamera + dva piny: Pin 2 se automaticky nastaví na „Nepoužívat“
   * Více kamer: Je vyžadován ruční výběr
 * **Poznámka**: Stejnou kameru nelze přiřadit současně k pinu 1 i pinu 2.
 
@@ -135,24 +135,24 @@ Tato nastavení umožňují konfigurovat multispektrální indexy pro analýzu a
 * **Popis**: Otevře interaktivní panel, ve kterém můžete vybrat a nakonfigurovat multispektrální vegetační indexy (NDVI, NDRE, EVI atd.) pro výpočet během zpracování obrazu. Můžete přidat více indexů, každý s vlastními nastaveními vizualizace.
 * **Dostupné indexy**: Systém obsahuje více než 30 předdefinovaných multispektrálních indexů, včetně:
   * NDVI (normalizovaný rozdílový vegetační index)
-  * NDRE (normalizovaný rozdílový RedEdge)
-  * EVI (vylepšený index vegetace)
+  * NDRE (Normalizovaný rozdíl RedEdge)
+  * EVI (Vylepšený index vegetace)
   * GNDVI, SAVI, OSAVI, MSAVI2
   * A mnoho dalších (kompletní seznam najdete v části [Vzorec multispektrálního indexu](multispectral-index-formulas.md))
 * **Funkce**:
-  * Výběr z předdefinovaných vzorců indexů
+  * Výběr z předdefinovaných vzorců indexu
   * Konfigurace barevných přechodů vizualizace (LUT – Look-Up Tables)
   * Nastavení prahových hodnot pro analýzu
-  * Vytvoření vlastních vzorců indexů
+  * Vytvoření vlastních vzorců indexu
 
 ### Vlastní vzorce (funkce Chloros+)
 
 * **Typ**: Pole definic vlastních vzorců
-* **Popis**: Umožňuje vytvářet a ukládat vlastní vzorce multispektrálního indexu pomocí matematických operací s pásmy. Vlastní vzorce se ukládají spolu s nastavením projektu a lze je používat stejně jako vestavěné indexy.
+* **Popis**: Umožňuje vytvářet a ukládat vlastní vzorce multispektrálního indexu pomocí matematických operací s pásmy. Vlastní vzorce se ukládají s nastavením projektu a lze je používat stejně jako vestavěné indexy.
 * **Jak vytvořit**:
-  1. V panelu konfigurace indexu vyhledejte možnost vlastního vzorce
-  2. Definujte vzorec pomocí identifikátorů pásem (např. NIR, Red, Green, Blue)
-  3. Uložte vzorec pod popisným názvem
+  1. V panelu konfigurace indexu vyhledejte možnost vlastního vzorce.
+  2. Definujte vzorec pomocí identifikátorů pásem (např. NIR, Red, Green, Blue).
+  3. Uložte vzorec pod popisným názvem.
 * **Syntaxe vzorce**: Podporovány jsou standardní matematické operace, včetně:
   * Aritmetika: `+`, `-`, `*`, `/`
   * Závorky pro pořadí operací
@@ -162,7 +162,7 @@ Tato nastavení umožňují konfigurovat multispektrální indexy pro analýzu a
 
 ## Export
 
-Tato nastavení určují formát a kvalitu exportovaných zpracovaných obrázků.
+Tato nastavení řídí formát a kvalitu exportovaných zpracovaných obrázků.
 
 ### Kalibrovaný formát obrázku
 
@@ -176,22 +176,22 @@ Tato nastavení určují formát a kvalitu exportovaných zpracovaných obrázk�
 * **Popis**: Vybere formát souboru pro ukládání zpracovaných a kalibrovaných obrázků.
 * **Doporučené formáty**:
   * **TIFF (16bitový)**: Doporučeno pro vědecké analýzy a profesionální pracovní postupy. Zachovává maximální kvalitu dat bez kompresních artefaktů. Nejvhodnější pro multispektrální analýzy a další zpracování v softwaru GIS.
-  * **TIFF (32bitový, procenta)**: Nejvhodnější pro pracovní postupy, které vyžadují hodnoty odrazivosti v procentech (0–100 %). Nabízí maximální přesnost pro radiometrická měření.
-  * **PNG (8bitový)**: Vhodný pro prohlížení na webu a obecné vizualizace. Menší velikost souborů díky bezeztrátové kompresi, ale snížený dynamický rozsah.
-  * **JPG (8bitový)**: Nejmenší velikost souborů, nejvhodnější pouze pro náhledy a zobrazení na webu. Používá ztrátovou kompresi, která není vhodná pro vědeckou analýzu.
+  * **TIFF (32bitový, procenta)**: Nejlepší pro pracovní postupy, které vyžadují hodnoty odrazivosti v procentech (0–100 %). Nabízí maximální přesnost pro radiometrická měření.
+  * **PNG (8bitový)**: Vhodný pro prohlížení na webu a obecné vizualizace. Menší velikost souborů s bezeztrátovou kompresí, ale snížený dynamický rozsah.
+  * **JPG (8bitový)**: Nejmenší velikost souborů, nejvhodnější pouze pro náhledy a zobrazení na webu. Používá ztrátovou kompresi, která není vhodná pro vědecké analýzy.
 
 ***
 
 ## Uložit šablonu projektu
 
-Tato funkce umožňuje uložit aktuální nastavení projektu jako šablonu pro opakované použití.
+Tato funkce vám umožňuje uložit aktuální nastavení projektu jako šablonu, kterou lze znovu použít.
 
 * **Typ**: Zadání textu + tlačítko Uložit
 * **Popis**: Zadejte popisný název pro šablonu nastavení a klikněte na ikonu uložit. Šablona uloží všechna aktuální nastavení projektu (detekce cíle, možnosti zpracování, indexy a formát exportu) pro snadné opětovné použití v budoucích projektech.
 * **Případy použití**:
   * Vytvořte šablony pro různé kamerové systémy (RGB, multispektrální, NIR)
   * Uložte standardní konfigurace pro konkrétní typy plodin nebo analytické pracovní postupy
-  * Sdílejte jednotná nastavení v rámci týmu
+  * Sdílejte konzistentní nastavení v rámci týmu
 * **Jak používat**:
   1. Nakonfigurujte všechna požadovaná nastavení projektu
   2. Zadejte název šablony (např. „RedEdge Survey3 NDVI Standard“).
@@ -202,11 +202,11 @@ Tato funkce umožňuje uložit aktuální nastavení projektu jako šablonu pro 
 
 ## Uložit složku projektu
 
-Toto nastavení určuje, kam se nové projekty ukládají ve výchozím nastavení.
+Toto nastavení určuje, kam se nové projekty standardně ukládají.
 
 * **Typ**: Zobrazení cesty k adresáři + tlačítko Upravit
 * **Výchozí**: `C:\Users\[Username]\Chloros Projects`
-* **Popis**: Zobrazuje aktuální výchozí adresář, do kterého se ukládají nové projekty Chloros. Kliknutím na ikonu Upravit vyberte jiný adresář.
+* **Popis**: Zobrazuje aktuální výchozí adresář, do kterého se vytvářejí nové projekty Chloros. Kliknutím na ikonu úprav vyberte jiný adresář.
 * **Kdy změnit**:
   * Nastavte síťový disk pro spolupráci v týmu.
   * Změňte disk s větším úložným prostorem pro velké datové soubory.

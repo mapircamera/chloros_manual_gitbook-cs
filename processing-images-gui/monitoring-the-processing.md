@@ -19,7 +19,7 @@ Pro uživatele bez licence Chloros+:
 
 * Celkové procento dokončení (0–100 %)
 * Název aktuální fáze
-* Jednoduché vizualizace horizontálního pruhu
+* Jednoduché zobrazení horizontálního pruhu
 
 ### Indikátor průběhu Chloros+
 
@@ -36,12 +36,12 @@ Pro uživatele s licencí Chloros+:
 
 * **Přejděte myší** nad ukazatel průběhu a zobrazí se rozšířený 4stupňový panel
 * **Kliknutím** na ukazatel průběhu panel rozbalíte a zafixujete
-* **Dalším kliknutím** panel odemknete a automaticky skryjete po opuštění myší
+* **Dalším kliknutím** panel odblokujete a automaticky skryjete po opuštění myší
 * Každá fáze zobrazuje individuální průběh (0–100 %)
 
 ***
 
-## Popis jednotlivých fází zpracování
+## Vysvětlení jednotlivých fází zpracování
 
 ### Fáze 1: Detekce (detekce cílů)
 
@@ -65,9 +65,9 @@ Pro uživatele s licencí Chloros+:
 
 **Na co si dát pozor:**
 
-* Pokud jsou cíle správně označeny, mělo by být skenování dokončeno rychle.
-* Pokud skenování trvá příliš dlouho, cíle nemusí být označeny.
-* Zkontrolujte protokol ladění, zda neobsahuje zprávy „Target found“ (Cíl nalezen).
+* Pokud jsou cíle správně označeny, mělo by být dokončeno rychle.
+* Pokud to trvá příliš dlouho, cíle nemusí být označeny.
+* Zkontrolujte protokol ladění, zda neobsahuje zprávy „Cíl nalezen“.
 
 ### Fáze 2: Analýza
 
@@ -98,7 +98,7 @@ Pro uživatele s licencí Chloros+:
 * **Korekce vinětace**: Odstranění ztmavnutí okrajů objektivu
 * **Kalibrace odrazivosti**: Normalizace pomocí cílových hodnot
 * **Výpočet indexu**: Výpočet multispektrálních indexů
-* Zpracování každého obrázku prostřednictvím celého procesu
+* Zpracování každého obrazu prostřednictvím celého procesu
 
 **Doba trvání:** Většina celkové doby zpracování (60–80 %)
 
@@ -131,7 +131,7 @@ Pro uživatele s licencí Chloros+:
 
 **Doba trvání:** 10–20 % celkové doby zpracování
 
-**Indikátor průběhu:**
+**Ukazatel průběhu:**
 
 * Export: 0 % → 100 %
 * Zápis souborů
@@ -147,9 +147,9 @@ Pro uživatele s licencí Chloros+:
 
 ## Karta Debug Log (Logs)
 
-Debug Log poskytuje podrobné informace o průběhu zpracování a všech problémech, které se vyskytly.
+Debug Log (Logs) poskytuje podrobné informace o průběhu zpracování a všech problémech, které se vyskytly.
 
-### Přístup k Debug Log
+### Přístup k Debug Log (Logs)
 
 1. Klikněte na ikonu **Debug Log** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> v levém postranním panelu.
 2. Otevře se panel protokolu zobrazující zprávy o zpracování v reálném čase.
@@ -198,7 +198,7 @@ Kritické problémy, které mohou způsobit selhání zpracování:
 | Zpráva                          | Význam                                | Potřebná akce                                         |
 | -------------------------------- | -------------------------------------- | ----------------------------------------------------- |
 | „Cíl detekován v \[název souboru]“ | Kalibrační cíl úspěšně nalezen  | Žádná – normální                                         |
-| „Zpracování obrázku X z Y“        | Aktuální informace o průběhu                | Žádná – normální                                         |
+| „Zpracování obrázku X z Y“        | Aktualizace aktuálního průběhu                | Žádná – normální                                         |
 | „Nenalezeny žádné cíle“               | Nebyly detekovány žádné kalibrační cíle        | Označte obrázky cílů nebo deaktivujte kalibraci odrazivosti |
 | „Nedostatek místa na disku“        | Nedostatek úložného prostoru pro výstup          | Uvolněte místo na disku                                    |
 | „Přeskočení poškozeného souboru“        | Obrazový soubor je poškozen                  | Znovu zkopírujte soubor z karty SD                             |
@@ -206,7 +206,7 @@ Kritické problémy, které mohou způsobit selhání zpracování:
 
 ### Kopírování dat protokolu
 
-Kopírování protokolu pro účely řešení problémů nebo podpory:
+Kopírování protokolu pro účely řešení potíží nebo podpory:
 
 1. Otevřete panel Debug Log (Protokol ladění).
 2. Klikněte na tlačítko **„Copy Log“** (Kopírovat protokol) (nebo klikněte pravým tlačítkem myši → Vybrat vše).
@@ -260,7 +260,7 @@ Při zapnuté akceleraci GPU:
 * Využití VRAM se zvyšuje (vyžaduje 4 GB+ VRAM)
 * Fáze kalibrace je výrazně rychlejší
 
-**Sledujte:**
+**Sledování:**
 
 * Ikona NVIDIA v systémové liště
 * Správce úloh → Výkon → GPU
@@ -274,7 +274,7 @@ Při zapnuté akceleraci GPU:
 * Vysoký zápis na disk během fáze exportu
 * SSD je výrazně rychlejší než HDD
 
-**Tip pro zvýšení výkonu:**
+**Tip pro výkon:**
 
 * Pokud je to možné, použijte SSD pro složku projektu
 * Vyhněte se síťovým diskům pro velké datové soubory
@@ -295,7 +295,7 @@ Při zapnuté akceleraci GPU:
 **Časté zobrazení chybových zpráv:**
 
 * Zastavte zpracování a zkontrolujte chyby.
-* Časté příčiny: nedostatek místa na disku, poškozené soubory, problémy s pamětí.
+* Běžné příčiny: nedostatek místa na disku, poškozené soubory, problémy s pamětí.
 * Viz část Řešení problémů níže.
 
 **Systém nereaguje:**
@@ -353,12 +353,12 @@ Zastavte zpracování, pokud se zobrazí:
 
 **Řešení:**
 
-1. Znovu zkopírujte obrázky z karty SD, abyste zajistili jejich integritu.
+1. Znovu zkopírujte obrázky z karty SD, abyste zajistili integritu.
 2. Otestujte kartu SD na chyby.
 3. Odstraňte poškozené soubory z projektu.
 4. Pokračujte ve zpracování zbývajících obrázků.
 
-### Přehřívání systému / omezení výkonu
+### Přehřívání/omezení výkonu systému
 
 **Řešení:**
 
