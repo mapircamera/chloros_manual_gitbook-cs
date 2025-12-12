@@ -9,11 +9,15 @@ metaLinks:
 
 MAPIR nabízí různé kalibrační terče pro celou řadu aplikací. Kompaktní T4-R50, který vidíte níže, obsahuje 4 panely, u nichž byla změřena odrazivost světla v rozmezí 250–2 500 nm.
 
-<figure><img src=".gitbook/assets/t4-r50_2.jpg" alt=""><figcaption><p>MAPIR T4-R50</p></figcaption></figure>Difúzní referenční terče T4 mají následující křivky odrazivosti, [data ke stažení zde](https://cdn.shopify.com/s/files/1/0972/5566/files/MAPIR_Diffuse_Reflectance_Standard_Calibration_Target_Data_T4.xlsx?v=1741759157):
+<figure><img src=".gitbook/assets/t4-r50_2.jpg" alt=""><figcaption><p>MAPIR T4-R50</p></figcaption></figure>
+
+Difúzní referenční terče T4 mají následující křivky odrazivosti, [data ke stažení zde](https://cdn.shopify.com/s/files/1/0972/5566/files/MAPIR_Diffuse_Reflectance_Standard_Calibration_Target_Data_T4.xlsx?v=1741759157):
 
 <figure><img src=".gitbook/assets/MAPIR Diffuse Reflectance Standard Calibration Target Data T4 (250-2500nm).png" alt=""><figcaption><p>MAPIR T4 Odrazivost :: 250–2500 nm</p></figcaption></figure>
 
-<figure><img src=".gitbook/assets/MAPIR Diffuse Reflectance Standard Calibration Target Data T4 (400-1000nm).png" alt=""><figcaption><p>MAPIR T4 Odrazivost :: 400–1000 nm</p></figcaption></figure>Na grafu odrazivosti můžete vidět, že hodnoty představují vlnovou délku (osa x) versus procentuální odrazivost (osa y). Když pořídíme snímek kalibračního terče, vytvoříme vztah mezi hodnotou pixelu a procentuální odrazivostí v rámci spektra, na které jsou citlivé jednotlivé senzorové pásma kamery.
+<figure><img src=".gitbook/assets/MAPIR Diffuse Reflectance Standard Calibration Target Data T4 (400-1000nm).png" alt=""><figcaption><p>MAPIR T4 Odrazivost :: 400–1000 nm</p></figcaption></figure>
+
+Na grafu odrazivosti můžete vidět, že hodnoty představují vlnovou délku (osa x) versus procentuální odrazivost (osa y). Když pořídíme snímek kalibračního terče, vytvoříme vztah mezi hodnotou pixelu a procentuální odrazivostí v rámci spektra, na které jsou citlivé jednotlivé senzorové pásma kamery.
 
 To znamená, že u každého snímku pořízeného našimi kamerami můžete použít fotografii našich odrazivostních terčů, jako je [T4-R50](https://www.mapir.camera/collections/calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t3-r50) nebo [T4-R125](https://www.mapir.camera/collections/multispectral-reflectance-reference-calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t4-r125), k kalibraci snímků z hlediska odrazivosti. Po kalibraci se každý pixel v obraze rovná procentuálnímu odrazivosti.
 

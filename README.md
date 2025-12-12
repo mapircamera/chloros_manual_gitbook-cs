@@ -4,7 +4,9 @@ metaLinks: {}
 
 # Začínáme
 
-<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>Chloros je softwarová aplikace od [MAPIR](https://www.mapir.camera) pro zpracování obrazů a dalších dat ze senzorů.
+<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>
+
+Chloros je softwarová aplikace od [MAPIR](https://www.mapir.camera) pro zpracování obrazů a dalších dat ze senzorů.
 
 ***
 
