@@ -1,43 +1,39 @@
-# Chloros+ Login
+# Chloros+ Přihlášení
 
-## Chloros and Chloros (Browser) Login
+## Chloros a Chloros (prohlížeč) Přihlášení
 
-The user <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> sidebar menu allows you to log into your Chloros+ account and unlock additional features.
+Uživatelské <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> v postranním panelu vám umožňuje přihlásit se k vašemu účtu Chloros+ a odemknout další funkce.
 
-When logged in your account details will be shown:
+Po přihlášení se zobrazí podrobnosti vašeho účtu:
 
-<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>## CLI Přihlášení
 
-## CLI Login
+Přihlaste se pomocí svých přihlašovacích údajů Chloros+, abyste mohli využívat zpracování CLI.
 
-Login with your Chloros+ credentials to enable CLI processing.
-
-**Syntax:**
+**Syntaxe:**
 
 ```bash
 chloros-cli login <email> <password>
 ```
 
-**Example:**
+**Příklad:**
 
 ```powershell
 chloros-cli login user@example.com 'MyP@ssw0rd123'
 ```
 
-{% hint style="warning" %}
-**Special Characters**: Use single quotes around passwords containing characters like `$`, `!`, or spaces.
+{% hint style=&quot;warning&quot; %}
+**Zvláštní znaky**: Použijte jednoduché uvozovky kolem hesel obsahujících znaky jako `$`, `!` nebo mezery.
 {% endhint %}
 
-**Output:**
+**Výstup:**
 
-<figure><img src=".gitbook/assets/cli login_w.JPG" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/cli login_w.JPG" alt=""><figcaption></figcaption></figure>### Vypršení platnosti plánu
 
-### Plan Expiration
+Vypršení platnosti plánu v grafickém uživatelském rozhraní ukazuje, kdy vaše licence přestane být platná. U opakujících se měsíčních předplatných je vypršení platnosti na konci měsíce. U ročních předplatných je to rok po zahájení předplatného. Kontrola licence vyžaduje měsíční připojení k internetu, aby mohla být ověřena, s 30denní lhůtou.
 
-The plan expiration in the GUI shows when your license will become invalid. For recurring monthly subscriptions the expiration is at the end of the month. For yearly subscriptions it is a year after you started the subscription. The license check requires a monthly internet connection to verify, with a 30 day grace period.
+### Limit zařízení
 
-### Device Limit
+Každý plán Chloros+ nabízí jiný počet registrovaných zařízení. Každé zařízení, ke kterému se přihlásíte pomocí účtu Chloros+, se započítává do počtu registrovaných zařízení. Zařízení můžete přejmenovat a odstranit na stránce účtu MAPIR Cloud.
 
-Each Chloros+ plan offers a different number of registered devices. Each device you log into with a Chloros+ account will count towards your number of registered devices. You can rename and remove a device on your MAPIR Cloud account page.
-
-<table><thead><tr><th width="168.5999755859375" align="right">Chloros+ Plan</th><th align="center">COPPER</th><th align="center">BRONZE</th><th align="center">SILVER</th><th align="center">GOLD</th></tr></thead><tbody><tr><td align="right">Devices Supported</td><td align="center">2</td><td align="center">2</td><td align="center">5</td><td align="center">10</td></tr></tbody></table>
+<table><thead><tr><th width="168.5999755859375" align="right">Plán Chloros</th><th align="center">COPPER</th><th align="center">BRONZE</th><th align="center">STŘÍBRO</th><th align="center">ZLATO</th></tr></thead><tbody><tr><td align="right">Podporovaná zařízení</td><td align="center">2</td><td align="center">2</td><td align="center">5</td><td align="center">10</td></tr></tbody></table>

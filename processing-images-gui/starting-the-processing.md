@@ -1,366 +1,366 @@
-# Starting the Processing
+# Zahájení zpracování
 
-Once you've imported your images, marked your calibration targets, and configured your project settings, you're ready to begin processing. This page guides you through initiating the Chloros processing pipeline.
+Jakmile importujete obrázky, označíte kalibrační cíle a nakonfigurujete nastavení projektu, můžete zahájit zpracování. Tato stránka vás provede zahájením zpracování Chloros.
 
-## Pre-Processing Checklist
+## Kontrolní seznam před zpracováním
 
-Before clicking the Start button, verify that everything is ready:
+Než kliknete na tlačítko Start, ověřte, zda je vše připraveno:
 
-* [ ] **Files imported** - All images appear in File Browser
-* [ ] **Target images marked** - Target column checked for calibration images
-* [ ] **Camera models detected** - Camera Model column shows correct cameras
-* [ ] **Settings configured** - Project Settings reviewed and adjusted
-* [ ] **Indices selected** - Desired multispectral indices added (if needed)
-* [ ] **Export format chosen** - Output format appropriate for your workflow
+* [ ] **Soubory importovány** – všechny obrázky se zobrazují v prohlížeči souborů
+* [ ] **Obrázky cílů označeny** – sloupec Cíl zkontrolován pro kalibrační obrázky
+* [ ] **Detekovány modely kamer** – ve sloupci Camera Model jsou zobrazeny správné kamery
+* [ ] **Nastavení nakonfigurováno** – nastavení projektu zkontrolováno a upraveno
+* [ ] **Vybrané indexy** – přidány požadované multispektrální indexy (v případě potřeby)
+* [ ] **Zvolen formát exportu** – výstupní formát vhodný pro váš pracovní postup
 
-{% hint style="info" %}
-**Tip**: Click through a few images in the File Browser to verify they loaded correctly before processing.
+{% hint style=&quot;info&quot; %}
+**Tip**: Před zpracováním klikněte na několik obrázků v prohlížeči souborů a ověřte, zda se načtou správně.
 {% endhint %}
 
 ***
 
-## Starting the Processing
+## Spuštění zpracování
 
-### Locate the Start Button
+### Najděte tlačítko Start
 
-The Start/Play button is located in the top header bar of Chloros:
+Tlačítko Start/Přehrát se nachází v horní liště Chloros:
 
-* Position: Top center of the window
-* Icon: **Play/Start button** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">
-* Status: Button is enabled (bright) when ready to process
+* Poloha: V horní části okna uprostřed
+* Ikona: **Tlačítko Přehrát/Start** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">
+* Stav: Tlačítko je aktivní (světlé), když je připraveno ke zpracování
 
-### Click to Start
+### Klikněte pro spuštění
 
-1. Click the **Play/Start button** in the top header
-2. Processing begins immediately
-3. The button becomes disabled (grayed out) during processing
-4. Progress bar updates, showing processing status
+1. Klikněte na **tlačítko Přehrát/Spustit** v horní liště
+2. Zpracování začne okamžitě
+3. Během zpracování se tlačítko deaktivuje (zšedne)
+4. Ukazatel průběhu se aktualizuje a zobrazuje stav zpracování
 
-{% hint style="success" %}
-**Processing Started**: Once clicked, Chloros automatically handles all processing steps - target detection, debayering, calibration, index calculation, and export.
+{% hint style=&quot;success&quot; %}
+**Zpracování zahájeno**: Po kliknutí Chloros automaticky provede všechny kroky zpracování – detekci cíle, debayering, kalibraci, výpočet indexu a export.
 {% endhint %}
 
 ***
 
-## Understanding Processing Modes
+## Porozumění režimům zpracování
 
-Chloros operates in two different processing modes depending on your license:
+Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší licenci:
 
-### Free Mode (Sequential Processing)
+### Bezplatný režim (sekvenční zpracování)
 
-**Available to all users**
+**K dispozici pro všechny uživatele**
 
-**How it works:**
+**Jak to funguje:**
 
-* Processes images one at a time, sequentially
-* Single-threaded operation
-* Lower memory usage
+* Zpracovává obrázky jeden po druhém, sekvenčně.
+* Jednovláknový provoz.
+* Nižší využití paměti.
 
-**Progress bar shows 2 stages:**
+**Indikátor průběhu zobrazuje 2 fáze:**
 
-1. **Target Detect** - Scanning for calibration targets
-2. **Processing** - Applying calibration and exporting images
+1. **Detekce cíle** – vyhledávání kalibračních cílů.
+2. **Zpracování** – aplikace kalibrace a export obrázků.
 
-**Processing time:**
+**Doba zpracování:**
 
-* Much slower than Chloros+ parallel mode
-* Suitable for small to medium datasets (< 200 images)
+* Mnohem pomalejší než paralelní režim Chloros+
+* Vhodné pro malé až střední datové sady (&lt; 200 obrázků)
 
-### Chloros+ Mode (Parallel Processing)
+### Režim Chloros+ (paralelní zpracování)
 
-**Requires Chloros+ license**
+**Vyžaduje licenci Chloros+**
 
-**How it works:**
+**Jak to funguje:**
 
-* Processes multiple images simultaneously
-* Multi-threaded operation (up to 16 parallel workers)
-* Utilizes multiple CPU cores
-* Optional GPU (CUDA) acceleration with NVIDIA graphics cards
+* Zpracovává více obrázků současně
+* Vícevláknový provoz (až 16 paralelních pracovníků)
+* Využívá více jader CPU
+* Volitelná akcelerace GPU (CUDA) s grafickými kartami NVIDIA
 
-**Progress bar shows 4 stages:**
+**Indikátor průběhu zobrazuje 4 fáze:**
 
-1. **Detecting** - Finding calibration targets
-2. **Analyzing** - Examining image metadata and preparing pipeline
-3. **Calibrating** - Applying corrections and calibrations
-4. **Exporting** - Saving processed images and indices
+1. **Detekce** – vyhledání kalibračních cílů
+2. **Analýza** – zkoumání metadat obrázků a příprava potrubí
+3. **Kalibrace** – aplikace oprav a kalibrací
+4. **Export** – ukládání zpracovaných obrázků a indexů
 
-**Progress bar interaction:**
+**Interakce s ukazatelem průběhu:**
 
-* **Hover mouse** over bar to see detailed 4-stage dropdown panel
-* **Click** progress bar to freeze the dropdown panel in place
-* **Click again** to unfreeze and hide panel
+* **Přejděte myší** nad ukazatel a zobrazí se podrobný rozbalovací panel se 4 fázemi
+* **Kliknutím** na ukazatel průběhu rozbalovací panel zafixujete
+* **Kliknutím znovu** panel uvolníte a skryjete
 
-**Processing time:**
+**Doba zpracování:**
 
-* Significantly faster than free mode
-* Scales with CPU core count
-* GPU acceleration further improves speed
+* Výrazně rychlejší než volný režim
+* Škáluje se podle počtu jader CPU
+* Akcelerace GPU dále zvyšuje rychlost
 
-{% hint style="info" %}
-**Chloros+ Speed**: Parallel processing can be 5-10x faster than sequential mode for large datasets. A 500-image project that takes 2 hours in free mode may complete in 15-20 minutes with Chloros+.
+{% hint style=&quot;info&quot; %}
+**Chloros+ Rychlost**: Paralelní zpracování může být u velkých datových sad 5–10krát rychlejší než sekvenční režim. Projekt s 500 obrázky, který v bezplatném režimu trvá 2 hodiny, lze s Chloros+ dokončit za 15–20 minut.
 {% endhint %}
 
 ***
 
-## What Happens During Processing
+## Co se děje během zpracování
 
-### Stage 1: Target Detection
+### Fáze 1: Detekce cíle
 
-**What Chloros does:**
+**Co dělá Chloros:**
 
-* Scans marked target images (or all images if none marked)
-* Identifies the 4 calibration panels in each target
-* Extracts reflectance values from target panels
-* Records target timestamps for calibration scheduling
+* Skenuje označené cílové obrázky (nebo všechny obrázky, pokud nejsou žádné označené)
+* Identifikuje 4 kalibrační panely v každém cíli
+* Extrahuje hodnoty odrazivosti z cílových panelů
+* Zaznamenává časová razítka cílů pro plánování kalibrace
 
-**Duration:** 1-30 seconds (with marked targets), 5-30+ minutes (unmarked)
+**Doba trvání:** 1–30 sekund (s označenými cíli), 5–30+ minut (bez označení)
 
-### Stage 2: Debayering (RAW Conversion)
+### Fáze 2: Debayering (konverze RAW)
 
-**What Chloros does:**
+**Co dělá Chloros:**
 
-* Converts RAW Bayer pattern data to full RGB images
-* Applies high-quality demosaicing algorithm
-* Preserves maximum image quality and detail
+* Převádí data RAW Bayerova vzoru na plné obrázky RGB
+* Používá vysoce kvalitní algoritmus demosaicingu
+* Zachovává maximální kvalitu a detaily obrázku
 
-**Duration:** Varies by image count and CPU speed
+**Doba trvání:** Liší se podle počtu obrázků a rychlosti CPU
 
-### Stage 3: Calibration
+### Fáze 3: Kalibrace
 
-**What Chloros does:**
+**Co dělá Chloros:**
 
-* **Vignette correction**: Removes lens darkening at edges
-* **Reflectance calibration**: Normalizes using target reflectance values
-* Applies corrections across all bands/channels
-* Uses appropriate calibration target for each image based on timestamp
+* **Korekce vinětace**: Odstraňuje ztmavnutí objektivu na okrajích
+* **Kalibrace odrazivosti**: Normalizuje pomocí cílových hodnot odrazivosti
+* Používá korekce ve všech pásmech/kanálech
+* Používá vhodný kalibrační cíl pro každý obrázek na základě časového razítka
 
-**Duration:** Majority of processing time
+**Doba trvání:** Většina času zpracování
 
-### Stage 4: Index Calculation
+### Fáze 4: Výpočet indexu
 
-**What Chloros does:**
+**Co dělá Chloros:**
 
-* Calculates configured multispectral indices (NDVI, NDRE, etc.)
-* Applies band math to calibrated images
-* Generates index images for each selected index
+* Vypočítává nakonfigurované multispektrální indexy (NDVI, NDRE atd.)
+* Aplikuje matematické operace s pásmy na kalibrované snímky
+* Generuje indexové snímky pro každý vybraný index
 
-**Duration:** A few seconds per image
+**Trvání:** Několik sekund na jeden obraz
 
-### Stage 5: Export
+### Fáze 5: Export
 
-**What Chloros does:**
+**Co dělá Chloros:**
 
-* Saves calibrated images in selected format
-* Exports index images with configured LUT colors
-* Writes files to camera model subfolders
-* Preserves original filenames with suffixes
+* Uloží kalibrované obrazy ve vybraném formátu
+* Exportuje indexové obrazy s nakonfigurovanými barvami LUT
+* Zapíše soubory do podsložek modelu kamery
+* Zachová původní názvy souborů s příponami
 
-**Duration:** Varies by export format and file size
+**Doba trvání:** Liší se podle formátu exportu a velikosti souboru
 
 ***
 
-## Processing Behavior
+## Chování zpracování
 
-### Automatic Processing Pipeline
+### Automatický zpracovatelský proces
 
-Once started, the entire pipeline runs automatically:
+Po spuštění běží celý proces automaticky:
 
-* No user interaction needed
-* All configured steps execute in sequence
-* Progress updates shown in real-time
+* Není nutná žádná interakce uživatele
+* Všechny nakonfigurované kroky se provádějí postupně
+* Aktualizace průběhu se zobrazují v reálném čase
 
-### Computer Usage During Processing
+### Využití počítače během zpracování
 
-**Free Mode:**
+**Volný režim:**
 
-* Relatively low CPU usage (single-threaded)
-* Computer remains responsive for other tasks
-* Safe to minimize Chloros and work in other applications
+* Relativně nízké využití CPU (jednovláknové)
+* Počítač zůstává reagovat na jiné úkoly
+* Bezpečné minimalizovat Chloros a pracovat v jiných aplikacích
 
-**Chloros+ Parallel Mode:**
+**Chloros+ Paralelní režim:**
 
-* High CPU usage (multi-threaded, up to 16 cores)
-* With GPU acceleration: High GPU usage
-* Computer may be less responsive during processing
-* Avoid starting other CPU-intensive tasks
+* Vysoké využití CPU (vícevláknové, až 16 jader)
+* S akcelerací GPU: Vysoké využití GPU
+* Počítač může být během zpracování méně responzivní
+* Vyhněte se spouštění jiných úloh náročných na CPU
 
-{% hint style="warning" %}
-**Performance Tip**: For best Chloros+ performance, close other applications and let Chloros use full system resources.
+{% hint style=&quot;warning&quot; %}
+**Tip pro výkon**: Pro nejlepší výkon Chloros+ zavřete ostatní aplikace a nechte Chloros využívat všechny systémové zdroje.
 {% endhint %}
 
-### Processing Cannot Be Paused
+### Zpracování nelze pozastavit
 
-**Important limitations:**
+**Důležité omezení:**
 
-* Once started, processing cannot be paused
-* You can cancel processing, but progress is lost
-* Partial results are not saved
-* Must restart from beginning if canceled
+* Po spuštění nelze zpracování pozastavit.
+* Zpracování můžete zrušit, ale pokrok se ztratí.
+* Částečné výsledky se neukládají.
+* V případě zrušení je nutné začít znovu od začátku.
 
-**Planning tip:** For very large projects, consider processing in batches or using CLI for better control.
-
-***
-
-## Monitoring Your Processing
-
-While processing runs, you can:
-
-* **Watch progress bar** - See overall completion percentage
-* **View current stage** - Detect, Analyze, Calibrate, or Export
-* **Check log tab** - See detailed processing messages and warnings
-* **Preview completed images** - Some export files may appear during processing
-
-For detailed information on monitoring, see [Monitoring the Processing](monitoring-the-processing.md).
+**Tip pro plánování:** U velmi rozsáhlých projektů zvažte zpracování v dávkách nebo použití CLI pro lepší kontrolu.
 
 ***
 
-## Canceling Processing
+## Sledování zpracování
 
-If you need to stop processing:
+Během zpracování můžete:
 
-### How to Cancel
+* **Sledovat ukazatel průběhu** – zobrazit celkové procento dokončení
+* **Zobrazit aktuální fázi** – detekce, analýza, kalibrace nebo export
+* **Zkontrolovat kartu protokolu** – zobrazit podrobné zprávy a varování týkající se zpracování
+* **Zobrazit náhled dokončených obrázků** – během zpracování se mohou zobrazit některé exportované soubory
 
-1. Locate the **Stop/Cancel button** (replaces Start button during processing)
-2. Click the Stop button
-3. Processing halts immediately
-4. Partial results are discarded
+Podrobné informace o monitorování naleznete v části [Monitorování zpracování](monitoring-the-processing.md).
 
-### When to Cancel
+***
 
-**Valid reasons to cancel:**
+## Zrušení zpracování
 
-* Realized incorrect settings were used
-* Forgot to mark target images
-* Wrong images imported
-* System running too slow or unresponsive
+Pokud potřebujete zastavit zpracování:
 
-**After canceling:**
+### Jak zrušit
 
-* Review and fix any issues
-* Adjust settings as needed
-* Restart processing from the beginning
-* For the cleanest experience, completely close Chloros and restart
+1. Najděte **tlačítko Zastavit/Zrušit** (nahrazuje tlačítko Start během zpracování)
+2. Klikněte na tlačítko Zastavit
+3. Zpracování se okamžitě zastaví
+4. Částečné výsledky budou zrušeny
 
-{% hint style="warning" %}
-**No Partial Results**: Canceling discards all progress. Chloros does not save partially processed images.
+### Kdy zrušit
+
+**Platné důvody pro zrušení:**
+
+* Zjistili jste, že jste použili nesprávná nastavení
+* Zapomněli jste označit cílové obrázky
+* Importovali jste nesprávné obrázky
+* Systém běží příliš pomalu nebo nereaguje
+
+**Po zrušení:**
+
+* Zkontrolujte a opravte všechny problémy
+* Upravte nastavení podle potřeby
+* Restartujte zpracování od začátku
+* Pro nejčistší zážitek zcela zavřete Chloros a restartujte
+
+{% hint style=&quot;warning&quot; %}
+**Žádné částečné výsledky**: Zrušení zahodí veškerý pokrok. Chloros neukládá částečně zpracované obrázky.
 {% endhint %}
 
 ***
 
-## Processing Time Estimates
+## Odhadované doby zpracování
 
-Actual processing time varies greatly based on:
+Skutečná doba zpracování se značně liší v závislosti na:
 
-* Number of images
-* Image resolution
-* RAW vs JPG input format
-* Processing mode (Free vs Chloros+)
-* CPU speed and core count
-* GPU availability (Chloros+ only)
-* Number of indices to calculate
-* Export format complexity
+* Počtu obrázků
+* Rozlišení obrázků
+* Vstupním formátu RAW vs. JPG
+* Režimu zpracování (Free vs. Chloros+)
+* Rychlosti CPU a počtu jader
+* Dostupnosti GPU (pouze Chloros+)
+* Počtu indexů k výpočtu
+* Složitosti exportního formátu
 
-### Rough Estimates (Chloros+, 12MP images, modern CPU)
+### Hrubé odhady (Chloros+, obrázky 12 MP, moderní CPU)
 
-| Image Count | Free Mode | Chloros+ (CPU) | Chloros+ (GPU) |
+| Počet obrázků | Režim Free | Chloros+ (CPU) | Chloros+ (GPU) |
 | ----------- | --------- | -------------- | -------------- |
-| 50 images   | 15-20 min | 5-8 min        | 3-5 min        |
-| 100 images  | 30-40 min | 10-15 min      | 5-8 min        |
-| 200 images  | 1-1.5 hrs | 20-30 min      | 10-15 min      |
-| 500 images  | 2-3 hrs   | 45-60 min      | 20-30 min      |
-| 1000 images | 4-6 hrs   | 1.5-2 hrs      | 40-60 min      |
+| 50 obrázků   | 15–20 min | 5–8 min        | 3–5 min        |
+| 100 obrázků  | 30–40 min | 10–15 min      | 5–8 min        |
+| 200 obrázků  | 1–1,5 hod | 20–30 min      | 10–15 min      |
+| 500 obrázků  | 2–3 hodiny   | 45–60 min      | 20–30 min      |
+| 1000 obrázků | 4–6 hodin   | 1,5–2 hodiny      | 40–60 min      |
 
-{% hint style="info" %}
-**First Run**: Initial processing may take longer as Chloros builds caches and profiles. Subsequent processing of similar datasets will be faster.
+{% hint style=&quot;info&quot; %}
+**První spuštění**: Počáteční zpracování může trvat déle, protože Chloros vytváří mezipaměti a profily. Následné zpracování podobných datových sad bude rychlejší.
 {% endhint %}
 
 ***
 
-## Common Issues at Start
+## Časté problémy při spuštění
 
-### Start Button Disabled (Grayed Out)
+### Tlačítko Start je deaktivované (šedé)
 
-**Possible causes:**
+**Možné příčiny:**
 
-* No images imported
-* Backend not fully started
-* Previous processing still running
-* Project not fully loaded
+* Nejsou importovány žádné obrázky.
+* Backend není zcela spuštěn.
+* Předchozí zpracování stále probíhá.
+* Projekt není zcela načten.
 
-**Solutions:**
+**Řešení:**
 
-1. Wait for backend to fully initialize (check main menu icon)
-2. Verify images are imported in File Browser
-3. Restart Chloros if button remains disabled
-4. Check Debug Log for error messages
+1. Počkejte, až se backend zcela inicializuje (zkontrolujte ikonu v hlavním menu).
+2. Ověřte, zda jsou obrázky importovány v prohlížeči souborů.
+3. Pokud tlačítko zůstává deaktivované, restartujte Chloros.
+4. Zkontrolujte, zda v protokolu ladění nejsou chybové zprávy.
 
-### Processing Starts Then Immediately Fails
+### Zpracování se spustí, ale okamžitě selže
 
-**Possible causes:**
+**Možné příčiny:**
 
-* No valid images in project
-* Corrupted image files
-* Insufficient disk space
-* Insufficient memory (RAM)
+* V projektu nejsou žádné platné obrázky
+* Poškozené obrazové soubory
+* Nedostatek místa na disku
+* Nedostatek paměti (RAM)
 
-**Solutions:**
+**Řešení:**
 
-1. Check Debug Log <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> for error messages
-2. Verify disk space available
-3. Try processing a smaller subset of images
-4. Verify images are not corrupted
+1. Zkontrolujte protokol ladění <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> , zda neobsahuje chybové zprávy.
+2. Zkontrolujte dostupný prostor na disku.
+3. Zkuste zpracovat menší podmnožinu obrázků.
+4. Zkontrolujte, zda obrázky nejsou poškozené.
 
-### "No Targets Detected" Warning
+### Varování „Nebyly detekovány žádné cíle“
 
-**Possible causes:**
+**Možné příčiny:**
 
-* Forgot to mark target images
-* Target images don't contain visible targets
-* Target detection settings too strict
+* Zapomněli jste označit cílové obrázky.
+* Cílové obrázky neobsahují viditelné cíle.
+* Nastavení detekce cílů je příliš přísné.
 
-**Solutions:**
+**Řešení:**
 
-1. Review [Choosing Target Images](choosing-target-images.md)
-2. Mark appropriate images in Target column
-3. Verify targets are visible in marked images
-4. Adjust target detection settings if needed
-
-***
-
-## Tips for Successful Processing
-
-### Before Starting
-
-1. **Test with small subset first** - Process 10-20 images to verify settings
-2. **Check available disk space** - Ensure 2-3x dataset size free
-3. **Close unnecessary applications** - Free up system resources
-4. **Verify target images** - Preview marked targets to ensure quality
-5. **Save project** - Project auto-saves, but good practice to save manually
-
-### During Processing
-
-1. **Avoid system sleep** - Disable power saving modes
-2. **Keep Chloros in foreground** - Or at least visible in taskbar
-3. **Monitor progress occasionally** - Check for warnings or errors
-4. **Don't load other heavy applications** - Especially with Chloros+ parallel mode
-
-### Chloros+ GPU Acceleration
-
-If using NVIDIA GPU acceleration:
-
-1. Update NVIDIA drivers to latest version
-2. Ensure GPU has 4GB+ VRAM
-3. Close GPU-intensive applications (games, video editing)
-4. Monitor GPU temperature (ensure adequate cooling)
+1. Zkontrolujte [Výběr cílových obrázků](choosing-target-images.md)
+2. Označte příslušné obrázky ve sloupci Cíl
+3. Ověřte, zda jsou cíle viditelné v označených obrázcích
+4. V případě potřeby upravte nastavení detekce cílů
 
 ***
 
-## Next Steps
+## Tipy pro úspěšné zpracování
 
-Once processing has started:
+### Před spuštěním
 
-1. **Monitor the progress** - See [Monitoring the Processing](monitoring-the-processing.md)
-2. **Wait for completion** - Processing runs automatically
-3. **Review results** - See [Finishing the Processing](finishing-the-processing.md)
+1. **Nejprve proveďte test s malou podskupinou** – zpracujte 10–20 obrázků, abyste ověřili nastavení.
+2. **Zkontrolujte dostupný prostor na disku** – zajistěte 2–3násobek volného místa oproti velikosti datového souboru.
+3. **Zavřete nepotřebné aplikace** – uvolněte systémové zdroje.
+4. **Ověřte cílové obrázky** – zobrazte náhled označených cílů, abyste se ujistili o jejich kvalitě.
+5. **Uložte projekt** – projekt se ukládá automaticky, ale je dobré jej uložit ručně.
 
-For information about what to do during processing, see [Monitoring the Processing](monitoring-the-processing.md).
+### Během zpracování
+
+1. **Zabraňte přechodu systému do režimu spánku** – deaktivujte režimy úspory energie.
+2. **Nechte Chloros v popředí** – nebo alespoň viditelný na hlavním panelu.
+3. **Příležitostně sledujte průběh** – zkontrolujte, zda se nezobrazují varování nebo chyby.
+4. **Nenačtěte jiné náročné aplikace** – zejména v paralelním režimu Chloros+.
+
+### Chloros+ GPU akcelerace
+
+Při použití GPU akcelerace NVIDIA:
+
+1. Aktualizujte ovladače NVIDIA na nejnovější verzi.
+2. Ujistěte se, že GPU má 4 GB+ VRAM.
+3. Zavřete aplikace náročné na GPU (hry, editace videa).
+4. Sledujte teplotu GPU (zajistěte dostatečné chlazení).
+
+***
+
+## Další kroky
+
+Po zahájení zpracování:
+
+1. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md).
+2. **Počkejte na dokončení** – zpracování probíhá automaticky.
+3. **Zkontrolujte výsledky** – viz [Dokončení zpracování](finishing-the-processing.md).
+
+Informace o tom, co dělat během zpracování, najdete v části [Sledování zpracování](monitoring-the-processing.md).

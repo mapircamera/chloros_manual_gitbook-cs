@@ -1,17 +1,13 @@
-# Projects
+# GUI: Projekty
 
-Chloros allows you to create projects which can be reopened in the future.
+Chloros vám umožňuje vytvářet projekty, které lze v budoucnu znovu otevřít.
 
-## New Project
+## Nový projekt
 
-<figure><img src=".gitbook/assets/project_new.JPG" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/project_new.JPG" alt=""><figcaption></figcaption></figure>V hlavním menu vyberte „Nový projekt“ a zadejte jedinečný název pro svůj projekt.
 
-Select "New Project" from the main menu and enter a unique name for your project.
+## Otevřít projekt
 
-## Open Project
+<figure><img src=".gitbook/assets/project_open.JPG" alt=""><figcaption></figcaption></figure>Vyberte „Otevřít projekt“ a zobrazí se seznam existujících projektů ve složce Projekt. Pokud žádné projekty neexistují, sekundární boční menu se neotevře. Na výše uvedené fotografii můžete vidět některé projekty vytvořené pomocí GUI (t1, t2, t3). Projekty DATE\_TIME byly vytvořeny pomocí CLI s použitím výchozího schématu pojmenování projektů. Kliknutím na název projektu jej otevřete.
 
-<figure><img src=".gitbook/assets/project_open.JPG" alt=""><figcaption></figcaption></figure>
-
-Select "Open Project" to see a list of existing projects in the Project Folder. If no projects exist the secondary side menu will not open. You can see some GUI created projects (t1, t2, t3) listed in the above photo. The DATE\_TIME projects were created by the CLI using the default project naming scheme. Clicking any project name will open it.
-
-Clicking the "Open Project Folder" button opens your computer's file explorer at the project path. You can adjust the project path in the [Project Settings](project-settings/page-2.md).
+Kliknutím na tlačítko „Otevřít složku projektu“ se otevře průzkumník souborů vašeho počítače v cestě k projektu. Cestu k projektu můžete upravit v [Nastavení projektu](project-settings/project-settings.md).

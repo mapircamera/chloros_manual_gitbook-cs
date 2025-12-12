@@ -1,306 +1,306 @@
-# Finishing the Processing
+# Dokončení zpracování
 
-Once Chloros completes processing, it's time to review your results, verify output quality, and prepare your processed images for use in your workflow. This page guides you through the final steps and next actions.
+Jakmile Chloros dokončí zpracování, je čas zkontrolovat výsledky, ověřit kvalitu výstupu a připravit zpracované obrázky pro použití ve vašem pracovním postupu. Tato stránka vás provede posledními kroky a dalšími akcemi.
 
-## Processing Complete Indication
+## Indikace dokončení zpracování
 
-When processing finishes successfully, you'll see several indicators:
+Po úspěšném dokončení zpracování se zobrazí několik indikátorů:
 
-* ✅ **Progress bar**: Reaches 100% completion
-* ✅ **Debug Log**: Shows "Processing Complete" message
-* ✅ **Start button**: Becomes enabled again (ready for next processing run)
-* ✅ **Output files**: All processed images saved to camera model subfolder
-
-***
-
-## Locating Your Processed Images
-
-### Opening the Output Folder
-
-1. Click the **Main Menu** <img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="line"> icon (top left)
-2. Select **"Open Project Folder"**
-3. Your file explorer opens to the project directory
-4. Locate your project by name
+* ✅ **Indikátor průběhu**: Dosáhne 100% dokončení
+* ✅ **Debugovací protokol**: Zobrazí zprávu „Zpracování dokončeno“
+* ✅ **Tlačítko Start**: Znovu se aktivuje (připraveno pro další zpracování)
+* ✅ **Výstupní soubory**: Všechny zpracované obrázky jsou uloženy do podsložky modelu fotoaparátu
 
 ***
 
-## Reviewing Processed Images
+## Vyhledání zpracovaných obrázků
 
-### Quick Preview in File Explorer
+### Otevření výstupní složky
 
-**Windows built-in preview:**
-
-1. Navigate to camera model subfolder
-2. Select an image file
-3. Preview appears in Windows Explorer preview pane
-4. Use arrow keys to browse through images
-
-### Preview in External Image Viewers
-
-**Recommended viewers:**
-
-* **QGIS** - Free GIS software (best for georeferenced multispectral analysis)
-* **IrfanView** - Fast, lightweight image viewer (supports TIFF)
-* **Adobe Photoshop** - Professional editing (TIFF support)
-* **GIMP** - Free alternative to Photoshop
-* **Windows Photos** - Basic viewing (may not support 16-bit TIFF)
-
-### Preview in Chloros Image Viewer
-
-Use Chloros's built-in Image Viewer for advanced visualization:
-
-1. Click an image thumbnail in the File Browser
-2. Image opens in the main preview area
-3. Click **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab in left sidebar
-4. Use [Index/LUT Sandbox](../image-viewer-gui/index-lut-sandbox.md) for interactive analysis
-
-See [Image Viewer](../image-viewer-gui/page-3.md) for detailed instructions.
+1. Klikněte na ikonu **Hlavní nabídka** <img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="line"> (vlevo nahoře)
+2. Vyberte **„Otevřít složku projektu“**
+3. Otevře se průzkumník souborů v adresáři projektu
+4. Vyhledejte projekt podle názvu
 
 ***
 
-## Reviewing the Debug Log
+## Kontrola zpracovaných obrázků
 
-### Check for Warnings or Errors
+### Rychlý náhled v prohlížeči souborů
 
-1. Open **Debug Log** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> tab
-2. Scroll through messages
-3. Look for yellow warnings or red errors
-4. Review any issues noted
-5. Contact MAPIR support for assistance
+**Windows vestavěný náhled:**
 
-### Saving the Log
+1. Přejděte do podsložky modelu kamery
+2. Vyberte obrazový soubor
+3. Náhled se zobrazí v okně náhledu Windows Explorer
+4. Pomocí kláves se šipkami procházejte obrázky
 
-To keep a record of processing or to send to MAPIR Support:
+### Náhled v externích prohlížečích obrázků
 
-1. Click **"Copy"** or **"Download"** button
-2. Save as text file in project folder
-3. Include with project documentation
-4. Send to MAPIR support if issues encountered
+**Doporučené prohlížeče:**
 
-***
+* **QGIS** – bezplatný software GIS (nejlepší pro georeferencovanou multispektrální analýzu)
+* **IrfanView** – rychlý, lehký prohlížeč obrázků (podporuje TIFF)
+* **Adobe Photoshop** – profesionální editace (podpora TIFF)
+* **GIMP** – bezplatná alternativa k Photoshopu
+* **Windows Photos** – základní prohlížení (nemusí podporovat 16bitový TIFF)
 
-## Common Output Issues and Solutions
+### Náhled v prohlížeči obrázků Chloros
 
-### Issue: Missing Output Files
+Pro pokročilou vizualizaci použijte vestavěný prohlížeč obrázků Chloros:
 
-**Possible causes:**
+1. Klikněte na miniaturu obrázku v prohlížeči souborů.
+2. Obrázek se otevře v hlavní oblasti náhledu.
+3. Klikněte na kartu **Prohlížeč obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> v levém postranním panelu.
+4. Pro interaktivní analýzu použijte [Index/LUT Sandbox](../image-viewer-gui/index-lut-sandbox.md).
 
-* Files didn't meet processing criteria
-* Target-only images (excluded from export)
-* Disk space ran out during export
-* File corruption during processing
-
-**Solutions:**
-
-1. Check Debug Log for skip/error messages
-2. Verify disk space was sufficient
-3. Count files: Should match (original count - target count) × (indices + 1)
-4. Re-import and reprocess any missing files
-
-### Issue: Dark or Bright Edges (Vignetting Still Visible)
-
-**Possible causes:**
-
-* Vignette correction disabled
-* Camera/lens not in Chloros profile database
-* Extreme vignetting beyond correction capability
-
-**Solutions:**
-
-1. Verify vignette correction was enabled in Project Settings
-2. Check camera model correctly detected
-3. Contact MAPIR support if vignetting persists
-
-### Issue: Incorrect Colors or Values
-
-**Possible causes:**
-
-* No calibration targets detected
-* Wrong calibration target model selected
-* Reflectance calibration disabled
-* Poor quality target images
-
-**Solutions:**
-
-1. Verify reflectance calibration was enabled
-2. Check "Target found" messages in Debug Log
-3. Review target image quality
-4. Reprocess with proper targets marked
-
-### Issue: NDVI Values Seem Wrong
-
-**Expected NDVI ranges:**
-
-* **Water, rocks, soil**: -0.1 to 0.2
-* **Sparse/unhealthy vegetation**: 0.2 to 0.4
-* **Moderate vegetation**: 0.4 to 0.6
-* **Healthy, dense vegetation**: 0.6 to 0.9
-
-**If values are outside these ranges:**
-
-1. Verify reflectance calibration was applied
-2. Verify light sensor log was included
-3. Check calibration targets were detected
-4. Ensure correct camera model was detected
-5. Review target image capture timing and conditions
+Podrobné pokyny najdete v části [Prohlížeč obrázků](../image-viewer-gui/opening-an-image-full-screen.md).
 
 ***
 
-## Using Your Processed Images
+## Kontrola protokolu ladění
 
-### For Photogrammetry / Orthomosaic Creation
+### Kontrola varování nebo chyb
 
-**Recommended workflow:**
+1. Otevřete kartu **Debug Log** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> .
+2. Projděte si zprávy.
+3. Hledejte žlutá varování nebo červené chyby.
+4. Zkontrolujte všechny zaznamenané problémy.
+5. Obraťte se na podporu MAPIR s žádostí o pomoc.
 
-1. **Import calibrated reflectance images** into photogrammetry software:
+### Uložení protokolu
+
+Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
+
+1. Klikněte na tlačítko **„Kopírovat“** nebo **„Stáhnout“**.
+2. Uložte jako textový soubor do složky projektu.
+3. Přiložte k dokumentaci projektu.
+4. V případě potíží odešlete na podporu MAPIR.
+
+***
+
+## Časté problémy s výstupem a jejich řešení
+
+### Problém: Chybějící výstupní soubory
+
+**Možné příčiny:**
+
+* Soubory nesplňovaly kritéria zpracování.
+* Pouze cílové obrázky (vyloučené z exportu).
+* Během exportu došlo k vyčerpání místa na disku.
+* Poškození souboru během zpracování.
+
+**Řešení:**
+
+1. Zkontrolujte protokol ladění, zda neobsahuje zprávy o přeskočení/chybách.
+2. Ověřte, zda bylo dostatek místa na disku.
+3. Spočítejte soubory: Měly by se shodovat (původní počet – cílový počet) × (indexy + 1).
+4. Znovu importujte a znovu zpracujte všechny chybějící soubory.
+
+### Problém: Tmavé nebo světlé okraje (vigneta je stále viditelná)
+
+**Možné příčiny:**
+
+* Korekce vignety je deaktivována.
+* Fotoaparát/objektiv není v databázi profilů Chloros.
+* Extrémní vigneta přesahující možnosti korekce.
+
+**Řešení:**
+
+1. Ověřte, zda byla v nastavení projektu povolena korekce vinětace.
+2. Zkontrolujte, zda byl správně detekován model fotoaparátu.
+3. Pokud vinětace přetrvává, kontaktujte podporu MAPIR.
+
+### Problém: Nesprávné barvy nebo hodnoty
+
+**Možné příčiny:**
+
+* Nebyly detekovány žádné kalibrační cíle.
+* Byl vybrán nesprávný model kalibračního cíle.
+* Kalibrace odrazivosti je deaktivována.
+* Cílové obrázky jsou nekvalitní.
+
+**Řešení:**
+
+1. Ověřte, zda byla povolena kalibrace odrazivosti.
+2. Zkontrolujte zprávy „Cíl nalezen“ v protokolu ladění.
+3. Zkontrolujte kvalitu obrazu cíle.
+4. Zpracujte znovu s označenými správnými cíli.
+
+### Problém: Hodnoty NDVI se zdají nesprávné
+
+**Očekávané rozsahy NDVI:**
+
+* **Voda, skály, půda**: -0,1 až 0,2
+* **Řídká/nezdravá vegetace**: 0,2 až 0,4
+* **Střední vegetace**: 0,4 až 0,6
+* **Zdravá, hustá vegetace**: 0,6 až 0,9
+
+**Pokud hodnoty přesahují tyto rozsahy:**
+
+1. Ověřte, zda byla použita kalibrace odrazivosti.
+2. Ověřte, zda byl zahrnut protokol světelného senzoru.
+3. Zkontrolujte, zda byly detekovány kalibrační cíle.
+4. Ujistěte se, že byl detekován správný model fotoaparátu.
+5. Zkontrolujte načasování a podmínky pořízení cílového snímku.
+
+***
+
+## Použití zpracovaných snímků
+
+### Pro fotogrammetrii / tvorbu ortomozaiky
+
+**Doporučený pracovní postup:**
+
+1. **Importujte kalibrované obrazy odrazivosti** do fotogrammetrického softwaru:
    * Pix4Dmapper
    * Agisoft Metashape
    * DroneDeploy
    * WebODM
-2. **Keep EXIF metadata**: Ensure GPS data preserved for geotagging
-3. **Calibrated workflows**: Use reflectance images for scientific accuracy
-4. **Process index mosaics**: Create NDVI orthomosaics from individual index images
-5. **Export georeferenced GeoTIFF**: For use in GIS applications
+2. **Zachovejte metadata EXIF**: Zajistěte, aby byla zachována data GPS pro geotagging.
+3. **Kalibrované pracovní postupy**: Pro vědeckou přesnost použijte obrazy odrazivosti.
+4. **Zpracujte indexové mozaiky**: Vytvořte ortomozaiky NDVI z jednotlivých indexových snímků
+5. **Exportujte georeferencované GeoTIFF**: Pro použití v aplikacích GIS
 
-### For GIS Analysis
+### Pro analýzu GIS
 
-**Recommended workflow:**
+**Doporučený pracovní postup:**
 
-1. **Load into QGIS, ArcGIS, or similar**
-2. **Use 16-bit TIFF** reflectance images for multi-band analysis
-3. **Use index images** (NDVI, NDRE) as ready-to-use vegetation layers
-4. **Raster calculator**: Combine bands for custom analysis
-5. **Export**: Create classification maps, change detection, vegetation health maps
+1. **Načtěte do QGIS, ArcGIS nebo podobného programu**
+2. **Použijte 16bitové obrazy odrazivosti TIFF** pro multibandovou analýzu
+3. **Použijte indexové obrazy** (NDVI, NDRE) jako připravené vrstvy vegetace
+4. **Rastrová kalkulačka**: Kombinujte pásma pro vlastní analýzu
+5. **Export**: Vytvořte klasifikační mapy, detekci změn, mapy zdravotního stavu vegetace.
 
-### For Direct Analysis / Reporting
+### Pro přímou analýzu / reporting
 
-**Recommended workflow:**
+**Doporučený pracovní postup:**
 
-1. **Use index images with LUT colors** for visual reports
-2. **Extract statistics**: Mean NDVI per field/plot
-3. **Time series**: Compare indices across multiple sessions
-4. **Generate reports**: Include maps, statistics, and visualizations
-
-***
-
-## Archiving and Backup
-
-### Recommended Backup Strategy
-
-**What to save:**
-
-* ✅ **Original RAW/JPG images** - Archive on separate drive/cloud
-* ✅ **Processed outputs** - Keep calibrated images and indices
-* ✅ **Project file** - Contains all settings for reprocessing if needed
-* ✅ **Debug Log** - Documents processing details
-* ✅ **Calibration target images** - For verification and reprocessing
-
-**Storage recommendations:**
-
-* **Immediate backup**: External hard drive
-* **Long-term archive**: Cloud storage (Google Drive, Dropbox, etc.)
-* **Critical data**: Keep 2-3 copies in different locations
+1. **Použijte indexové snímky s barvami LUT** pro vizuální reporty.
+2. **Extrahujte statistiky**: Průměr NDVI na pole/parcelu.
+3. **Časové řady**: Porovnejte indexy napříč více relacemi
+4. **Generujte reporty**: Zahrňte mapy, statistiky a vizualizace
 
 ***
 
-## Next Processing Runs
+## Archivace a zálohování
 
-### Reusing Project Settings
+### Doporučená strategie zálohování
 
-If processing similar datasets in the future:
+**Co uložit:**
 
-1. **Save Project Template** (if not already done)
-2. **Create new project** using saved template
-3. **Import new images**
-4. **Process** with identical settings for consistency
+* ✅ **Originální RAW/JPG obrázky** – archivujte na samostatném disku/v cloudu
+* ✅ **Zpracované výstupy** – uchovejte kalibrované obrázky a indexy
+* ✅ **Soubor projektu** – obsahuje všechna nastavení pro případné opětovné zpracování
+* ✅ **Debugovací protokol** – dokumentuje podrobnosti zpracování
+* ✅ **Obrázky kalibračního cíle** – pro ověření a opětovné zpracování
 
-### Batch Processing Multiple Sessions
+**Doporučení pro ukládání:**
 
-For multiple sessions/datasets:
-
-**Option 1: GUI - Multiple Projects**
-
-* Create separate project for each session
-* Use consistent template settings
-* Process one at a time
-
-**Option 2: Chloros CLI (Chloros+ only)**
-
-* Automate batch processing
-* Process multiple folders with scripts
-* See [CLI Documentation](../CLI.md)
-
-**Option 3: Python SDK (Chloros+ only)**
-
-* Programmatic control
-* Integration with analysis pipelines
-* See [API Documentation](../api-python-sdk.md)
+* **Okamžitá záloha**: Externí pevný disk
+* **Dlouhodobý archiv**: Cloudové úložiště (Google Drive, Dropbox atd.)
+* **Kritická data**: Uchovávejte 2–3 kopie na různých místech
 
 ***
 
-## Troubleshooting Post-Processing
+## Další zpracování
 
-### Re-Processing with Different Settings
+### Opakované použití nastavení projektu
 
-If results aren't satisfactory:
+Pokud budete v budoucnu zpracovávat podobné datové sady:
 
-1. Keep original images (never delete)
-2. Open same project in Chloros
-3. Adjust settings in Project Settings panel
-4. Process again - outputs will overwrite previous results
+1. **Uložte šablonu projektu** (pokud jste tak ještě neučinili)
+2. **Vytvořte nový projekt** pomocí uložené šablony
+3. **Importujte nové obrázky**
+4. **Zpracujte** s identickými nastaveními pro zachování konzistence
 
-### Processing Subset of Images
+### Hromadné zpracování více relací
 
-To reprocess only specific images:
+Pro více relací/datových sad:
 
-1. Create new project
-2. Import only the images needing reprocessing
-3. Use same settings template
-4. Process smaller dataset
+**Možnost 1: GUI – více projektů**
 
-### Getting Help
+* Vytvořte samostatný projekt pro každou relaci
+* Použijte konzistentní nastavení šablony.
+* Zpracovávejte po jednom.
 
-If you encounter issues:
+**Možnost 2: Chloros CLI (pouze Chloros+)**
 
-* 📧 **Email**: info@mapir.camera (include Debug Log)
-* 🌐 **Support**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
-* 📚 **FAQ**: [Frequently Asked Questions](../faq.md)
-* 📖 **Documentation**: [Chloros Manual](../)
+* Automatizujte hromadné zpracování.
+* Zpracovávejte více složek pomocí skriptů.
+* Viz [CLI Dokumentace](../CLI.md)
 
-***
+**Možnost 3: Python SDK (pouze Chloros+)**
 
-## Summary: Complete Workflow
-
-You've now completed the full Chloros processing workflow:
-
-1. ✅ **Created project** - See [Projects](../projects.md)
-2. ✅ **Added files** - See [Adding Files](page-1.md)
-3. ✅ **Adjusted settings** - See [Adjusting Project Settings](adjusting-project-settings.md)
-4. ✅ **Marked targets** - See [Choosing Target Images](choosing-target-images.md)
-5. ✅ **Started processing** - See [Starting the Processing](starting-the-processing.md)
-6. ✅ **Monitored progress** - See [Monitoring the Processing](monitoring-the-processing.md)
-7. ✅ **Reviewed results** - This page
-
-**Your calibrated, reflectance-corrected multispectral images are ready for analysis!**
+* Programové ovládání
+* Integrace s analytickými procesy
+* Viz [API dokumentace](../api-python-sdk.md)
 
 ***
 
-## Additional Resources
+## Řešení problémů s následným zpracováním
 
-### Advanced Features
+### Opakované zpracování s jinými nastaveními
 
-* [**Image Viewer**](../image-viewer-gui/page-3.md) - Interactive visualization and analysis
-* [**Index/LUT Sandbox**](../image-viewer-gui/index-lut-sandbox.md) - Custom index testing
-* [**Multispectral Index Formulas**](../project-settings/multispectral-index-formulas.md) - Complete index reference
+Pokud výsledky nejsou uspokojivé:
 
-### Automation & Integration
+1. Ponechte původní obrázky (nikdy je nemažte)
+2. Otevřete stejný projekt v Chloros
+3. Upravte nastavení v panelu Nastavení projektu
+4. Zpracujte znovu – výstupy přepíšou předchozí výsledky
 
-* [**CLI Documentation**](../CLI.md) - Command-line batch processing
-* [**Python SDK**](../api-python-sdk.md) - Programmatic automation
-* [**Chloros+ Features**](../#chloros) - Advanced processing capabilities
+### Zpracování podsady obrázků
 
-### Support & Learning
+Chcete-li znovu zpracovat pouze konkrétní obrázky:
 
-* [**FAQ**](../faq.md) - Common questions answered
-* [**Calibration Targets**](../calibration-targets.md) - Understanding reflectance calibration
-* [**Supported Cameras**](../supported-cameras.md) - Compatible hardware
+1. Vytvořte nový projekt
+2. Importujte pouze obrázky, které je třeba znovu zpracovat
+3. Použijte stejnou šablonu nastavení
+4. Zpracujte menší datový soubor
+
+### Získání pomoci
+
+Pokud narazíte na problémy:
+
+* 📧 **E-mail**: info@mapir.camera (včetně ladicího protokolu)
+* 🌐 **Podpora**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
+* 📚 **Často kladené otázky**: [Často kladené otázky](../faq.md)
+* 📖 **Dokumentace**: [Příručka Chloros](../)
+
+***
+
+## Shrnutí: Kompletní pracovní postup
+
+Nyní jste dokončili celý pracovní postup zpracování Chloros:
+
+1. ✅ **Vytvořený projekt** – viz [Projekty](../projects.md)
+2. ✅ **Přidané soubory** – viz [Přidávání souborů](adding-files-to-a-project.md)
+3. ✅ **Upravili jste nastavení** – viz [Úprava nastavení projektu](adjusting-project-settings.md)
+4. ✅ **Označili jste cíle** – viz [Výběr cílových obrázků](choosing-target-images.md)
+5. ✅ **Zahájeno zpracování** – viz [Zahájení zpracování](starting-the-processing.md)
+6. ✅ **Sledován průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
+7. ✅ **Zkontrolované výsledky** – Tato stránka
+
+**Vaše kalibrované multispektrální snímky s korekcí odrazivosti jsou připraveny k analýze!**
+
+***
+
+## Další zdroje
+
+### Pokročilé funkce
+
+* [**Prohlížeč snímků**](../image-viewer-gui/opening-an-image-full-screen.md) – Interaktivní vizualizace a analýza
+* [**Index/LUT Sandbox**](../image-viewer-gui/index-lut-sandbox.md) – Testování vlastního indexu
+* [**Vzorec multispektrálního indexu**](../project-settings/multispectral-index-formulas.md) – Kompletní reference indexu
+
+### Automatizace a integrace
+
+* [**CLI dokumentace**](../CLI.md) – dávkové zpracování z příkazového řádku
+* [**Python SDK**](../api-python-sdk.md) – Programová automatizace
+* [**Chloros+ Funkce**](../#chloros) – Pokročilé možnosti zpracování
+
+### Podpora a vzdělávání
+
+* [**Často kladené otázky**](../faq.md) – Odpovědi na časté otázky
+* [**Kalibrační cíle**](../calibration-targets.md) – Porozumění kalibraci odrazivosti
+* [**Podporované fotoaparáty**](../supported-cameras.md) – Kompatibilní hardware

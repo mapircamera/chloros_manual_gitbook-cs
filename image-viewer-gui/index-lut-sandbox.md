@@ -1,86 +1,86 @@
 # Index/LUT Sandbox
 
-The Index/LUT Sandbox is an interactive workspace within the Chloros Image Viewer that allows you to experiment with multispectral index calculations and color visualizations in real-time. This powerful tool helps you test different indices, refine value ranges, and create publication-ready visualizations without reprocessing your entire dataset.
+Index/LUT Sandbox je interaktivní pracovní prostor v rámci prohlížeče obrázků Chloros, který vám umožňuje experimentovat s výpočty multispektrálních indexů a vizualizacemi barev v reálném čase. Tento výkonný nástroj vám pomůže testovat různé indexy, upřesňovat rozsahy hodnot a vytvářet vizualizace připravené k publikování, aniž byste museli znovu zpracovávat celý datový soubor.
 
-## What is the Index/LUT Sandbox?
+## Co je Index/LUT Sandbox?
 
-### Purpose
+### Účel
 
-The Sandbox provides:
+Sandbox poskytuje:
 
-* **Real-time index calculation** - Apply any vegetation index instantly
-* **Interactive LUT adjustment** - Fine-tune color gradients and ranges
-* **Workflow optimization** - Determine best settings before batch processing
+* **Výpočet indexu v reálném čase** – okamžité použití libovolného vegetačního indexu
+* **Interaktivní úprava LUT** – jemné doladění barevných přechodů a rozsahů
+* **Optimalizace pracovního postupu** – určení nejvhodnějších nastavení před hromadným zpracováním
 
-### Sandbox vs. Project Processing
+### Sandbox vs. zpracování projektu
 
-**Index/LUT Sandbox (Interactive):**
+**Index/LUT Sandbox (interaktivní):**
 
-* Single image at a time
-* Instant feedback
-* Experimental and iterative
-* No permanent changes to files
-* Perfect for exploring and testing
+* Jeden obrázek najednou
+* Okamžitá zpětná vazba
+* Experimentální a iterativní
+* Žádné trvalé změny souborů
+* Ideální pro zkoumání a testování
 
-**Project Processing (Batch):**
+**Zpracování projektu (hromadné):**
 
-* Entire dataset at once
-* Pre-configured settings
-* Permanent output files
-* Time-intensive
-* Best when settings are finalized
+* Celý datový soubor najednou
+* Předem nakonfigurovaná nastavení
+* Trvalé výstupní soubory
+* Časově náročné
+* Nejlepší, když jsou nastavení finální
 
-{% hint style="success" %}
-**Best Workflow**: Use the Sandbox to experiment and find optimal index and LUT settings, then apply those settings during Project Processing for your entire dataset.
+{% hint style=&quot;success&quot; %}
+**Nejlepší pracovní postup**: Použijte Sandbox k experimentování a nalezení optimálních nastavení indexu a LUT, poté tato nastavení použijte během zpracování projektu pro celý datový soubor.
 {% endhint %}
 
 ***
 
-## Working with the Index/LUT Sandbox
+## Práce s Index/LUT Sandbox
 
-### Understanding Pre-Calculated Indices
+### Porozumění předem vypočítaným indexům
 
-In Chloros, indices can be applied during project processing. To determine which index and LUT settings you want to apply to exports it is easiest to use the image viewer sandbox.
+V Chloros lze indexy použít během zpracování projektu. Chcete-li určit, která nastavení indexu a LUT chcete použít pro export, nejjednodušší je použít sandbox prohlížeče obrázků.
 
-The sandbox allows you to:
+Sandbox vám umožňuje:
 
-* **Apply new index and color gradients (LUTs)** to visualize the data
-* **Adjust visualization settings** interactively
-* **View** already-calculated index images
-* **Inspect** pixel values at all zoom levels
+* **Použít nové indexy a barevné přechody (LUT)** k vizualizaci dat
+* **Interaktivně upravit nastavení vizualizace**
+* **Zobrazit** již vypočítané indexové obrázky
+* **Zkontrolovat** hodnoty pixelů ve všech úrovních přiblížení
 
-### Opening the Sandbox
+### Otevření sandboxu
 
-The Index/LUT Sandbox is accessed in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> sidebar tab:
+Sandbox Index/LUT je přístupný v **prohlížeči obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> :
 
-1. Click an image in the file browser image grid, it opens in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab
-2. Click **the Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab to open the left pop-out sidebar if it's not already open
+1. Klikněte na obrázek v mřížce prohlížeče souborů, otevře se v záložce **Prohlížeč obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> .
+2. Klikněte na kartu **Prohlížeč obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> , aby se otevřel levý vyskakovací postranní panel, pokud ještě není otevřený
 
-### Selecting an Image to Apply an Index/LUT to
+### Výběr obrázku, na který se má aplikovat index/LUT
 
-To work with an index in the Image Viewer <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> sandbox:
+Chcete-li pracovat s indexem v prohlížeči obrázků <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> :
 
-1. **Open an image** from the main image grid by clicking on it
-2. The **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab will then open
-3. Click the **Layer dropdown** (top-right of viewer)
-4. Select the layer from the dropdown:
-   * RAW (Reflectance)
+1. **Otevřete obrázek** z hlavní mřížky obrázků kliknutím na něj.
+2. Otevře se karta **Prohlížeč obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> .
+3. Klikněte na **rozevírací nabídku Vrstva** (vpravo nahoře v prohlížeči).
+4. Z rozevírací nabídky vyberte vrstvu:
+   * RAW (odrazivost)
 
-### Applying an Index to an Image
+### Použití indexu na obrázek
 
-Once the image is fullscreen and the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab sidebar is open:
+Jakmile je obrázek zobrazen na celé obrazovce a je otevřen postranní panel **Prohlížeč obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> :
 
-1. Check the Index box at the top of the sidebar
-2. Choose your camera's filter from the left dropdown
-3. Choose the desired index formula from the right dropdown
-4. Drag the filter channel color circles to the locations in the index formula below
-5. Once the formula is valid the image will update and show the index values
-6. Move your mouse cursor around to see the values at the cursor's location
-7. Zoom in to see individual pixels and their associated values
+1. Zaškrtněte políčko Index v horní části postranní lišty.
+2. Z levého rozevíracího seznamu vyberte filtr fotoaparátu.
+3. Z pravého rozevíracího seznamu vyberte požadovaný indexový vzorec.
+4. Přetáhněte barevné kruhy kanálu filtru na místa v indexovém vzorci níže.
+5. Jakmile je vzorec platný, obrázek se aktualizuje a zobrazí hodnoty indexu.
+6. Pohybem kurzoru myši můžete zobrazit hodnoty v místě kurzoru.
+7. Přibližte si obraz, abyste viděli jednotlivé pixely a jejich přidružené hodnoty.
 
-Each index has a specific value range and meaning:
+Každý index má specifický rozsah hodnot a význam:
 
-#### NDVI Example
+#### NDVI Příklad
 
 ```
 Formula: (NIR - Red) / (NIR + Red)
@@ -96,293 +96,293 @@ Bare soil: 0.0 to 0.2
 Water: -0.1 to 0.1
 ```
 
-For complete index formula documentation, see [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md).
+Kompletní dokumentaci vzorců indexů najdete v části [Vzorce multispektrálních indexů](../project-settings/multispectral-index-formulas.md).
 
 ***
 
-## Working with LUTs (Look-Up Tables)
+## Práce s LUT (vyhledávacími tabulkami)
 
-### What is a LUT?
+### Co je LUT?
 
-A **Look-Up Table (LUT)** maps numerical index values to colors for visualization:
+**Vyhledávací tabulka (LUT)** mapuje číselné hodnoty indexu na barvy pro vizualizaci:
 
-* **Input**: Index pixel value (e.g., NDVI 0.65)
-* **Output**: RGB color (e.g., bright green)
-* **Purpose**: Make patterns easier to see and interpret
+* **Vstup**: Hodnota indexu pixelu (např. NDVI 0,65)
+* **Výstup**: barva RGB (např. jasně zelená)
+* **Účel**: Usnadnění viditelnosti a interpretace vzorů
 
-**Grayscale vs. Color LUT:**
+**Šedá stupnice vs. barevná LUT:**
 
-* Grayscale: Scientific and neutral, shows raw data
-* Color LUT: Intuitive and impactful, highlights patterns and differences
+* Šedá stupnice: Vědecká a neutrální, zobrazuje surová data
+* Barevná LUT: Intuitivní a působivá, zdůrazňuje vzory a rozdíly
 
-{% hint style="success" %}
-**Visualization Power**: Applying a color LUT to a grayscale index image makes it dramatically easier to identify patterns, anomalies, and areas of interest at a glance.
+{% hint style=&quot;success&quot; %}
+**Vizuální síla**: Použití barevné LUT na indexový obrázek ve stupních šedi výrazně usnadňuje identifikaci vzorů, anomálií a oblastí zájmu na první pohled.
 {% endhint %}
 
-### Applying a LUT to an Index Image
+### Použití LUT na indexový obrázek
 
-Once you have an index image showing
+Jakmile máte indexový obrázek zobrazující
 
-1. Click the <img src="../.gitbook/assets/image.png" alt="" data-size="line"> "+Add LUT" button
-2. Select the color gradient
-3. Adjust the clipping min/max end points
-4. Adjust the Clipping Mode
-5. Check the Index box in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab sidebar to apply the LUT
+1. Klikněte na tlačítko <img src="../.gitbook/assets/image.png" alt="" data-size="line"> „+Přidat LUT“
+2. Vyberte barevný přechod
+3. Upravte minimální/maximální koncové body ořezu
+4. Upravte režim ořezu
+5. Zaškrtněte políčko Index v postranní liště **Prohlížeče obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> , abyste použili LUT.
 
-### Choosing a Color Gradient
+### Výběr barevného přechodu
 
-**Selecting a gradient:**
+**Výběr přechodu:**
 
-1. In the LUT panel, locate the **colored gradient bar**
-2. Hover your mouse over it to view available gradient presets
-3. Select desired gradient
-4. The image **updates immediately** with new colors when the Index box is checked
+1. V panelu LUT vyhledejte **barevnou lištu přechodu**.
+2. Najeďte na ni myší a zobrazte dostupné přednastavené přechody.
+3. Vyberte požadovaný přechod.
+4. Po zaškrtnutí políčka Index se obrázek **okamžitě aktualizuje** novými barvami.
 
-{% hint style="success" %}
-**Best Practice**: For vegetation indices like NDVI, the Red-Yellow-Green gradient is most intuitive because it aligns with natural color associations (green=healthy, yellow=moderate, red=stressed).
+{% hint style=&quot;success&quot; %}
+**Osvědčená praxe**: Pro vegetační indexy, jako je NDVI, je nejintuitivnější přechod Red-Yellow-Green, protože odpovídá přirozeným asociacím barev (zelená = zdravá, žlutá = střední, červená = stresovaná).
 {% endhint %}
 
-### Adjusting Color Classes
+### Úprava barevných tříd
 
-The **Classes control** determines how many discrete color steps appear in your gradient:
+**Ovládací prvek Třídy** určuje, kolik diskrétních barevných kroků se objeví ve vašem gradientu:
 
-**Class count options:**
+**Možnosti počtu tříd:**
 
-* **2-5 classes**: Very broad categories, distinct zones
-* **6-10 classes**: Balanced, good for classification
-* **11-20 classes**: Smooth gradients, continuous appearance
-* **20+ classes**: Near-continuous, maximum smoothness
+* **2–5 tříd**: Velmi široké kategorie, odlišné zóny
+* **6–10 tříd**: Vyvážené, vhodné pro klasifikaci
+* **11–20 tříd**: Plynulé přechody, souvislý vzhled
+* **20+ tříd**: Téměř souvislé, maximální plynulost
 
-**How to adjust:**
+**Jak upravit:**
 
-1. In the LUT panel, locate the **color swatch squares below the gradient bar**
-2. Adjust the number of classes by adding with the + button
-3. Remove the number of classes by double clicking on a color swatch
-4. The gradient updates **in real-time** on the image
+1. V panelu LUT vyhledejte **barevné vzorníky pod pruhem přechodu**
+2. Upravte počet tříd přidáním pomocí tlačítka +
+3. Počet tříd odeberete dvojitým kliknutím na barevný vzorek.
+4. Přechod se **v reálném čase** aktualizuje na obrázku.
 
-**Effect on visualization:**
+**Vliv na vizualizaci:**
 
-* **Fewer classes** (3-5): Creates distinct zones, simplified classification, easier to distinguish categories
-* **Medium classes** (6-10): Balanced approach, good for most applications
-* **More classes** (15-20): Smooth transitions, detailed variation, photographic appearance
+* **Méně tříd** (3–5): Vytváří odlišné zóny, zjednodušenou klasifikaci, snazší rozlišení kategorií.
+* **Střední počet tříd** (6–10): Vyvážený přístup, vhodný pro většinu aplikací.
+* **Více tříd** (15–20): Plynulé přechody, podrobné variace, fotografický vzhled
 
-**When to use:**
+**Kdy použít:**
 
-* **Few classes (3-5)**: Presentation slides, classification maps, simple reports
-* **Medium classes (6-10)**: General analysis, balanced detail, standard reports
-* **Many classes (15-20)**: Scientific analysis, detailed inspection, publication-quality outputs
+* **Málo tříd (3–5)**: Prezentační snímky, klasifikační mapy, jednoduché zprávy
+* **Střední počet tříd (6–10)**: Obecná analýza, vyvážené detaily, standardní zprávy
+* **Mnoho tříd (15–20)**: vědecká analýza, podrobná kontrola, výstupy v publikační kvalitě
 
-### Fine-Tuning Value Ranges
+### Jemné doladění rozsahů hodnot
 
-The **value range controls** determine which index values map to which colors in your gradient:
+**Ovládací prvky rozsahu hodnot** určují, které hodnoty indexu se přiřadí k kterým barvám ve vašem přechodu:
 
-**Range controls in LUT panel:**
+**Ovládací prvky rozsahu v panelu LUT:**
 
-* **Minimum value**: Lower bound of the color scale
-* **Maximum value**: Upper bound of the color scale
-* **Intermediate values**: Automatically distributed between min and max (based on class count)
+* **Minimální hodnota**: dolní hranice barevné škály
+* **Maximální hodnota**: Horní hranice barevné škály
+* **Střední hodnoty**: Automaticky rozdělené mezi min a max (na základě počtu tříd)
 
-#### Adjusting Min/Max Values
+#### Úprava minimálních/maximálních hodnot
 
-**To adjust value ranges:**
+**Úprava rozsahů hodnot:**
 
-1. In the LUT panel, locate the **Min Value** and **Max Value** input fields
-2. Click the **Min Value** field
-3. Type the desired minimum value (e.g., `0.2`)
-4. Press **Enter** or click outside the field
-5. Repeat for **Max Value** field (e.g., `0.9`)
-6. The visualization **updates immediately**
+1. V panelu LUT vyhledejte vstupní pole **Minimální hodnota** a **Maximální hodnota**
+2. Klikněte na pole **Minimální hodnota**
+3. Zadejte požadovanou minimální hodnotu (např. `0.2`)
+4. Stiskněte klávesu **Enter** nebo klikněte mimo pole
+5. Opakujte pro pole **Maximální hodnota** (např. `0.9`)
+6. Vizualizace se **okamžitě aktualizuje**
 
-{% hint style="info" %}
-**Auto-Scaling**: When you first apply a LUT, Chloros automatically sets the min/max to the actual data range in the image. You can then narrow this range to focus on specific value ranges of interest.
+{% hint style=&quot;info&quot; %}
+**Automatické škálování**: Při prvním použití LUT nastaví Chloros automaticky minimální/maximální hodnotu na skutečný rozsah dat v obrázku. Tento rozsah pak můžete zúžit, abyste se zaměřili na konkrétní rozsahy hodnot, které vás zajímají.
 {% endhint %}
 
-**Example NDVI range adjustments:**
+**Příklad úprav rozsahu NDVI:**
 
-* **Full range**: `-1.0` to `1.0` (show all possible values)
-* **Vegetation-focused**: `0.2` to `0.9` (exclude bare soil and water)
-* **Healthy vegetation only**: `0.5` to `0.9` (highlight only vigorous plants)
-* **Stress detection**: `0.2` to `0.5` (emphasize problem areas)
-* **Custom range**: Adjust based on your observed pixel values
+* **Celý rozsah**: `-1.0` až `1.0` (zobrazit všechny možné hodnoty)
+* **Zaměřeno na vegetaci**: `0.2` až `0.9` (vylučuje holou půdu a vodu)
+* **Pouze zdravá vegetace**: `0.5` až `0.9` (zvýrazňuje pouze vitální rostliny)
+* **Detekce stresu**: `0.2` až `0.5` (zdůraznění problémových oblastí)
+* **Vlastní rozsah**: Úprava na základě pozorovaných hodnot pixelů
 
-**Why adjust ranges?**
+**Proč upravovat rozsahy?**
 
-* **Increase contrast** in your area of interest
-* **Exclude irrelevant values** (e.g., water bodies, bare soil)
-* **Standardize visualization** across multiple images or dates
-* **Emphasize subtle differences** within a narrow value range
+* **Zvýšení kontrastu** v oblasti zájmu
+* **Vyloučení irelevantních hodnot** (např. vodní plochy, holá půda)
+* **Standardizace vizualizace** napříč více obrázky nebo daty
+* **Zdůraznění jemných rozdílů** v úzkém rozsahu hodnot
 
-### Clipping Out-of-Range Values
+### Oříznutí hodnot mimo rozsah
 
-When pixel values fall outside your defined min/max range, you can control how they're displayed using **clipping modes**.
+Pokud hodnoty pixelů přesahují vámi definovaný minimální/maximální rozsah, můžete pomocí **režimů oříznutí** ovládat způsob jejich zobrazení.
 
-#### **Available clipping mode options:**
+#### **Dostupné možnosti režimu ořezávání:**
 
-#### 1. Minimum and Maximum
+#### 1. Minimum a maximum
 
-* Pixels **below minimum** → display using the **first color** in gradient (e.g., red)
-* Pixels **above maximum** → display using the **last color** in gradient (e.g., green)
-* **Use case**: Emphasize extremes, show full data range with saturated colors at limits
-* **Example**: NDVI values below 0.2 all appear red, values above 0.9 all appear green
+* Pixely **pod minimem** → zobrazení pomocí **první barvy** v přechodu (např. červená)
+* Pixely **nad maximem** → zobrazení pomocí **poslední barvy** v přechodu (např. zelená)
+* **Případ použití**: Zdůraznění extrémů, zobrazení celého rozsahu dat s nasycenými barvami na mezích
+* **Příklad**: Hodnoty NDVI pod 0,2 se zobrazí červeně, hodnoty nad 0,9 se zobrazí zeleně
 
-#### 2. Transparent Background
+#### 2. Průhledné pozadí
 
-* Pixels **outside the range** become **fully transparent**
-* Only pixels **within range** show color gradient
-* **Use case**: GIS overlay, isolating specific value ranges, highlighting only areas of interest
-* **Example**: Show only NDVI 0.4-0.7 in color, everything else transparent
+* Pixely **mimo rozsah** se stanou **zcela průhlednými**
+* Pouze pixely **v rozsahu** zobrazují barevný přechod
+* **Případ použití**: překrytí GIS, izolace konkrétních rozsahů hodnot, zvýraznění pouze oblastí zájmu
+* **Příklad**: Zobrazit pouze NDVI 0,4–0,7 v barvě, vše ostatní průhledné
 
-{% hint style="warning" %}
-**Transparency Limitation**: Transparent pixels will appear as the background color in the viewer. When exported during processing, transparency is preserved in PNG format but not in JPG.
+{% hint style=&quot;warning&quot; %}
+**Omezení průhlednosti**: Průhledné pixely se v prohlížeči zobrazí jako barva pozadí. Při exportu během zpracování je průhlednost zachována ve formátu PNG, ale ne ve formátu JPG.
 {% endhint %}
 
-#### 3. Index Background
+#### 3. Pozadí indexu
 
-* Pixels **outside range** display in **grayscale** (showing raw index values)
-* Pixels **within range** show **color gradient**
-* **Use case**: Subtle highlighting, maintain context while emphasizing areas of interest
-* **Example**: Color-highlight stressed vegetation (NDVI 0.3-0.5) while showing healthy areas in gray
+* Pixely **mimo rozsah** se zobrazují v **odstínech šedé** (zobrazují surové hodnoty indexu)
+* Pixely **v rozsahu** zobrazují **barevný přechod**
+* **Případ použití**: Jemné zvýraznění, zachování kontextu při zdůraznění oblastí zájmu
+* **Příklad**: Barevně zvýrazněná stresovaná vegetace (NDVI 0,3–0,5) při zobrazení zdravých oblastí v šedé barvě
 
-#### 4. Original Background
+#### 4. Původní pozadí
 
-* Pixels **outside range** display the **original multispectral image**
-* Pixels **within range** show **color gradient**
-* **Use case**: Most intuitive - combines natural image context with analytical color overlay
-* **Example**: See the actual field/crop appearance with color-coded stress areas overlaid
+* Pixely **mimo rozsah** se zobrazují jako **původní multispektrální obraz**
+* Pixely **v rozsahu** zobrazují **barevný přechod**
+* **Případ použití**: Nejintenzivnější – kombinuje přirozený kontext obrazu s analytickým barevným překryvem
+* **Příklad**: Zobrazení skutečného vzhledu pole/plodiny s barevně označenými stresovými oblastmi
 
-### Choosing the Right Clipping Mode
+### Výběr správného režimu ořezávání
 
-| Clipping Mode              | Best For                                   | Visualization Style          |
+| Režim ořezávání              | Nejvhodnější pro                                   | Styl vizualizace          |
 | -------------------------- | ------------------------------------------ | ---------------------------- |
-| **Minimum and Maximum**    | Full data display, scientific analysis     | All pixels colored           |
-| **Transparent Background** | GIS overlays, isolating specific ranges    | Color on range, blank beyond |
-| **Index Background**       | Subtle emphasis, maintaining data context  | Color on range, gray beyond  |
-| **Original Background**    | Reports, presentations, intuitive analysis | Color on range, photo beyond |
+| **Minimum a maximum**    | Zobrazení všech dat, vědecká analýza     | Všechny pixely barevné           |
+| **Průhledné pozadí** | Překryvy GIS, izolace konkrétních rozsahů    | Barva v rozsahu, mimo rozsah prázdné |
+| **Indexové pozadí**       | Jemné zdůraznění, zachování kontextu dat  | Barva v rozsahu, mimo rozsah šedá  |
+| **Původní pozadí**    | Zprávy, prezentace, intuitivní analýza | Barva v rozsahu, mimo rozsah fotografie |
 
-### Creating Custom LUT Colors
+### Vytváření vlastních barev LUT
 
-For full control over your visualization, you can create **custom color gradients** by editing individual color stops.
+Pro úplnou kontrolu nad vizualizací můžete vytvořit **vlastní barevné přechody** úpravou jednotlivých barevných zastavení.
 
-**To create a custom gradient:**
+**Vytvoření vlastního přechodu:**
 
-1. In the LUT panel, locate the **gradient preview bar**
-2. Look for **color swatch squares** below the gradient
-3. **Click a color stop** to select it
-4. A **color picker** opens
-5. Choose a new color using:
-   * **Color wheel**: Visual color selection
-   * **RGB/HSV sliders**: Precise color control
-   * **Hex code entry**: Exact color specification (e.g., `#FF0000` for red)
-6. Click off the color picker **to apply the new color**
-7. The gradient **updates immediately** on the image
+1. V panelu LUT vyhledejte **lištu náhledu přechodu**.
+2. Pod přechodem vyhledejte **barevné vzorníky**.
+3. **Kliknutím na barevné zastavení** jej vyberte.
+4. Otevře se **výběr barev**.
+5. Vyberte novou barvu pomocí:
+   * **Barevného kolečka**: Vizuální výběr barev.
+   * **Posuvníků RGB/HSV**: Přesné ovládání barev.
+   * **Zadání hexadecimálního kódu**: Přesná specifikace barvy (např. `#FF0000` pro červenou).
+6. Kliknutím mimo vzorník barev **aplikujte novou barvu**.
+7. Přechod se **okamžitě aktualizuje** na obrázku.
 
-**Adding or removing color stops:**
+**Přidávání nebo odebírání barevných zastavení:**
 
-* **Add a stop**: Click the + icon to add a new swatch at the end
-* **Remove a stop**: Double click the color square to remove the swatch
+* **Přidání zastavení**: Kliknutím na ikonu + přidejte nový vzorek na konec.
+* **Odebrání zastavení**: Dvojitým kliknutím na barevný čtverec odeberte vzorek.
 
-**Customization strategies:**
+**Strategie přizpůsobení:**
 
-* **Invert gradient**: Flip color order to reverse the meaning (e.g., green=low, red=high)
-* **Brand colors**: Match your organization's color palette for reports
-* **Colorblind-friendly**: Use orange-blue or purple-yellow combinations
-* **Print optimization**: Choose colors that work in both color and grayscale printing
-* **Multi-threshold**: Use distinct colors at specific value thresholds for classification
+* **Invertovat přechod**: Překlopte pořadí barev, abyste obrátili význam (např. zelená = nízká, červená = vysoká)
+* **Barvy značky**: Přizpůsobte barvy zpráv barevné paletě vaší organizace
+* **Vhodné pro barvoslepé**: Použijte kombinace oranžová-modrá nebo fialová-žlutá
+* **Optimalizace tisku**: Vyberte barvy, které fungují jak při barevném, tak při černobílém tisku
+* **Více prahových hodnot**: Použijte odlišné barvy pro konkrétní prahové hodnoty klasifikace.
 
-{% hint style="info" %}
-**Saving Custom Gradients**: Custom gradients can be saved and reused. Click the save icon in the LUT panel to preserve your custom color schemes for future use.
+{% hint style=&quot;info&quot; %}
+**Ukládání vlastních přechodů**: Vlastní přechody lze uložit a znovu použít. Kliknutím na ikonu uložení v panelu LUT uložíte vlastní barevná schémata pro budoucí použití.
 {% endhint %}
 
 ***
 
-## Interactive Workflow
+## Interaktivní pracovní postup
 
-### Real-Time Updates
+### Aktualizace v reálném čase
 
-All LUT adjustments in the sandbox update the image **instantly and interactively**:
+Všechny úpravy LUT v sandboxu aktualizují obrázek **okamžitě a interaktivně**:
 
-* **Switch layer** → Image changes immediately
-* **Select gradient** → Colors update instantly
-* **Adjust value range** → Contrast changes in real-time
-* **Change classes** → Gradient smoothness updates immediately
-* **Modify clipping** → Background display changes instantly
-* **Edit colors** → Custom gradient applies immediately
+* **Přepnutí vrstvy** → Obraz se změní okamžitě.
+* **Výběr přechodu** → Barvy se aktualizují okamžitě.
+* **Úprava rozsahu hodnot** → Kontrast se mění v reálném čase.
+* **Změna tříd** → Hladkost přechodu se aktualizuje okamžitě.
+* **Úprava ořezu** → Zobrazení pozadí se změní okamžitě.
+* **Úprava barev** → Vlastní přechod se použije okamžitě.
 
-**No "Apply" button needed** - all changes are live and interactive!
+**Není potřeba tlačítko „Použít“** – všechny změny jsou živé a interaktivní!
 
-{% hint style="success" %}
-**Live Feedback**: The instant visual feedback allows you to rapidly experiment with different settings until you find the optimal visualization for your analysis needs.
+{% hint style=&quot;success&quot; %}
+**Živá zpětná vazba**: Okamžitá vizuální zpětná vazba vám umožňuje rychle experimentovat s různými nastaveními, dokud nenajdete optimální vizualizaci pro vaše analytické potřeby.
 {% endhint %}
 
-### Iterative Refinement Workflow
+### Iterativní vylepšovací pracovní postup
 
-**Typical LUT optimization workflow:**
+**Typický pracovní postup optimalizace LUT:**
 
-1. **Select index layer** (e.g., RAW (Reflectance))
-2. **Apply index** - Choose camera filter and index formula, drag colored circles to appropriate location in the index formula
-3. **Apply LUT gradient** - Start with Red-Yellow-Green preset
-4. **Inspect pixel values** - Move cursor around, note value ranges
-5. **Adjust min/max** - Narrow to focus on vegetation (e.g., 0.2 to 0.9)
-6. **Choose clipping** - Try "Original Background" for context
-7. **Refine colors** - Customize gradient if needed for specific emphasis
-8. **Finalize settings** - Document settings and copy to Project Settings for export processing
+1. **Vyberte indexovou vrstvu** (např. RAW (odrazivost))
+2. **Použijte index** – Vyberte filtr fotoaparátu a vzorec indexu, přetáhněte barevné kruhy na příslušné místo ve vzorci indexu
+3. **Použijte gradient LUT** – Začněte s předvolbou Red-Yellow-Green
+4. **Zkontrolujte hodnoty pixelů** – Pohybujte kurzorem a poznamenejte si rozsahy hodnot
+5. **Upravte min/max** – zúžte rozsah, abyste se zaměřili na vegetaci (např. 0,2 až 0,9)
+6. **Vyberte oříznutí** – zkuste „Původní pozadí“ pro kontext
+7. **Vylepšete barvy** – v případě potřeby přizpůsobte gradient pro konkrétní zdůraznění
+8. **Dokončete nastavení** – zdokumentujte nastavení a zkopírujte je do nastavení projektu pro export
 
-### Pixel Value Inspection
+### Kontrola hodnot pixelů
 
-Understanding actual pixel values is crucial for setting effective LUT ranges:
+Porozumění skutečným hodnotám pixelů je zásadní pro nastavení efektivních rozsahů LUT:
 
-**How to inspect values:**
+**Jak zkontrolovat hodnoty:**
 
-1. Pixel values show when the image has either the Index, or both the Index and LUT **boxes checked**.
-2. **Move your cursor** over different areas of the image
-3. **Observe pixel values** displayed in the legend as you hover
-4. Zoom in to see individual pixels highlighted with a floating value
-5. **Take notes** of value ranges for different features:
-   * **Healthy vegetation**: e.g., NDVI 0.55-0.85
-   * **Stressed vegetation**: e.g., NDVI 0.30-0.50
-   * **Bare soil**: e.g., NDVI 0.05-0.25
-   * **Water** (if present): e.g., NDVI -0.05 to 0.10
+1. Hodnoty pixelů se zobrazí, když je u obrázku zaškrtnuto políčko Index nebo políčka Index a LUT.
+2. **Přesuňte kurzor** na různé oblasti obrázku.
+3. **Sledujte hodnoty pixelů** zobrazené v legendě, když na ně najedete kurzorem.
+4. Přibližte si obrázek, abyste viděli jednotlivé pixely zvýrazněné plovoucí hodnotou.
+5. **Poznamenejte si** rozsahy hodnot pro různé prvky:
+   * **Zdravá vegetace**: např. NDVI 0,55–0,85
+   * **Stresovaná vegetace**: např. NDVI 0,30–0,50
+   * **Holá půda**: např. NDVI 0,05–0,25
+   * **Voda** (pokud je přítomna): např. NDVI -0,05 až 0,10
 
-**Using pixel values to set LUT ranges:**
+**Použití hodnot pixelů k nastavení rozsahů LUT:**
 
-After inspecting pixel values, adjust your LUT min/max accordingly:
+Po zkontrolování hodnot pixelů upravte odpovídajícím způsobem minimální/maximální hodnoty LUT:
 
-**Example scenario:**
+**Příklad scénáře:**
 
-* **Observation**: Soil values = 0.05-0.25, Stressed = 0.25-0.50, Healthy = 0.50-0.85
-* **Goal**: Visualize only plant health (exclude soil)
-* **LUT settings**: Min = `0.25`, Max = `0.85`
-* **Clipping**: "Original Background" to see soil in natural color
-* **Result**: Color gradient only applies to vegetation, soil shows as original image
+* **Pozorování**: Hodnoty půdy = 0,05–0,25, stresované = 0,25–0,50, zdravé = 0,50–0,85
+* **Cíl**: Vizualizovat pouze zdraví rostlin (vyjma půdy)
+* **Nastavení LUT**: Min = `0.25`, Max = `0.85`
+* **Ořez**: „Původní pozadí“ pro zobrazení půdy v přirozené barvě
+* **Výsledek**: Barevný přechod se vztahuje pouze na vegetaci, půda se zobrazuje jako původní obrázek
 
-{% hint style="info" %}
-**Dynamic Range**: Different crops, seasons, and growth stages will have different value ranges. Always inspect pixel values in your specific dataset before setting LUT ranges.
+{% hint style=&quot;info&quot; %}
+**Dynamický rozsah**: Různé plodiny, roční období a fáze růstu budou mít různé rozsahy hodnot. Před nastavením rozsahů LUT vždy zkontrolujte hodnoty pixelů ve vašem konkrétním datovém souboru.
 {% endhint %}
 
 ***
 
-## Custom Indices (Chloros+)
+## Vlastní indexy (Chloros+)
 
-### Creating Custom Index Formulas
+### Vytváření vlastních vzorců indexů
 
-{% hint style="info" %}
-**Where to Create**: Custom indices can be configured in **Project Settings** before processing, as well as in the Image Viewer sandbox sidebar.
+{% hint style=&quot;info&quot; %}
+**Kde vytvořit**: Vlastní indexy lze nakonfigurovat v **Nastavení projektu** před zpracováním, stejně jako v postranním panelu sandboxu prohlížeče obrázků.
 {% endhint %}
 
-**To create a custom index:**
+**Vytvoření vlastního indexu:**
 
-1. **Open Project Settings** (before processing) or Image Viewer sandbox sidebar
-2. Navigate to the **Index formula dropdown**
-3. Look for **"Custom"** option (must be logged in with Chloros+ license)
-4. **Define your formula** using band variables:
-   * Band names: `NIR`, `Red`, `Green`, `Blue`, `RedEdge`, etc.
-   * Operators: `+`, `-`, `*`, `/`, `^` (exponent)
-   * Functions: `sqrt()`, `abs()`, etc. (if supported)
-   * Parentheses: `()` for order of operations
-5. **Name your index** (e.g., "MyIndex" or "CustomNDVI")
-6. **Save the configuration**
+1. **Otevřete Nastavení projektu** (před zpracováním) nebo postranní panel sandboxu prohlížeče obrázků.
+2. Přejděte do **rozevíracího seznamu Vzorec indexu**.
+3. Vyhledejte možnost **„Vlastní“** (musíte být přihlášeni s licencí Chloros+).
+4. **Definujte svůj vzorec** pomocí proměnných pásma:
+   * Názvy pásem: `NIR`, `Red`, `Green`, `Blue`, `RedEdge` atd.
+   * Operátory: `+`, `-`, `*`, `/`, `^` (exponent)
+   * Funkce: `sqrt()`, `abs()` atd. (pokud jsou podporovány)
+   * Závorky: `()` pro pořadí operací
+5. **Pojmenujte svůj index** (např. „MyIndex“ nebo „CustomNDVI“)
+6. **Uložte konfiguraci**
 
-**Example custom formulas:**
+**Příklady vlastních vzorců:**
 
 ```
 Modified NDVI with offset:
@@ -398,22 +398,22 @@ Exponential index:
 (NIR / Red) ^ 2
 ```
 
-{% hint style="warning" %}
-**Formula Validation**: Ensure your formula uses bands available in your camera. For example, RedEdge is only available on cameras with a RedEdge filter.
+{% hint style=&quot;warning&quot; %}
+**Ověření vzorce**: Ujistěte se, že váš vzorec používá pásma dostupná ve vaší kameře. Například RedEdge je k dispozici pouze u kamer s filtrem RedEdge.
 {% endhint %}
 
 ***
 
-## Next Steps
+## Další kroky
 
-Now that you understand the Index/LUT Sandbox:
+Nyní, když rozumíte indexu/LUT Sandboxu:
 
-* **Apply to processing**: Use discovered settings in [Project Settings](../project-settings/page-2.md)
-* **Batch process**: Apply optimized indices to full datasets
-* **Learn more**: Read [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md)
+* **Použijte při zpracování**: Použijte nalezená nastavení v [Nastavení projektu](../project-settings/project-settings.md)
+* **Hromadné zpracování**: Použijte optimalizované indexy na celé datové sady
+* **Další informace**: Přečtěte si [Vzorec multispektrálního indexu](../project-settings/multispectral-index-formulas.md)
 
-Related documentation:
+Související dokumentace:
 
-* [**Image Layers**](image-layers.md) - Layer management and visualization
-* [**Opening an Image Full Screen**](page-3.md) - Image Viewer basics
-* [**Processing Images (GUI)**](../processing-images-gui/page-1.md) - Full processing workflow
+* [**Vrstvy obrázků**](image-layers.md) – Správa vrstev a vizualizace
+* [**Otevření obrázku na celou obrazovku**](opening-an-image-full-screen.md) – Základy prohlížeče obrázků
+* [**Zpracování obrázků (GUI)**](../processing-images-gui/adding-files-to-a-project.md) – Kompletní pracovní postup zpracování
