@@ -14,7 +14,9 @@ Z hlavního menu můžete spustit nový projekt, otevřít existující projekt 
 
 Po aktivaci spustí tlačítko pro zpracování obrazu proces zpracování obrazu.
 
-### <img src=".gitbook/assets/image (4).png" alt="" data-size="line"> Indikátor průběhu <img src=".gitbook/assets/image (5).png" alt="" data-size="line">V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, ukazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
+### <img src=".gitbook/assets/image (4).png" alt="" data-size="line"> Indikátor průběhu <img src=".gitbook/assets/image (5).png" alt="" data-size="line">
+
+V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, ukazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
 
 V placeném licencovaném režimu Chloros+, který zpracovává všechny soubory současně, ukazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud umístíte kurzor myši nad ukazatel průběhu Chloros+, rozbalí se rozšířený panel se 4 ukazateli průběhu, takže můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu se rozbalený panel zamrzne, dalším kliknutím se opět odblokuje.
 

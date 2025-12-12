@@ -6,7 +6,9 @@ Uživatelské <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> 
 
 Po přihlášení se zobrazí podrobnosti vašeho účtu:
 
-<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>## CLI Přihlášení
+<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>
+
+## CLI Přihlášení
 
 Přihlaste se pomocí svých přihlašovacích údajů Chloros+, abyste mohli využívat zpracování CLI.
 
@@ -28,7 +30,9 @@ chloros-cli login user@example.com 'MyP@ssw0rd123'
 
 **Výstup:**
 
-<figure><img src=".gitbook/assets/cli login_w.JPG" alt=""><figcaption></figcaption></figure>### Vypršení platnosti plánu
+<figure><img src=".gitbook/assets/cli login_w.JPG" alt=""><figcaption></figcaption></figure>
+
+### Vypršení platnosti plánu
 
 Vypršení platnosti plánu v grafickém uživatelském rozhraní ukazuje, kdy vaše licence přestane být platná. U opakujících se měsíčních předplatných je vypršení platnosti na konci měsíce. U ročních předplatných je to rok po zahájení předplatného. Kontrola licence vyžaduje měsíční připojení k internetu, aby mohla být ověřena, s 30denní lhůtou.
 
