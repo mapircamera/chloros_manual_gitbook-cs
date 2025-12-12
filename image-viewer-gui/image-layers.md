@@ -4,7 +4,7 @@ Rozbalovací nabídka Vrstvy obrázků v prohlížeči obrázků Chloros umožň
 
 ## Co jsou vrstvy obrázků?
 
-V Chloros se **vrstvy** vztahují k různým výstupům obrázků, které jsou k dispozici pro jeden zdrojový obrázek. Při zpracování obrázků vytvoří Chloros více verzí:
+V Chloros se **vrstvy** vztahují k různým výstupům obrázků, které jsou k dispozici pro jeden zdrojový obrázek. Při zpracování obrázků vytvoří Chloros několik verzí:
 
 * **Původní obrázky** (soubory JPG a RAW z fotoaparátu)
 * Výstupy **s kalibrovanou odrazivostí** (pokud byla povolena kalibrace odrazivosti)
@@ -62,7 +62,7 @@ V Chloros se **vrstvy** vztahují k různým výstupům obrázků, které jsou k
 
 * Kalibrovaný výstupní obraz odrazivosti
 * Korekce vinětace (pokud je povolena při zpracování)
-* Odrazivost kalibrovaná pomocí cílových dat (pokud je povoleno)
+* Odrazivost kalibrovaná pomocí dat cíle (pokud je povoleno)
 * Vícepásmový TIFF se všemi kanály kamery
 * Hodnoty pixelů představují procentuální odrazivost (při použití procentního režimu)
 * Připraveno k manipulaci pomocí [Index/LUT Sandbox](index-lut-sandbox.md)
@@ -75,13 +75,13 @@ V Chloros se **vrstvy** vztahují k různým výstupům obrázků, které jsou k
 * Porovnání s originálem za účelem zjištění účinků kalibrace
 
 {% hint style=&quot;success&quot; %}
-**Doporučeno**: Při kontrole hodnot pixelů pro vědecká měření a analýzy použijte vrstvu RAW (Reflectance).
+**Doporučeno**: Při kontrole hodnot pixelů pro vědecká měření a analýzy použijte vrstvu RAW (odrazivost).
 {% endhint %}
 
 ### RAW (NDVI Index)... a podobné
 
 * Vypočítaný obraz vegetačního indexu (v tomto příkladu NDVI)
-* Název indexu se mění podle toho, který index byl nakonfigurován během zpracování.
+* Název indexu se mění podle toho, který index byl nakonfigurován během zpracování
 * Příklady: RAW (NDVI Index), RAW (NDRE Index), RAW (GNDVI Index) atd.
 * Jednopásmový obrázek ve stupních šedi zobrazující výsledky výpočtu indexu
 * Pro každý index nakonfigurovaný v nastavení projektu se zobrazí jedna vrstva
@@ -91,17 +91,17 @@ V Chloros se **vrstvy** vztahují k různým výstupům obrázků, které jsou k
 * RAW (index NDVI)
 * RAW (index NDRE)
 * RAW (index GNDVI)
-* RAW (OSAVI Index)
+* RAW (index OSAVI)
 * RAW (EVI Index)
 * RAW (SAVI Index)
 * A mnoho dalších... (viz [Vzorec multispektrálního indexu](../project-settings/multispectral-index-formulas.md))
 
 **Kdy zobrazit:**
 
-* Kontrola výsledků výpočtu indexu
-* Kontrola rozsahů hodnot indexu
-* Identifikace oblastí zájmu
-* Ověření indexových obrázků před použitím v GIS nebo analýze
+* Při zkoumání výsledků výpočtu indexu
+* Při kontrole rozsahů hodnot indexu
+* Při identifikaci oblastí zájmu
+* Při ověřování indexových obrázků před použitím v GIS nebo analýze
 
 ***
 
@@ -110,13 +110,13 @@ V Chloros se **vrstvy** vztahují k různým výstupům obrázků, které jsou k
 ### Otevření rozevíracího seznamu
 
 1. Otevřete obrázek v režimu celé obrazovky (klikněte na libovolnou miniaturu v prohlížeči obrázků).
-2. Najděte **rozevírací nabídku vrstev** v pravém horním rohu prohlížeče.
-3. Rozevírací nabídka zobrazuje aktuálně vybranou vrstvu (např. „JPG“).
-4. Kliknutím na rozevírací nabídku zobrazíte všechny dostupné vrstvy.
+2. Najděte **rozevírací seznam vrstev** v pravém horním rohu prohlížeče.
+3. Rozbalovací nabídka zobrazuje aktuálně vybranou vrstvu (např. „JPG“).
+4. Kliknutím na rozbalovací nabídku zobrazíte všechny dostupné vrstvy.
 
 ### Přepínání vrstev
 
-1. Kliknutím na rozevírací nabídku vrstev otevřete seznam.
+1. Kliknutím na rozbalovací nabídku vrstev otevřete seznam.
 2. Zobrazí se všechny dostupné vrstvy pro aktuální obrázek.
 3. Kliknutím na název libovolné vrstvy přepnete na danou verzi.
 4. Obrázek se okamžitě aktualizuje a zobrazí vybranou vrstvu.
@@ -125,17 +125,17 @@ V Chloros se **vrstvy** vztahují k různým výstupům obrázků, které jsou k
 
 * Rozbalovací nabídka si pamatuje vaši poslední volbu.
 * Při přechodu na další obrázek se Chloros pokusí zobrazit stejný typ vrstvy.
-* Pokud tato vrstva na dalším obrázku neexistuje, použije se výchozí vrstva JPG.
+* Pokud tato vrstva na dalším obrázku neexistuje, použije se výchozí nastavení JPG.
 
 ### Dostupnost vrstev
 
 Ne všechny vrstvy jsou k dispozici pro každý obrázek:
 
-**Vždy k dispozici:**
+**Vždy dostupné:**
 
 * ✅ JPG (každý obrázek má náhled JPG)
 
-**Podmíněně k dispozici:**
+**Podmíněně dostupné:**
 
 * ⚠️ RAW (originál) – pouze pokud byl obrázek pořízen v režimu RAW nebo RAW+JPG
 * ⚠️ RAW (cíl) – pouze pokud obrázek obsahuje detekované kalibrační cíle
@@ -154,13 +154,13 @@ Při přechodu na jiný obrázek (pomocí kláves se šipkami nebo kliknutím na
 
 * Pokud prohlížíte „RAW (Reflexe)“, další obrázek zobrazí „RAW (Reflexe)“ (je-li k dispozici)
 * Pokud prohlížíte „RAW (NDVI Index)“, další obrázek zobrazí „RAW (NDVI Index)“ (je-li k dispozici)
-* Pokud stejná vrstva neexistuje, výchozí nastavení je JPG
+* Pokud stejná vrstva neexistuje, je výchozí nastavení JPG.
 
 **Příklad pracovního postupu:**
 
-1. Otevřete obrázek 1, přepněte na RAW (NDVI Index)
-2. Stiskněte → pro zobrazení obrázku 2
-3. Obrázek 2 automaticky zobrazí vrstvu RAW (NDVI Index)
+1. Otevřete obrázek 1, přepněte na RAW (NDVI Index).
+2. Stiskněte → pro zobrazení obrázku 2.
+3. Obrázek 2 automaticky zobrazí vrstvu RAW (NDVI Index).
 4. Pokračujte v navigaci – všechny obrázky zobrazují vrstvu NDVI
 5. Velmi efektivní pro kontrolu výsledků indexu u mnoha obrázků
 
@@ -168,44 +168,44 @@ Při přechodu na jiný obrázek (pomocí kláves se šipkami nebo kliknutím na
 
 ## Běžné pracovní postupy
 
-### Pracovní postup 1: Porovnání před/po
+### Pracovní postup 1: Porovnání před a po
 
 **Cíl**: Porovnat původní a kalibrovaný obrázek
 
 1. Otevřete zpracovaný obrázek v prohlížeči obrázků
 2. Z rozevíracího seznamu vyberte **RAW (původní)**
 3. Poznamenejte si vinětaci a nekalibrované hodnoty
-4. Z rozevíracího seznamu přepněte na **RAW (odrazivost)**
+4. V rozevíracím seznamu přepněte na **RAW (Reflectance)**
 5. Porovnejte – vinětace odstraněna, hodnoty kalibrovány
 
 ### Pracovní postup 2: Kontrola indexu
 
-**Cíl**: Rychlá kontrola výsledků NDVI v datovém souboru.
+**Cíl**: Rychlá kontrola výsledků NDVI v datovém souboru
 
 1. Otevřete první zpracovaný obrázek.
 2. Z rozevíracího seznamu vyberte možnost **RAW (NDVI Index)**.
-3. Pomocí klávesy → přejděte na další obrázek.
+3. Pomocí šipky → přejděte na další obrázek.
 4. Vrstva NDVI zůstává automaticky zachována.
 5. Pokračujte u všech obrázků a zkontrolujte vzory NDVI.
-6. Přepněte na **RAW (NDRE Index)** pro porovnání.
+6. Přepněte na **RAW (NDRE Index)** a proveďte porovnání.
 
 ### Pracovní postup 3: Ověření cíle
 
-**Cíl**: Ověřit, zda byly všechny cílové obrázky správně detekovány
+**Cíl**: Ověřit, zda byly všechny cílové obrázky správně detekovány.
 
-1. Přejděte na cílový obrázek
-2. Vyberte **RAW (Target)** z rozevíracího seznamu
-3. Ověřte, zda jsou kalibrační cíle jasně viditelné a detekované
-4. Přejděte na další cílový obrázek
+1. Přejděte na cílový obrázek.
+2. Z rozevíracího seznamu vyberte **RAW (Target)**.
+3. Ověřte, zda jsou kalibrační cíle jasně viditelné a detekované.
+4. Přejděte k dalšímu cílovému obrázku
 5. Opakujte ověření pro všechny cíle
 
 ### Pracovní postup 4: Kontrola hodnoty pixelů
 
-**Cíl**: Zkontrolovat hodnoty odrazivosti z hlediska vědecké přesnosti.
+**Cíl**: Zkontrolovat hodnoty odrazivosti z hlediska vědecké přesnosti
 
-1. Otevřete zpracovaný obrázek.
-2. Vyberte vrstvu **RAW (Odrazivost)**.
-3. Zapněte režim **Pixel Percent** (tlačítko v pravém horním rohu panelu nástrojů).
+1. Otevřete zpracovaný obrázek
+2. Vyberte vrstvu **RAW (Reflectance)**
+3. Zapněte režim **Pixel Percent** (tlačítko v pravém horním rohu panelu nástrojů)
 4. Přesuňte kurzor nad oblasti vegetace.
 5. Ověřte, zda jsou hodnoty pixelů v očekávaných rozmezích (30–70 % pro NIR, 5–15 % pro Red).
 6. Zkontrolujte, zda mají oblasti půdy a vody správné hodnoty.
@@ -222,7 +222,7 @@ Různé vrstvy zobrazují různé rozsahy hodnot pixelů:
 * **Význam**: Zobrazené hodnoty, korigované gama
 * **Použití**: Pouze vizuální kontrola, ne pro vědecká měření
 
-### RAW (původní)
+### RAW (originál)
 
 * **Rozsah**: 0–65535 (16 bitů)
 * **Význam**: Surová digitální čísla senzoru
@@ -234,7 +234,7 @@ Různé vrstvy zobrazují různé rozsahy hodnot pixelů:
 * **Význam**: Kalibrovaná procentuální odrazivost
 * **Použití**: Vědecká měření a analýzy
 
-**Pro 16bitový TIFF:** Vydělte hodnotou 65 535, abyste získali procentuální odrazivost **Pro 32bitové procento:** Hodnoty přímo představují procento (0,5 = 50% odrazivost)
+**Pro 16bitové TIFF:** Vydělte hodnotou 65 535, abyste získali procentuální odrazivost **Pro 32bitové Percent:** Hodnoty přímo představují procenta (0,5 = 50% odrazivost)
 
 ### RAW (indexové obrázky)
 
@@ -251,22 +251,22 @@ Různé vrstvy zobrazují různé rozsahy hodnot pixelů:
 
 ### Efektivní přepínání vrstev
 
-* **Znalost klávesových zkratek**: Ačkoli pro vrstvy neexistují žádné klávesové zkratky, navigační šipky (←/→) fungují ve všech vrstvách
-* **Konzistentní pracovní postupy**: Vyberte jednu vrstvu (např. NDVI) a zkontrolujte celý datový soubor, než přepnete na jinou
-* **Rychlé porovnání**: Přepínejte mezi originálem a odrazivostí, abyste ověřili kvalitu zpracování
+* **Znalost klávesových zkratek**: Ačkoli pro vrstvy neexistují žádné klávesové zkratky, navigační šipky (←/→) fungují ve všech vrstvách.
+* **Konzistentní pracovní postupy**: Vyberte jednu vrstvu (např. NDVI) a zkontrolujte celý datový soubor, než přepnete na jinou.
+* **Rychlé porovnání**: Přepínejte mezi originálem a odrazivostí, abyste ověřili kvalitu zpracování.
 
 ### Úvahy o výkonu
 
-* **JPG se načítá nejrychleji**: Použijte pro rychlou navigaci mezi mnoha obrázky
-* **Vrstvy RAW se načítají pomaleji**: Vyšší rozlišení a bitová hloubka
-* **Indexové vrstvy**: Podobná rychlost jako vrstvy odrazivosti
-* **První načtení je nejpomalejší**: Následná zobrazení stejné vrstvy jsou uložena v mezipaměti a jsou rychlejší
+* **JPG se načítá nejrychleji**: Použijte pro rychlou navigaci mezi mnoha obrázky.
+* **Vrstvy RAW se načítá pomaleji**: Vyšší rozlišení a bitová hloubka.
+* **Indexové vrstvy**: Podobná rychlost jako vrstvy odrazivosti.
+* **První načítání je nejpomalejší**: Následná zobrazení stejné vrstvy jsou uložena v mezipaměti a jsou rychlejší.
 
 ### Ověření kvality
 
-* **Vždy zkontrolujte RAW (originál)**: Ověřte kvalitu zdrojových dat, než budete důvěřovat zpracovaným výstupům
-* **Porovnejte vrstvy**: Použijte přepínání vrstev k ověření, zda zpracování proběhlo správně
-* **Zkontrolujte rozsahy indexů**: Použijte režim Pixel Percent s indexovými vrstvami k ověření, zda jsou hodnoty přiměřené
+* **Vždy zkontrolujte RAW (originál)**: Ověřte kvalitu zdrojových dat, než budete důvěřovat zpracovaným výstupům.
+* **Porovnejte vrstvy**: Použijte přepínání vrstev k ověření, zda zpracování proběhlo správně.
+* **Zkontrolujte rozsahy indexů**: Použijte režim Pixel Percent s indexovými vrstvami k ověření, zda jsou hodnoty přiměřené.
 
 ***
 
@@ -274,20 +274,20 @@ Různé vrstvy zobrazují různé rozsahy hodnot pixelů:
 
 ### Vrstva není k dispozici
 
-**Problém**: Očekávaná vrstva se nezobrazuje v rozevíracím seznamu
+**Problém**: Očekávaná vrstva se nezobrazuje v rozevíracím seznamu.
 
 **Možné příčiny:**
 
-* Obrázek nebyl zpracován (k dispozici pouze JPG a RAW (Original))
-* Během zpracování byla deaktivována kalibrace odrazivosti
-* V nastavení projektu nebyl nakonfigurován konkrétní index
-* Obrázek je pouze cílový obrázek (pro cíle nebyly generovány žádné indexy)
+* Obrázek nebyl zpracován (k dispozici jsou pouze formáty JPG a RAW (originál)).
+* Během zpracování byla deaktivována kalibrace odrazivosti.
+* V nastavení projektu nebyl nakonfigurován konkrétní index.
+* Obrázek je pouze cílový obrázek (pro cíle nebyly generovány žádné indexy).
 
 **Řešení:**
 
-1. Ověřte, zda byl obrázek zpracován (zkontrolujte výstupní složku, zda obsahuje zpracované soubory)
-2. Zkontrolujte nastavení projektu a ověřte, zda byly nakonfigurovány indexy
-3. Zpracujte znovu s povolenými požadovanými indexy
+1. Ověřte, zda byl obrázek zpracován (zkontrolujte výstupní složku, zda obsahuje zpracované soubory).
+2. Zkontrolujte nastavení projektu a ověřte, zda byly nakonfigurovány indexy.
+3. Zpracujte znovu s povolenými požadovanými indexy.
 
 ### Zobrazena nesprávná vrstva
 
@@ -299,13 +299,13 @@ Různé vrstvy zobrazují různé rozsahy hodnot pixelů:
 
 ### Nelze vidět kalibrační cíle
 
-**Problém**: Vrstva RAW (cíl) nezobrazuje detekci cílů.
+**Problém**: Vrstva RAW (cíl) nezobrazuje detekci cíle.
 
 **Možné příčiny:**
 
 * Cíle nebyly během zpracování detekovány.
 * Obrázek ve skutečnosti neobsahuje cíle.
-* Nastavení detekce cílů je příliš přísné.
+* Nastavení detekce cíle je příliš přísné.
 
 **Řešení:**
 
@@ -323,20 +323,20 @@ Různé vrstvy zobrazují různé rozsahy hodnot pixelů:
 Při prohlížení jakékoli vrstvy můžete použít:
 
 * **Ovládací prvky zoomu**: Zvětšete obrázek a prohlédněte si detaily.
-* **Posun**: Kliknutím a tažením se pohybujte po zvětšeném obrázku.
-* **Kontrola hodnoty pixelů**: Zobrazte hodnoty v místě kurzoru
-* **Navigační šipky**: Přesouvejte se mezi obrázky při zachování vrstvy
-* **Režim procent pixelů**: Přepínejte mezi zobrazením DN a procent
+* **Posun**: Kliknutím a tažením se můžete pohybovat po zvětšeném obrázku.
+* **Kontrola hodnoty pixelů**: Zobrazte hodnoty v místě kurzoru.
+* **Navigační šipky**: Přesouvejte se mezi obrázky při zachování vrstvy.
+* **Režim procent pixelů**: Přepínejte mezi zobrazením DN a procent.
 
 Kompletní dokumentaci k prohlížeči obrázků najdete v části [Otevření obrázku na celou obrazovku](opening-an-image-full-screen.md).
 
 ### Index/LUT Sandbox
 
-Pro interaktivní testování a vizualizaci indexu:
+Pro interaktivní testování a vizualizaci indexů:
 
-* **Výpočet indexu v reálném čase**: Vyzkoušejte různé vzorce indexu
-* **Mapování barev LUT**: Použijte barevné přechody na indexy ve stupních šedi
-* **Export vizualizací**: Uložte barevné obrázky indexu
+* **Výpočet indexu v reálném čase**: Vyzkoušejte různé vzorce indexů.
+* **Mapování barev LUT**: Použijte barevné přechody na indexy ve stupních šedi.
+* **Export vizualizací**: Uložte barevné obrázky indexů.
 
 Podrobnosti najdete v části [Index/LUT Sandbox](index-lut-sandbox.md).
 
@@ -347,6 +347,6 @@ Podrobnosti najdete v části [Index/LUT Sandbox](index-lut-sandbox.md).
 Nyní, když rozumíte vrstvám obrázků:
 
 * [**Otevření obrázku na celou obrazovku**](opening-an-image-full-screen.md) – Kompletní průvodce prohlížečem obrázků
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) – Interaktivní vizualizace indexu
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) – Interaktivní vizualizace indexů
 * [**Vzorec multispektrálního indexu**](../project-settings/multispectral-index-formulas.md) – Referenční seznam dostupných indexů
 * [**Dokončení zpracování**](../processing-images-gui/finishing-the-processing.md) – Porozumění zpracovaným výstupům

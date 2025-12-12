@@ -16,15 +16,15 @@ Po aktivaci spustí tlačítko pro zpracování obrazu proces zpracování obraz
 
 ### <img src=".gitbook/assets/image (4).png" alt="" data-size="line"> Indikátor průběhu <img src=".gitbook/assets/image (5).png" alt="" data-size="line">
 
-V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, ukazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
+V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, zobrazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
 
-V placeném licencovaném režimu Chloros+, který zpracovává všechny soubory současně, ukazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud umístíte kurzor myši nad ukazatel průběhu Chloros+, rozbalí se rozšířený panel se 4 ukazateli průběhu, takže můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu se rozbalený panel zamrzne, dalším kliknutím se opět odblokuje.
+V placeném licencovaném režimu Chloros+, který zpracovává všechny soubory současně, zobrazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud umístíte kurzor myši nad ukazatel průběhu Chloros+, rozbalí se rozšířený panel se 4 ukazateli průběhu, takže můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu se rozbalený panel zamrzne, dalším kliknutím se opět odblokuje.
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
 
 ## Boční nabídka
 
-Levá boční nabídka obsahuje různé ikony, se kterými můžete pracovat:
+Levá boční nabídka obsahuje různé ikony pro interakci:
 
 #### <img src=".gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> [Nastavení projektu](project-settings/project-settings.md)
 
@@ -32,11 +32,11 @@ Karta Nastavení projektu umožňuje upravit globální nastavení projektu a na
 
 #### <img src=".gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> Prohlížeč souborů
 
-Přidejte soubory/složky a odstraňte soubory z projektu. Duplicitní soubory jsou ignorovány. Zaškrtněte políčko cílové sloupce pro jakýkoli cílový obrázek a zpracování se bude zabývat pouze zaškrtnutými obrázky jako cíli, což výrazně zrychlí dobu zpracování.
+Přidejte soubory/složky a odstraňte soubory z projektu. Duplicitní soubory jsou ignorovány. Zaškrtněte políčko cílové sloupce pro jakýkoli cílový obrázek a zpracování se zaměří pouze na zaškrtnuté obrázky jako cíle, což výrazně zrychlí dobu zpracování.
 
 #### <img src=".gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> [Prohlížeč obrázků](image-viewer-gui/opening-an-image-full-screen.md)
 
-Po kliknutí na obrázek v hlavním prohlížeči obrázků se obrázek otevře na celé obrazovce na kartě Prohlížeč obrázků.
+Po kliknutí na obrázek v hlavním prohlížeči obrázků se obrázek otevře na celou obrazovku na kartě Prohlížeč obrázků.
 
 #### <img src=".gitbook/assets/icon_log.JPG" alt="" data-size="line"> Logs pro ladění
 

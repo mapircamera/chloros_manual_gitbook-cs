@@ -1,6 +1,6 @@
 # Výběr cílových obrázků
 
-Označení obrázků, které obsahují kalibrační cíle, je klíčovým krokem, který výrazně urychluje zpracování Chloros. Předběžným výběrem cílových obrázků eliminujete potřebu, aby Chloros prohledával každý obrázek ve vašem datovém souboru za účelem nalezení kalibračních cílů.
+Označení obrázků, které obsahují kalibrační cíle, je klíčovým krokem, který výrazně urychluje zpracování Chloros. Předběžným výběrem cílových obrázků eliminujete potřebu, aby Chloros skenoval každý obrázek ve vašem datovém souboru za účelem nalezení kalibračních cílů.
 
 ## Proč označovat cílové obrázky?
 
@@ -39,7 +39,7 @@ Prohlédněte si importované obrázky v prohlížeči souborů a identifikujte,
 * **Cíl před pořízením**: Pořízený před zahájením relace
 * **Cíl po pořízení**: Pořízený po dokončení relace
 * **Cíle v terénu**: Cíle umístěné v oblasti pořízení
-* **Více cílů**: 2–3 cílový obrázky na relaci (doporučeno)
+* **Více cílů**: 2–3 cílové obrázky na relaci (doporučeno)
 
 ### Krok 2: Zkontrolujte sloupec Cíl
 
@@ -55,20 +55,20 @@ Pro každý obrázek obsahující kalibrační cíl:
 Před zpracováním zkontrolujte:
 
 * [ ] Jsou zaškrtnuty všechny snímky s kalibračními cíli.
-* [ ] Nejsou omylem zaškrtnuty žádné snímky bez cílů.
+* [ ] Nejsou omylem zaškrtnuty žádné snímky bez cíle.
 * [ ] Cíle jsou na zaškrtnutých snímcích jasně viditelné.
 
 ***
 
-## Osvědčené postupy pro snímky cílů
+## Osvědčené postupy pro snímky s cíli
 
-### Pokyny pro snímání cílů
+### Pokyny pro pořizování snímků s cíli
 
 **Načasování:**
 
-* Snímky cílů pořizujte bezprostředně před a během snímací relace.
+* Pořizujte snímky s cíli bezprostředně před a během pořizování snímků.
 * Za stejných světelných podmínek, jaké má světelný senzor DAQ.
-* Pro dosažení nejlepších výsledků pořizujte snímky cílů ideálně co nejčastěji. V opačném případě budou k úpravě kalibrace v průběhu času použita data ze světelného senzoru.
+* Pro dosažení nejlepších výsledků pořizujte snímky cílů ideálně co nejčastěji. V opačném případě budou k úpravě kalibrace v průběhu času použita data světelného senzoru.
 
 **Poloha kamery:**
 
@@ -90,13 +90,13 @@ Před zpracováním zkontrolujte:
 
 ### Kolik snímků cíle?
 
-**Minimálně:** 1 snímek cíle na jednu relaci. **Doporučeno:** 3–5 snímků cíle na jednu relaci.
+**Minimálně:** 1 snímek cíle na relaci. **Doporučeno:** 3–5 snímků cíle na relaci.
 
 **Osvědčený postup:**
 
-* 3–5 snímků pořízených krátce po zahájení záznamu světelným senzorem
-* Pro dosažení nejlepších výsledků mezi jednotlivými snímky otáčejte kamerou
-* Volitelně: pravidelně v polovině relace, pokud se světelné podmínky neustále mění
+* 3–5 snímků pořízených krátce po zahájení záznamu světelného senzoru
+* Pro dosažení nejlepších výsledků otáčejte kamerou mezi jednotlivými snímky
+* Volitelně: pravidelně v polovině relace, pokud se podmínky osvětlení neustále mění
 
 ***
 
@@ -157,10 +157,10 @@ Pokud Chloros nedetekuje vaše cíle správně, upravte tato nastavení v [Nasta
 
 **Řešení:**
 
-1. Ověřte, zda je ve sloupci Cíl zaškrtnuto správné obrázky.
-2. Zkontrolujte kvalitu obrázků cílů v náhledu.
-3. Pokud je kvalita špatná, znovu zachyťte cíle.
-4. V případě potřeby upravte nastavení detekce cílů.
+1. Ověřte, zda je ve sloupci Cíl zaškrtnuto správné obrázky
+2. Zkontrolujte kvalitu obrázku cíle v náhledu
+3. Pokud je kvalita špatná, znovu zachyťte cíle
+4. V případě potřeby upravte nastavení detekce cílů
 
 ### Problém: Falešné detekce cílů
 
@@ -184,10 +184,10 @@ Pokud Chloros nedetekuje vaše cíle správně, upravte tato nastavení v [Nasta
 Před zahájením zpracování ověřte výběr obrázků cílů:
 
 * [ ] Nejméně 1 obrázek cíle označený za relaci
-* [ ] Zaškrtávací políčka sloupce Cíl jsou zaškrtnuta u všech obrázků cílů
+* [ ] Zaškrtávací políčka ve sloupci Cíl jsou zaškrtnuta pro všechny obrázky cílů
 * [ ] Obrázky cílů pořízené ve stejném časovém rámci jako průzkum
-* [ ] Cíle jasně viditelné v náhledu po kliknutí
-* [ ] Všechny 4 kalibrační panely viditelné na každém obrázku cíle
+* [ ] Cíle jsou při kliknutí jasně viditelné v náhledu
+* [ ] Všechny 4 kalibrační panely jsou viditelné na každém obrázku cíle
 * [ ] Na cílech nejsou žádné stíny ani překážky.
 * [ ] U duálních kamer: Cíle jsou označeny pro oba typy kamer.
 

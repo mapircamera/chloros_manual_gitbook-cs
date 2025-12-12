@@ -36,7 +36,7 @@ Pro uživatele s licencí Chloros+:
 
 * **Přejděte myší** nad ukazatel průběhu a zobrazí se rozšířený 4stupňový panel
 * **Kliknutím** na ukazatel průběhu panel rozbalíte a zafixujete
-* **Dalším kliknutím** panel odblokujete a automaticky skryjete po odjetí myší
+* **Dalším kliknutím** panel odemknete a automaticky skryjete po opuštění myší
 * Každá fáze zobrazuje individuální průběh (0–100 %)
 
 ***
@@ -57,7 +57,7 @@ Pro uživatele s licencí Chloros+:
 * S označenými cíli: 10–60 sekund
 * Bez označených cílů: 5–30+ minut (skenuje všechny obrázky)
 
-**Indikátor průběhu:**
+**Ukazatel průběhu:**
 
 * Detekce: 0 % → 100 %
 * Počet naskenovaných obrázků
@@ -65,8 +65,8 @@ Pro uživatele s licencí Chloros+:
 
 **Na co si dát pozor:**
 
-* Pokud jsou cíle správně označeny, mělo by být dokončeno rychle.
-* Pokud to trvá příliš dlouho, cíle nemusí být označeny.
+* Pokud jsou cíle správně označeny, mělo by být skenování dokončeno rychle.
+* Pokud skenování trvá příliš dlouho, cíle nemusí být označeny.
 * Zkontrolujte protokol ladění, zda neobsahuje zprávy „Target found“ (Cíl nalezen).
 
 ### Fáze 2: Analýza
@@ -98,7 +98,7 @@ Pro uživatele s licencí Chloros+:
 * **Korekce vinětace**: Odstranění ztmavnutí okrajů objektivu
 * **Kalibrace odrazivosti**: Normalizace pomocí cílových hodnot
 * **Výpočet indexu**: Výpočet multispektrálních indexů
-* Zpracování každého obrazu prostřednictvím celého procesu
+* Zpracování každého obrázku prostřednictvím celého procesu
 
 **Doba trvání:** Většina celkové doby zpracování (60–80 %)
 
@@ -126,7 +126,7 @@ Pro uživatele s licencí Chloros+:
 
 * Zápis kalibrovaných obrázků na disk ve vybraném formátu
 * Export multispektrálních indexových obrázků s barvami LUT
-* Vytvoření podsložek modelů kamer
+* Vytváření podsložek modelů kamer
 * Zachování původních názvů souborů s příslušnými příponami
 
 **Doba trvání:** 10–20 % celkové doby zpracování
@@ -134,13 +134,13 @@ Pro uživatele s licencí Chloros+:
 **Indikátor průběhu:**
 
 * Export: 0 % → 100 %
-* Soubory se zapisují
+* Zápis souborů
 * Formát exportu a cíl
 
 **Na co je třeba dávat pozor:**
 
-* Varování o volném místě na disku
-* Chyby při zápisu souborů
+* Varování o nedostatku místa na disku
+* Chyby zápisu souborů
 * Dokončení všech nakonfigurovaných výstupů
 
 ***
@@ -198,7 +198,7 @@ Kritické problémy, které mohou způsobit selhání zpracování:
 | Zpráva                          | Význam                                | Potřebná akce                                         |
 | -------------------------------- | -------------------------------------- | ----------------------------------------------------- |
 | „Cíl detekován v \[název souboru]“ | Kalibrační cíl úspěšně nalezen  | Žádná – normální                                         |
-| „Zpracování obrázku X z Y“        | Aktualizace aktuálního průběhu                | Žádná – normální                                         |
+| „Zpracování obrázku X z Y“        | Aktuální informace o průběhu                | Žádná – normální                                         |
 | „Nenalezeny žádné cíle“               | Nebyly detekovány žádné kalibrační cíle        | Označte obrázky cílů nebo deaktivujte kalibraci odrazivosti |
 | „Nedostatek místa na disku“        | Nedostatek úložného prostoru pro výstup          | Uvolněte místo na disku                                    |
 | „Přeskočení poškozeného souboru“        | Obrazový soubor je poškozen                  | Znovu zkopírujte soubor z karty SD                             |
@@ -277,7 +277,7 @@ Při zapnuté akceleraci GPU:
 **Tip pro zvýšení výkonu:**
 
 * Pokud je to možné, použijte SSD pro složku projektu
-* Vyhněte se síťovým diskům pro velké datové sady
+* Vyhněte se síťovým diskům pro velké datové soubory
 * Ujistěte se, že disk není téměř plný (ovlivňuje rychlost zápisu)
 
 ***
@@ -295,7 +295,7 @@ Při zapnuté akceleraci GPU:
 **Časté zobrazení chybových zpráv:**
 
 * Zastavte zpracování a zkontrolujte chyby.
-* Běžné příčiny: nedostatek místa na disku, poškozené soubory, problémy s pamětí.
+* Časté příčiny: nedostatek místa na disku, poškozené soubory, problémy s pamětí.
 * Viz část Řešení problémů níže.
 
 **Systém nereaguje:**
@@ -312,7 +312,7 @@ Zastavte zpracování, pokud se zobrazí:
 * ❌ Opakované chyby poškození obrazového souboru
 * ❌ Systém zcela zamrzl (nereaguje)
 * ❌ Zjistili jste, že byla nakonfigurována nesprávná nastavení
-* ❌ Byly importovány nesprávné obrázky
+* ❌ Byly importovány nesprávné obrazy
 
 **Jak zastavit:**
 
@@ -337,7 +337,7 @@ Zastavte zpracování, pokud se zobrazí:
 **Řešení:**
 
 1. Pokud jste právě začali a jste ve fázi detekce: Zrušte, označte cíle, restartujte
-2. Do budoucna: Používejte SSD, snižte počet indexů, vylepšete hardware
+2. Do budoucna: Používejte SSD, snižte počet indexů, upgradujte hardware
 3. Zvažte použití CLI pro dávkové zpracování velkých datových sad
 
 ### Varování „Místo na disku“
@@ -353,12 +353,12 @@ Zastavte zpracování, pokud se zobrazí:
 
 **Řešení:**
 
-1. Znovu zkopírujte obrázky z karty SD, abyste zajistili integritu.
+1. Znovu zkopírujte obrázky z karty SD, abyste zajistili jejich integritu.
 2. Otestujte kartu SD na chyby.
 3. Odstraňte poškozené soubory z projektu.
 4. Pokračujte ve zpracování zbývajících obrázků.
 
-### Přehřátí systému / omezení výkonu
+### Přehřívání systému / omezení výkonu
 
 **Řešení:**
 

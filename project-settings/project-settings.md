@@ -14,7 +14,7 @@ Přístup k nastavení projektu:
 
 ## Detekce cílů
 
-Tato nastavení určují, jak Chloros detekuje a zpracovává kalibrační cíle ve vašich obrázcích.
+Tato nastavení řídí, jak Chloros detekuje a zpracovává kalibrační cíle ve vašich obrázcích.
 
 ### Minimální plocha kalibračního vzorku (px)
 
@@ -31,10 +31,10 @@ Tato nastavení určují, jak Chloros detekuje a zpracovává kalibrační cíle
 * **Typ**: Číslo
 * **Rozsah**: 0 až 100
 * **Výchozí**: 60
-* **Popis**: Řídí prahovou hodnotu shlukování pro seskupování oblastí podobných barev při detekci kalibračních cílů. Vyšší hodnoty vyžadují seskupení více podobných barev, což vede k konzervativnější detekci cílů. Nižší hodnoty umožňují větší barevnou variabilitu v rámci cílové skupiny.
+* **Popis**: Řídí prahovou hodnotu shlukování pro seskupování podobných barevných oblastí při detekci kalibračních cílů. Vyšší hodnoty vyžadují seskupení více podobných barev, což vede k konzervativnější detekci cílů. Nižší hodnoty umožňují větší barevnou variabilitu v rámci cílové skupiny.
 * **Kdy upravit**:
   * Zvyšte, pokud jsou kalibrační cíle rozděleny do více detekcí.
-  * Snižte, pokud kalibrační cíle s barevnou variabilitou nejsou plně detekovány.
+  * Snižte, pokud nejsou kalibrační cíle s barevnou variabilitou plně detekovány.
 
 ***
 
@@ -46,7 +46,7 @@ Tato nastavení řídí, jak Chloros zpracovává a kalibruje vaše snímky.
 
 * **Typ**: Zaškrtávací políčko
 * **Výchozí**: Povoleno (zaškrtnuto)
-* **Popis**: Používá korekci vinětace k kompenzaci ztmavnutí objektivu na okrajích snímků. Vinětace je běžný optický jev, při kterém jsou rohy a okraje obrazu tmavší než střed kvůli vlastnostem objektivu.
+* **Popis**: Používá korekci vinětace k kompenzaci ztmavnutí objektivu na okrajích snímků. Vinětace je běžný optický jev, při kterém jsou rohy a okraje snímku tmavší než střed kvůli vlastnostem objektivu.
 * **Kdy deaktivovat**: Deaktivujte pouze v případě, že vaše kombinace fotoaparátu a objektivu již použila korekci vinětace, nebo pokud chcete vinětaci ručně opravit v postprodukci.
 
 ### Kalibrace odrazivosti / vyvážení bílé
@@ -70,7 +70,7 @@ Tato nastavení řídí, jak Chloros zpracovává a kalibruje vaše snímky.
 * **Typ**: Číslo
 * **Rozsah**: 0 až 3 600 sekund
 * **Výchozí**: 0 sekund
-* **Popis**: Nastavuje minimální časový interval (v sekundách) mezi použitím kalibračních cílů. Při nastavení na 0 bude Chloros používat všechny detekované kalibrační cíle. Při nastavení na vyšší hodnotu bude Chloros používat pouze kalibrační cíle, které jsou od sebe odděleny alespoň tímto počtem sekund, čímž se zkrátí doba zpracování datových sad s častým zachycováním kalibračních cílů.
+* **Popis**: Nastavuje minimální časový interval (v sekundách) mezi použitím kalibračních cílů. Při nastavení na 0 bude Chloros používat všechny detekované kalibrační cíle. Při nastavení na vyšší hodnotu bude Chloros používat pouze kalibrační cíle, které jsou od sebe odděleny alespoň tímto počtem sekund, což zkracuje dobu zpracování datových sad s častým zachycováním kalibračních cílů.
 * **Kdy upravit**:
   * Nastavte na 0 pro maximální přesnost kalibrace při měnících se světelných podmínkách.
   * Zvyšte (např. na 60–300 sekund) pro rychlejší zpracování, když je osvětlení konzistentní a máte časté snímky kalibračních cílů.
@@ -90,36 +90,36 @@ Tato nastavení řídí, jak Chloros zpracovává a kalibruje vaše snímky.
 
 * **Typ**: Zaškrtávací políčko
 * **Výchozí nastavení**: Zakázáno (nezaškrtnuto)
-* **Popis**: Umožňuje použití korekcí Post-Processed Kinematic (PPK) z rekordérů MAPIR DAQ obsahujících GPS (GNSS). Pokud je tato možnost povolena, Chloros použije všechny soubory protokolu .daq obsahující data expozičního pinu ve vašem projektovém adresáři a použije přesné geolokační korekce na vaše snímky.
+* **Popis**: Umožňuje použití korekcí PPK (Post-Processed Kinematic) z rekordérů MAPIR DAQ obsahujících GPS (GNSS). Pokud je tato možnost povolena, Chloros použije všechny soubory protokolu .daq obsahující data expozičního pinu ve vašem projektovém adresáři a použije přesné geolokační korekce na vaše snímky.
 * **Požadavek**: Soubor protokolu .daq s položkami expozičního pinu musí být přítomen ve vašem projektovém adresáři
 * **Kdy povolit**: Doporučujeme vždy povolit korekci PPK, pokud máte v souboru protokolu .daq položky zpětné vazby expozice.
 
-### Expozice pin 1
+### Expozice Pin 1
 
 * **Typ**: Výběr z rozevíracího seznamu
-* **Viditelnost**: Viditelné pouze pokud je povoleno „Použít korekce PPK“ A jsou k dispozici data expozice pro pin 1
+* **Viditelnost**: Viditelné pouze pokud je povoleno „Použít korekce PPK“ A jsou k dispozici data expozice pro Pin 1
 * **Možnosti**:
   * Názvy modelů kamer detekovaných v projektu
   * „Nepoužívat“ – Ignorovat tento expoziční pin
 * **Výchozí**: Automaticky vybráno na základě konfigurace projektu
-* **Popis**: Přiřadí konkrétní kameru k expozičnímu pinu 1 pro časovou synchronizaci PPK. Expoziční pin zaznamenává přesný čas spuštění závěrky kamery, což je rozhodující pro přesnou geolokaci PPK.
+* **Popis**: Přiřadí konkrétní kameru k expozičnímu pinu 1 pro synchronizaci času PPK. Expoziční pin zaznamenává přesný čas spuštění závěrky kamery, což je rozhodující pro přesnou geolokaci PPK.
 * **Chování automatického výběru**:
   * Jedna kamera + jeden pin: Automaticky vybere kameru
   * Jedna kamera + dva piny: Pin 1 automaticky přiřazen kameře
-  * Více kamer: Vyžaduje ruční výběr
+  * Více kamer: Je vyžadován ruční výběr
 
 ### Pin expozice 2
 
 * **Typ**: Výběr z rozevíracího seznamu
-* **Viditelnost**: Viditelný pouze pokud je povolena možnost „Použít korekce PPK“ A jsou k dispozici data expozice pro pin 2
+* **Viditelnost**: Viditelný pouze v případě, že je povolena možnost „Použít korekce PPK“ A jsou k dispozici data expozice pro pin 2
 * **Možnosti**:
   * Názvy modelů kamer detekovaných v projektu
-  * „Nepoužívat“ – tento pin expozice ignorovat
+  * „Nepoužívat“ – Ignorovat tento pin expozice
 * **Výchozí**: Automaticky vybráno na základě konfigurace projektu
-* **Popis**: Při použití konfigurace se dvěma kamerami přiřadí konkrétní kameru k pinu expozice 2 pro synchronizaci času PPK.
+* **Popis**: Při použití konfigurace se dvěma kamerami přiřadí konkrétní kameru k expozičnímu pinu 2 pro synchronizaci času PPK.
 * **Chování automatického výběru**:
   * Jedna kamera + jeden pin: Pin 2 automaticky nastaven na „Nepoužívat“
-  * Jedna kamera + dva piny: Pin 2 se automaticky nastaví na „Nepoužívat“
+  * Jedna kamera + dva piny: Pin 2 automaticky nastaven na „Nepoužívat“
   * Více kamer: Je vyžadován ruční výběr
 * **Poznámka**: Stejnou kameru nelze přiřadit současně k pinu 1 i pinu 2.
 
@@ -131,7 +131,7 @@ Tato nastavení umožňují konfigurovat multispektrální indexy pro analýzu a
 
 ### Přidat index
 
-* **Typ**: Panel speciální konfigurace indexu
+* **Typ**: Panel pro konfiguraci speciálních indexů
 * **Popis**: Otevře interaktivní panel, ve kterém můžete vybrat a nakonfigurovat multispektrální vegetační indexy (NDVI, NDRE, EVI atd.) pro výpočet během zpracování obrazu. Můžete přidat více indexů, každý s vlastními nastaveními vizualizace.
 * **Dostupné indexy**: Systém obsahuje více než 30 předdefinovaných multispektrálních indexů, včetně:
   * NDVI (normalizovaný rozdílový vegetační index)
@@ -140,19 +140,19 @@ Tato nastavení umožňují konfigurovat multispektrální indexy pro analýzu a
   * GNDVI, SAVI, OSAVI, MSAVI2
   * A mnoho dalších (kompletní seznam najdete v části [Vzorec multispektrálního indexu](multispectral-index-formulas.md))
 * **Funkce**:
-  * Výběr z předdefinovaných vzorců indexu
+  * Výběr z předdefinovaných vzorců indexů
   * Konfigurace barevných přechodů vizualizace (LUT – Look-Up Tables)
   * Nastavení prahových hodnot pro analýzu
-  * Vytvoření vlastních vzorců indexu
+  * Vytvoření vlastních vzorců indexů
 
 ### Vlastní vzorce (funkce Chloros+)
 
 * **Typ**: Pole definic vlastních vzorců
-* **Popis**: Umožňuje vytvářet a ukládat vlastní vzorce multispektrálních indexů pomocí matematických operací s pásmy. Vlastní vzorce se ukládají spolu s nastavením projektu a lze je používat stejně jako vestavěné indexy.
+* **Popis**: Umožňuje vytvářet a ukládat vlastní vzorce multispektrálního indexu pomocí matematických operací s pásmy. Vlastní vzorce se ukládají spolu s nastavením projektu a lze je používat stejně jako vestavěné indexy.
 * **Jak vytvořit**:
-  1. V panelu konfigurace indexu vyhledejte možnost vlastního vzorce.
-  2. Definujte svůj vzorec pomocí identifikátorů pásem (např. NIR, Red, Green, Blue).
-  3. Uložte vzorec pod popisným názvem.
+  1. V panelu konfigurace indexu vyhledejte možnost vlastního vzorce
+  2. Definujte vzorec pomocí identifikátorů pásem (např. NIR, Red, Green, Blue)
+  3. Uložte vzorec pod popisným názvem
 * **Syntaxe vzorce**: Podporovány jsou standardní matematické operace, včetně:
   * Aritmetika: `+`, `-`, `*`, `/`
   * Závorky pro pořadí operací
@@ -162,14 +162,14 @@ Tato nastavení umožňují konfigurovat multispektrální indexy pro analýzu a
 
 ## Export
 
-Tato nastavení řídí formát a kvalitu exportovaných zpracovaných obrázků.
+Tato nastavení určují formát a kvalitu exportovaných zpracovaných obrázků.
 
 ### Kalibrovaný formát obrázku
 
 * **Typ**: Výběr z rozevíracího seznamu
 * **Možnosti**:
   * **TIFF (16 bitů)** – Nekomprimovaný 16bitový formát TIFF
-  * **TIFF (32bitový, procenta)** – 32bitový formát TIFF s plovoucí desetinnou čárkou s hodnotami odrazivosti vyjádřenými v procentech
+  * **TIFF (32bitový, procenta)** – 32bitový formát TIFF s plovoucí desetinnou čárkou a hodnotami odrazivosti vyjádřenými v procentech
   * **PNG (8bitový)** - Komprimovaný 8bitový formát PNG
   * **JPG (8bitový)** - Komprimovaný 8bitový formát JPEG
 * **Výchozí**: TIFF (16bitový)
@@ -184,14 +184,14 @@ Tato nastavení řídí formát a kvalitu exportovaných zpracovaných obrázků
 
 ## Uložit šablonu projektu
 
-Tato funkce umožňuje uložit aktuální nastavení projektu jako šablonu, kterou lze znovu použít.
+Tato funkce umožňuje uložit aktuální nastavení projektu jako šablonu pro opakované použití.
 
 * **Typ**: Zadání textu + tlačítko Uložit
 * **Popis**: Zadejte popisný název pro šablonu nastavení a klikněte na ikonu uložit. Šablona uloží všechna aktuální nastavení projektu (detekce cíle, možnosti zpracování, indexy a formát exportu) pro snadné opětovné použití v budoucích projektech.
 * **Případy použití**:
   * Vytvořte šablony pro různé kamerové systémy (RGB, multispektrální, NIR)
   * Uložte standardní konfigurace pro konkrétní typy plodin nebo analytické pracovní postupy
-  * Sdílejte konzistentní nastavení v rámci týmu
+  * Sdílejte jednotná nastavení v rámci týmu
 * **Jak používat**:
   1. Nakonfigurujte všechna požadovaná nastavení projektu
   2. Zadejte název šablony (např. „RedEdge Survey3 NDVI Standard“).
@@ -202,11 +202,11 @@ Tato funkce umožňuje uložit aktuální nastavení projektu jako šablonu, kte
 
 ## Uložit složku projektu
 
-Toto nastavení určuje, kam se nové projekty standardně ukládají.
+Toto nastavení určuje, kam se nové projekty ukládají ve výchozím nastavení.
 
 * **Typ**: Zobrazení cesty k adresáři + tlačítko Upravit
 * **Výchozí**: `C:\Users\[Username]\Chloros Projects`
-* **Popis**: Zobrazuje aktuální výchozí adresář, do kterého se vytvářejí nové projekty Chloros. Kliknutím na ikonu úprav vyberte jiný adresář.
+* **Popis**: Zobrazuje aktuální výchozí adresář, do kterého se ukládají nové projekty Chloros. Kliknutím na ikonu Upravit vyberte jiný adresář.
 * **Kdy změnit**:
   * Nastavte síťový disk pro spolupráci v týmu.
   * Změňte disk s větším úložným prostorem pro velké datové soubory.
@@ -217,7 +217,7 @@ Toto nastavení určuje, kam se nové projekty standardně ukládají.
 
 ## Trvalost nastavení
 
-Všechna nastavení projektu se automaticky ukládají s vaším projektovým souborem (formát projektu `.mapir`). Když projekt znovu otevřete, všechna nastavení se obnoví přesně tak, jak jste je nechali.
+Všechna nastavení projektu se automaticky ukládají spolu s projektovým souborem (formát projektu `.mapir`). Při opětovném otevření projektu se všechna nastavení obnoví přesně tak, jak jste je uložili.
 
 ### Hierarchie nastavení
 
@@ -230,17 +230,17 @@ Nastavení se aplikují v následujícím pořadí:
 
 ### Nastavení a zpracování obrazu
 
-Většina změn nastavení (zejména v kategoriích Zpracování a Export) spustí nové zpracování obrazů, aby se zohlednila nová nastavení. Některá nastavení jsou však „pouze pro export“ a nevyžadují okamžité přepracování:
+Většina změn nastavení (zejména v kategoriích Zpracování a Export) spustí nové zpracování obrazů, aby se zohlednila nová nastavení. Některá nastavení jsou však „pouze pro export“ a nevyžadují okamžité nové zpracování:
 
 * Uložit šablonu projektu
 * Pracovní adresář
-* Kalibrovaný formát obrázku (platí při exportu)
+* Kalibrovaný formát obrazu (platí při exportu)
 
 ***
 
 ## Osvědčené postupy
 
-1. **Začněte s výchozími nastaveními**: Výchozí nastavení fungují dobře pro většinu kamerových systémů MAPIR a typické pracovní postupy.
+1. **Začněte s výchozím nastavením**: Výchozí nastavení funguje dobře pro většinu kamerových systémů MAPIR a typické pracovní postupy.
 2. **Vytvořte šablony**: Jakmile optimalizujete nastavení pro konkrétní pracovní postup nebo kameru, uložte je jako šablonu, abyste zajistili konzistenci napříč projekty.
 3. **Otestujte před úplným zpracováním**: Při experimentování s novými nastaveními otestujte na malé podskupině obrázků, než zpracujete celý datový soubor.
 4. **Zaznamenejte si nastavení**: Používejte popisné názvy šablon, které označují kamerový systém, typ zpracování a zamýšlené použití (např. „Survey3\_RGB\_NDVI\_Agriculture“).

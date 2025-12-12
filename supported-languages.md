@@ -20,8 +20,8 @@ Chloros podporuje následující jazyky:
 | 12 | 🇳🇱 Holandština | Nederlands | `nl` |
 | 13 | 🇸🇦 Arabština | العربية | `ar` |
 | 14 | 🇵🇱 Polština | Polski | `pl` |
-| 15 | 🇹🇷 turečtina | Türkçe | `tr` |
-| 16 | 🇮🇳 hindština | हिंदी | `hi` |
+| 15 | 🇹🇷 Turečtina | Türkçe | `tr` |
+| 16 | 🇮🇳 Hindština | हिंदी | `hi` |
 | 17 | 🇮🇩 Indonéština | Bahasa Indonesia | `id` |
 | 18 | 🇻🇳 Vietnamština | Tiếng Việt | `vi` |
 | 19 | 🇹🇭 Thajština | ไทย | `th` |

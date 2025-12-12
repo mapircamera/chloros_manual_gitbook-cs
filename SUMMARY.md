@@ -6,7 +6,7 @@
 * [CLI: Příkazový řádek](CLI.md)
 * [API: Python SDK](api-python-sdk.md)
 * [Podporované fotoaparáty](supported-cameras.md)
-* [Formáty výstupních obrázků](output-image-formats.md)
+* [Výstupní formáty obrázků](output-image-formats.md)
 * [Chloros+ Přihlášení](chloros+-login.md)
 * [Kalibrační cíle](calibration-targets.md)
 * [Podporované jazyky](supported-languages.md)

@@ -10,13 +10,13 @@ metaLinks:
 
 Níže uvedené vzorce indexu používají kombinaci průměrných rozsahů propustnosti filtru Survey3:
 
-<table><thead><tr><th align="center">Survey3 Barva filtru</th><th width="196.199951171875" align="center">Survey3 Název filtru</th><th width="159.800048828125" align="center">Rozsah propustnosti (FWHM)</th><th align="center">Průměrná propustnost</th></tr></thead><tbody><tr><td align="center">Blue</td><td align="center">NGB – Blue</td><td align="center">468–483 nm</td><td align="center">475 nm</td></tr><tr><td align="center">Cyan</td><td align="center">OCN- Cyan</td><td align="center">476–512 nm</td><td align="center">494 nm</td></tr><tr><td align="center">Green</td><td align="center">RGN | NGB - Green</td><td align="center">543–558 nm</td><td align="center">547 nm</td></tr><tr><td align="center">Orange</td><td align="center">OCN - Orange</td><td align="center">598–640 nm</td><td align="center">619 nm</td></tr><tr><td align="center">Red</td><td align="center">RGN - Red</td><td align="center">653–668 nm</td><td align="center">661 nm</td></tr><tr><td align="center">RedEdge</td><td align="center">Re - RedEdge</td><td align="center">712–735 nm</td><td align="center">724 nm</td></tr><tr><td align="center">NIR1</td><td align="center">OCN - NIR1</td><td align="center">798–848 nm</td><td align="center">823 nm</td></tr><tr><td align="center">NIR2</td><td align="center">RGN | NGB | NIR - NIR2</td><td align="center">835–865 nm</td><td align="center">850 nm</td></tr></tbody></table>
+<table><thead><tr><th align="center">Survey3 Barva filtru</th><th width="196.199951171875" align="center">Survey3 Název filtru</th><th width="159.800048828125" align="center">Rozsah propustnosti (FWHM)</th><th align="center">Průměrná propustnost</th></tr></thead><tbody><tr><td align="center">Blue</td><td align="center">NGB - Blue</td><td align="center">468–483 nm</td><td align="center">475 nm</td></tr><tr><td align="center">Cyan</td><td align="center">OCN- Cyan</td><td align="center">476–512 nm</td><td align="center">494 nm</td></tr><tr><td align="center">Green</td><td align="center">RGN | NGB - Green</td><td align="center">543–558 nm</td><td align="center">547 nm</td></tr><tr><td align="center">Orange</td><td align="center">OCN - Orange</td><td align="center">598–640 nm</td><td align="center">619 nm</td></tr><tr><td align="center">Red</td><td align="center">RGN - Red</td><td align="center">653–668 nm</td><td align="center">661 nm</td></tr><tr><td align="center">RedEdge</td><td align="center">Re - RedEdge</td><td align="center">712–735 nm</td><td align="center">724 nm</td></tr><tr><td align="center">NIR1</td><td align="center">OCN - NIR1</td><td align="center">798–848 nm</td><td align="center">823 nm</td></tr><tr><td align="center">NIR2</td><td align="center">RGN | NGB | NIR - NIR2</td><td align="center">835–865 nm</td><td align="center">850 nm</td></tr></tbody></table>
 
 Při použití těchto vzorců může název končit na „\_1“ nebo „\_2“, což odpovídá tomu, který filtr NIR, NIR1 nebo NIR2 byl použit.
 
 ***
 
-## EVI – Vylepšený index vegetace
+## EVI – vylepšený index vegetace
 
 Tento index byl původně vyvinut pro použití s daty MODIS jako vylepšení oproti NDVI optimalizací signálu vegetace v oblastech s vysokým indexem listové plochy (LAI). Je nejužitečnější v oblastech s vysokým LAI, kde může dojít k nasycení NDVI. Používá modrou odrazivost k opravě signálů pozadí půdy a ke snížení atmosférických vlivů, včetně rozptylu aerosolů.
 
@@ -24,7 +24,7 @@ $$
 EVI = 2.5 *  {(NIR - Red) \over (NIR + 6 * Red - 7.5 * Blue + 1)}
 $$
 
-Hodnoty EVI by se měly pohybovat v rozmezí od 0 do 1 pro pixely vegetace. Světlé prvky, jako jsou mraky a bílé budovy, spolu s tmavými prvky, jako je voda, mohou vést k anomálním hodnotám pixelů v obraze EVI. Před vytvořením obrazu EVI byste měli z obrazu odrazivosti odstranit mraky a jasné prvky a případně nastavit prahovou hodnotu pixelů od 0 do 1.
+Hodnoty EVI by se měly pohybovat v rozmezí 0 až 1 pro pixely vegetace. Světlé prvky, jako jsou mraky a bílé budovy, spolu s tmavými prvky, jako je voda, mohou vést k anomálním hodnotám pixelů v obraze EVI. Před vytvořením obrazu EVI byste měli z obrazu odrazivosti odstranit mraky a jasné prvky a případně nastavit prahovou hodnotu pixelů od 0 do 1.
 
 _Reference: Huete, A., et al. „Přehled radiometrických a biofyzikálních vlastností indexů vegetace MODIS.“ Remote Sensing of Environment 83 (2002):195–213._
 
@@ -32,7 +32,7 @@ _Reference: Huete, A., et al. „Přehled radiometrických a biofyzikálních vl
 
 ## FCI1 – Index lesního porostu 1
 
-Tento index rozlišuje lesní porosty od jiných typů vegetace pomocí multispektrálních odrazivých snímků, které zahrnují červené okrajové pásmo.
+Tento index odlišuje lesní porosty od jiných typů vegetace pomocí multispektrálních odrazivých snímků, které zahrnují červené okrajové pásmo.
 
 $$
 FCI1 = Red * RedEdge
@@ -46,7 +46,7 @@ _Reference: Becker, Sarah J., Craig S.T. Daughtry a Andrew L. Russ. „Robustní
 
 ## FCI2 – Index lesního porostu 2
 
-Tento index rozlišuje lesní porosty od jiných typů vegetace pomocí multispektrálních obrazů odrazivosti, které neobsahují červené okrajové pásmo.
+Tento index rozlišuje korunové vrstvy lesů od jiných typů vegetace pomocí multispektrálních odrazivých snímků, které neobsahují červené okrajové pásmo.
 
 $$
 FCI2 = Red * NIR
@@ -54,11 +54,11 @@ $$
 
 Zalesněné oblasti budou mít nižší hodnoty FCI2 kvůli nižší odrazivosti stromů a přítomnosti stínů v korunách stromů.
 
-_Reference: Becker, Sarah J., Craig S.T. Daughtry a Andrew L. Russ. „Robustní indexy lesního porostu pro multispektrální snímky.“ Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505-512._
+_Reference: Becker, Sarah J., Craig S.T. Daughtry a Andrew L. Russ. „Robust forest cover indices for multispectral images.“ Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505-512._
 
 ***
 
-## GEMI – Globální index monitorování životního prostředí
+## GEMI – Index globálního monitorování životního prostředí
 
 Tento nelineární index vegetace se používá pro globální monitorování životního prostředí z družicových snímků a snaží se korigovat atmosférické vlivy. Je podobný NDVI, ale je méně citlivý na atmosférické vlivy. Je ovlivněn holou půdou, proto se nedoporučuje používat v oblastech s řídkou nebo středně hustou vegetací.
 
@@ -78,7 +78,7 @@ _Reference: Pinty, B., a M. Verstraete. GEMI: nelineární index pro monitorová
 
 ## GARI - Green Index odolný vůči atmosférickým vlivům
 
-Tento index je citlivější na široké spektrum koncentrací chlorofylu a méně citlivý na atmosférické vlivy než NDVI.
+Tento index je citlivější na široký rozsah koncentrací chlorofylu a méně citlivý na atmosférické vlivy než NDVI.
 
 $$
 GARI = {NIR - [Green - \gamma(Blue - Red)] \over NIR + [Green - \gamma(Blue - Red)]   }
@@ -86,7 +86,7 @@ $$
 
 Konstanta gama je váhová funkce, která závisí na podmínkách aerosolu v atmosféře. ENVI používá hodnotu 1,7, což je doporučená hodnota od Gitelsona, Kaufmana a Merzylaka (1996, strana 296).
 
-_Reference: Gitelson, A., Y. Kaufman a M. Merzylak. „Use of a Green Channel in Remote Sensing of Global Vegetation from EOS-MODIS.“ Remote Sensing of Environment 58 (1996): 289-298._
+_Reference: Gitelson, A., Y. Kaufman a M. Merzylak. „Použití kanálu Green při dálkovém snímání globální vegetace z EOS-MODIS.“ Remote Sensing of Environment 58 (1996): 289-298._
 
 ***
 
@@ -138,19 +138,19 @@ $$
 GOSAVI = {NIR - Green \over NIR + Green + 0.16)  }
 $$
 
-_Reference: Sripada, R., et al. „Determining In-Season Nitrogen Requirements for Corn Using Aerial Color-Infrared Photography.“ Ph.D. disertační práce, North Carolina State University, 2005._
+_Reference: Sripada, R., et al. „Stanovení sezónní potřeby dusíku pro kukuřici pomocí letecké barevné infračervené fotografie.“ Doktorská disertační práce, North Carolina State University, 2005._
 
 ***
 
-## GRVI – Green Poměr vegetace
+## GRVI – Green Poměrný index vegetace
 
-Tento index je citlivý na fotosyntetickou aktivitu v korunách lesů, protože odrazivost zelené a červené barvy je silně ovlivněna změnami v barvě listů.
+Tento index je citlivý na fotosyntetickou aktivitu v korunách lesů, protože odrazivost zelené a červené barvy je silně ovlivněna změnami pigmentů v listech.
 
 $$
 GRVI = {NIR \over Green }
 $$
 
-_Reference: Sripada, R., et al. „Aerial Color Infrared Photography for Determining Early In-season Nitrogen Requirements in Corn.“ Agronomy Journal 98 (2006): 968-977._
+_Reference: Sripada, R., et al. „Letecká barevná infračervená fotografie pro stanovení požadavků na dusík v kukuřici na začátku vegetačního období.“ Agronomy Journal 98 (2006): 968-977._
 
 ***
 
@@ -162,13 +162,13 @@ $$
 GSAVI = 1.5 * {(NIR - Green) \over (NIR + Green + 0.5)  }
 $$
 
-_Reference: Sripada, R., et al. „Determining In-Season Nitrogen Requirements for Corn Using Aerial Color-Infrared Photography.“ Ph.D. disertační práce, North Carolina State University, 2005._
+_Reference: Sripada, R., et al. „Stanovení sezónní potřeby dusíku pro kukuřici pomocí letecké barevné infračervené fotografie.“ Doktorská práce, North Carolina State University, 2005._
 
 ***
 
 ## LAI – Index listové plochy
 
-Tento index se používá k odhadu listového pokryvu a k předpovědi růstu a výnosu plodin. ENVI vypočítává zelený LAI pomocí následujícího empirického vzorce od Boegh et al (2002):
+Tento index se používá k odhadu listového pokryvu a k předpovědi růstu a výnosu plodin. ENVI počítá zelený LAI pomocí následující empirické formule od Boegh et al (2002):
 
 $$
 LAI = 3.618 * EVI - 0.118
@@ -232,9 +232,9 @@ $$
 
 ***
 
-## NDVI – Normalizovaný rozdílový index vegetace
+## NDVI – normalizovaný rozdílový index vegetace
 
-Tento index je měřítkem zdravé, zelené vegetace. Kombinace jeho normalizované rozdílové formulace a využití oblastí s nejvyšší absorpcí a odrazivostí chlorofylu ho činí robustním v široké škále podmínek. Může však dojít k jeho nasycení v podmínkách husté vegetace, když LAI dosáhne vysoké hodnoty.
+Tento index je měřítkem zdravé, zelené vegetace. Kombinace jeho normalizované rozdílové formulace a použití oblastí s nejvyšší absorpcí a odrazivostí chlorofylu ho činí robustním v široké škále podmínek. Může však dosáhnout nasycení v podmínkách husté vegetace, když LAI dosáhne vysoké hodnoty.
 
 $$
 NDVI = {NIR - Red \over NIR + Red  }
@@ -242,25 +242,25 @@ $$
 
 Hodnota tohoto indexu se pohybuje v rozmezí od -1 do 1. Běžný rozsah pro zelenou vegetaci je 0,2 až 0,8.
 
-_Reference: Rouse, J., R. Haas, J. Schell a D. Deering. Monitorování vegetačních systémů v Great Plains pomocí ERTS. Třetí sympozium ERTS, NASA (1973): 309-317._
+_Reference: Rouse, J., R. Haas, J. Schell a D. Deering. Monitoring Vegetation Systems in the Great Plains with ERTS. Třetí sympozium ERTS, NASA (1973): 309-317._
 
 ***
 
 ## NLI – nelineární index
 
-Tento index předpokládá, že vztah mezi mnoha vegetačními indexy a biofyzikálními parametry povrchu je nelineární. Linearizuje vztahy s povrchovými parametry, které mají tendenci být nelineární.
+Tento index předpokládá, že vztah mezi mnoha vegetačními indexy a biofyzikálními parametry povrchu je nelineární. Lineárizuje vztahy s povrchovými parametry, které mají tendenci být nelineární.
 
 $$
 NLI = {NIR^{2} - Red \over NIR^{2} + Red  }
 $$
 
-_Reference: Goel, N., a W. Qin. „Vliv architektury korun stromů na vztahy mezi různými vegetačními indexy a LAI a Fpar: počítačová simulace.“ Remote Sensing Reviews 10 (1994): 309-347._
+_Reference: Goel, N. a W. Qin. „Vliv architektury korun stromů na vztahy mezi různými vegetačními indexy a LAI a Fpar: počítačová simulace.“ Remote Sensing Reviews 10 (1994): 309–347._
 
 ***
 
 ## OSAVI – Optimalizovaný index vegetace upravený podle půdy
 
-Tento index je založen na indexu vegetace upraveném podle půdy (SAVI). Používá standardní hodnotu 0,16 pro faktor úpravy pozadí korun stromů. Rondeaux (1996) zjistil, že tato hodnota poskytuje větší variaci půdy než SAVI pro nízký vegetační pokryv, přičemž vykazuje zvýšenou citlivost na vegetační pokryv větší než 50 %. Tento index se nejlépe používá v oblastech s relativně řídkou vegetací, kde je půda viditelná přes korunu stromů.
+Tento index je založen na indexu vegetace upraveném podle půdy (SAVI). Používá standardní hodnotu 0,16 pro faktor úpravy pozadí porostu. Rondeaux (1996) stanovil, že tato hodnota poskytuje větší variabilitu půdy než SAVI pro nízký vegetační pokryv, přičemž vykazuje zvýšenou citlivost na vegetační pokryv větší než 50 %. Tento index se nejlépe používá v oblastech s relativně řídkým porostem, kde je půda viditelná přes porost.
 
 $$
 OSAVI = {(NIR - Red) \over (NIR + Red + 0.16)  }
@@ -272,7 +272,7 @@ _Reference: Rondeaux, G., M. Steven a F. Baret. „Optimization of Soil-Adjusted
 
 ## RDVI – Renormalizovaný rozdílový vegetační index
 
-Tento index využívá rozdíl mezi vlnovými délkami v blízké infračervené a červené oblasti spolu s NDVI k zvýraznění zdravé vegetace. Je necitlivý na vliv půdy a geometrii slunečního svitu.
+Tento index využívá rozdíl mezi vlnovými délkami v blízké infračervené a červené oblasti spolu s NDVI k zvýraznění zdravé vegetace. Je necitlivý na vlivy půdy a geometrie slunečního svitu.
 
 $$
 RDVI = {(NIR- Red) \over \sqrt{(NIR + Red)}  }
@@ -284,7 +284,7 @@ _Reference: Roujean, J., a F. Breon. „Odhad PAR absorbovaného vegetací z mě
 
 ## SAVI – Index vegetace upravený o půdu
 
-Tento index je podobný indexu NDVI, ale potlačuje vliv pixelů půdy. Používá faktor úpravy pozadí porostu, _L_, který je funkcí hustoty vegetace a často vyžaduje předchozí znalost množství vegetace. Huete (1988) navrhuje optimální hodnotu _L_=0,5, aby se zohlednily variace pozadí půdy prvního řádu. Tento index se nejlépe používá v oblastech s relativně řídkou vegetací, kde je půda viditelná přes koruny stromů.
+Tento index je podobný indexu NDVI, ale potlačuje vliv pixelů půdy. Používá faktor úpravy pozadí porostu, _L_, který je funkcí hustoty vegetace a často vyžaduje předchozí znalost množství vegetace. Huete (1988) navrhuje optimální hodnotu _L_=0,5, aby se zohlednily variace pozadí půdy prvního řádu. Tento index se nejlépe používá v oblastech s relativně řídkou vegetací, kde je půda viditelná přes porost.
 
 $$
 SAVI = {1.5 * (NIR- Red) \over (NIR + Red + 0.5)  }
@@ -294,7 +294,7 @@ _Reference: Huete, A. „A Soil-Adjusted Vegetation Index (SAVI).“ Remote Sens
 
 ***
 
-## TDVI – transformovaný rozdílový index vegetace
+## TDVI – transformovaný rozdílový vegetační index
 
 Tento index je užitečný pro monitorování vegetačního pokryvu v městském prostředí. Není nasycený jako NDVI a SAVI.
 
@@ -308,7 +308,7 @@ _Reference: Bannari, A., H. Asalhi a P. Teillet. „Transformed Difference Veget
 
 ## VARI – Index odolnosti vůči atmosférickým vlivům ve viditelném spektru
 
-Tento index je založen na indexu ARVI a používá se k odhadu podílu vegetace v dané scéně s nízkou citlivostí na atmosférické vlivy.
+Tento index je založen na indexu ARVI a používá se k odhadu podílu vegetace v oblasti s nízkou citlivostí na atmosférické vlivy.
 
 $$
 VARI = {Green - Red \over Green + Red - Blue  }

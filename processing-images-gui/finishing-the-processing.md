@@ -9,7 +9,7 @@ Po úspěšném dokončení zpracování se zobrazí několik indikátorů:
 * ✅ **Indikátor průběhu**: Dosáhne 100% dokončení
 * ✅ **Debugovací protokol**: Zobrazí zprávu „Zpracování dokončeno“
 * ✅ **Tlačítko Start**: Znovu se aktivuje (připraveno pro další zpracování)
-* ✅ **Výstupní soubory**: Všechny zpracované obrázky jsou uloženy do podsložky modelu fotoaparátu
+* ✅ **Výstupní soubory**: Všechny zpracované obrázky jsou uloženy do podsložky modelu fotoaparátu.
 
 ***
 
@@ -30,7 +30,7 @@ Po úspěšném dokončení zpracování se zobrazí několik indikátorů:
 
 **Windows vestavěný náhled:**
 
-1. Přejděte do podsložky modelu kamery
+1. Přejděte do podsložky modelu fotoaparátu
 2. Vyberte obrazový soubor
 3. Náhled se zobrazí v okně náhledu Windows Explorer
 4. Pomocí kláves se šipkami procházejte obrázky
@@ -94,7 +94,7 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 1. Zkontrolujte protokol ladění, zda neobsahuje zprávy o přeskočení/chybách.
 2. Ověřte, zda bylo dostatek místa na disku.
-3. Spočítejte soubory: Měly by se shodovat (původní počet – cílový počet) × (indexy + 1).
+3. Spočítejte soubory: Měly by se shodovat (původní počet – cílový počet) × (indexy + 1)
 4. Znovu importujte a znovu zpracujte všechny chybějící soubory.
 
 ### Problém: Tmavé nebo světlé okraje (vigneta je stále viditelná)
@@ -148,7 +148,7 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 ## Použití zpracovaných snímků
 
-### Pro fotogrammetrii / tvorbu ortomozaiky
+### Pro fotogrammetrii / vytvoření ortomozaiky
 
 **Doporučený pracovní postup:**
 
@@ -220,13 +220,13 @@ Pro více relací/datových sad:
 
 **Možnost 1: GUI – více projektů**
 
-* Vytvořte samostatný projekt pro každou relaci
+* Vytvořte samostatný projekt pro každou relaci.
 * Použijte konzistentní nastavení šablony.
 * Zpracovávejte po jednom.
 
 **Možnost 2: Chloros CLI (pouze Chloros+)**
 
-* Automatizujte hromadné zpracování.
+* Automatizujte dávkové zpracování.
 * Zpracovávejte více složek pomocí skriptů.
 * Viz [CLI Dokumentace](../CLI.md)
 
@@ -238,13 +238,13 @@ Pro více relací/datových sad:
 
 ***
 
-## Řešení problémů s následným zpracováním
+## Řešení problémů při následném zpracování
 
 ### Opakované zpracování s jinými nastaveními
 
 Pokud výsledky nejsou uspokojivé:
 
-1. Ponechte původní obrázky (nikdy je nemažte)
+1. Ponechte původní obrázky (nikdy je nemazejte)
 2. Otevřete stejný projekt v Chloros
 3. Upravte nastavení v panelu Nastavení projektu
 4. Zpracujte znovu – výstupy přepíšou předchozí výsledky
@@ -274,12 +274,12 @@ Pokud narazíte na problémy:
 Nyní jste dokončili celý pracovní postup zpracování Chloros:
 
 1. ✅ **Vytvořený projekt** – viz [Projekty](../projects.md)
-2. ✅ **Přidané soubory** – viz [Přidávání souborů](adding-files-to-a-project.md)
-3. ✅ **Upravili jste nastavení** – viz [Úprava nastavení projektu](adjusting-project-settings.md)
-4. ✅ **Označili jste cíle** – viz [Výběr cílových obrázků](choosing-target-images.md)
+2. ✅ **Přidány soubory** – viz [Přidávání souborů](adding-files-to-a-project.md)
+3. ✅ **Upravila se nastavení** – viz [Úprava nastavení projektu](adjusting-project-settings.md)
+4. ✅ **Označené cíle** – viz [Výběr cílových obrázků](choosing-target-images.md)
 5. ✅ **Zahájeno zpracování** – viz [Zahájení zpracování](starting-the-processing.md)
-6. ✅ **Sledován průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
-7. ✅ **Zkontrolované výsledky** – Tato stránka
+6. ✅ **Sledovaný průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
+7. ✅ **Zkontrolované výsledky** – tato stránka
 
 **Vaše kalibrované multispektrální snímky s korekcí odrazivosti jsou připraveny k analýze!**
 
@@ -289,18 +289,18 @@ Nyní jste dokončili celý pracovní postup zpracování Chloros:
 
 ### Pokročilé funkce
 
-* [**Prohlížeč snímků**](../image-viewer-gui/opening-an-image-full-screen.md) – Interaktivní vizualizace a analýza
+* [**Prohlížeč obrázků**](../image-viewer-gui/opening-an-image-full-screen.md) – Interaktivní vizualizace a analýza
 * [**Index/LUT Sandbox**](../image-viewer-gui/index-lut-sandbox.md) – Testování vlastního indexu
 * [**Vzorec multispektrálního indexu**](../project-settings/multispectral-index-formulas.md) – Kompletní reference indexu
 
 ### Automatizace a integrace
 
-* [**CLI dokumentace**](../CLI.md) – dávkové zpracování z příkazového řádku
+* [**CLI Dokumentace**](../CLI.md) – Dávkové zpracování příkazového řádku
 * [**Python SDK**](../api-python-sdk.md) – Programová automatizace
 * [**Chloros+ Funkce**](../#chloros) – Pokročilé možnosti zpracování
 
 ### Podpora a vzdělávání
 
-* [**Často kladené otázky**](../faq.md) – Odpovědi na časté otázky
+* [**Často kladené otázky**](../faq.md) – Odpovědi na běžné otázky
 * [**Kalibrační cíle**](../calibration-targets.md) – Porozumění kalibraci odrazivosti
 * [**Podporované fotoaparáty**](../supported-cameras.md) – Kompatibilní hardware

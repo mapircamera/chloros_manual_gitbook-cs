@@ -1,6 +1,6 @@
 # CLI : Příkazový řádek
 
-<figure><img src=".gitbook/assets/cli.JPG" alt=""><figcaption></figcaption></figure>**Chloros CLI** poskytuje výkonný přístup z příkazového řádku k modulu pro zpracování obrazu Chloros, což umožňuje automatizaci, skriptování a bezhlavý provoz vašich pracovních postupů v oblasti zpracování obrazu.
+<figure><img src=".gitbook/assets/cli.JPG" alt=""><figcaption></figcaption></figure>**Chloros CLI** poskytuje výkonný přístup z příkazového řádku k enginu pro zpracování obrazu Chloros, což umožňuje automatizaci, skriptování a bezhlavý provoz vašich pracovních postupů v oblasti zpracování obrazu.
 
 ### Klíčové vlastnosti
 
@@ -15,7 +15,7 @@
 | Požadavek          | Podrobnosti                                                             |
 | -------------------- | ------------------------------------------------------------------- |
 | **Operační systém** | Windows 10/11 (64bitový)                                              |
-| **Licence**          | Chloros+ ([vyžaduje placený tarif](https://cloud.mapir.camera/pricing)) |
+| **Licence**          | Chloros+ ([vyžaduje placený plán](https://cloud.mapir.camera/pricing)) |
 | **Paměť**           | Minimálně 8 GB RAM (doporučeno 16 GB)                                  |
 | **Internet**         | Vyžadován pro aktivaci licence                                     |
 | **Místo na disku**       | Liší se podle velikosti projektu                                              |
@@ -290,7 +290,7 @@ chloros-cli language ja
 | `sl`    | Slovinština             | Slovenščina      |
 
 {% hint style=&quot;success&quot; %}
-**Automatické uchování**: Vaše jazykové preference jsou uloženy v `~/.chloros/cli_language.json` a zůstávají zachovány po celou dobu trvání všech relací.
+**Automatické uchování**: Vaše jazykové preference jsou uloženy v `~/.chloros/cli_language.json` a zůstávají zachovány ve všech relacích.
 {% endhint %}
 
 ***
@@ -378,7 +378,7 @@ Chloros+ CLI **automaticky škálovat** paralelní zpracování tak, aby odpoví
 **Jak to funguje:**
 
 * Detekuje jádra CPU a RAM
-* Přiděluje pracovníky: **2× jádra CPU** (používá hyperthreading)
+* Přiděluje pracovníky: **2× jádra CPU** (využívá hyperthreading)
 * **Maximálně: 16 paralelních pracovníků** (pro stabilitu)
 
 **Úrovně systému:**
@@ -430,7 +430,7 @@ Převádí surové hodnoty senzoru na standardizovaná procenta odrazivosti pomo
 
 * **Ve výchozím nastavení je tato funkce vypnuta.**
 * K zapnutí použijte `--ppk`.
-* Vyžaduje soubory .daq v projektové složce z MAPIR DAQ-A-SD světelného senzoru.
+* Vyžaduje soubory .daq v projektové složce ze světelného senzoru MAPIR DAQ-A-SD.
 
 ### Výstupní formáty
 
@@ -579,7 +579,7 @@ if __name__ == '__main__':
 1. **Vstup**: Složka obsahující páry obrázků RAW/JPG
 2. **Objevování**: CLI automaticky vyhledává podporované obrazové soubory
 3. **Zpracování**: Paralelní režim se přizpůsobuje jádrům vašeho procesoru (Chloros+)
-4. **Výstup**: Vytváří podsložky podle modelů fotoaparátů se zpracovanými obrázky
+4. **Výstup**: Vytvoří podsložky podle modelů fotoaparátů se zpracovanými obrázky
 
 ### Příklad struktury výstupu
 
@@ -765,7 +765,7 @@ Přihlaste se na: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camer
 
 ### Otázka: Kam se ukládají zpracované obrázky?
 
-**Odpověď:** Ve výchozím nastavení se zpracované obrázky ukládají do **stejné složky jako vstupní data** v podsložkách podle modelu kamery (např. `Survey3N_RGN/`).
+**Odpověď:** Ve výchozím nastavení se zpracované obrázky ukládají do **stejné složky jako vstupní** v podsložkách modelu kamery (např. `Survey3N_RGN/`).
 
 Pomocí možnosti `-o` můžete určit jinou výstupní složku:
 
@@ -789,7 +789,7 @@ chloros-cli process "C:\Input" -o "D:\Output"
 chloros-cli process "C:\Datasets\Field_A" | Tee-Object -FilePath "processing.log"
 ```
 
-**Batch:**
+**Dávka:**
 
 ```batch
 chloros-cli process "C:\Datasets\Field_A" > processing.log 2>&1
@@ -850,7 +850,7 @@ chloros-cli language --help
 ### Kanály podpory
 
 * **E-mail**: info@mapir.camera
-* **Webové stránky**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
+* **Webová stránka**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
 * **Ceny**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
 
 ***

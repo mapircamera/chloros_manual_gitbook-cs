@@ -7,7 +7,7 @@ metaLinks:
 
 # Kalibrační terče
 
-MAPIR nabízí různé kalibrační terče pro celou řadu aplikací. Kompaktní T4-R50, který vidíte níže, obsahuje 4 panely, u nichž byla změřena odrazivost světla v rozmezí 250–2 500 nm.
+MAPIR nabízí různé kalibrační terče pro celou řadu aplikací. Kompaktní T4-R50, který je vidět níže, obsahuje 4 panely, u nichž byla změřena odrazivost světla v rozmezí 250–2 500 nm.
 
 <figure><img src=".gitbook/assets/t4-r50_2.jpg" alt=""><figcaption><p>MAPIR T4-R50</p></figcaption></figure>
 
@@ -21,6 +21,6 @@ Na grafu odrazivosti můžete vidět, že hodnoty představují vlnovou délku (
 
 To znamená, že u každého snímku pořízeného našimi kamerami můžete použít fotografii našich odrazivostních terčů, jako je [T4-R50](https://www.mapir.camera/collections/calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t3-r50) nebo [T4-R125](https://www.mapir.camera/collections/multispectral-reflectance-reference-calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t4-r125), k kalibraci snímků z hlediska odrazivosti. Po kalibraci se každý pixel v obraze rovná procentuálnímu odrazivosti.
 
-Pokud kalibrované snímky exportujete v Chloros jako typický JPG nebo TIFF, procentuální odrazivost se vypočítá vydělením hodnoty pixelu bitovou hloubkou formátu snímku. Pro JPG tedy vydělte 255 a pro TIFF vydělte 65 535. Můžete také zvolit výstup ve formátu PERCENT v Chloros, a pak se každý pixel bude pohybovat v rozmezí procentní hodnoty 0,0 až 1,0 (0 % až 100 % odrazivosti). Mějte však na paměti, že některé obrazové aplikace nepřijímají obrázky v procentech (s plovoucí desetinnou čárkou) a že jsou z hlediska úložiště velké.
+Pokud kalibrované snímky exportujete v Chloros jako typický JPG nebo TIFF, procentuální odrazivost se vypočítá vydělením hodnoty pixelu bitovou hloubkou formátu snímku. Pro JPG tedy vydělte 255 a pro TIFF vydělte 65 535. Můžete také zvolit výstup ve formátu PERCENT v Chloros, a pak se každý pixel bude pohybovat v rozmezí procentní hodnoty 0,0 až 1,0 (0 % až 100 % odrazivosti). Mějte však na paměti, že některé obrazové aplikace nepřijímají obrázky v procentech (s plovoucí desetinnou čárkou) a z hlediska úložiště jsou velké.
 
 <div><figure><img src=".gitbook/assets/t3-125.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure> <figure><img src=".gitbook/assets/t3-125_2.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure> <figure><img src=".gitbook/assets/t3-125_closed.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure></div>

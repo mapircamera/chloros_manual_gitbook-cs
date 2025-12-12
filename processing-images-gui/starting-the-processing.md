@@ -1,29 +1,29 @@
 # Zahájení zpracování
 
-Jakmile importujete obrázky, označíte kalibrační cíle a nakonfigurujete nastavení projektu, můžete zahájit zpracování. Tato stránka vás provede zahájením zpracování Chloros.
+Jakmile importujete obrázky, označíte kalibrační cíle a nakonfigurujete nastavení projektu, můžete zahájit zpracování. Tato stránka vás provede spuštěním zpracovatelského procesu Chloros.
 
 ## Kontrolní seznam před zpracováním
 
-Než kliknete na tlačítko Start, ověřte, zda je vše připraveno:
+Než kliknete na tlačítko Start, zkontrolujte, zda je vše připraveno:
 
 * [ ] **Soubory importovány** – všechny obrázky se zobrazují v prohlížeči souborů
 * [ ] **Obrázky cílů označeny** – sloupec Cíl zkontrolován pro kalibrační obrázky
 * [ ] **Detekovány modely kamer** – ve sloupci Camera Model jsou zobrazeny správné kamery
 * [ ] **Nastavení nakonfigurováno** – nastavení projektu zkontrolováno a upraveno
-* [ ] **Vybrané indexy** – přidány požadované multispektrální indexy (v případě potřeby)
-* [ ] **Zvolen formát exportu** – výstupní formát vhodný pro váš pracovní postup
+* [ ] **Indexy vybrány** – přidány požadované multispektrální indexy (v případě potřeby)
+* [ ] **Formát exportu vybrán** – výstupní formát vhodný pro váš pracovní postup
 
 {% hint style=&quot;info&quot; %}
-**Tip**: Před zpracováním klikněte na několik obrázků v prohlížeči souborů a ověřte, zda se načtou správně.
+**Tip**: Před zpracováním klikněte na několik obrázků v prohlížeči souborů a ověřte, zda se načítaly správně.
 {% endhint %}
 
 ***
 
 ## Spuštění zpracování
 
-### Najděte tlačítko Start
+### Vyhledání tlačítka Start
 
-Tlačítko Start/Přehrát se nachází v horní liště Chloros:
+Tlačítko Start/Přehrát se nachází v horní liště záhlaví Chloros:
 
 * Poloha: V horní části okna uprostřed
 * Ikona: **Tlačítko Přehrát/Start** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">
@@ -87,14 +87,14 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 **Interakce s ukazatelem průběhu:**
 
 * **Přejděte myší** nad ukazatel a zobrazí se podrobný rozbalovací panel se 4 fázemi
-* **Kliknutím** na ukazatel průběhu rozbalovací panel zafixujete
-* **Kliknutím znovu** panel uvolníte a skryjete
+* **Kliknutím** na ukazatel průběhu rozbalovací panel zafixujete na místě
+* **Kliknutím** znovu panel uvolníte a skryjete.
 
 **Doba zpracování:**
 
-* Výrazně rychlejší než volný režim
-* Škáluje se podle počtu jader CPU
-* Akcelerace GPU dále zvyšuje rychlost
+* Výrazně rychlejší než volný režim.
+* Škáluje se podle počtu jader CPU.
+* Akcelerace GPU dále zvyšuje rychlost.
 
 {% hint style=&quot;info&quot; %}
 **Chloros+ Rychlost**: Paralelní zpracování může být u velkých datových sad 5–10krát rychlejší než sekvenční režim. Projekt s 500 obrázky, který v bezplatném režimu trvá 2 hodiny, lze s Chloros+ dokončit za 15–20 minut.
@@ -144,16 +144,16 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 * Aplikuje matematické operace s pásmy na kalibrované snímky
 * Generuje indexové snímky pro každý vybraný index
 
-**Trvání:** Několik sekund na jeden obraz
+**Doba trvání:** Několik sekund na jeden snímek
 
 ### Fáze 5: Export
 
 **Co dělá Chloros:**
 
-* Uloží kalibrované obrazy ve vybraném formátu
-* Exportuje indexové obrazy s nakonfigurovanými barvami LUT
-* Zapíše soubory do podsložek modelu kamery
-* Zachová původní názvy souborů s příponami
+* Ukládá kalibrované snímky ve vybraném formátu
+* Exportuje indexové snímky s nakonfigurovanými barvami LUT
+* Zapisuje soubory do podsložek modelu fotoaparátu
+* Zachovává původní názvy souborů s příponami
 
 **Doba trvání:** Liší se podle formátu exportu a velikosti souboru
 
@@ -182,7 +182,7 @@ Po spuštění běží celý proces automaticky:
 * Vysoké využití CPU (vícevláknové, až 16 jader)
 * S akcelerací GPU: Vysoké využití GPU
 * Počítač může být během zpracování méně responzivní
-* Vyhněte se spouštění jiných úloh náročných na CPU
+* Vyhněte se spouštění jiných úkolů náročných na CPU
 
 {% hint style=&quot;warning&quot; %}
 **Tip pro výkon**: Pro nejlepší výkon Chloros+ zavřete ostatní aplikace a nechte Chloros využívat všechny systémové zdroje.
@@ -216,11 +216,11 @@ Podrobné informace o monitorování naleznete v části [Monitorování zpracov
 
 ## Zrušení zpracování
 
-Pokud potřebujete zastavit zpracování:
+Pokud potřebujete zpracování zastavit:
 
 ### Jak zrušit
 
-1. Najděte **tlačítko Zastavit/Zrušit** (nahrazuje tlačítko Start během zpracování)
+1. Najděte **tlačítko Zastavit/Zrušit** (během zpracování nahrazuje tlačítko Spustit)
 2. Klikněte na tlačítko Zastavit
 3. Zpracování se okamžitě zastaví
 4. Částečné výsledky budou zrušeny
@@ -247,20 +247,20 @@ Pokud potřebujete zastavit zpracování:
 
 ***
 
-## Odhadované doby zpracování
+## Odhadovaná doba zpracování
 
 Skutečná doba zpracování se značně liší v závislosti na:
 
 * Počtu obrázků
 * Rozlišení obrázků
 * Vstupním formátu RAW vs. JPG
-* Režimu zpracování (Free vs. Chloros+)
+* Režimu zpracování (Free vs Chloros+)
 * Rychlosti CPU a počtu jader
 * Dostupnosti GPU (pouze Chloros+)
 * Počtu indexů k výpočtu
 * Složitosti exportního formátu
 
-### Hrubé odhady (Chloros+, obrázky 12 MP, moderní CPU)
+### Hrubé odhady (Chloros+, 12MP obrázky, moderní CPU)
 
 | Počet obrázků | Režim Free | Chloros+ (CPU) | Chloros+ (GPU) |
 | ----------- | --------- | -------------- | -------------- |
@@ -284,12 +284,12 @@ Skutečná doba zpracování se značně liší v závislosti na:
 
 * Nejsou importovány žádné obrázky.
 * Backend není zcela spuštěn.
-* Předchozí zpracování stále probíhá.
+* Předchozí zpracování stále běží.
 * Projekt není zcela načten.
 
 **Řešení:**
 
-1. Počkejte, až se backend zcela inicializuje (zkontrolujte ikonu v hlavním menu).
+1. Počkejte, až se backend plně inicializuje (zkontrolujte ikonu v hlavním menu).
 2. Ověřte, zda jsou obrázky importovány v prohlížeči souborů.
 3. Pokud tlačítko zůstává deaktivované, restartujte Chloros.
 4. Zkontrolujte, zda v protokolu ladění nejsou chybové zprávy.
@@ -350,8 +350,8 @@ Při použití GPU akcelerace NVIDIA:
 
 1. Aktualizujte ovladače NVIDIA na nejnovější verzi.
 2. Ujistěte se, že GPU má 4 GB+ VRAM.
-3. Zavřete aplikace náročné na GPU (hry, editace videa).
-4. Sledujte teplotu GPU (zajistěte dostatečné chlazení).
+3. Zavřete aplikace náročné na GPU (hry, editace videa)
+4. Sledujte teplotu GPU (zajistěte dostatečné chlazení)
 
 ***
 
@@ -359,7 +359,7 @@ Při použití GPU akcelerace NVIDIA:
 
 Po zahájení zpracování:
 
-1. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md).
+1. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
 2. **Počkejte na dokončení** – zpracování probíhá automaticky.
 3. **Zkontrolujte výsledky** – viz [Dokončení zpracování](finishing-the-processing.md).
 

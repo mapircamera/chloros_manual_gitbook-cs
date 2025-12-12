@@ -32,7 +32,7 @@ Programové rozhraní Python pro automatizaci a vlastní pracovní postupy. Ide�
 
 ## Chloros+
 
-Ačkoli Chloros je pro většinu úkolů zdarma, možná budete chtít více. V takovém případě se vám může hodit placená licence pro Chloros+. S licencí Chloros+ můžete odemknout nové funkce, jako například:
+Ačkoli je Chloros pro většinu úkolů zdarma, možná budete chtít více. V takovém případě se vám může hodit placená licence pro Chloros+. S licencí Chloros+ můžete odemknout nové funkce, jako například:
 
 * **Vícevláknové zpracování**: výrazně zrychlete zpracování obrazu u větších projektů současným zpracováním obrazů prostřednictvím potrubí.
 * **Akcelerace GPU (CUDA)**: využijte dnešní vyšší možnosti paměti GPU k dalšímu zrychlení zpracování obrazu. Pro dosažení nejlepších výsledků doporučujeme 4 GB nebo více VRAM.

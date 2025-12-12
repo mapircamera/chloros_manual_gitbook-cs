@@ -13,7 +13,7 @@ Nejběžnější způsob otevření obrázku v prohlížeči obrázků:
 3. Obrázek se otevře v **hlavní oblasti náhledu** (uprostřed obrazovky).
 4. Obrázek je nyní načten a připraven k prohlížení na celé obrazovce.
 
-### Otevření karty Image Viewer
+### Otevření karty prohlížeče obrázků
 
 Jakmile je obrázek načten v oblasti náhledu:
 
@@ -54,20 +54,20 @@ Upravte zvětšení pro prohlížení detailů obrázku:
 
 **Přiblížení:**
 
-* Klikněte na tlačítko **+** (plus)
+* Klikněte na tlačítko **+** (Plus)
 * Stiskněte klávesu **+** nebo **=**
 * Posuňte kolečko myši **nahoru**
 
 **Oddalení:**
 
-* Klikněte na tlačítko **−** (mínus)
-* Stiskněte klávesu **−** (mínus)
+* Klikněte na tlačítko **−** (Mínus)
+* Stiskněte klávesu **−** (Mínus)
 * Posuňte kolečko myši **dolů**
 
 **Přizpůsobit obrazovce:**
 
 * Klikněte na tlačítko **↔** (Přizpůsobit)
-* Stiskněte klávesu **0** (Nula)
+* Stiskněte klávesu **0** (nula)
 * Poklepejte na obrázek
 
 #### Posun při přiblížení
@@ -77,7 +77,7 @@ Při přiblížení nad velikost obrazovky:
 1. Přesuňte kurzor myši nad obrázek
 2. Klikněte a **podržte levé tlačítko myši**
 3. **Přetažením** přesuňte obrázek
-4. Uvolněním tlačítka zastavíte posouvání
+4. Uvolněním zastavíte posouvání
 
 **Alternativa**: Pomocí kláves se šipkami posouvejte obrázek po malých krocích
 
@@ -104,8 +104,8 @@ Při přesunutí kurzoru myši nad obrázek se v reálném čase zobrazí hodnot
 
 **Obrázky RAW + JPG z fotoaparátu:**
 
-* Zobrazení dat RAW jako náhled
-* Zobrazení původních, neopravených hodnot
+* Zobrazí data RAW jako náhled
+* Zobrazí původní, neopravené hodnoty
 * Užitečné pro kontrolu kvality obrázku před zpracováním
 
 ### Kalibrované obrázky odrazivosti
@@ -123,7 +123,7 @@ Při přesunutí kurzoru myši nad obrázek se v reálném čase zobrazí hodnot
 
 * Jednopásmové obrázky ve stupních šedi
 * Hodnoty pixelů představují výsledky výpočtu indexu
-* Rozsah obvykle -1 až +1 pro normalizované indexy
+* Rozsah typicky -1 až +1 pro normalizované indexy
 * Pro vizualizaci lze použít barevné LUT
 
 ***
@@ -160,7 +160,7 @@ Podrobné pokyny najdete v části [Index/LUT Sandbox](index-lut-sandbox.md).
 
 ### Ovládací prvky zobrazení
 
-* **P**: Přepnutí režimu procenta pixelů
+* **P**: Přepnutí režimu procentuálního zobrazení pixelů
 * **L**: Přepnutí panelu vrstev
 * **Esc**: Zavření celé obrazovky nebo návrat do prohlížeče souborů
 
@@ -203,7 +203,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 3. Ukončete ostatní aplikace, abyste uvolnili paměť.
 4. Zkuste menší/jiný obrázek.
 
-### Černobílé zobrazení obrázku
+### Zobrazení černobílého obrázku
 
 **Možné příčiny:**
 
@@ -217,7 +217,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 2. Zkuste soubor otevřít v QGIS nebo podobném programu s automatickým nastavením rozsahu.
 3. Zkontrolujte protokol ladění ze zpracování, zda neobsahuje chyby.
 
-### Hodnoty pixelů se zdají být nesprávné
+### Hodnoty pixelů se zdají nesprávné
 
 **Možné příčiny:**
 
@@ -228,7 +228,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 **Řešení:**
 
-1. Ověřte, že prohlížíte zpracovaný výstup (zkontrolujte příponu souboru).
+1. Ověřte, zda prohlížíte zpracovaný výstup (zkontrolujte příponu souboru).
 2. Zkontrolujte stav tlačítka režimu procent.
 3. Porovnejte se známými dobrými obrázky ze stejného datového souboru.
 

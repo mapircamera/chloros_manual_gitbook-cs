@@ -66,7 +66,7 @@ pip install chloros-sdk
 
 **Dokumentace**: [API: Python SDK](api-python-sdk.md)
 
-**Požadavky**: Chloros Desktop musí být nainstalován, Chloros+ licence vyžadována.
+**Požadavky**: Chloros Desktop musí být nainstalován, Chloros+ licence vyžadována
 
 ***
 
@@ -91,7 +91,7 @@ Odemkněte pokročilé funkce s předplatným Chloros+:
 * 💻 **Přístup CLI** – Automatizujte pomocí nástrojů příkazového řádku
 * 🐍 **Python SDK** – Programový přístup API
 * 📱 **Více zařízení** – Použití na 2–10+ zařízeních (v závislosti na plánu)
-* 🧮 **Vlastní vzorce** – Vytváření vlastních multispektrálních indexů
+* 🧮 **Vlastní vzorce** – Vytvářejte vlastní multispektrální indexy
 
 <p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Zobrazit plány a ceny Chloros+</a></p>***
 
