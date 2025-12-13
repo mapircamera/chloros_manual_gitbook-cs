@@ -1,10 +1,9 @@
 ---
-description: Frequently Asked Questions
+description: Často kladené otázky
 metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/faq
 ---
-
 # Často kladené otázky
 
 <details>
@@ -49,7 +48,7 @@ Ne. Podporovány jsou pouze jednotlivé snímky z fotoaparátu MAPIR, nikoli spo
 
 <details>
 
-<summary>Jak mohu urychlit krok detekce cíle v programu Chloros?</summary>
+<summary>Jak mohu urychlit krok detekce cíle v Chloros?</summary>
 
 V tabulce prohlížeče souborů předběžným výběrem cílových snímků v pravém sloupci dáte Chloros pokyn, aby hledal kalibrační cíle pouze v těchto snímcích, což výrazně zrychlí zpracování.
 
@@ -57,7 +56,7 @@ V tabulce prohlížeče souborů předběžným výběrem cílových snímků v 
 
 <details>
 
-<summary>Pokud nahraji své snímky do <a href="https://www.mapir.camera/collections/software/products/mapir-cloud-subscription">MAPIR Cloud,</a> měl bych je před nahráním zpracovat v Chloros?</summary>
+<summary>Pokud nahraji své snímky do <a href="https://www.mapir.camera/collections/software/products/mapir-cloud-subscription">MAPIR Cloud,</a> mám je před nahráním zpracovat v Chloros?</summary>
 
 Pokud plánujete nahrát obrázky na naši online platformu pro zpracování [MAPIR Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription), neupravujte je před nahráním. Cloud provede stejné zpracování a ještě více.
 
