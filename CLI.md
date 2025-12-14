@@ -8,7 +8,7 @@
 * 🔗 **Integrace** – začlenění do stávajících pracovních postupů a procesů
 * 💻 **Bezhlavý provoz** – spuštění bez grafického uživatelského rozhraní
 * 🌍 **Vícejazyčnost** – podpora 38 jazyků
-* ⚡ **Paralelní zpracování** – dynamické škálování podle výkonu vašeho procesoru (až 16 paralelních procesů)
+* ⚡ **Paralelní zpracování** – dynamické škálování podle výkonu vašeho procesoru (až 16 paralelních pracovníků)
 
 ### Požadavky
 
@@ -98,8 +98,8 @@ chloros-cli process "C:\Datasets\Survey_001" --vignette --reflectance
 | `<input-folder>`      | Cesta    | _Povinné_     | Složka obsahující multispektrální obrázky RAW/JPG                                         |
 | `-o, --output`        | Cesta    | Stejná jako vstup  | Výstupní složka pro zpracované obrázky                                                     |
 | `-n, --project-name`  | Řetězec  | Automaticky generovaný | Vlastní název projektu                                                                    |
-| `--vignette`          | Příznak    | Povoleno        | Povolit korekci viněty                                                             |
-| `--no-vignette`       | Příznak    | -              | Zakázat korekci viněty                                                            |
+| `--vignette`          | Příznak    | Povoleno        | Povolit korekci vinětace                                                             |
+| `--no-vignette`       | Příznak    | -              | Zakázat korekci vinětace                                                            |
 | `--reflectance`       | Příznak    | Povoleno        | Povolit kalibraci odrazivosti                                                         |
 | `--no-reflectance`    | Příznak    | -              | Zakázat kalibraci odrazivosti                                                        |
 | `--ppk`               | Příznak    | Zakázáno       | Použít korekce PPK z dat světelného senzoru .daq                                      |
@@ -162,7 +162,7 @@ chloros-cli logout
 
 ***
 
-### `status` – Zkontrolovat stav licence
+### `status` – Kontrola stavu licence
 
 Zobrazí aktuální stav licence a ověření.
 
@@ -248,7 +248,7 @@ chloros-cli language ja
 
 #### Podporované jazyky (celkem 38)
 
-| Kód    | Jazyk              | Nativní název      |
+| Kód    | Jazyk              | Rodný název      |
 | ------- | --------------------- | ---------------- |
 | `en`    | Angličtina               | English          |
 | `es`    | Španělština               | Español          |
@@ -290,7 +290,7 @@ chloros-cli language ja
 | `sl`    | Slovinština             | Slovenščina      |
 
 {% hint style=&quot;success&quot; %}
-**Automatické uchování**: Vaše jazykové preference jsou uloženy v `~/.chloros/cli_language.json` a zůstávají zachovány ve všech relacích.
+**Automatické uchování**: Vaše jazyková preference je uložena v `~/.chloros/cli_language.json` a zůstává zachována ve všech relacích.
 {% endhint %}
 
 ***
@@ -378,7 +378,7 @@ Chloros+ CLI **automaticky škálovat** paralelní zpracování tak, aby odpoví
 **Jak to funguje:**
 
 * Detekuje jádra CPU a RAM
-* Přiděluje pracovníky: **2× jádra CPU** (používá hyperthreading)
+* Přiděluje pracovníky: **2× jádra CPU** (využívá hyperthreading)
 * **Maximálně: 16 paralelních pracovníků** (pro stabilitu)
 
 **Úrovně systému:**
@@ -424,13 +424,13 @@ Převádí surové hodnoty senzoru na standardizovaná procenta odrazivosti pomo
 **Požadavky**: Pro přesný převod odrazivosti se ujistěte, že kalibrační panely jsou ve vašich snímcích správně exponované a viditelné.
 {% endhint %}
 
-### PPK korekce
+### Korekce PPK
 
-**Co dělá:** Používá postprocesní kinematické korekce pomocí dat protokolu DAQ-A-SD pro zlepšení přesnosti GPS.
+**Funkce:** Používá korekce Post-Processed Kinematic pomocí dat protokolu DAQ-A-SD pro zlepšení přesnosti GPS.
 
 * **Ve výchozím nastavení je tato funkce vypnuta.**
 * K zapnutí použijte `--ppk`.
-* Vyžaduje soubory .daq v projektové složce ze světelného senzoru MAPIR DAQ-A-SD.
+* Vyžaduje soubory .daq v projektové složce z MAPIR DAQ-A-SD světelného senzoru.
 
 ### Výstupní formáty
 
@@ -757,7 +757,7 @@ Přihlaste se na: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camer
 **Odpověď:** Ano! CLI běží zcela bez grafického rozhraní. Požadavky:
 
 * Windows Server 2016 nebo novější
-* Nainstalovaný Visual C++ Redistributable
+* Nainstalovaný balíček Visual C++ Redistributable
 * Dostatečná paměť RAM (minimálně 8 GB, doporučeno 16 GB)
 * Jednorázová aktivace licence GUI na libovolném počítači
 
@@ -850,7 +850,7 @@ chloros-cli language --help
 ### Kanály podpory
 
 * **E-mail**: info@mapir.camera
-* **Webová stránka**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
+* **Webové stránky**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
 * **Ceny**: [https://cloud.mapir.camera/pricing](https://cloud.mapir.camera/pricing)
 
 ***
@@ -895,7 +895,7 @@ chloros-cli process "C:\Datasets\Field_A" ^
 
 ### Příklad 4: Zpracování s korekcí PPK
 
-Aplikujte korekce PPK s odrazivostí:
+Použití korekcí PPK s odrazivostí:
 
 ```powershell
 chloros-cli process "C:\Datasets\Field_A" ^
@@ -907,7 +907,7 @@ chloros-cli process "C:\Datasets\Field_A" ^
 
 ### Příklad 5: Vlastní umístění výstupu
 
-Zpracujte na jiný disk s konkrétním formátem:
+Zpracování na jiný disk s konkrétním formátem:
 
 ```powershell
 chloros-cli process "C:\Input\Raw_Images" ^
@@ -919,7 +919,7 @@ chloros-cli process "C:\Input\Raw_Images" ^
 
 ### Příklad 6: Pracovní postup ověřování
 
-Dokončete proces ověřování:
+Dokončete pracovní postup ověřování:
 
 ```powershell
 # Step 1: Login

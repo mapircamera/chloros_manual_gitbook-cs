@@ -1,5 +1,5 @@
 ---
-description: Často kladené otázky
+description: Frequently Asked Questions
 metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/faq
@@ -10,7 +10,7 @@ metaLinks:
 
 <summary>Mohu zpracovávat snímky z kamer, které nejsou značky MAPIR, pomocí Chloros?</summary>
 
-Ne, Chloros podporuje pouze zpracování snímků z kamer MAPIR. Další informace naleznete v seznamu [podporovaných modelů kamer](supported-cameras.md). Nabízíme zpracování snímků z jiných kamer na MAPIR Cloud, úplný seznam naleznete [zde](https://mapir.gitbook.io/mapir-cloud/supported-cameras).
+Ne, Chloros podporuje pouze zpracování snímků z kamer MAPIR. Další informace naleznete v seznamu [podporovaných modelů kamer](supported-cameras.md). Nabízíme zpracování snímků z jiných kamer v cloudu MAPIR, úplný seznam naleznete [zde](https://mapir.gitbook.io/mapir-cloud/supported-cameras).
 
 </details>
 
@@ -18,7 +18,7 @@ Ne, Chloros podporuje pouze zpracování snímků z kamer MAPIR. Další informa
 
 <summary>Mohu kalibrovat své snímky pro odrazivost bez kalibračního terče?</summary>
 
-Ne. Bez snímku kalibračního terče pořízeného přibližně ve stejnou dobu jako snímky bez terče nebudete moci přiřadit hodnoty pixelů snímku ke známému procentu odrazivosti. Pokud také nezahrnete protokol ze světelného senzoru MAPIR, nebude změřeno spektrum okolního světla a výsledky odrazivosti nebudou přesné.
+Ne. Bez snímku kalibračního terče pořízeného přibližně ve stejnou dobu jako snímky bez terče nebudete moci přiřadit hodnoty pixelů snímku k známému procentu odrazivosti. Pokud také nezahrnete protokol ze světelného senzoru MAPIR, nebude změřeno spektrum okolního světla a výsledky odrazivosti nebudou přesné.
 
 </details>
 
@@ -34,7 +34,7 @@ Ne. Chloros předpokládá, že vstupní data nebyla upravena. Neměňte názvy 
 
 <summary>Mohu nastavit své fotoaparáty MAPIR Survey3 na automatickou expozici a zpracovat snímky v Chloros?</summary>
 
-Ne. Datové sady obrázků Survey3 musí mít pevnou/uzamčenou expozici, takže nelze použít automatickou rychlost závěrky ani automatické ISO. Všechny obrázky stejného modelu kamery musí mít identickou rychlost závěrky a ISO (expozici).
+Ne. Datové sady obrázků Survey3 musí mít pevnou/uzamčenou expozici, takže nelze použít automatickou rychlost závěrky ani automatické ISO. Všechny obrázky ze stejného modelu kamery musí mít identickou rychlost závěrky a ISO (expozici).
 
 </details>
 
@@ -56,7 +56,7 @@ V tabulce prohlížeče souborů předběžným výběrem cílových snímků v 
 
 <details>
 
-<summary>Pokud nahraji své snímky do <a href="https://www.mapir.camera/collections/software/products/mapir-cloud-subscription">MAPIR Cloud,</a> mám je před nahráním zpracovat v Chloros?</summary>
+<summary>Pokud budu nahrávat své snímky do <a href="https://www.mapir.camera/collections/software/products/mapir-cloud-subscription">MAPIR Cloud,</a> měl bych je před nahráním zpracovat v Chloros?</summary>
 
 Pokud plánujete nahrát obrázky na naši online platformu pro zpracování [MAPIR Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription), neupravujte je před nahráním. Cloud provede stejné zpracování a ještě více.
 

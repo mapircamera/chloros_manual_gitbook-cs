@@ -1,6 +1,6 @@
 # Výběr cílových obrázků
 
-Označení obrázků, které obsahují kalibrační cíle, je klíčovým krokem, který výrazně urychluje zpracování Chloros. Předběžným výběrem cílových obrázků eliminujete potřebu, aby Chloros prohledával každý obrázek ve vašem datovém souboru za účelem nalezení kalibračních cílů.
+Označení obrázků, které obsahují kalibrační cíle, je klíčovým krokem, který výrazně urychluje zpracování Chloros. Předběžným výběrem cílových obrázků eliminujete potřebu, aby Chloros skenoval každý obrázek ve vašem datovém souboru za účelem nalezení kalibračních cílů.
 
 ## Proč označovat cílové obrázky?
 
@@ -23,7 +23,7 @@ Když zaškrtnete sloupec Cíl u konkrétních obrázků:
 * Celková doba zpracování je výrazně zkrácena
 
 {% hint style=&quot;success&quot; %}
-**Zrychlení**: Označení 2–3 cílových obrázků v datovém souboru o 500 obrázcích může zkrátit dobu detekce cílů z více než 30 minut na méně než 1 minutu.
+**Zrychlení**: Označení 2–3 cílových obrázků v datovém souboru o 500 obrázcích může zkrátit dobu detekce cíle z více než 30 minut na méně než 1 minutu.
 {% endhint %}
 
 ***
@@ -39,7 +39,7 @@ Prohlédněte si importované obrázky v prohlížeči souborů a identifikujte,
 * **Cíl před pořízením**: Pořízený před zahájením relace
 * **Cíl po pořízení**: Pořízený po dokončení relace
 * **Cíle v terénu**: Cíle umístěné v oblasti pořízení
-* **Více cílů**: 2–3 cílové obrázky na relaci (doporučeno)
+* **Více cílů**: 2–3 cílový obrázky na relaci (doporučeno)
 
 ### Krok 2: Zkontrolujte sloupec Cíl
 
@@ -55,7 +55,7 @@ Pro každý obrázek obsahující kalibrační cíl:
 Před zpracováním zkontrolujte:
 
 * [ ] Jsou zaškrtnuty všechny snímky s kalibračními cíli.
-* [ ] Nejsou omylem zaškrtnuty žádné snímky bez cíle.
+* [ ] Nejsou omylem zaškrtnuty žádné snímky bez cílů.
 * [ ] Cíle jsou na zaškrtnutých snímcích jasně viditelné.
 
 ***
@@ -68,7 +68,7 @@ Před zpracováním zkontrolujte:
 
 * Snímky cílů pořizujte bezprostředně před a během snímací relace.
 * Za stejných světelných podmínek, jaké má světelný senzor DAQ.
-* Pro dosažení nejlepších výsledků pořizujte snímky cílů ideálně co nejčastěji. V opačném případě budou k úpravě kalibrace v průběhu času použita data ze světelného senzoru.
+* Pro dosažení nejlepších výsledků pořizujte snímky cílů ideálně co nejčastěji. V opačném případě budou k úpravě kalibrace v průběhu času použita data světelného senzoru.
 
 **Poloha kamery:**
 
@@ -94,9 +94,9 @@ Před zpracováním zkontrolujte:
 
 **Osvědčený postup:**
 
-* 3–5 snímků pořízených krátce po zahájení záznamu světelným senzorem
+* 3–5 snímků pořízených krátce po zahájení záznamu světelného senzoru
 * Pro dosažení nejlepších výsledků otáčejte kamerou mezi jednotlivými snímky
-* Volitelně: pravidelně v polovině relace, pokud se světelné podmínky neustále mění
+* Volitelně: pravidelně v polovině relace, pokud se podmínky osvětlení neustále mění
 
 ***
 
@@ -126,7 +126,7 @@ Tento sloupec použijte k ověření, zda jste v projektu označili cíle pro ka
 
 ## Nastavení detekce cílů
 
-### Úprava citlivosti detekce
+### Nastavení citlivosti detekce
 
 Pokud Chloros nedetekuje vaše cíle správně, upravte tato nastavení v [Nastavení projektu](adjusting-project-settings.md):
 
@@ -146,7 +146,7 @@ Pokud Chloros nedetekuje vaše cíle správně, upravte tato nastavení v [Nasta
 
 ## Časté problémy s obrázky cílů
 
-### Problém: Nebyly detekovány žádné cíle
+### Problém: Nejsou detekovány žádné cíle
 
 **Možné příčiny:**
 
@@ -166,16 +166,16 @@ Pokud Chloros nedetekuje vaše cíle správně, upravte tato nastavení v [Nasta
 
 **Možné příčiny:**
 
-* Bílé budovy, vozidla nebo porost zaměněné za cíle
+* Bílé budovy, vozidla nebo povrch země zaměněné za cíle
 * Světlé skvrny ve vegetaci
 * Příliš nízká citlivost detekce
 
 **Řešení:**
 
-1. Označte pouze skutečné snímky cílů, abyste omezili rozsah detekce.
+1. Označte pouze skutečné cíle, abyste omezili rozsah detekce.
 2. Zvětšete minimální kalibrační vzorkovací plochu.
-3. Zvětšete minimální hodnotu shlukování cílů.
-4. Ujistěte se, že snímky cílů zobrazují pouze cíl (minimální rušení pozadí).
+3. Zvětšete minimální hodnotu seskupení cílů.
+4. Ujistěte se, že cíle zobrazují pouze cíl (minimální rušení pozadí).
 
 ***
 
@@ -184,10 +184,10 @@ Pokud Chloros nedetekuje vaše cíle správně, upravte tato nastavení v [Nasta
 Před zahájením zpracování ověřte výběr obrázků cílů:
 
 * [ ] Nejméně 1 obrázek cíle označený za relaci
-* [ ] Zaškrtávací políčka sloupce Cíl jsou zaškrtnuta u všech obrázků cílů
+* [ ] Zaškrtávací políčka ve sloupci Cíl jsou zaškrtnuta u všech obrázků cílů
 * [ ] Obrázky cílů pořízené ve stejném časovém rámci jako průzkum
-* [ ] Cíle jasně viditelné v náhledu po kliknutí
-* [ ] Všechny 4 kalibrační panely viditelné na každém obrázku cíle
+* [ ] Cíle jsou při kliknutí jasně viditelné v náhledu
+* [ ] Všechny 4 kalibrační panely jsou viditelné na každém obrázku cíle
 * [ ] Na cílech nejsou žádné stíny ani překážky.
 * [ ] U duálních kamer: Cíle jsou označeny pro oba typy kamer.
 

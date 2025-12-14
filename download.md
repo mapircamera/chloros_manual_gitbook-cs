@@ -3,7 +3,6 @@ metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/download
 ---
-
 # Stažení
 
 Stáhněte si nejnovější verzi Chloros pro Windows a začněte s multispektrálním zpracováním obrazu.
@@ -66,7 +65,7 @@ pip install chloros-sdk
 
 **Dokumentace**: [API: Python SDK](api-python-sdk.md)
 
-**Požadavky**: Chloros Desktop musí být nainstalován, Chloros+ licence vyžadována
+**Požadavky**: Chloros Desktop musí být nainstalován, Chloros+ licence vyžadována.
 
 ***
 
@@ -166,3 +165,5 @@ Neoprávněné použití, distribuce nebo úprava jsou zakázány.
 **Bezplatná verze**: K dispozici pro osobní a komerční použití s omezenými funkcemi.
 
 **Chloros+**: Licence na základě předplatného pro pokročilé funkce a komerční nasazení.
+
+<figure><img src=".gitbook/assets/t3-125_2.jpg" alt=""><figcaption></figcaption></figure>

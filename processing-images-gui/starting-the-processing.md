@@ -1,6 +1,6 @@
 # Zahájení zpracování
 
-Jakmile importujete obrázky, označíte kalibrační cíle a nakonfigurujete nastavení projektu, můžete zahájit zpracování. Tato stránka vás provede spuštěním zpracovatelského procesu Chloros.
+Jakmile importujete obrázky, označíte kalibrační cíle a nakonfigurujete nastavení projektu, můžete zahájit zpracování. Tato stránka vás provede zahájením zpracování Chloros.
 
 ## Kontrolní seznam před zpracováním
 
@@ -23,7 +23,7 @@ Než kliknete na tlačítko Start, zkontrolujte, zda je vše připraveno:
 
 ### Vyhledání tlačítka Start
 
-Tlačítko Start/Přehrát se nachází v horní liště Chloros:
+Tlačítko Start/Přehrát se nachází v horní liště záhlaví Chloros:
 
 * Poloha: V horní části okna uprostřed
 * Ikona: **Tlačítko Přehrát/Start** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">
@@ -32,12 +32,12 @@ Tlačítko Start/Přehrát se nachází v horní liště Chloros:
 ### Klikněte pro spuštění
 
 1. Klikněte na **tlačítko Přehrát/Spustit** v horní liště
-2. Zpracování se spustí okamžitě
-3. Během zpracování se tlačítko deaktivuje (zšedne)
+2. Zpracování začne okamžitě
+3. Tlačítko se během zpracování deaktivuje (zšedne)
 4. Ukazatel průběhu se aktualizuje a zobrazuje stav zpracování
 
 {% hint style=&quot;success&quot; %}
-**Zpracování zahájeno**: Po kliknutí Chloros automaticky provede všechny kroky zpracování – detekci cíle, debayering, kalibraci, výpočet indexu a export.
+**Zpracování zahájeno**: Po kliknutí Chloros automaticky zpracuje všechny kroky zpracování – detekci cíle, debayering, kalibraci, výpočet indexu a export.
 {% endhint %}
 
 ***
@@ -82,19 +82,19 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 1. **Detekce** – vyhledávání kalibračních cílů
 2. **Analýza** – zkoumání metadat obrázků a příprava potrubí
 3. **Kalibrace** – aplikace oprav a kalibrací
-4. **Export** – uložení zpracovaných obrázků a indexů
+4. **Export** – ukládání zpracovaných obrázků a indexů
 
 **Interakce s ukazatelem průběhu:**
 
-* **Přejděte myší** nad ukazatel, aby se zobrazil podrobný rozbalovací panel se 4 fázemi
+* **Přejděte myší** nad ukazatel a zobrazí se podrobný rozbalovací panel se 4 fázemi
 * **Kliknutím** na ukazatel průběhu rozbalovací panel zafixujete na místě
-* **Kliknutím** znovu panel uvolníte a skryjete.
+* **Dalším kliknutím** panel uvolníte a skryjete
 
 **Doba zpracování:**
 
-* Výrazně rychlejší než volný režim.
-* Škáluje se podle počtu jader CPU.
-* Akcelerace GPU dále zvyšuje rychlost.
+* Výrazně rychlejší než volný režim
+* Škáluje se podle počtu jader CPU
+* Akcelerace GPU dále zvyšuje rychlost
 
 {% hint style=&quot;info&quot; %}
 **Chloros+ Rychlost**: Paralelní zpracování může být u velkých datových sad 5–10krát rychlejší než sekvenční režim. Projekt s 500 obrázky, který v bezplatném režimu trvá 2 hodiny, lze s Chloros+ dokončit za 15–20 minut.
@@ -119,11 +119,11 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 
 **Co dělá Chloros:**
 
-* Převádí data RAW Bayerova vzoru na plné obrázky RGB
+* Konvertuje data RAW Bayerova vzoru na plné obrázky RGB
 * Používá vysoce kvalitní algoritmus demosaicingu
-* Zachovává maximální kvalitu a detaily obrázku
+* Zachovává maximální kvalitu a detaily obrazu
 
-**Doba trvání:** Liší se podle počtu obrázků a rychlosti CPU
+**Trvání:** Liší se podle počtu obrázků a rychlosti CPU
 
 ### Fáze 3: Kalibrace
 
@@ -131,8 +131,8 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 
 * **Korekce vinětace**: Odstraňuje ztmavnutí objektivu na okrajích
 * **Kalibrace odrazivosti**: Normalizuje pomocí cílových hodnot odrazivosti
-* Používá korekce ve všech pásmech/kanálech
-* Používá vhodný kalibrační cíl pro každý obrázek na základě časového razítka
+* Aplikuje korekce napříč všemi pásmy/kanály
+* Používá vhodný kalibrační cíl pro každý obraz na základě časového razítka
 
 **Doba trvání:** Většina času zpracování
 
@@ -140,20 +140,20 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 
 **Co dělá Chloros:**
 
-* Vypočítá nakonfigurované multispektrální indexy (NDVI, NDRE atd.)
+* Vypočítává nakonfigurované multispektrální indexy (NDVI, NDRE atd.)
 * Aplikuje matematické operace s pásmy na kalibrované snímky
 * Generuje indexové snímky pro každý vybraný index
 
-**Trvání:** Několik sekund na jeden obraz
+**Doba trvání:** Několik sekund na jeden snímek
 
 ### Fáze 5: Export
 
 **Co dělá Chloros:**
 
-* Uloží kalibrované obrazy ve vybraném formátu
-* Exportuje indexové obrazy s nakonfigurovanými barvami LUT
-* Zapíše soubory do podsložek modelu kamery
-* Zachová původní názvy souborů s příponami
+* Ukládá kalibrované snímky ve vybraném formátu
+* Exportuje indexové snímky s nakonfigurovanými barvami LUT
+* Zapisuje soubory do podsložek modelu kamery
+* Zachovává původní názvy souborů s příponami
 
 **Doba trvání:** Liší se podle formátu exportu a velikosti souboru
 
@@ -161,7 +161,7 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 
 ## Chování zpracování
 
-### Automatický proces zpracování
+### Automatický zpracovatelský proces
 
 Po spuštění běží celý proces automaticky:
 
@@ -185,17 +185,17 @@ Po spuštění běží celý proces automaticky:
 * Vyhněte se spouštění jiných úkolů náročných na CPU
 
 {% hint style=&quot;warning&quot; %}
-**Tip pro výkon**: Pro dosažení nejlepšího výkonu Chloros+ zavřete ostatní aplikace a nechte Chloros využívat všechny systémové zdroje.
+**Tip pro výkon**: Pro nejlepší výkon Chloros+ zavřete ostatní aplikace a nechte Chloros využívat všechny systémové zdroje.
 {% endhint %}
 
 ### Zpracování nelze pozastavit
 
 **Důležité omezení:**
 
-* Po spuštění nelze zpracování pozastavit.
-* Zpracování můžete zrušit, ale pokrok se ztratí.
-* Částečné výsledky se neukládají.
-* V případě zrušení je nutné začít znovu od začátku.
+* Po spuštění nelze zpracování pozastavit
+* Zpracování můžete zrušit, ale pokrok se ztratí
+* Částečné výsledky se neukládají
+* V případě zrušení je nutné začít znovu od začátku
 
 **Tip pro plánování:** U velmi rozsáhlých projektů zvažte zpracování v dávkách nebo použití CLI pro lepší kontrolu.
 
@@ -207,7 +207,7 @@ Během zpracování můžete:
 
 * **Sledovat ukazatel průběhu** – zobrazit celkové procento dokončení
 * **Zobrazit aktuální fázi** – detekce, analýza, kalibrace nebo export
-* **Zkontrolovat kartu protokolu** – zobrazit podrobné zprávy a varování týkající se zpracování
+* **Zkontrolovat kartu protokolu** – zobrazit podrobné zprávy a varování o zpracování
 * **Zobrazit náhled dokončených obrázků** – během zpracování se mohou zobrazit některé exportované soubory
 
 Podrobné informace o monitorování naleznete v části [Monitorování zpracování](monitoring-the-processing.md).
@@ -220,8 +220,8 @@ Pokud potřebujete zpracování zastavit:
 
 ### Jak zrušit
 
-1. Najděte **tlačítko Zastavit/Zrušit** (nahrazuje tlačítko Start během zpracování)
-2. Klikněte na tlačítko Zastavit
+1. Najděte **tlačítko Zastavit/Zrušit** (během zpracování nahrazuje tlačítko Spustit).
+2. Klikněte na tlačítko Zastavit.
 3. Zpracování se okamžitě zastaví.
 4. Částečné výsledky se vymažou.
 
@@ -229,9 +229,9 @@ Pokud potřebujete zpracování zastavit:
 
 **Platné důvody pro zrušení:**
 
-* Zjistili jste, že jste použili nesprávná nastavení.
+* Zjistili jste, že byly použity nesprávné nastavení.
 * Zapomněli jste označit cílové obrázky.
-* Importovali jste nesprávné obrázky.
+* Byly importovány nesprávné obrázky.
 * Systém běží příliš pomalu nebo nereaguje.
 
 **Po zrušení:**
@@ -239,22 +239,22 @@ Pokud potřebujete zpracování zastavit:
 * Zkontrolujte a opravte všechny problémy.
 * Upravte nastavení podle potřeby.
 * Restartujte zpracování od začátku.
-* Pro co nejčistší zážitek zcela zavřete Chloros a restartujte.
+* Pro nejčistší zážitek zcela zavřete Chloros a restartujte.
 
 {% hint style=&quot;warning&quot; %}
-**Žádné částečné výsledky**: Zrušení vymaže veškerý pokrok. Chloros neukládá částečně zpracované obrázky.
+**Žádné částečné výsledky**: Zrušením se vymaže veškerý pokrok. Chloros neukládá částečně zpracované obrázky.
 {% endhint %}
 
 ***
 
-## Odhadované doby zpracování
+## Odhadovaná doba zpracování
 
-Skutečná doba zpracování se výrazně liší v závislosti na:
+Skutečná doba zpracování se značně liší v závislosti na:
 
 * Počtu obrázků
 * Rozlišení obrázků
-* Vstupním formátu RAW vs JPG
-* Režimu zpracování (Free vs Chloros+)
+* Vstupním formátu RAW vs. JPG
+* Režimu zpracování (Free vs. Chloros+)
 * Rychlosti CPU a počtu jader
 * Dostupnosti GPU (pouze Chloros+)
 * Počtu indexů k výpočtu
@@ -266,9 +266,9 @@ Skutečná doba zpracování se výrazně liší v závislosti na:
 | ----------- | --------- | -------------- | -------------- |
 | 50 obrázků   | 15–20 min | 5–8 min        | 3–5 min        |
 | 100 obrázků  | 30–40 min | 10–15 min      | 5–8 min        |
-| 200 obrázků  | 1–1,5 hod | 20–30 min      | 10–15 min      |
-| 500 obrázků  | 2–3 hodiny   | 45–60 min      | 20–30 min      |
-| 1000 obrázků | 4–6 hodin   | 1,5–2 hodiny      | 40–60 min      |
+| 200 obrázků  | 1–1,5 hodiny | 20–30 minut      | 10–15 minut      |
+| 500 obrázků  | 2–3 hodiny   | 45–60 minut      | 20–30 minut      |
+| 1000 obrázků | 4–6 hodin   | 1,5–2 hodiny      | 40–60 minut      |
 
 {% hint style=&quot;info&quot; %}
 **První spuštění**: Počáteční zpracování může trvat déle, protože Chloros vytváří mezipaměti a profily. Následné zpracování podobných datových sad bude rychlejší.
@@ -284,15 +284,15 @@ Skutečná doba zpracování se výrazně liší v závislosti na:
 
 * Nejsou importovány žádné obrázky.
 * Backend není zcela spuštěn.
-* Předchozí zpracování stále probíhá.
+* Předchozí zpracování stále běží.
 * Projekt není zcela načten.
 
 **Řešení:**
 
-1. Počkejte, až se backend plně inicializuje (zkontrolujte ikonu v hlavním menu).
-2. Ověřte, zda jsou obrázky importovány v prohlížeči souborů.
-3. Pokud tlačítko zůstává deaktivované, restartujte Chloros.
-4. Zkontrolujte, zda v protokolu ladění nejsou chybové zprávy.
+1. Počkejte, až se backend zcela inicializuje (zkontrolujte ikonu v hlavním menu).
+2. Ověřte, zda jsou obrázky importovány v prohlížeči souborů
+3. Pokud tlačítko zůstává deaktivované, restartujte Chloros
+4. Zkontrolujte, zda v protokolu ladění nejsou chybové zprávy
 
 ### Zpracování se spustí, ale okamžitě selže
 
@@ -300,8 +300,8 @@ Skutečná doba zpracování se výrazně liší v závislosti na:
 
 * V projektu nejsou žádné platné obrázky
 * Poškozené obrazové soubory
-* Nedostatek místa na disku
-* Nedostatek paměti (RAM)
+* Nedostatečný prostor na disku
+* Nedostatečná paměť (RAM)
 
 **Řešení:**
 
@@ -320,7 +320,7 @@ Skutečná doba zpracování se výrazně liší v závislosti na:
 
 **Řešení:**
 
-1. Zkontrolujte [Výběr cílových obrázků](choosing-target-images.md)
+1. Projděte si [Výběr cílových obrázků](choosing-target-images.md)
 2. Označte příslušné obrázky ve sloupci Cíl
 3. Ověřte, zda jsou cíle viditelné v označených obrázcích
 4. V případě potřeby upravte nastavení detekce cílů
@@ -350,8 +350,8 @@ Při použití GPU akcelerace NVIDIA:
 
 1. Aktualizujte ovladače NVIDIA na nejnovější verzi.
 2. Ujistěte se, že GPU má 4 GB+ VRAM.
-3. Zavřete aplikace náročné na GPU (hry, editace videa)
-4. Sledujte teplotu GPU (zajistěte dostatečné chlazení)
+3. Zavřete aplikace náročné na GPU (hry, editace videa).
+4. Sledujte teplotu GPU (zajistěte dostatečné chlazení).
 
 ***
 
@@ -359,7 +359,7 @@ Při použití GPU akcelerace NVIDIA:
 
 Po zahájení zpracování:
 
-1. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
+1. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md).
 2. **Počkejte na dokončení** – zpracování probíhá automaticky.
 3. **Zkontrolujte výsledky** – viz [Dokončení zpracování](finishing-the-processing.md).
 

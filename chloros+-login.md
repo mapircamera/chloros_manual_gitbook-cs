@@ -34,7 +34,7 @@ chloros-cli login user@example.com 'MyP@ssw0rd123'
 
 ### Vypršení platnosti plánu
 
-Vypršení platnosti plánu v grafickém uživatelském rozhraní ukazuje, kdy vaše licence přestane být platná. U opakujících se měsíčních předplatných je platnost platná do konce měsíce. U ročních předplatných je platnost platná jeden rok od zahájení předplatného. Kontrola licence vyžaduje měsíční připojení k internetu, aby bylo možné ověření provést, s 30denní lhůtou.
+Vypršení platnosti plánu v grafickém uživatelském rozhraní ukazuje, kdy vaše licence přestane být platná. U opakujících se měsíčních předplatných je vypršení platnosti na konci měsíce. U ročních předplatných je to rok po zahájení předplatného. Kontrola licence vyžaduje měsíční připojení k internetu, aby mohla být ověřena, s 30denní lhůtou.
 
 ### Omezení počtu zařízení
 

@@ -17,7 +17,7 @@ Nejběžnější způsob otevření obrázku v prohlížeči obrázků:
 
 Jakmile je obrázek načten v oblasti náhledu:
 
-1. Klikněte na ikonu **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> v levém postranním panelu.
+1. Klikněte na ikonu **prohlížeče obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> v levém postranním panelu.
 2. Otevře se karta Prohlížeč obrázků, která zobrazí vybraný obrázek na celé obrazovce.
 3. V levém postranním panelu se zobrazí pokročilé nástroje pro prohlížení a analýzu.
 
@@ -44,8 +44,8 @@ Největší část obrazovky zobrazuje váš obrázek:
 
 V sadě obrázků se pohybujte pomocí klávesových zkratek nebo tlačítek:
 
-* **Další obrázek**: Klikněte na tlačítko → nebo stiskněte klávesu **→** (šipka doprava)
-* **Předchozí obrázek**: Klikněte na tlačítko ← nebo stiskněte klávesu **←** (šipka doleva)
+* **Další obrázek**: Klikněte na tlačítko → nebo stiskněte klávesu **→** (šipka vpravo)
+* **Předchozí obrázek**: Klikněte na tlačítko ← nebo stiskněte klávesu **←** (šipka vlevo)
 * **Přejít na konkrétní obrázek**: Vraťte se do prohlížeče souborů a klikněte na požadovanou miniaturu
 
 #### Ovládací prvky pro přiblížení
@@ -54,14 +54,14 @@ Upravte zvětšení pro prohlížení detailů obrázku:
 
 **Přiblížení:**
 
-* Klikněte na tlačítko **+** (plus)
+* Klikněte na tlačítko **+** (Plus)
 * Stiskněte klávesu **+** nebo **=**
 * Posuňte kolečko myši **nahoru**
 
 **Oddalení:**
 
-* Klikněte na tlačítko **−** (mínus)
-* Stiskněte klávesu **−** (mínus)
+* Klikněte na tlačítko **−** (Mínus)
+* Stiskněte klávesu **−** (Mínus)
 * Posuňte kolečko myši **dolů**
 
 **Přizpůsobit obrazovce:**
@@ -70,14 +70,14 @@ Upravte zvětšení pro prohlížení detailů obrázku:
 * Stiskněte klávesu **0** (Nula)
 * Poklepejte na obrázek
 
-#### Posouvání při přiblížení
+#### Posun při přiblížení
 
 Při přiblížení nad velikost obrazovky:
 
 1. Přesuňte kurzor myši nad obrázek
 2. Klikněte a **podržte levé tlačítko myši**
 3. **Přetažením** přesuňte obrázek
-4. Uvolněním zastavíte posun
+4. Uvolněním tlačítka zastavíte posouvání
 
 **Alternativa**: Pomocí kláves se šipkami posouvejte obrázek po malých krocích
 
@@ -181,8 +181,8 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
    * **NDRE**: Vyšší hodnoty pro bujný růst
    * **GNDVI**: Podobné jako NDVI, ale citlivé na chlorofyl
 3. Zkontrolujte oblasti bez vegetace:
-   * **Půda**: Blízko 0 nebo mírně záporná hodnota.
-   * **Voda**: Záporné hodnoty (-0,5 až 0).
+   * **Půda**: Blízko 0 nebo mírně záporná
+   * **Voda**: Záporné hodnoty (-0,5 až 0)
 
 ***
 
@@ -192,18 +192,18 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 **Možné příčiny:**
 
-* Soubor byl během zpracování poškozen.
-* Nepodporovaný formát souboru.
-* Nedostatečná paměť pro velký obrázek.
+* Soubor byl během zpracování poškozen
+* Nepodporovaný formát souboru
+* Nedostatečná paměť pro velký obrázek
 
 **Řešení:**
 
 1. Zkuste soubor otevřít v externím prohlížeči a ověřte jeho integritu.
 2. Zkontrolujte, zda formát souboru odpovídá očekávanému typu.
-3. Zavřete ostatní aplikace, abyste uvolnili paměť.
+3. Ukončete ostatní aplikace, abyste uvolnili paměť.
 4. Zkuste menší/jiný obrázek.
 
-### Černobílý obrázek
+### Zobrazení černobílého obrázku
 
 **Možné příčiny:**
 
@@ -215,7 +215,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 1. Zkontrolujte hodnoty pixelů – pokud jsou všechny velmi nízké nebo velmi vysoké, upravte rozsah zobrazení.
 2. Zkuste soubor otevřít v QGIS nebo podobném programu s automatickým nastavením rozsahu.
-3. Zkontrolujte protokol ladění ze zpracování, zda neobsahuje chyby.
+3. Zkontrolujte protokol ladění z zpracování, zda neobsahuje chyby.
 
 ### Hodnoty pixelů se zdají nesprávné
 
@@ -230,16 +230,16 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 1. Ověřte, zda prohlížíte zpracovaný výstup (zkontrolujte příponu souboru).
 2. Zkontrolujte stav tlačítka režimu procent.
-3. Porovnejte s obrázky ze stejného datového souboru, o kterých víte, že jsou v pořádku.
+3. Porovnejte se známými dobrými obrázky ze stejného datového souboru.
 
 ***
 
 ## Další kroky
 
-Nyní, když můžete zobrazit obrázky na celou obrazovku:
+Nyní, když můžete prohlížet obrázky na celé obrazovce:
 
-* [**Vrstvy obrázků**](image-layers.md) – Informace o vizualizaci více pásem
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) – Použití vlastních indexů a mapování barev
+* [**Vrstvy obrázků**](image-layers.md) – informace o vizualizaci více pásem
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) – použití vlastních indexů a mapování barev
 * [**Vzorec multispektrálního indexu**](../project-settings/multispectral-index-formulas.md) – porozumění dostupným indexům
 
 Pro pracovní postup zpracování viz:

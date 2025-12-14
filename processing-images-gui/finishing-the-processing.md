@@ -9,7 +9,7 @@ Po úspěšném dokončení zpracování se zobrazí několik indikátorů:
 * ✅ **Indikátor průběhu**: Dosáhne 100% dokončení
 * ✅ **Debugovací protokol**: Zobrazí zprávu „Zpracování dokončeno“
 * ✅ **Tlačítko Start**: Znovu se aktivuje (připraveno pro další zpracování)
-* ✅ **Výstupní soubory**: Všechny zpracované obrázky jsou uloženy do podsložky modelu fotoaparátu.
+* ✅ **Výstupní soubory**: Všechny zpracované obrázky jsou uloženy do podsložky modelu fotoaparátu
 
 ***
 
@@ -39,11 +39,11 @@ Po úspěšném dokončení zpracování se zobrazí několik indikátorů:
 
 **Doporučené prohlížeče:**
 
-* **QGIS** – bezplatný software GIS (nejlepší pro georeferencovanou multispektrální analýzu)
+* **QGIS** – bezplatný software GIS (nejlepší pro georeferenční multispektrální analýzu)
 * **IrfanView** – rychlý, lehký prohlížeč obrázků (podporuje TIFF)
 * **Adobe Photoshop** – profesionální editace (podpora TIFF)
 * **GIMP** – bezplatná alternativa k Photoshopu
-* **Windows Photos** – základní prohlížení (nemusí podporovat 16bitový TIFF)
+* **Windows Photos** – základní prohlížení (nemusí podporovat 16bitové TIFF)
 
 ### Náhled v prohlížeči obrázků Chloros
 
@@ -66,7 +66,7 @@ Podrobné pokyny najdete v části [Prohlížeč obrázků](../image-viewer-gui/
 2. Projděte si zprávy.
 3. Hledejte žlutá varování nebo červené chyby.
 4. Zkontrolujte všechny zaznamenané problémy.
-5. Obraťte se na podporu MAPIR a požádejte o pomoc.
+5. Požádejte o pomoc podporu MAPIR.
 
 ### Uložení protokolu
 
@@ -136,7 +136,7 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 * **Střední vegetace**: 0,4 až 0,6
 * **Zdravá, hustá vegetace**: 0,6 až 0,9
 
-**Pokud hodnoty přesahují tyto rozsahy:**
+**Pokud hodnoty leží mimo tyto rozsahy:**
 
 1. Ověřte, zda byla použita kalibrace odrazivosti.
 2. Ověřte, zda byl zahrnut protokol světelného senzoru.
@@ -205,7 +205,7 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 ## Další zpracování
 
-### Opakované použití nastavení projektu
+### Opětovné použití nastavení projektu
 
 Pokud budete v budoucnu zpracovávat podobné datové sady:
 
@@ -238,7 +238,7 @@ Pro více relací/datových sad:
 
 ***
 
-## Řešení problémů s následným zpracováním
+## Řešení problémů při následném zpracování
 
 ### Opakované zpracování s jinými nastaveními
 
@@ -295,12 +295,12 @@ Nyní jste dokončili celý pracovní postup zpracování Chloros:
 
 ### Automatizace a integrace
 
-* [**CLI Dokumentace**](../CLI.md) – Dávkové zpracování příkazového řádku
+* [**CLI Dokumentace**](../CLI.md) – Hromadné zpracování příkazového řádku
 * [**Python SDK**](../api-python-sdk.md) – Programová automatizace
 * [**Chloros+ Funkce**](../#chloros) – Pokročilé možnosti zpracování
 
 ### Podpora a vzdělávání
 
-* [**Často kladené otázky**](../faq.md) – Odpovědi na časté otázky
+* [**Často kladené otázky**](../faq.md) – Odpovědi na běžné otázky
 * [**Kalibrační cíle**](../calibration-targets.md) – Porozumění kalibraci odrazivosti
 * [**Podporované fotoaparáty**](../supported-cameras.md) – Kompatibilní hardware

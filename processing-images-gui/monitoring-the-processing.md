@@ -19,7 +19,7 @@ Pro uživatele bez licence Chloros+:
 
 * Celkové procento dokončení (0–100 %)
 * Název aktuální fáze
-* Jednoduché zobrazení horizontálního pruhu
+* Jednoduché vizuální znázornění horizontální lištou
 
 ### Indikátor průběhu Chloros+
 
@@ -36,8 +36,8 @@ Pro uživatele s licencí Chloros+:
 
 * **Přejděte myší** nad ukazatel průběhu a zobrazí se rozšířený 4stupňový panel
 * **Kliknutím** na ukazatel průběhu panel rozbalíte a zafixujete
-* **Dalším kliknutím** panel odblokujete a automaticky skryjete po opuštění myší
-* Každá fáze zobrazuje individuální průběh (0–100 %)
+* **Dalším kliknutím** panel rozbalíte a automaticky skryjete po odjetí myší
+* Každá fáze zobrazuje individuální postup (0–100 %)
 
 ***
 
@@ -49,15 +49,15 @@ Pro uživatele s licencí Chloros+:
 
 * Chloros skenuje obrázky označené zaškrtávacím políčkem Cíl
 * Algoritmy počítačového vidění identifikují 4 kalibrační panely
-* Hodnoty odrazivosti extrahované z každého panelu
-* Časová razítka cílů zaznamenaná pro správné naplánování kalibrace
+* Z každého panelu jsou extrahovány hodnoty odrazivosti
+* Pro správné naplánování kalibrace jsou zaznamenány časové značky cílů
 
 **Doba trvání:**
 
 * S označenými cíli: 10–60 sekund
 * Bez označených cílů: 5–30+ minut (skenuje všechny obrázky)
 
-**Ukazatel průběhu:**
+**Indikátor průběhu:**
 
 * Detekce: 0 % → 100 %
 * Počet naskenovaných obrázků
@@ -67,7 +67,7 @@ Pro uživatele s licencí Chloros+:
 
 * Pokud jsou cíle správně označeny, mělo by být dokončeno rychle.
 * Pokud to trvá příliš dlouho, cíle nemusí být označeny.
-* Zkontrolujte protokol ladění, zda neobsahuje zprávy „Cíl nalezen“.
+* Zkontrolujte protokol ladění, zda neobsahuje zprávy „Target found“ (Cíl nalezen).
 
 ### Fáze 2: Analýza
 
@@ -140,16 +140,16 @@ Pro uživatele s licencí Chloros+:
 **Na co je třeba dávat pozor:**
 
 * Varování o nedostatku místa na disku
-* Chyby zápisu souborů
+* Chyby při zápisu souborů
 * Dokončení všech nakonfigurovaných výstupů
 
 ***
 
 ## Karta Debug Log (Logs)
 
-Debug Log (Logs) poskytuje podrobné informace o průběhu zpracování a všech problémech, které se vyskytly.
+Debug Log poskytuje podrobné informace o průběhu zpracování a všech problémech, které se vyskytly.
 
-### Přístup k Debug Log (Logs)
+### Přístup k Debug Log
 
 1. Klikněte na ikonu **Debug Log** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> v levém postranním panelu.
 2. Otevře se panel protokolu zobrazující zprávy o zpracování v reálném čase.
@@ -198,8 +198,8 @@ Kritické problémy, které mohou způsobit selhání zpracování:
 | Zpráva                          | Význam                                | Potřebná akce                                         |
 | -------------------------------- | -------------------------------------- | ----------------------------------------------------- |
 | „Cíl detekován v \[název souboru]“ | Kalibrační cíl úspěšně nalezen  | Žádná – normální                                         |
-| „Zpracování obrázku X z Y“        | Aktualizace aktuálního průběhu                | Žádná – normální                                         |
-| „Nenalezeny žádné cíle“               | Nebyly detekovány žádné kalibrační cíle        | Označte obrázky cílů nebo deaktivujte kalibraci odrazivosti |
+| „Zpracování obrázku X z Y“        | Aktuální informace o postupu                | Žádná – normální                                         |
+| „Nebyly nalezeny žádné cíle“               | Nebyly detekovány žádné kalibrační cíle        | Označte obrázky cílů nebo deaktivujte kalibraci odrazivosti |
 | „Nedostatek místa na disku“        | Nedostatek úložného prostoru pro výstup          | Uvolněte místo na disku                                    |
 | „Přeskočení poškozeného souboru“        | Obrazový soubor je poškozen                  | Znovu zkopírujte soubor z karty SD                             |
 | „Použita data PPK“               | Použity korekce GPS ze souboru .daq | Žádné – normální                                         |
@@ -223,7 +223,7 @@ Kopírování protokolu pro účely řešení potíží nebo podpory:
 
 * 1 jádro CPU na ~100 %
 * Ostatní jádra nečinná nebo dostupná
-* Systém zůstává responzivní
+* Systém zůstává odeznívající
 
 **Chloros+ Paralelní režim:**
 
@@ -250,7 +250,7 @@ Kopírování protokolu pro účely řešení potíží nebo podpory:
 
 * Zpracovávejte menší dávky
 * Ukončete ostatní aplikace
-* Pokud pravidelně zpracováváte velké datové soubory, upgradujte RAM
+* Pokud pravidelně zpracováváte velké datové soubory, zvyšte kapacitu RAM
 
 ### Využití GPU (Chloros+ s CUDA)
 
@@ -260,7 +260,7 @@ Při zapnuté akceleraci GPU:
 * Využití VRAM se zvyšuje (vyžaduje 4 GB+ VRAM)
 * Fáze kalibrace je výrazně rychlejší
 
-**Sledování:**
+**Sledujte:**
 
 * Ikona NVIDIA v systémové liště
 * Správce úloh → Výkon → GPU
@@ -274,7 +274,7 @@ Při zapnuté akceleraci GPU:
 * Vysoký zápis na disk během fáze exportu
 * SSD je výrazně rychlejší než HDD
 
-**Tip pro výkon:**
+**Tip pro zvýšení výkonu:**
 
 * Pokud je to možné, použijte SSD pro složku projektu
 * Vyhněte se síťovým diskům pro velké datové soubory
@@ -353,7 +353,7 @@ Zastavte zpracování, pokud se zobrazí:
 
 **Řešení:**
 
-1. Znovu zkopírujte obrázky z karty SD, abyste zajistili integritu.
+1. Znovu zkopírujte obrázky z karty SD, abyste zajistili jejich integritu.
 2. Otestujte kartu SD na chyby.
 3. Odstraňte poškozené soubory z projektu.
 4. Pokračujte ve zpracování zbývajících obrázků.

@@ -1,6 +1,6 @@
 # Úprava nastavení projektu
 
-Před zpracováním obrázků je důležité nakonfigurovat nastavení projektu tak, aby odpovídalo požadavkům vašeho pracovního postupu. Panel Nastavení projektu <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> poskytuje komplexní kontrolu nad kalibrací, možnostmi zpracování, multispektrálními indexy a exportními formáty.
+Před zpracováním obrázků je důležité nakonfigurovat nastavení projektu tak, aby odpovídalo požadavkům vašeho pracovního postupu. Panel Nastavení projektu <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> poskytuje komplexní kontrolu nad kalibrací, možnostmi zpracování, multispektrálními indexy a formáty exportu.
 
 ## Přístup k nastavení projektu
 
@@ -9,7 +9,7 @@ Před zpracováním obrázků je důležité nakonfigurovat nastavení projektu 
 3. Panel Nastavení projektu zobrazí všechny možnosti konfigurace
 
 {% hint style=&quot;info&quot; %}
-**Nastavení se ukládají automaticky** s vaším projektem. Když projekt znovu otevřete, všechna nastavení se obnoví.
+**Nastavení se ukládají automaticky** spolu s projektem. Při opětovném otevření projektu se všechna nastavení obnoví.
 {% endhint %}
 
 ***
@@ -35,18 +35,18 @@ Panel Nastavení projektu je rozdělen do několika kategorií. Níže je uveden
 
 ### Detekce cílů
 
-Ovládá způsob, jakým Chloros identifikuje kalibrační cíle ve vašich snímcích.
+Ovládá způsob, jakým Chloros identifikuje kalibrační cíle ve vašich obrázcích.
 
 **Klíčová nastavení:**
 
-* **Minimální plocha kalibračního vzorku**: Prahová hodnota velikosti pro detekci cílů (výchozí: 25 pixelů)
-* **Minimální seskupení cílů**: Prahová hodnota podobnosti pro seskupení cílových oblastí (výchozí: 60)
+* **Minimální plocha vzorku pro kalibraci**: Prahová hodnota velikosti pro detekci cílů (výchozí nastavení: 25 pixelů)
+* **Minimální shlukování cílů**: Prahová hodnota podobnosti pro seskupování cílových oblastí (výchozí nastavení: 60)
 
 **Kdy upravit:**
 
 * Zvětšete plochu vzorku, pokud dochází k falešným detekcím.
 * Zmenšete ji, pokud cíle nejsou detekovány.
-* Upravte seskupení, pokud jsou cíle rozděleny do více detekcí.
+* Upravte shlukování, pokud jsou cíle rozděleny do více detekcí.
 
 ### Zpracování
 
@@ -87,7 +87,7 @@ Nakonfigurujte, které vegetační indexy se mají počítat a exportovat.
 **Vlastní vzorce (pouze Chloros+):**
 
 * Vytvořte vlastní vzorce multispektrálního indexu
-* Použijte matematiku pásma se všemi kanály obrazu
+* Použijte matematiku pásem se všemi kanály obrazu
 * Uložte vlastní vzorce pro opětovné použití
 
 Všechny dostupné indexy a vzorce najdete v části [Vzorce multispektrálního indexu](../project-settings/multispectral-index-formulas.md).
@@ -98,10 +98,10 @@ Ovládá formát a kvalitu výstupního souboru.
 
 **Dostupné formáty:**
 
-* **TIFF (16 bitů)**: Doporučeno pro GIS a vědecké analýzy (rozsah 0–65 535)
-* **TIFF (32 bitů, procenta)**: Hodnoty odrazivosti s plovoucí desetinnou čárkou (rozsah 0,0–1,0)
-* **PNG (8 bitů)**: Bezeztrátová komprese pro vizualizaci (rozsah 0–255)
-* **JPG (8 bitů)**: Nejmenší soubory, ztrátová komprese (rozsah 0–255)
+* **TIFF (16bitový)**: Doporučeno pro GIS a vědeckou analýzu (rozsah 0–65 535)
+* **TIFF (32bitový, procenta)**: Hodnoty odrazivosti s plovoucí desetinnou čárkou (rozsah 0,0–1,0)
+* **PNG (8bitový)**: Bezeztrátová komprese pro vizualizaci (rozsah 0–255)
+* **JPG (8bitový)**: Nejmenší soubory, ztrátová komprese (rozsah 0–255)
 
 ***
 
@@ -140,7 +140,7 @@ Nastavení **„Uložit složku projektu“** určuje, kde se nové projekty vyt
 * **Kdy změnit**:
   * Síťový disk pro spolupráci týmu.
   * Jiný disk s větším úložným prostorem.
-  * Organizovaná struktura složek podle roku/klienta.
+  * Uspořádaná struktura složek podle roku/klienta.
 
 ***
 
@@ -194,7 +194,7 @@ Pro opakované průzkumy stejné oblasti v průběhu času:
 
 1. Vytvořte šablonu se standardními nastaveními.
 2. Používejte konzistentní nastavení kalibračního cíle pro každou relaci.
-3. Zpracovávejte každý datum jako samostatný projekt.
+3. Zpracovávejte každý den jako samostatný projekt.
 4. Používejte identická nastavení pro srovnatelné výsledky.
 5. Exportujte ve stejném formátu pro časovou analýzu.
 
@@ -219,16 +219,16 @@ Před zahájením zpracování zkontrolujte tato klíčová nastavení:
 * [ ] Importován alespoň jeden kalibrační cílový obrázek
 * [ ] Přidány požadované multispektrální indexy
 * [ ] Exportní formát vhodný pro váš pracovní postup
-* [ ] Nakonfigurována nastavení PPK (pokud používáte .daq s událostmi expozice)
+* [ ] Nakonfigurována nastavení PPK (pokud používáte .daq s expozičními událostmi)
 
 ***
 
 ## Další kroky
 
-Jakmile jsou nastavení nakonfigurována:
+Po nakonfigurování nastavení:
 
-1. **Označte kalibrační cílové obrázky** – viz [Výběr cílových obrázků](choosing-target-images.md)
+1. **Označte kalibrační cílové snímky** – viz [Výběr cílových snímků](choosing-target-images.md)
 2. **Spusťte zpracování** – viz [Spuštění zpracování](starting-the-processing.md)
 3. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
 
-Podrobné informace o všech dostupných nastaveních najdete v referenční dokumentaci [Nastavení projektu](../project-settings/project-settings.md).
+Úplné podrobnosti o všech dostupných nastaveních najdete v referenční dokumentaci [Nastavení projektu](../project-settings/project-settings.md).
