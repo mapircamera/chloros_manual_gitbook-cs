@@ -6,7 +6,7 @@ Uživatelské <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> 
 
 Po přihlášení se zobrazí podrobnosti vašeho účtu:
 
-<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>## XPROTX000026Přihlášení do XPROTX
+<figure><img src=".gitbook/assets/user_account.JPG" alt="" data-size="line"><figcaption></figcaption></figure>## XPROTX000026Přihlášení do XPROTX
 
 Přihlaste se pomocí svých přihlašovacích údajů do Chloros+, abyste mohli využívat zpracování CLI.
 
