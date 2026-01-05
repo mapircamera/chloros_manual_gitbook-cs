@@ -1,30 +1,28 @@
 # GUI: Navigace
 
-Při prvním spuštění Chloros a Chloros (prohlížeč) se spustí jeho backend. Jakmile bude připraven, zobrazí se ikona hlavního menu v levém horním rohu. <img src=".gitbook/assets/image (1).png" alt="" data-size="line"> .
+Při prvním spuštění Chloros a Chloros (prohlížeč) se spustí jeho backend. Jakmile bude připraven, zobrazí se ikona hlavního menu v levém horním rohu. <img src=".gitbook/assets/image (1) (1) (1).png" alt="" data-size="line"> .
 
 <figure><img src=".gitbook/assets/header.JPG" alt=""><figcaption></figcaption></figure>
 
 Zleva doprava obsahuje horní záhlaví:
 
-### <img src=".gitbook/assets/image (1) (1).png" alt="" data-size="line"> Hlavní menu
+### <img src=".gitbook/assets/image (1) (1) (1) (1).png" alt="" data-size="line"> Hlavní menu
 
 Z hlavního menu můžete spustit nový projekt, otevřít existující projekt nebo otevřít složku projektu.
 
-### <img src=".gitbook/assets/image (2).png" alt="" data-size="line"> Tlačítko Přehrát/Spustit
+### <img src=".gitbook/assets/image (2) (1).png" alt="" data-size="line"> Tlačítko Přehrát/Spustit
 
 Po aktivaci spustí tlačítko pro zpracování obrazu proces zpracování obrazu.
 
-### <img src=".gitbook/assets/image (4).png" alt="" data-size="line"> Indikátor průběhu <img src=".gitbook/assets/image (5).png" alt="" data-size="line">
+### <img src=".gitbook/assets/image (4).png" alt="" data-size="line"> Indikátor průběhu <img src=".gitbook/assets/image (5).png" alt="" data-size="line">V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, zobrazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
 
-V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, ukazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
-
-V placeném licencovaném režimu Chloros+, který zpracovává všechny soubory současně, ukazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud umístíte kurzor myši nad ukazatel průběhu Chloros+, rozbalí se rozšířený panel se 4 ukazateli průběhu, takže můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu se rozbalený panel zamrzne, dalším kliknutím se opět odemkne.
+V placeném licencovaném režimu Chloros+, který zpracovává všechny soubory současně, zobrazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud umístíte kurzor myši nad ukazatel průběhu Chloros+, rozbalí se rozšířený panel se 4 ukazateli průběhu, takže můžete sledovat postup. Kliknutím na horní ukazatel průběhu se rozbalovací panel zamrzne, dalším kliknutím se opět odblokuje.
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
 
 ## Boční nabídka
 
-Levá boční nabídka obsahuje různé ikony pro interakci:
+Levá boční nabídka obsahuje různé ikony, se kterými můžete pracovat:
 
 #### <img src=".gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> [Nastavení projektu](project-settings/project-settings.md)
 
@@ -32,15 +30,19 @@ Karta Nastavení projektu umožňuje upravit globální nastavení projektu a na
 
 #### <img src=".gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> Prohlížeč souborů
 
-Přidejte soubory/složky a odstraňte soubory z projektu. Duplicitní soubory jsou ignorovány. Zaškrtněte políčko cílové sloupce pro jakýkoli cílový obrázek a zpracování se zaměří pouze na zaškrtnuté obrázky jako cíle, což výrazně zrychlí dobu zpracování.
+Přidejte soubory/složky a odeberte soubory z projektu. Duplicitní soubory jsou ignorovány. Zaškrtněte políčko cílové sloupce pro jakýkoli cílový obrázek a zpracování se bude zabývat pouze zaškrtnutými obrázky jako cíli, což výrazně zrychlí dobu zpracování. Pomocí přepínače Obrázek/Metadata přepínejte mezi zobrazením mřížky miniatur vybraného obrázku a podrobnou tabulkou metadat.
 
 #### <img src=".gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> [Prohlížeč obrázků](image-viewer-gui/opening-an-image-full-screen.md)
 
 Po kliknutí na obrázek v hlavním prohlížeči obrázků se obrázek otevře na celou obrazovku na kartě Prohlížeč obrázků.
 
-#### <img src=".gitbook/assets/icon_log.JPG" alt="" data-size="line"> Logs pro ladění
+#### <img src=".gitbook/assets/image (7).png" alt="" data-size="line"> [Mapa](image-viewer-gui/map-markers.md)
 
-Při výskytu problémů zkontrolujte logy pro ladění. Zkopírujte/stáhněte logy a odešlete je na [MAPIR Support](https://www.mapir.camera/community/contact) za účelem získání pomoci.
+Prohlížejte si své obrázky na interaktivní 2D mapě na základě jejich GPS souřadnic. Podporuje poskytovatele dlaždic Google Maps a ESRI a automaticky vybírá nejlepší službu pro vaši polohu. Umístěte kurzor myši na značky a zobrazí se náhledy miniatur obrázků.
+
+#### <img src=".gitbook/assets/icon_log.JPG" alt="" data-size="line"> Debugovací protokol
+
+V případě potíží zkontrolujte protokol pro debugovací výpisy. Zkopírujte/stáhněte protokol a odešlete jej na [MAPIR Support](https://www.mapir.camera/community/contact) za účelem získání pomoci.
 
 #### <img src=".gitbook/assets/icon_user.JPG" alt="" data-size="line"> [Přihlášení uživatele](chloros+-login.md)
 

@@ -9,16 +9,15 @@ Po úspěšném dokončení zpracování se zobrazí několik indikátorů:
 * ✅ **Indikátor průběhu**: Dosáhne 100% dokončení
 * ✅ **Debugovací protokol**: Zobrazí zprávu „Zpracování dokončeno“
 * ✅ **Tlačítko Start**: Znovu se aktivuje (připraveno pro další zpracování)
-* ✅ **Výstupní soubory**: Všechny zpracované obrázky jsou uloženy do podsložky modelu fotoaparátu
-
-***
+* ✅ **Výstupní soubory**: Všechny zpracované obrázky jsou uloženy do podsložky modelu fotoaparátu***
 
 ## Vyhledání zpracovaných obrázků
 
 ### Otevření výstupní složky
 
-1. Klikněte na ikonu **Hlavní nabídka** <img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="line"> (vlevo nahoře)
+1. Klikněte na ikonu **Hlavní nabídka** <img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt="" data-size="line"> (vlevo nahoře)
 2. Vyberte **„Otevřít složku projektu“**
+
 3. Otevře se průzkumník souborů v adresáři projektu
 4. Vyhledejte projekt podle názvu
 
@@ -37,13 +36,11 @@ Po úspěšném dokončení zpracování se zobrazí několik indikátorů:
 
 ### Náhled v externích prohlížečích obrázků
 
-**Doporučené prohlížeče:**
-
-* **QGIS** – bezplatný software GIS (nejlepší pro georeferenční multispektrální analýzu)
+**Doporučené prohlížeče:*** **QGIS** – bezplatný software GIS (nejlepší pro georeferencovanou multispektrální analýzu)
 * **IrfanView** – rychlý, lehký prohlížeč obrázků (podporuje TIFF)
 * **Adobe Photoshop** – profesionální editace (podpora TIFF)
 * **GIMP** – bezplatná alternativa k Photoshopu
-* **Windows Photos** – základní prohlížení (nemusí podporovat 16bitové TIFF)
+* **Windows Photos** – základní prohlížení (nemusí podporovat 16bitový TIFF)
 
 ### Náhled v prohlížeči obrázků Chloros
 
@@ -72,7 +69,7 @@ Podrobné pokyny najdete v části [Prohlížeč obrázků](../image-viewer-gui/
 
 Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
-1. Klikněte na tlačítko **„Kopírovat“** nebo **„Stáhnout“**.
+1. Klikněte na tlačítko **„Kopírovat“**nebo**„Stáhnout“**.
 2. Uložte jako textový soubor do složky projektu.
 3. Přiložte k dokumentaci projektu.
 4. V případě potíží odešlete na podporu MAPIR.
@@ -125,18 +122,14 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 1. Ověřte, zda byla povolena kalibrace odrazivosti.
 2. Zkontrolujte zprávy „Cíl nalezen“ v protokolu ladění.
 3. Zkontrolujte kvalitu obrazu cíle.
-4. Zpracujte znovu s označenými správnými cíli.
+4. Zpracujte znovu s označením správných cílů.
 
 ### Problém: Hodnoty NDVI se zdají nesprávné
 
-**Očekávané rozsahy NDVI:**
-
-* **Voda, skály, půda**: -0,1 až 0,2
+**Očekávané rozsahy NDVI:*** **Voda, skály, půda**: -0,1 až 0,2
 * **Řídká/nezdravá vegetace**: 0,2 až 0,4
 * **Střední vegetace**: 0,4 až 0,6
-* **Zdravá, hustá vegetace**: 0,6 až 0,9
-
-**Pokud hodnoty leží mimo tyto rozsahy:**
+* **Zdravá, hustá vegetace**: 0,6 až 0,9**Pokud hodnoty přesahují tyto rozsahy:**
 
 1. Ověřte, zda byla použita kalibrace odrazivosti.
 2. Ověřte, zda byl zahrnut protokol světelného senzoru.
@@ -148,11 +141,11 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 ## Použití zpracovaných snímků
 
-### Pro fotogrammetrii / tvorbu ortomozaiky
+### Pro fotogrammetrii / vytvoření ortomozaiky
 
 **Doporučený pracovní postup:**
 
-1. **Importujte kalibrované obrazy odrazivosti** do fotogrammetrického softwaru:
+1.**Importujte kalibrované obrazy odrazivosti** do fotogrammetrického softwaru:
    * Pix4Dmapper
    * Agisoft Metashape
    * DroneDeploy
@@ -166,8 +159,9 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 **Doporučený pracovní postup:**
 
-1. **Načtěte do QGIS, ArcGIS nebo podobného programu**
-2. **Použijte 16bitové obrazy odrazivosti TIFF** pro multibandovou analýzu
+1.**Načtěte do QGIS, ArcGIS nebo podobného programu**
+
+2.**Použijte 16bitové obrazy odrazivosti TIFF** pro multibandovou analýzu
 3. **Použijte indexové obrazy** (NDVI, NDRE) jako připravené vrstvy vegetace
 4. **Rastrová kalkulačka**: Kombinujte pásma pro vlastní analýzu
 5. **Export**: Vytvořte klasifikační mapy, detekci změn, mapy zdravotního stavu vegetace.
@@ -176,49 +170,38 @@ Chcete-li uchovat záznam o zpracování nebo jej odeslat podpoře MAPIR:
 
 **Doporučený pracovní postup:**
 
-1. **Použijte indexové snímky s barvami LUT** pro vizuální reporty.
-2. **Extrahujte statistiky**: Průměrná hodnota NDVI na pole/parcelu.
+1.**Použijte indexové snímky s barvami LUT** pro vizuální reporty.
+2. **Extrahujte statistiky**: Průměr NDVI na pole/parcelu.
 3. **Časové řady**: Porovnejte indexy napříč více relacemi
-4. **Generujte reporty**: Zahrňte mapy, statistiky a vizualizace
-
-***
+4. **Generujte reporty**: Zahrňte mapy, statistiky a vizualizace***
 
 ## Archivace a zálohování
 
 ### Doporučená strategie zálohování
 
-**Co uložit:**
-
-* ✅ **Originální RAW/JPG obrázky** – archivujte na samostatném disku/v cloudu
+**Co uložit:*** ✅ **Originální RAW/JPG obrázky** – archivujte na samostatném disku/v cloudu
 * ✅ **Zpracované výstupy** – uchovejte kalibrované obrázky a indexy
 * ✅ **Projektový soubor** – obsahuje všechna nastavení pro případné opětovné zpracování
 * ✅ **Debugovací protokol** – dokumentuje podrobnosti zpracování
-* ✅ **Kalibrační cílové obrázky** – pro ověření a opětovné zpracování
-
-**Doporučení pro ukládání:**
-
-* **Okamžitá záloha**: Externí pevný disk
+* ✅ **Kalibrační cílové obrázky** – pro ověření a opětovné zpracování**Doporučení pro ukládání:*** **Okamžitá záloha**: Externí pevný disk
 * **Dlouhodobý archiv**: Cloudové úložiště (Google Drive, Dropbox atd.)
-* **Kritická data**: Uchovávejte 2–3 kopie na různých místech
-
-***
+* **Kritická data**: Uchovávejte 2–3 kopie na různých místech***
 
 ## Další zpracování
 
-### Opětovné použití nastavení projektu
+### Opakované použití nastavení projektu
 
 Pokud budete v budoucnu zpracovávat podobné datové sady:
 
 1. **Uložte šablonu projektu** (pokud jste tak ještě neučinili)
 2. **Vytvořte nový projekt** pomocí uložené šablony
 3. **Importujte nové obrázky**
-4. **Zpracujte** s identickými nastaveními pro zachování konzistence
+
+4.**Zpracujte**s identickými nastaveními pro zachování konzistence
 
 ### Hromadné zpracování více relací
 
-Pro více relací/datových sad:
-
-**Možnost 1: GUI – více projektů**
+Pro více relací/datových sad:**Možnost 1: GUI – více projektů**
 
 * Vytvořte samostatný projekt pro každou relaci.
 * Použijte konzistentní nastavení šablony.
@@ -244,7 +227,7 @@ Pro více relací/datových sad:
 
 Pokud výsledky nejsou uspokojivé:
 
-1. Ponechte původní obrázky (nikdy je nemazejte)
+1. Ponechte původní obrázky (nikdy je nemažte)
 2. Otevřete stejný projekt v Chloros
 3. Upravte nastavení v panelu Nastavení projektu
 4. Zpracujte znovu – výstupy přepíšou předchozí výsledky
@@ -265,9 +248,7 @@ Pokud narazíte na problémy:
 * 📧 **E-mail**: info@mapir.camera (včetně ladicího protokolu)
 * 🌐 **Podpora**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
 * 📚 **Často kladené otázky**: [Často kladené otázky](../faq.md)
-* 📖 **Dokumentace**: [Příručka Chloros](../)
-
-***
+* 📖 **Dokumentace**: [Příručka Chloros](../)***
 
 ## Shrnutí: Kompletní pracovní postup
 
@@ -279,9 +260,7 @@ Nyní jste dokončili celý pracovní postup zpracování Chloros:
 4. ✅ **Označené cíle** – viz [Výběr cílových obrázků](choosing-target-images.md)
 5. ✅ **Zahájeno zpracování** – viz [Zahájení zpracování](starting-the-processing.md)
 6. ✅ **Sledovaný průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
-7. ✅ **Zkontrolované výsledky** – tato stránka
-
-**Vaše kalibrované multispektrální snímky s korekcí odrazivosti jsou připraveny k analýze!**
+7. ✅ **Zkontrolované výsledky** – tato stránka**Vaše kalibrované multispektrální snímky s korekcí odrazivosti jsou připraveny k analýze!**
 
 ***
 
@@ -301,6 +280,6 @@ Nyní jste dokončili celý pracovní postup zpracování Chloros:
 
 ### Podpora a vzdělávání
 
-* [**Často kladené otázky**](../faq.md) – Odpovědi na běžné otázky
+* [**Často kladené otázky**](../faq.md) – Odpovědi na časté otázky
 * [**Kalibrační cíle**](../calibration-targets.md) – Porozumění kalibraci odrazivosti
 * [**Podporované fotoaparáty**](../supported-cameras.md) – Kompatibilní hardware

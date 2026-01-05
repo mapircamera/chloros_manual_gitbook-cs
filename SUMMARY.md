@@ -29,6 +29,8 @@
 
 ## PROHLÍŽEČ OBRAZŮ (GUI)
 
+* [Mřížka obrazů](image-viewer-gui/image-grid.md)
 * [Otevření obrázku na celou obrazovku](image-viewer-gui/opening-an-image-full-screen.md)
 * [Vrstvy obrázku](image-viewer-gui/image-layers.md)
 * [Index/LUT Sandbox](image-viewer-gui/index-lut-sandbox.md)
+* [Značky mapy](image-viewer-gui/map-markers.md)
