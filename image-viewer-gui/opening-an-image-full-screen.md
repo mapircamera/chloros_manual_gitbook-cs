@@ -44,8 +44,8 @@ Největší část obrazovky zobrazuje váš obrázek:
 
 V sadě obrázků se pohybujte pomocí klávesových zkratek nebo tlačítek:
 
-* **Další obrázek**: Klikněte na tlačítko → nebo stiskněte klávesu **→** (šipka vpravo)
-* **Předchozí obrázek**: Klikněte na tlačítko ← nebo stiskněte klávesu **←** (šipka vlevo)
+* **Další obrázek**: Klikněte na tlačítko → nebo stiskněte klávesu **→** (šipka doprava)
+* **Předchozí obrázek**: Klikněte na tlačítko ← nebo stiskněte klávesu **←** (šipka doleva)
 * **Přejít na konkrétní obrázek**: Vraťte se do prohlížeče souborů a klikněte na požadovanou miniaturu
 
 #### Ovládací prvky pro přiblížení
@@ -54,32 +54,26 @@ Upravte zvětšení pro prohlížení detailů obrázku:
 
 **Přiblížení:**
 
-* Klikněte na tlačítko **+** (Plus)
+* Klikněte na tlačítko **+** (plus)
 * Stiskněte klávesu **+** nebo **=**
 * Posuňte kolečko myši **nahoru**
 
 **Oddalení:**
 
-* Klikněte na tlačítko **−** (Mínus)
-* Stiskněte klávesu **−** (Mínus)
+* Klikněte na tlačítko **−** (mínus)
+* Stiskněte klávesu **−** (mínus)
 * Posuňte kolečko myši **dolů**
-
-**Přizpůsobit obrazovce:**
-
-* Klikněte na tlačítko **↔** (Přizpůsobit)
-* Stiskněte klávesu **0** (Nula)
-* Poklepejte na obrázek
 
 #### Posun při přiblížení
 
 Při přiblížení nad velikost obrazovky:
 
-1. Přesuňte kurzor myši nad obrázek
-2. Klikněte a **podržte levé tlačítko myši**
-3. **Přetažením** přesuňte obrázek
-4. Uvolněním tlačítka zastavíte posouvání
+1. Přesuňte kurzor myši nad obrázek.
+2. Klikněte a **podržte levé tlačítko myši**.
+3. **Přetažením** přesuňte obrázek.
+4. Uvolněním tlačítka zastavíte posun.
 
-**Alternativa**: Pomocí kláves se šipkami posouvejte obrázek po malých krocích
+**Alternativa**: Pomocí kláves se šipkami můžete posunovat v malých krocích.
 
 ***
 
@@ -87,37 +81,39 @@ Při přiblížení nad velikost obrazovky:
 
 ### Zobrazení hodnot pixelů u kurzoru
 
-Při přesunutí kurzoru myši nad obrázek se v reálném čase zobrazí hodnoty pixelů:
+Při pohybu kurzoru myši nad obrázkem se hodnoty pixelů zobrazují v reálném čase:
 
 **Umístění zobrazení hodnoty:**
 
 * **Plovoucí číslo a červená čára v legendě gradientu indexu LUT na pravé straně**
-* **Při dalším přiblížení se zobrazí plovoucí hodnota v blízkosti kurzoru a zvýrazněného pixelu**
-* Zobrazuje hodnoty pro pixel **pod kurzorem nebo zvýrazněný**
+* **Při dalším zvětšení se plovoucí hodnota zobrazí poblíž kurzoru a zvýrazněného pixelu**
+* Zobrazuje hodnoty pixelů **pod kurzorem nebo zvýrazněných**
 * Aktualizuje se při pohybu myši
 
 ***
 
 ## Typy obrázků, které můžete zobrazit
 
-### Původní obrázky (před zpracováním)
+### JPG
 
-**Obrázky RAW + JPG z fotoaparátu:**
+**Obrázky JPG z fotoaparátu:**
 
-* Zobrazení dat RAW jako náhled
+* Zobrazení dat JPG jako náhled
 * Zobrazení původních, neopravených hodnot
 * Užitečné pro kontrolu kvality obrázku před zpracováním
 
-### Kalibrované obrázky odrazivosti
+### RAW (původní)
+
+### RAW (odrazivost)
 
 **Po zpracování:**
 
-* Opravená viněta
-* Kalibrovaná odrazivost
-* Vícepásmové TIFF (Red, Green, NIR atd.)
+* Opravena viněta
+* Kalibrována odrazivost
+* Vícepásmový TIFF (Red, Green, NIR atd.)
 * Vědecká data připravená k analýze
 
-### Indexové snímky
+### RAW (Index)
 
 **NDVI, NDRE, GNDVI atd. (soubory \_NDVI.tif):**
 
@@ -153,21 +149,9 @@ Podrobné pokyny najdete v části [Index/LUT Sandbox](index-lut-sandbox.md).
 
 ### Přiblížení
 
-* **+** nebo **=**: Přiblížit
-* **−**: Oddálit
-* **0** (nula): Přizpůsobit obrazovce
-* **Kolečko myši**: Přiblížit/oddálit
-
-### Ovládací prvky zobrazení
-
-* **P**: Přepnutí režimu procentuálního zobrazení pixelů
-* **L**: Přepnutí panelu vrstev
-* **Esc**: Zavření celé obrazovky nebo návrat do prohlížeče souborů
-
-### Ostatní
-
-* **Ctrl+S**: Uložení aktuálního obrázku
-* **F**: Režim celé obrazovky (je-li k dispozici)
+* **+** nebo **=**: Přiblížení
+* **−**: Oddálení
+* **Kolečko myši**: Přiblížení/oddálení
 
 ***
 
@@ -181,7 +165,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
    * **NDRE**: Vyšší hodnoty pro bujný růst
    * **GNDVI**: Podobné jako NDVI, ale citlivé na chlorofyl
 3. Zkontrolujte oblasti bez vegetace:
-   * **Půda**: Blízko 0 nebo mírně záporná
+   * **Půda**: Hodnota blízko 0 nebo mírně záporná
    * **Voda**: Záporné hodnoty (-0,5 až 0)
 
 ***
@@ -215,7 +199,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 1. Zkontrolujte hodnoty pixelů – pokud jsou všechny velmi nízké nebo velmi vysoké, upravte rozsah zobrazení.
 2. Zkuste soubor otevřít v QGIS nebo podobném programu s automatickým nastavením rozsahu.
-3. Zkontrolujte protokol ladění z zpracování, zda neobsahuje chyby.
+3. Zkontrolujte protokol ladění ze zpracování, zda neobsahuje chyby.
 
 ### Hodnoty pixelů se zdají nesprávné
 
@@ -236,10 +220,10 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 ## Další kroky
 
-Nyní, když můžete prohlížet obrázky na celé obrazovce:
+Nyní, když můžete zobrazit obrázky na celou obrazovku:
 
-* [**Vrstvy obrázků**](image-layers.md) – informace o vizualizaci více pásem
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) – použití vlastních indexů a mapování barev
+* [**Vrstvy obrázků**](image-layers.md) – Informace o vizualizaci více pásem
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) – Použití vlastních indexů a mapování barev
 * [**Vzorec multispektrálního indexu**](../project-settings/multispectral-index-formulas.md) – porozumění dostupným indexům
 
 Pro pracovní postup zpracování viz:

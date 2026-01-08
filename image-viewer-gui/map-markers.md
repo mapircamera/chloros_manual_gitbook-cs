@@ -1,23 +1,25 @@
 # Značky na mapě
 
-Záložka Mapa zobrazuje vaše snímky na interaktivní 2D mapě na základě jejich GPS souřadnic. Poskytuje geografický přehled vaší snímací relace a pomáhá vizualizovat prostorové pokrytí. Je také užitečná při prvním importu snímků, kdy můžete rychle odstranit všechny snímky, které nepotřebujete zpracovat.
+Karta Mapa zobrazuje vaše snímky na interaktivní 2D mapě na základě jejich GPS souřadnic. To poskytuje geografický přehled o vaší snímací relaci a pomáhá vizualizovat prostorové pokrytí. Je to také užitečné při prvním importu snímků, abyste mohli rychle odstranit všechny snímky, které nepotřebujete zpracovat.
+
+<figure><img src="../.gitbook/assets/chloros_map_markers.gif" alt=""><figcaption></figcaption></figure>
 
 ## Přístup k záložce Mapa
 
 1. Otevřete nebo vytvořte projekt v Chloros.
 2. Importujte obrázky, které obsahují metadata GPS.
 3. Klikněte na záložku **Mapa** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> v levém postranním panelu.
-4. Na mapě se zobrazí značky v místě GPS každého snímku.
+4. Na mapě se zobrazí značky v místě GPS každé snímky.
 
-{% hint style=&quot;info&quot; %}
-**Vyžaduje GPS**: Na mapě se zobrazí pouze obrázky s GPS souřadnicemi vloženými do metadat EXIF. Ujistěte se, že je během pořizování snímků ve vašem fotoaparátu zapnutá funkce GPS.
+{% hint style="info" %}
+**Vyžaduje GPS**: Na mapě se zobrazí pouze obrázky s GPS souřadnicemi vloženými do metadat EXIF. Ujistěte se, že máte během pořizování snímků ve fotoaparátu zapnutou funkci GPS.
 {% endhint %}
 
 ***
 
 ## Úprava obrázků na kartě Mapa
 
-Karta **Mapa**<img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> má stejné funkce přidání  <img src="../.gitbook/assets/image.png" alt="" data-size="line">   <img src="../.gitbook/assets/image (1).png" alt="" data-size="line">  a odstranění  <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">  tlačítka jako karta [**Prohlížeč souborů**](../processing-images-gui/adding-files-to-a-project.md) <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> . Zobrazuje také stejný seznam projektových souborů, ale s jinými záhlavími sloupců:
+Karta **Mapa** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> má stejné funkce přidání  <img src="../.gitbook/assets/image.png" alt="" data-size="line">   <img src="../.gitbook/assets/image (1).png" alt="" data-size="line">  a odstranění  <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">  tlačítka jako karta [**Prohlížeč souborů**](../processing-images-gui/adding-files-to-a-project.md) <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> . Zobrazuje také stejný seznam projektových souborů, ale s jinými záhlavími sloupců:
 
 ### Název souboru
 
@@ -36,37 +38,37 @@ Karta **Mapa**<img src="../.gitbook/assets/image (3).png" alt="" data-size="line
 
 * Nadmořská výška snímku
 
-{% hint style=&quot;info&quot; %}
+{% hint style="info" %}
 Kliknutím na záhlaví sloupců tabulky se také seřadí data řádků.
 {% endhint %}
 
 ***
 
-## Značky obrázků
+## Značky snímků
 
-Každý obrázek s GPS daty je na mapě znázorněn značkou:
+Každý snímek s GPS daty je na mapě znázorněn značkou:
 
 ### Zobrazení značek
 
 * Značky označují přesné GPS souřadnice, kde byl každý obrázek pořízen.
-* Seskupené značky se mohou při oddálení zobrazení seskupit.
-* Přiblížením zobrazení uvidíte jednotlivé polohy obrázků.
+* Při oddálení se mohou značky seskupit.
+* Přiblížením si můžete prohlédnout jednotlivé polohy obrázků.
 
-{% hint style=&quot;success&quot; %}
+{% hint style="success" %}
 SUPER-ZOOM: Když dosáhnete maximální úrovně přiblížení od poskytovatele mapových dlaždic, dlaždice se při dalším přiblížení zvětší, což vám umožní vidět značky, které jsou blízko u sebe.
 {% endhint %}
 
 ### Náhled při najetí myší
 
-* **Přejděte myší** na libovolný značkovač a zobrazí se náhled miniatury daného obrázku.
+* **Najetím myší** na libovolnou značku zobrazíte náhled daného snímku.
 * To umožňuje rychlou vizuální identifikaci, aniž byste museli opustit zobrazení mapy.
-* Užitečné pro vyhledání konkrétních obrázků v rámci rozsáhlé relace snímání.
+* Užitečné pro vyhledání konkrétních snímků v rámci rozsáhlé relace pořizování snímků.
 
 ***
 
 ## Poskytovatelé mapových dlaždic
 
-{% hint style=&quot;success&quot; %}
+{% hint style="success" %}
 **Automatický výběr**: Chloros automaticky vybere službu dlaždic, která poskytuje nejlepší úroveň přiblížení pro vaši aktuální polohu na mapě. V případě potřeby můžete ručně přepínat mezi poskytovateli.
 {% endhint %}
 
@@ -74,13 +76,13 @@ Karta Mapa podporuje dva poskytovatele dlaždic pro obrázky pozadí mapy:
 
 ### Google Maps
 
-* Standardní satelitní a mapové snímky od Google
-* Nejlepší pro obecné celosvětové pokrytí
+* Standardní satelitní a mapové snímky od společnosti Google.
+* Nejlepší pro obecné pokrytí celého světa.
 
 ### ESRI
 
-* Satelitní a letecké snímky od ESRI ArcGIS
-* Často poskytuje snímky s vyšším rozlišením v určitých regionech
+* Satelitní a letecké snímky od společnosti ESRI ArcGIS.
+* Často poskytuje snímky s vyšším rozlišením v určitých regionech.
 
 ***
 
@@ -108,14 +110,16 @@ Zobrazuje satelitní mapové dlaždice s přidanými podrobnostmi (silnice atd.)
 
 ## Navigace po mapě
 
-### Ovládací prvky přiblížení
+### Ovládací prvky pro přiblížení
 
-* **Přiblížit/oddálit**: Použijte kolečko myši nebo tlačítka přiblížení.
-* **Celá obrazovka**: Zobrazí mapu na celou obrazovku.
+* **Přiblížení/oddálení**: Použijte kolečko myši nebo tlačítka pro přiblížení.
+* **Celá obrazovka**: Zobrazí mapu na celé obrazovce.
 
-### Ovládací prvky posunu
+### Ovládací prvky pro posun
 
-* **Posun**: Kliknutím a tažením se můžete pohybovat po mapě.***
+* **Posun**: Kliknutím a tažením se můžete pohybovat po mapě.
+
+***
 
 ## Případy použití
 
@@ -149,13 +153,13 @@ Zobrazuje satelitní mapové dlaždice s přidanými podrobnostmi (silnice atd.)
 * Během pořizování snímků bylo v kameře vypnuto GPS.
 * Externí software odstranil data EXIF.
 
-**Řešení**: Ověřte, zda je GPS ve fotoaparátu zapnuté, a znovu importujte původní soubory.
+**Řešení**: Ověřte, zda je GPS ve vašem fotoaparátu zapnuté, a znovu importujte původní soubory.
 
 ### Značky na nesprávném místě
 
 **Možné příčiny:**
 
 * GPS fotoaparátu mělo špatné satelitní připojení.
-* Během pořizování snímků došlo k odchylce GPS.
+* GPS se během snímání odchýlilo.
 
-**Řešení**: Jedná se obvykle o problém s časem pořízení snímku. Zvažte použití PPK/RTK GPS pro přesné aplikace.
+**Řešení**: Jedná se obvykle o problém s časem snímání; zvažte použití PPK/RTK GPS pro přesné aplikace.

@@ -3,9 +3,7 @@ metaLinks: {}
 ---
 # Začínáme
 
-<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>
-
-Chloros je softwarová aplikace od [MAPIR](https://www.mapir.camera) pro zpracování obrazů a dalších dat ze senzorů.
+<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>Chloros je softwarová aplikace od [MAPIR](https://www.mapir.camera) pro zpracování obrazů a dalších dat ze senzorů.
 
 ***
 
@@ -37,11 +35,19 @@ Ačkoli je Chloros pro většinu úkolů zdarma, možná budete chtít více. V 
 * **Akcelerace GPU (CUDA)**: využijte dnešní vyšší možnosti paměti GPU k dalšímu zrychlení zpracování obrazu. Pro dosažení nejlepších výsledků doporučujeme 4 GB nebo více VRAM.
 * **Chloros+** [**CLI**](CLI.md) **Přístup**: spusťte Chloros+ z příkazového řádku a automatizujte a integrujte jej do svého vlastního softwaru.
 * **Chloros+** [**API**](api-python-sdk.md) **Přístup:** spusťte Chloros+ z Python pro programové ovládání, což umožňuje hladkou integraci s vašimi výzkumnými procesy, pracovními postupy pro analýzu dat a vlastními aplikacemi.
-* **Použití více zařízení**: každá licence Chloros+ umožňuje registraci 2 a více zařízení. K správě registrovaných zařízení použijte svůj účet MAPIR Cloud. Přidejte podporu pro další zařízení upgradem licence Chloros+.
+* **Použití více zařízení**: každá licence Chloros+ umožňuje registraci 2 a více zařízení. K správě registrovaných zařízení použijte svůj účet MAPIR Cloud. Přidejte podporu pro více zařízení upgradováním licence Chloros+.
 * **Vlastní vzorce multispektrálních indexů:** zadejte vlastní multispektrální indexy do rastrových kalkulaček Chloros, a to jak pro zpracování, tak pro prohlížení obrázků v sandboxu.
 
-<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary" data-icon="envira">Chloros+ Ceny a registrace</a></p>
+<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary" data-icon="envira">Ceny a registrace Chloros+</a></p>
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/chloros_grid_zoom.gif" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/chloros_grid_mode.gif" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/chloros_grid_meta.gif" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/chloros_map_markers.gif" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/cli.JPG" alt=""><figcaption></figcaption></figure>
