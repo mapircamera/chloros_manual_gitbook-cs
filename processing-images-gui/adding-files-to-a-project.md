@@ -32,10 +32,8 @@ Tuto možnost použijte k importu jednotlivých obrazových souborů nebo maléh
 Tuto možnost použijte pro import všech obrázků ze složky najednou.
 
 1. Klikněte na tlačítko **„Přidat složku“** <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> v horní části panelu Prohlížeč souborů.
-2. Přejděte do složky obsahující snímky z vaší relace snímání a vyberte ji.
-3. Kliknutím na tlačítko **„Vybrat složku“** importujte všechny podporované snímky z této složky.
-
-***
+2. Přejděte do složky obsahující snímky z vaší relace a vyberte ji.
+3. Kliknutím na tlačítko **„Vybrat složku“** importujte všechny podporované snímky z této složky.***
 
 ## Popis tabulky prohlížeče souborů
 
@@ -43,14 +41,14 @@ Po importu se snímky zobrazí v tabulce s následujícími sloupci:
 
 ### Název souboru
 
-* Původní název souboru z fotoaparátu.
-* Zachovává konvenci pojmenování fotoaparátu (např. IMG\_0001.RAW).
+* Původní název souboru z fotoaparátu
+* Zachovává konvenci pojmenování fotoaparátu (např. IMG\_0001.RAW)
 
 ### Časové razítko
 
-* Datum a čas pořízení obrázku.
-* Extrahováno z metadat EXIF obrázku.
-* Používá se pro synchronizaci PPK a detekci kalibračního cíle.
+* Datum a čas pořízení obrázku
+* Extrahováno z metadat EXIF obrázku
+* Používá se pro synchronizaci PPK a detekci kalibračního cíle
 
 ### Model fotoaparátu
 
@@ -86,28 +84,24 @@ Chcete-li z projektu odstranit nepotřebné obrázky:
 
 * **Třídění podle sloupce**: Kliknutím na záhlaví libovolného sloupce můžete obrázky seřadit.
 * **Třídění podle časového razítka**: Užitečné pro uspořádání chronologických sekvencí snímků.
-* **Filtr modelu fotoaparátu**: Pokud používáte více fotoaparátů, můžete obrázky seskupit podle typu fotoaparátu.
-
-***
+* **Filtr modelu fotoaparátu**: Pokud používáte více fotoaparátů, můžete obrázky seskupit podle typu fotoaparátu.***
 
 ## Náhled obrázku
 
 ### Zobrazení celého obrázku
 
-Klikněte na libovolnou miniaturu obrázku v prohlížeči souborů a zobrazí se v hlavní oblasti náhledu:
+Klikněte na libovolnou miniaturu obrázku v prohlížeči souborů a zobrazí se v hlavní náhledové oblasti:
 
-1. Obrázek se zobrazí ve středním panelu náhledu.
+1. Obrázek se zobrazí ve středním náhledovém panelu.
 2. Pomocí ovládacích prvků zoomu můžete prohlížet detaily obrázku.
 3. Mezi obrázky můžete přecházet pomocí kláves se šipkami.
 
 ### Rychlá navigace
 
-* **Předchozí obrázek**: Klikněte na šipku doleva nebo stiskněte klávesu ←.
+* **Předchozí obrázek**: Klikněte na šipku vlevo nebo stiskněte klávesu ←.
 * **Další obrázek**: Klikněte na šipku vpravo nebo stiskněte klávesu →.
-* **Přiblížení/oddálení**: Použijte kolečko myši nebo tlačítka zoomu.
-* **Posun**: Při přiblížení klikněte a přetáhněte obrázek.
-
-***
+* **Přiblížení/oddálení**: Použijte kolečko myši nebo tlačítka pro přiblížení.
+* **Posun**: Po přiblížení klikněte a přetáhněte obrázek.***
 
 ## Zpracování duplicitních souborů
 
@@ -118,7 +112,7 @@ Chloros automaticky detekuje a ignoruje duplicitní soubory:
 * Při detekci duplicit se zobrazí varovná zpráva.
 
 {% hint style="warning" %}
-**Důležité**: Před importem nepřejmenovávejte ani neupravujte původní obrazové soubory. Chloros se pro správné zpracování spoléhá na původní názvy souborů a metadata.
+**Důležité**: Před importem nepřejmenovávejte ani neupravujte původní obrazové soubory. Chloros se při správném zpracování spoléhá na původní názvy souborů a metadata.
 {% endhint %}
 
 ***
@@ -132,9 +126,7 @@ Pokud váš projekt obsahuje obrázky z více kamer MAPIR:
 3. Prohlížeč souborů zobrazuje model kamery ve sloupci Model kamery.
 4. Zpracování aplikuje správná nastavení pro každý typ kamery.
 
-**Příklad scénáře**: Survey3W RGN + Survey3N OCN nastavení dvou kamer.
-
-***
+**Příklad scénáře**: Survey3W RGN + Survey3N OCN nastavení dvou kamer.***
 
 ## Osvědčené postupy
 
@@ -150,18 +142,18 @@ Pokud váš projekt obsahuje obrázky z více kamer MAPIR:
 * Před importem soubory nepřejmenovávejte.
 * Původní názvy obsahují důležité metadata.
 
-### Kalibrační cílové obrázky
+### Kalibrační cílové snímky
 
-* Vždy zahrňte 1–2 kalibrační cílové obrázky na relaci.
+* Vždy zahrňte 1–2 kalibrační cílové snímky na relaci.
 * Zachyťte cíle před a po relaci zachycení.
 * Umístěte cíle do stejných světelných podmínek jako oblast zachycení.
-* Označte cílové obrázky pomocí zaškrtávacího políčka Cíl, abyste urychlili zpracování.
+* Označte cílové snímky pomocí zaškrtávacího políčka Cíl, abyste urychlili zpracování.
 
 ***
 
 ## Časté problémy a řešení
 
-### Obrázky se po importu nezobrazují
+### Snímky se po importu nezobrazují
 
 **Možné příčiny:**
 
@@ -188,9 +180,7 @@ Pokud váš projekt obsahuje obrázky z více kamer MAPIR:
 * Nesprávně nastavené hodiny fotoaparátu
 * EXIF data odstraněna externím softwarem
 
-**Řešení**: Ověřte, zda bylo nastavení času fotoaparátu během pořizování snímků správné.
-
-***
+**Řešení**: Ověřte, zda bylo nastavení času fotoaparátu během pořizování snímků správné.***
 
 ## Další kroky
 

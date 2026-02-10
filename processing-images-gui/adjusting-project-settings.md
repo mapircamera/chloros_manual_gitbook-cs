@@ -5,10 +5,10 @@ Před zpracováním obrázků je důležité nakonfigurovat nastavení projektu 
 ## Přístup k nastavení projektu
 
 1. Otevřete svůj projekt v Chloros
-2. Klikněte na ikonu **Nastavení projektu** <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> v levém postranním panelu
-3. Panel Nastavení projektu zobrazí všechny možnosti konfigurace
+2. Klikněte na ikonu **Nastavení projektu** <img src="../.gitbook/assets/icon_project-settings.JPG" alt="" data-size="line"> v levém postranním panelu.
+3. Panel Nastavení projektu zobrazí všechny možnosti konfigurace.
 
-{% hint style=&quot;info&quot; %}
+{% hint style="info" %}
 **Nastavení se ukládají automaticky** spolu s projektem. Při opětovném otevření projektu se všechna nastavení obnoví.
 {% endhint %}
 
@@ -18,14 +18,14 @@ Před zpracováním obrázků je důležité nakonfigurovat nastavení projektu 
 
 ### Výchozí nastavení (doporučeno pro většinu uživatelů)
 
-Pro typické pracovní postupy s kamerou MAPIR Survey3 fungují dobře výchozí nastavení:
+Pro typické pracovní postupy s kamerou MAPIR Survey3 funguje dobře výchozí nastavení:
 
 * ✅ **Korekce vinětace**: Zapnuto
 * ✅ **Kalibrace odrazivosti**: Zapnuto (vyžaduje obrázky cílů MAPIR)
-* ✅ **Metoda Debayer**: Vysoká kvalita (rychlejší)
+* ✅ **Metoda Debayer**: Standardní (rychlá, střední kvalita)
 * ✅ **Formát exportu**: TIFF (16 bitů)
 
-Jednoduše importujte své snímky a začněte je zpracovávat s těmito výchozími nastaveními.
+Jednoduše importujte své obrázky a začněte zpracovávat s těmito výchozími nastaveními.
 
 ***
 
@@ -37,33 +37,35 @@ Panel Nastavení projektu je rozdělen do několika kategorií. Níže je uveden
 
 Ovládá způsob, jakým Chloros identifikuje kalibrační cíle ve vašich obrázcích.
 
-**Klíčová nastavení:**
+**Klíčová nastavení:*** **Minimální plocha kalibračního vzorku**: Prahová hodnota velikosti pro detekci cílů (výchozí: 25 pixelů)
+* **Minimální shlukování cílů**: Prahová hodnota podobnosti pro seskupování cílových oblastí (výchozí: 60)**Kdy upravit:**
 
-* **Minimální plocha vzorku pro kalibraci**: Prahová hodnota velikosti pro detekci cílů (výchozí nastavení: 25 pixelů)
-* **Minimální shlukování cílů**: Prahová hodnota podobnosti pro seskupování cílových oblastí (výchozí nastavení: 60)
-
-**Kdy upravit:**
-
-* Zvětšete plochu vzorku, pokud dochází k falešným detekcím.
-* Zmenšete ji, pokud cíle nejsou detekovány.
-* Upravte shlukování, pokud jsou cíle rozděleny do více detekcí.
+* Zvětšete plochu vzorku, pokud dochází k falešným detekcím
+* Snižte ji, pokud cíle nejsou detekovány
+* Upravte seskupení, pokud jsou cíle rozděleny do více detekcí
 
 ### Zpracování
 
 Hlavní možnosti zpracování obrazu a kalibrace.
 
-**Klíčová nastavení:**
-
-* **Korekce vinětace**: Kompenzuje ztmavnutí objektivu na okrajích ✅ Doporučeno
+**Klíčová nastavení:*** **Korekce vinětace**: Kompenzuje ztmavnutí objektivu na okrajích ✅ Doporučeno
 * **Kalibrace odrazivosti**: Normalizuje hodnoty pomocí kalibračních cílů ✅ Doporučeno
 * **Metoda Debayer**: Algoritmus pro převod RAW na 3kanálové multispektrální
-* **Minimální interval rekalibrace**: Čas mezi použitím kalibračních cílů (0 = použít všechny)
-
-**Pokročilá nastavení:**
-
-* **Časový posun světelného senzoru**: Pro synchronizaci času PPK (výchozí: 0)
+* **Minimální interval rekalibrace**: Čas mezi použitím kalibračních cílů (0 = použít všechny)**Pokročilá nastavení:*** **Časový posun světelného senzoru**: Pro synchronizaci času PPK (výchozí: 0)
 * **Použít korekce PPK**: Používá data GPS/expozice z souborů .daq
-* **Expozice pin 1/2**: Přiřazuje kamery k expozičním pinům pro nastavení dvou kamer
+* **Expozice 1/2**: Přiřazuje kamery k expozičním pinům pro nastavení dvou kamer
+
+### Metoda Debayer
+
+V současné době nabízíme 2 metody debayeringu v Chloros:
+
+#### Standardní (rychlá, střední kvalita)
+
+Standardní debayer zpracovává rychle, ale vykazuje barevný šum debayeringu, což vede k méně přesným a šumivějším obrazům.
+
+#### Texture Aware (pomalý, nejvyšší kvalita) \[Pouze Chloros+]
+
+Texture Aware používá vysoce kvalitní debayer s rozpoznáním hran v kombinaci s modelem AI/ML pro odstraňování šumu, který odstraňuje téměř veškerý šum debayeringu. Model Texture Aware vyžaduje k provozu paměť GPU (VRAM). Pro rychlejší zpracování doporučujeme jej používat, pokud máte k dispozici více než 4 GB VRAM.
 
 ### Index (multispektrální indexy)
 
@@ -71,20 +73,17 @@ Nakonfigurujte, které vegetační indexy se mají počítat a exportovat.
 
 **Jak přidat indexy:**
 
-1. Klikněte na tlačítko **„Přidat index“**
+1. Klikněte na tlačítko**„Přidat index“**
+
 2. Vyberte index z rozevíracího menu (NDVI, NDRE, GNDVI atd.)
 3. Nakonfigurujte nastavení vizualizace (barvy LUT, rozsahy hodnot)
 4. Podle potřeby přidejte více indexů
 
-**Populární indexy:**
-
-* **NDVI**: Obecný stav vegetace (nejběžnější)
+**Populární indexy:*** **NDVI**: Obecný stav vegetace (nejběžnější)
 * **NDRE**: Včasná detekce stresu pomocí RedEdge
 * **GNDVI**: Citlivý na koncentraci chlorofylu
 * **OSAVI**: Funguje dobře s viditelnou půdou
-* **EVI**: Oblasti s vysokým indexem listové plochy (LAI)
-
-**Vlastní vzorce (pouze Chloros+):**
+* **EVI**: Oblasti s vysokým indexem listové plochy (LAI)**Vlastní vzorce (pouze Chloros+):**
 
 * Vytvořte vlastní vzorce multispektrálního indexu
 * Použijte matematiku pásem se všemi kanály obrazu
@@ -96,14 +95,10 @@ Všechny dostupné indexy a vzorce najdete v části [Vzorce multispektrálního
 
 Ovládá formát a kvalitu výstupního souboru.
 
-**Dostupné formáty:**
-
-* **TIFF (16bitový)**: Doporučeno pro GIS a vědeckou analýzu (rozsah 0–65 535)
-* **TIFF (32bitový, procenta)**: Hodnoty odrazivosti s plovoucí desetinnou čárkou (rozsah 0,0–1,0)
+**Dostupné formáty:*** **TIFF (16 bitů)**: Doporučeno pro GIS a vědecké analýzy (rozsah 0–65 535)
+* **TIFF (32 bitů, procenta)**: Hodnoty odrazivosti s plovoucí desetinnou čárkou (rozsah 0,0–1,0)
 * **PNG (8bitový)**: Bezeztrátová komprese pro vizualizaci (rozsah 0–255)
-* **JPG (8bitový)**: Nejmenší soubory, ztrátová komprese (rozsah 0–255)
-
-***
+* **JPG (8bitový)**: Nejmenší soubory, ztrátová komprese (rozsah 0–255)***
 
 ## Ukládání a načítání nastavení
 
@@ -136,11 +131,11 @@ Při vytváření nového projektu:
 Nastavení **„Uložit složku projektu“** určuje, kde se nové projekty vytvářejí ve výchozím nastavení:
 
 * **Výchozí umístění**: `C:\Users\[Username]\Chloros Projects`
-* **Změnit umístění**: Klikněte na ikonu úprav a vyberte novou složku.
+* **Změnit umístění**: Klikněte na ikonu úprav a vyberte novou složku
 * **Kdy změnit**:
-  * Síťový disk pro spolupráci týmu.
-  * Jiný disk s větším úložným prostorem.
-  * Uspořádaná struktura složek podle roku/klienta.
+  * Síťový disk pro spolupráci týmu
+  * Jiný disk s větším úložným prostorem
+  * Organizovaná struktura složek podle roku/klienta
 
 ***
 
@@ -154,23 +149,20 @@ Při použití záznamníků MAPIR DAQ s GPS pro přesnou geolokaci:
 * Soubor protokolu .daq se záznamy expozičních pinů
 * Kamera připojená k expozičním pinům DAQ během snímání
 
-### Konfigurační kroky
+### Kroky konfigurace
 
-1. Umístěte soubor protokolu .daq do složky projektu.
-2. V nastavení projektu zaškrtněte políčko **„Použít korekce PPK“**.
-3. V případě potřeby nastavte **„Časový posun světelného senzoru“** (výchozí hodnota: 0 pro UTC).
-4. Přiřaďte kamery k expozičním pinům:
+1. Umístěte soubor protokolu .daq do složky projektu
+2. V nastavení projektu zaškrtněte políčko **„Použít korekce PPK“**
+
+3. V případě potřeby nastavte**„Časový posun světelného senzoru“** (výchozí hodnota: 0 pro UTC).
+4. Přiřaďte kamery k pinům expozice:
    * **Jedna kamera**: Automaticky přiřazena k pinu 1.
-   * **Dvě kamery**: Ručně přiřaďte každou kameru ke správnému pinu.
-
-**Přiřazení pinů expozice:**
-
-* **Pin expozice 1**: Vyberte model kamery z rozevíracího seznamu.
-* **Pin expozice 2**: Vyberte druhou kameru nebo „Nepoužívat“.
+   * **Dvě kamery**: Ručně přiřaďte každou kameru ke správnému pinu.**Přiřazení pinů expozice:*** **Expoziční pin 1**: Vyberte model kamery z rozevíracího seznamu.
+* **Expoziční pin 2**: Vyberte druhou kameru nebo možnost „Nepoužívat“.
 * Stejnou kameru nelze přiřadit k oběma pinům.
 
-{% hint style=&quot;warning&quot; %}
-**Důležité**: Piny expozice musí být správně přiřazeny příslušným kamerám. Nesprávné přiřazení bude mít za následek nesprávné údaje o geolokaci.
+{% hint style="warning" %}
+**Důležité**: Expoziční piny musí být správně přiřazeny k příslušným kamerám. Nesprávné přiřazení bude mít za následek nesprávné údaje o geolokaci.
 {% endhint %}
 
 ***
@@ -192,9 +184,9 @@ Při zpracování snímků z více kamer MAPIR v jednom projektu:
 
 Pro opakované průzkumy stejné oblasti v průběhu času:
 
-1. Vytvořte šablonu se standardními nastaveními.
+1. Vytvořte šablonu se svými standardními nastaveními.
 2. Používejte konzistentní nastavení kalibračního cíle pro každou relaci.
-3. Zpracovávejte každý den jako samostatný projekt.
+3. Zpracovávejte každý datum jako samostatný projekt.
 4. Používejte identická nastavení pro srovnatelné výsledky.
 5. Exportujte ve stejném formátu pro časovou analýzu.
 
@@ -225,9 +217,9 @@ Před zahájením zpracování zkontrolujte tato klíčová nastavení:
 
 ## Další kroky
 
-Po nakonfigurování nastavení:
+Jakmile jsou nastavení nakonfigurována:
 
-1. **Označte kalibrační cílové snímky** – viz [Výběr cílových snímků](choosing-target-images.md)
+1. **Označte kalibrační cílové obrázky** – viz [Výběr cílových obrázků](choosing-target-images.md)
 2. **Spusťte zpracování** – viz [Spuštění zpracování](starting-the-processing.md)
 3. **Sledujte průběh** – viz [Sledování zpracování](monitoring-the-processing.md)
 

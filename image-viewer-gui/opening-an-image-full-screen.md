@@ -17,7 +17,7 @@ Nejběžnější způsob otevření obrázku v prohlížeči obrázků:
 
 Jakmile je obrázek načten v oblasti náhledu:
 
-1. Klikněte na ikonu **prohlížeče obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> v levém postranním panelu.
+1. Klikněte na ikonu **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> v levém postranním panelu.
 2. Otevře se karta Prohlížeč obrázků, která zobrazí vybraný obrázek na celé obrazovce.
 3. V levém postranním panelu se zobrazí pokročilé nástroje pro prohlížení a analýzu.
 
@@ -32,9 +32,7 @@ Největší část obrazovky zobrazuje váš obrázek:
 * **Plné rozlišení**: Obrázky se zobrazují v nativním rozlišení.
 * **Zoomovatelné**: K přiblížení použijte ovládací prvky nebo kolečko myši
 * **Posuvné**: Po přiblížení klikněte a tažením se pohybujte po obrázku
-* **Zachování poměru stran**: Obrázky se mění proporcionálně
-
-***
+* **Zachování poměru stran**: Obrázky se mění proporcionálně***
 
 ## Možnosti prohlížení
 
@@ -44,51 +42,37 @@ Největší část obrazovky zobrazuje váš obrázek:
 
 V sadě obrázků se pohybujte pomocí klávesových zkratek nebo tlačítek:
 
-* **Další obrázek**: Klikněte na tlačítko → nebo stiskněte klávesu **→** (šipka doprava)
-* **Předchozí obrázek**: Klikněte na tlačítko ← nebo stiskněte klávesu **←** (šipka doleva)
+* **Další obrázek**: Klikněte na tlačítko → nebo stiskněte klávesu**→** (šipka doprava)
+* **Předchozí obrázek**: Klikněte na tlačítko ← nebo stiskněte klávesu**←** (šipka doleva)
 * **Přejít na konkrétní obrázek**: Vraťte se do prohlížeče souborů a klikněte na požadovanou miniaturu
 
 #### Ovládací prvky pro přiblížení
 
 Upravte zvětšení pro prohlížení detailů obrázku:
 
-**Přiblížení:**
+**Přiblížení:*** Klikněte na tlačítko **+** (plus)
+* Stiskněte klávesu **+**nebo**=*** Posuňte kolečko myši **nahoru**
 
-* Klikněte na tlačítko **+** (plus)
-* Stiskněte klávesu **+** nebo **=**
-* Posuňte kolečko myši **nahoru**
-
-**Oddalení:**
-
-* Klikněte na tlačítko **−** (mínus)
+**Oddalení:*** Klikněte na tlačítko **−** (mínus)
 * Stiskněte klávesu **−** (mínus)
 * Posuňte kolečko myši **dolů**
 
-#### Posun při přiblížení
+#### Posouvání při zvětšení
 
-Při přiblížení nad velikost obrazovky:
+Při zvětšení nad velikost obrazovky:
 
 1. Přesuňte kurzor myši nad obrázek.
 2. Klikněte a **podržte levé tlačítko myši**.
-3. **Přetažením** přesuňte obrázek.
-4. Uvolněním tlačítka zastavíte posun.
+3. **Přetažením** posuňte obrázek.
+4. Uvolněním tlačítka zastavíte posouvání.
 
-**Alternativa**: Pomocí kláves se šipkami můžete posunovat v malých krocích.
-
-***
+**Alternativa**: Pomocí kláves se šipkami posouvejte obrázek po malých krocích.***
 
 ## Kontrola hodnoty pixelů
 
-### Zobrazení hodnot pixelů u kurzoru
+### Zobrazení hodnot pixelů v kurzoru
 
-Při pohybu kurzoru myši nad obrázkem se hodnoty pixelů zobrazují v reálném čase:
-
-**Umístění zobrazení hodnoty:**
-
-* **Plovoucí číslo a červená čára v legendě gradientu indexu LUT na pravé straně**
-* **Při dalším zvětšení se plovoucí hodnota zobrazí poblíž kurzoru a zvýrazněného pixelu**
-* Zobrazuje hodnoty pixelů **pod kurzorem nebo zvýrazněných**
-* Aktualizuje se při pohybu myši
+Při pohybu kurzoru myši nad obrázkem se hodnoty pixelů zobrazují v reálném čase:**Umístění zobrazení hodnoty:*** **Plovoucí číslo a červená čára v legendě gradientu indexu LUT na pravé straně*** **Při dalším zvětšení se plovoucí hodnota zobrazí v blízkosti kurzoru a zvýrazněného pixelu*** Zobrazuje hodnoty pixelů **pod kurzorem nebo zvýrazněných*** Aktualizuje se při pohybu myši
 
 ***
 
@@ -96,9 +80,9 @@ Při pohybu kurzoru myši nad obrázkem se hodnoty pixelů zobrazují v reálné
 
 ### JPG
 
-**Obrázky JPG z fotoaparátu:**
+**JPG obrázky z fotoaparátu:**
 
-* Zobrazení dat JPG jako náhled
+* Zobrazení JPG dat jako náhled
 * Zobrazení původních, neopravených hodnot
 * Užitečné pro kontrolu kvality obrázku před zpracováním
 
@@ -128,7 +112,7 @@ Při pohybu kurzoru myši nad obrázkem se hodnoty pixelů zobrazují v reálné
 
 Použijte multispektrální indexy a barevné vyhledávací tabulky:
 
-1. Najděte **Index/LUT Sandbox** v **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> postranní liště
+1. Najděte **Index/LUT Sandbox**v**Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> postranní liště
 2. Vyberte index vegetace (NDVI, NDRE atd.)
 3. Vyberte multispektrální vzorec nebo vytvořte vlastní (pouze Chloros+)
 4. Použijte barevný LUT gradient pro vizualizaci
@@ -149,11 +133,9 @@ Podrobné pokyny najdete v části [Index/LUT Sandbox](index-lut-sandbox.md).
 
 ### Přiblížení
 
-* **+** nebo **=**: Přiblížení
-* **−**: Oddálení
-* **Kolečko myši**: Přiblížení/oddálení
-
-***
+* **+**nebo**=**: Přiblížit
+* **−**: Oddálit
+* **Kolečko myši**: Přiblížit/oddálit***
 
 ### Ověření výpočtů indexů
 
@@ -166,9 +148,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
    * **GNDVI**: Podobné jako NDVI, ale citlivé na chlorofyl
 3. Zkontrolujte oblasti bez vegetace:
    * **Půda**: Hodnota blízko 0 nebo mírně záporná
-   * **Voda**: Záporné hodnoty (-0,5 až 0)
-
-***
+   * **Voda**: Záporné hodnoty (-0,5 až 0)***
 
 ## Řešení problémů se zobrazením
 
@@ -176,9 +156,9 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 **Možné příčiny:**
 
-* Soubor byl během zpracování poškozen
-* Nepodporovaný formát souboru
-* Nedostatečná paměť pro velký obrázek
+* Soubor byl během zpracování poškozen.
+* Nepodporovaný formát souboru.
+* Nedostatečná paměť pro velký obrázek.
 
 **Řešení:**
 
@@ -220,7 +200,7 @@ Zkontrolujte, zda jsou indexy vypočítány správně:
 
 ## Další kroky
 
-Nyní, když můžete zobrazit obrázky na celou obrazovku:
+Nyní, když můžete prohlížet obrázky na celé obrazovce:
 
 * [**Vrstvy obrázků**](image-layers.md) – Informace o vizualizaci více pásem
 * [**Index/LUT Sandbox**](index-lut-sandbox.md) – Použití vlastních indexů a mapování barev

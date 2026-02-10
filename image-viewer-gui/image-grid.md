@@ -12,9 +12,9 @@ Po zpracování obrázků se v levé horní části mřížky zobrazí tlačítk
 
 * **JPG** – originální miniatury JPG z fotoaparátu
 * **Cíle** – obrázky obsahující detekované kalibrační cíle
-* **Reflexe** – kalibrované obrázky reflexe
-* **RWA (Index/LUT)** – vypočítané multispektrální indexové obrázky s barevným přechodem LUT
+* **Odrazivost** – kalibrované obrázky odrazivosti
+* **RWA (Index/LUT)** – vypočítané multispektrální indexové obrázky s barevným gradientem LUT
 
-Kliknutím na miniatury mřížky obrázků se otevře celoobrazovkový [prohlížeč obrázků](opening-an-image-full-screen.md). Pokud je režim prohlížení v mřížce nastaven na konkrétní export, například „Cíle“, po kliknutí na miniaturu mřížky se otevře exportovaný cílový obrázek na celou obrazovku.
+Kliknutím na miniatury mřížky obrázků se otevře celoobrazovkový [prohlížeč obrázků](opening-an-image-full-screen.md). Pokud je režim prohlížení v mřížce nastaven na konkrétní export, jako je „Cíle“, po kliknutí na miniaturu mřížky se otevře exportovaný cílový obrázek na celou obrazovku.
 
 <figure><img src="../.gitbook/assets/chloros_grid_mode.gif" alt=""><figcaption></figcaption></figure>
