@@ -1,25 +1,23 @@
 # Sledování zpracování
 
-Po zahájení zpracování nabízí Chloros několik způsobů, jak sledovat průběh, kontrolovat problémy a porozumět tomu, co se děje s vaším datovým souborem. Na této stránce je vysvětleno, jak sledovat zpracování a interpretovat informace, které Chloros poskytuje.
+Jakmile se zpracování spustí, nabízí Chloros několik způsobů, jak sledovat průběh, kontrolovat případné problémy a zjistit, co se s vaším datovým souborem děje. Na této stránce se dozvíte, jak sledovat průběh zpracování a jak interpretovat informace, které Chloros poskytuje.
 
 ## Přehled ukazatele průběhu
 
-Indikátor průběhu v horní záhlaví zobrazuje stav zpracování v reálném čase a procento dokončení.
+Ukazatel průběhu v horní záhlaví zobrazuje stav zpracování v reálném čase a procento dokončení.
 
-### Indikátor průběhu v bezplatném režimu
+### Ukazatel průběhu ve volném režimu
 
 Pro uživatele bez licence Chloros+:
 
 **Zobrazení průběhu ve 2 fázích:**
 
-1. **Detekce cíle** – vyhledání kalibračních cílů v obrazech
-2. **Zpracování** – aplikace oprav a export
-
-**Indikátor průběhu zobrazuje:**
+1.**Detekce cílů** – Vyhledávání kalibračních cílů v obrazech
+2. **Zpracování** – Aplikace korekcí a export**Indikátor průběhu zobrazuje:**
 
 * Celkové procento dokončení (0–100 %)
 * Název aktuální fáze
-* Jednoduché vizuální znázornění horizontální lištou
+* Jednoduchou vizualizaci v podobě vodorovného pruhu
 
 ### Indikátor průběhu Chloros+
 
@@ -27,135 +25,123 @@ Pro uživatele s licencí Chloros+:
 
 **Zobrazení průběhu ve 4 fázích:**
 
-1. **Detekce** – vyhledávání kalibračních cílů
-2. **Analýza** – zkoumání obrázků a příprava potrubí
-3. **Kalibrace** – aplikace korekcí viněty a odrazivosti
-4. **Export** – ukládání zpracovaných souborů
-
-**Interaktivní funkce:**
-
-* **Přejděte myší** nad ukazatel průběhu a zobrazí se rozšířený 4stupňový panel
-* **Kliknutím** na ukazatel průběhu panel rozbalíte a zafixujete
-* **Dalším kliknutím** panel rozbalíte a automaticky skryjete po odjetí myší
-* Každá fáze zobrazuje individuální postup (0–100 %)
+1.**Detekce** – Vyhledávání kalibračních cílů
+2. **Analýza** – Prohlížení snímků a příprava postupu
+3. **Kalibrace** – Aplikace korekcí vinětace a odrazivosti
+4. **Export** – Uložení zpracovaných souborů**Interaktivní funkce:*** **Přejděte kurzorem myši** nad ukazatel průběhu a zobrazte rozbalený 4stupňový panel
+* **Klikněte** na ukazatel průběhu a rozbalený panel zamrazte/připněte
+* **Klikněte znovu** pro odblokování a automatické skrytí při odchodu myši
+* Každá fáze zobrazuje individuální průběh (0–100 %)
 
 ***
 
 ## Vysvětlení jednotlivých fází zpracování
 
+{% hint style="info" %}
+**Architektura potrubí**: Tyto 4 fáze grafického uživatelského rozhraní odpovídají [4vláknové zpracovatelské potrubí](../processing-architecture/processing-pipeline.md). Na systémech s akcelerací GPU využívá vlákno 3 (Kalibrace) výhody [Dynamické adaptace výpočtů](../processing-architecture/dynamic-compute-adaptation.md), která optimalizuje zpracování pro váš konkrétní hardware.
+{% endhint %}
+
 ### Fáze 1: Detekce (detekce cílů)
 
 **Co se děje:**
 
-* Chloros skenuje obrázky označené zaškrtávacím políčkem Cíl
+* Chloros prohledává obrázky označené zaškrtávacím políčkem Cíl
 * Algoritmy počítačového vidění identifikují 4 kalibrační panely
-* Z každého panelu jsou extrahovány hodnoty odrazivosti
-* Pro správné naplánování kalibrace jsou zaznamenány časové značky cílů
+* Hodnoty odrazivosti extrahované z každého panelu
+* Zaznamenávají se časová razítka cílů pro správné naplánování kalibrace
 
-**Doba trvání:**
+**Trvání:**
 
 * S označenými cíli: 10–60 sekund
-* Bez označených cílů: 5–30+ minut (skenuje všechny obrázky)
+* Bez označených cílů: 5–30+ minut (prohledává všechny obrázky)
 
 **Indikátor průběhu:**
 
 * Detekce: 0 % → 100 %
-* Počet naskenovaných obrázků
+* Počet prohledaných obrázků
 * Počet nalezených cílů
 
 **Na co si dát pozor:**
 
-* Pokud jsou cíle správně označeny, mělo by být dokončeno rychle.
-* Pokud to trvá příliš dlouho, cíle nemusí být označeny.
-* Zkontrolujte protokol ladění, zda neobsahuje zprávy „Target found“ (Cíl nalezen).
+* Pokud jsou cíle správně označeny, mělo by to proběhnout rychle
+* Pokud to trvá příliš dlouho, cíle nemusí být označeny
+* Zkontrolujte v ladicím protokolu zprávy „Cíl nalezen“
 
 ### Fáze 2: Analýza
 
 **Co se děje:**
 
-* Čtení metadat EXIF obrázků (časová razítka, nastavení expozice)
-* Určení kalibrační strategie na základě časových razítek cílů
-* Organizace fronty zpracování obrázků
-* Příprava paralelních zpracovatelů (pouze Chloros+)
+* Čtení metadat EXIF snímků (časové značky, nastavení expozice)
+* Určení strategie kalibrace na základě časových razítek cílů
+* Uspořádání fronty zpracování obrázků
+* Příprava procesů pro paralelní zpracování (pouze Chloros+)
 
-**Doba trvání:** 5–30 sekund
-
-**Indikátor průběhu:**
+**Trvání:** 5–30 sekund**Indikátor průběhu:**
 
 * Analýza: 0 % → 100 %
 * Rychlá fáze, obvykle se dokončí rychle
 
 **Na co si dát pozor:**
 
-* Měl by postupovat plynule bez přestávek
-* Varování o chybějících metadatech se zobrazí v protokolu ladění
+* Průběh by měl být plynulý bez pauz
+* Varování o chybějících metadatech se zobrazí v ladicím protokolu
 
 ### Fáze 3: Kalibrace
 
-**Co se děje:**
-
-* **Debayering**: Převod RAW Bayerova vzoru na 3 kanály
+**Co se děje:*** **Debayering**: Převod RAW Bayerova vzoru na 3 kanály
 * **Korekce vinětace**: Odstranění ztmavnutí okrajů objektivu
-* **Kalibrace odrazivosti**: Normalizace pomocí cílových hodnot
-* **Výpočet indexu**: Výpočet multispektrálních indexů
-* Zpracování každého obrazu prostřednictvím celého procesu
+* **Kalibrace odrazivosti**: Normalizace podle cílových hodnot
+* **Výpočet indexů**: Výpočet multispektrálních indexů
+* Zpracování každého snímku v rámci celého procesu
 
-**Doba trvání:** Většina celkové doby zpracování (60–80 %)
-
-**Indikátor průběhu:**
+**Trvání:** Většina celkové doby zpracování (60–80 %)**Indikátor průběhu:**
 
 * Kalibrace: 0 % → 100 %
-* Aktuálně zpracovávaný obrázek
-* Dokončené obrázky / Celkový počet obrázků
+* Právě se zpracovává aktuální snímek
+* Dokončené snímky / Celkový počet snímků
 
-**Chování zpracování:**
+**Chování při zpracování:*** **Režim Free**: Zpracovává jeden snímek po druhém postupně
+* **Režim Chloros+**: Zpracovává až 16 snímků současně
+* **Akcelerace GPU**: Výrazně zrychluje tuto fázi**Na co si dát pozor:**
 
-* **Volný režim**: Zpracovává jeden obrázek za druhým postupně
-* **Režim Chloros+**: Zpracovává až 16 obrázků současně
-* **GPU akcelerace**: Výrazně zrychluje tuto fázi
-
-**Na co si dát pozor:**
-
-* Stabilní postup podle počtu obrázků
-* Zkontrolujte protokol ladění pro zprávy o dokončení jednotlivých obrázků
-* Varování o kvalitě obrázků nebo problémech s kalibrací
+* Plynulý postup podle počtu obrázků
+* Zkontrolujte ladicí protokol pro zprávy o dokončení jednotlivých obrázků
+* Varování ohledně kvality obrázků nebo problémů s kalibrací
 
 ### Fáze 4: Export
 
 **Co se děje:**
 
-* Zápis kalibrovaných obrázků na disk ve vybraném formátu
-* Export multispektrálních indexových obrázků s barvami LUT
+* Zápis kalibrovaných snímků na disk ve vybraném formátu
+* Export multispektrálních indexových snímků s barvami LUT
 * Vytváření podsložek modelů kamer
 * Zachování původních názvů souborů s příslušnými příponami
 
-**Doba trvání:** 10–20 % celkové doby zpracování
-
-**Ukazatel průběhu:**
+**Doba trvání:** 10–20 % celkové doby zpracování**Indikátor průběhu:**
 
 * Export: 0 % → 100 %
-* Zápis souborů
+* Probíhá zápis souborů
 * Formát exportu a cíl
 
-**Na co je třeba dávat pozor:**
+**Na co si dát pozor:**
 
-* Varování o nedostatku místa na disku
+* Varování o volném místě na disku
 * Chyby při zápisu souborů
 * Dokončení všech nakonfigurovaných výstupů
 
 ***
 
-## Karta Debug Log (Logs)
+## Karta Debug Log (Log ladění)
 
-Debug Log poskytuje podrobné informace o průběhu zpracování a všech problémech, které se vyskytly.
+Log ladění poskytuje podrobné informace o průběhu zpracování a všech zjištěných problémech.
 
-### Přístup k Debug Log
+### Přístup k logu ladění
 
-1. Klikněte na ikonu **Debug Log** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> v levém postranním panelu.
-2. Otevře se panel protokolu zobrazující zprávy o zpracování v reálném čase.
-3. Automaticky se posouvá, aby zobrazil nejnovější zprávy.
+1. Klikněte na ikonu **Debug Log** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> v levém postranním panelu
+2. Otevře se panel protokolu zobrazující zprávy o zpracování v reálném čase
+3. Automaticky se posouvá, aby zobrazoval nejnovější zprávy
 
-### Porozumění zprávám protokolu
+### Vysvětlení zpráv protokolu
 
 #### Informační zprávy (bílé/šedé)
 
@@ -179,7 +165,7 @@ Nekritické problémy, které nezastaví zpracování:
 [WARN] Low contrast in calibration panel - results may vary
 ```
 
-**Akce:** Po zpracování zkontrolujte varování, ale nepřerušujte zpracování.
+**Akce:** Zkontrolujte varování po zpracování, ale nepřerušujte ho
 
 #### Chybové zprávy (Red)
 
@@ -191,27 +177,27 @@ Kritické problémy, které mohou způsobit selhání zpracování:
 [ERROR] No targets detected - enable reflectance calibration or mark target images
 ```
 
-**Akce:** Zastavte zpracování, vyřešte chybu a restartujte.
+**Akce:** Zastavte zpracování, vyřešte chybu a restartujte
 
 ### Běžné zprávy protokolu
 
-| Zpráva                          | Význam                                | Potřebná akce                                         |
+| Zpráva                          | Význam                                | Požadovaná akce                                         |
 | -------------------------------- | -------------------------------------- | ----------------------------------------------------- |
-| „Cíl detekován v \[název souboru]“ | Kalibrační cíl úspěšně nalezen  | Žádná – normální                                         |
-| „Zpracování obrázku X z Y“        | Aktuální informace o postupu                | Žádná – normální                                         |
-| „Nebyly nalezeny žádné cíle“               | Nebyly detekovány žádné kalibrační cíle        | Označte obrázky cílů nebo deaktivujte kalibraci odrazivosti |
+| „Cíl detekován v [název souboru]“ | Kalibrační cíl nalezen úspěšně  | Žádná – normální                                         |
+| „Zpracovává se obrázek X z Y“        | Aktualizace aktuálního průběhu                | Žádná – normální                                         |
+| „Nebyly nalezeny žádné cíle“               | Nebyly detekovány žádné kalibrační cíle        | Označte cílové obrázky nebo deaktivujte kalibraci odrazivosti |
 | „Nedostatek místa na disku“        | Nedostatek úložného prostoru pro výstup          | Uvolněte místo na disku                                    |
-| „Přeskočení poškozeného souboru“        | Obrazový soubor je poškozen                  | Znovu zkopírujte soubor z karty SD                             |
-| „Použita data PPK“               | Použity korekce GPS ze souboru .daq | Žádné – normální                                         |
+| „Přeskočení poškozeného souboru“        | Obrazový soubor je poškozen                  | Znovu zkopírujte soubor z SD karty                             |
+| „PPK data použita“               | Použity GPS korekce ze souboru .daq | Žádné – normální                                         |
 
 ### Kopírování dat protokolu
 
-Kopírování protokolu pro účely řešení potíží nebo podpory:
+Kopírování protokolu pro účely řešení problémů nebo podpory:
 
-1. Otevřete panel Debug Log (Protokol ladění).
-2. Klikněte na tlačítko **„Copy Log“** (Kopírovat protokol) (nebo klikněte pravým tlačítkem myši → Vybrat vše).
-3. Vložte do textového souboru nebo e-mailu.
-4. V případě potřeby odešlete na podporu MAPIR.
+1. Otevřete panel Debug Log (Protokol ladění)
+2. Klikněte na tlačítko **„Copy Log“** (Kopírovat protokol) (nebo klikněte pravým tlačítkem myši → Vybrat vše)
+3. Vložte do textového souboru nebo e-mailu
+4. V případě potřeby odešlete na podporu MAPIR
 
 ***
 
@@ -219,17 +205,17 @@ Kopírování protokolu pro účely řešení potíží nebo podpory:
 
 ### Využití CPU
 
-**Volný režim:**
+**Režim Free:**
 
 * 1 jádro CPU na ~100 %
-* Ostatní jádra nečinná nebo dostupná
-* Systém zůstává odeznívající
+* Ostatní jádra jsou nečinná nebo volná
+* Systém zůstává odezvu
 
-**Chloros+ Paralelní režim:**
+**Režim Chloros+ Parallel:**
 
 * Více jader na 80–100 % (až 16 jader)
 * Vysoké celkové využití CPU
-* Systém může být méně responzivní
+* Systém může působit méně odezvě
 
 **Sledování:**
 
@@ -244,17 +230,17 @@ Kopírování protokolu pro účely řešení potíží nebo podpory:
 * Malé projekty (&lt; 100 obrázků): 2–4 GB
 * Střední projekty (100–500 obrázků): 4–8 GB
 * Velké projekty (500+ obrázků): 8–16 GB
-* Chloros+ paralelní režim využívá více RAM
+* Paralelní režim Chloros+ využívá více RAM
 
-**Pokud je paměť nedostatečná:**
+**Pokud je málo paměti:**
 
 * Zpracovávejte menší dávky
-* Ukončete ostatní aplikace
-* Pokud pravidelně zpracováváte velké datové soubory, zvyšte kapacitu RAM
+* Zavřete ostatní aplikace
+* Pokud pravidelně zpracováváte velké datové sady, vylepšete RAM
 
 ### Využití GPU (Chloros+ s CUDA)
 
-Při zapnuté akceleraci GPU:
+Když je povoleno zrychlení GPU:
 
 * GPU NVIDIA vykazuje vysoké využití (60–90 %)
 * Využití VRAM se zvyšuje (vyžaduje 4 GB+ VRAM)
@@ -266,19 +252,19 @@ Při zapnuté akceleraci GPU:
 * Správce úloh → Výkon → GPU
 * GPU-Z nebo podobný monitorovací nástroj
 
-### Disk I/O
+### Diskové I/O
 
 **Co můžete očekávat:**
 
-* Vysoké čtení disku během fáze analýzy
+* Vysoké čtení z disku během fáze analýzy
 * Vysoký zápis na disk během fáze exportu
 * SSD je výrazně rychlejší než HDD
 
 **Tip pro zvýšení výkonu:**
 
-* Pokud je to možné, použijte SSD pro složku projektu
-* Vyhněte se síťovým diskům pro velké datové soubory
-* Ujistěte se, že disk není téměř plný (ovlivňuje rychlost zápisu)
+* Pokud je to možné, použijte pro projektovou složku SSD
+* Vyhněte se síťovým diskům pro velké datové sady
+* Ujistěte se, že disk není téměř plný (ovlivňuje to rychlost zápisu)
 
 ***
 
@@ -286,39 +272,39 @@ Při zapnuté akceleraci GPU:
 
 ### Varovné signály
 
-**Zastavení procesu (žádná změna po dobu 5+ minut):**
+**Zastavení průběhu (žádná změna po dobu 5 a více minut):**
 
-* Zkontrolujte protokol ladění, zda neobsahuje chyby.
-* Ověřte dostupný prostor na disku.
-* Zkontrolujte Správce úloh, zda běží Chloros.
+* Zkontrolujte protokol ladění, zda neobsahuje chyby
+* Ověřte dostupné místo na disku
+* Zkontrolujte Správce úloh, zda běží proces Chloros
 
-**Časté zobrazení chybových zpráv:**
+**Časté zobrazování chybových hlášení:**
 
-* Zastavte zpracování a zkontrolujte chyby.
-* Běžné příčiny: nedostatek místa na disku, poškozené soubory, problémy s pamětí.
-* Viz část Řešení problémů níže.
+* Zastavte zpracování a zkontrolujte chyby
+* Časté příčiny: nedostatek místa na disku, poškozené soubory, problémy s pamětí
+* Viz část Řešení problémů níže
 
 **Systém nereaguje:**
 
-* Chloros+ paralelní režim využívá příliš mnoho zdrojů
+* Paralelní režim Chloros+ využívá příliš mnoho zdrojů
 * Zvažte snížení počtu souběžných úloh nebo upgrade hardwaru
 * Volný režim je méně náročný na zdroje
 
 ### Kdy zastavit zpracování
 
-Zastavte zpracování, pokud se zobrazí:
+Zastavte zpracování, pokud se objeví:
 
-* ❌ Chyby „Disk je plný“ nebo „Nelze zapsat soubor“
-* ❌ Opakované chyby poškození obrazového souboru
+* ❌ Chyby „Disk plný“ nebo „Nelze zapsat soubor“
+* ❌ Opakované chyby poškození obrazových souborů
 * ❌ Systém zcela zamrzl (nereaguje)
 * ❌ Zjistili jste, že byla nakonfigurována nesprávná nastavení
 * ❌ Byly importovány nesprávné obrazy
 
 **Jak zastavit:**
 
-1. Klikněte na **tlačítko Zastavit/Zrušit** (nahrazuje tlačítko Start)
-2. Zpracování se zastaví, pokrok se ztratí
-3. Opravte problémy a restartujte od začátku
+1. Klikněte na**tlačítko Zastavit/Zrušit** (nahrazuje tlačítko Start)
+2. Zpracování se zastaví, průběh se ztratí
+3. Opravte problémy a začněte znovu od začátku
 
 ***
 
@@ -331,13 +317,13 @@ Zastavte zpracování, pokud se zobrazí:
 * Neoznačené cílové obrázky (skenování všech obrázků)
 * HDD místo SSD úložiště
 * Nedostatečné systémové zdroje
-* Konfigurováno mnoho indexů
+* Nastaveno mnoho indexů
 * Přístup k síťovému disku
 
 **Řešení:**
 
 1. Pokud jste právě začali a jste ve fázi detekce: Zrušte, označte cíle, restartujte
-2. Do budoucna: Používejte SSD, snižte počet indexů, upgradujte hardware
+2. Pro budoucnost: Použijte SSD, omezte počet indexů, vylepšete hardware
 3. Zvažte použití CLI pro dávkové zpracování velkých datových sad
 
 ### Varování „Místo na disku“
@@ -346,26 +332,26 @@ Zastavte zpracování, pokud se zobrazí:
 
 1. Okamžitě uvolněte místo na disku
 2. Přesuňte projekt na disk s větším prostorem
-3. Snižte počet indexů pro export.
-4. Použijte formát JPG namísto TIFF (menší soubory).
+3. Snižte počet indexů k exportu
+4. Použijte formát JPG namísto TIFF (menší soubory)
 
-### Časté zprávy „Poškozený soubor“
-
-**Řešení:**
-
-1. Znovu zkopírujte obrázky z karty SD, abyste zajistili jejich integritu.
-2. Otestujte kartu SD na chyby.
-3. Odstraňte poškozené soubory z projektu.
-4. Pokračujte ve zpracování zbývajících obrázků.
-
-### Přehřívání/omezení výkonu systému
+### Časté zprávy o „poškozených souborech“
 
 **Řešení:**
 
-1. Zajistěte dostatečné větrání.
-2. Vyčistěte prach z ventilačních otvorů počítače.
-3. Snižte zátěž zpracování (použijte režim Free namísto Chloros+).
-4. Zpracovávejte v chladnějších částech dne.
+1. Znovu zkopírujte snímky z SD karty, abyste zajistili jejich integritu
+2. Otestujte SD kartu na chyby
+3. Odstraňte poškozené soubory z projektu
+4. Pokračujte ve zpracování zbývajících snímků
+
+### Přehřívání systému / omezení výkonu
+
+**Řešení:**
+
+1. Zajistěte dostatečné větrání
+2. Odstraňte prach z větracích otvorů počítače
+3. Snižte zátěž při zpracování (použijte režim Free namísto Chloros+)
+4. Zpracovávejte v chladnějších částech dne
 
 ***
 
@@ -374,9 +360,9 @@ Zastavte zpracování, pokud se zobrazí:
 Po dokončení zpracování:
 
 * Ukazatel průběhu dosáhne 100 %
-* V protokolu ladění se zobrazí zpráva **„Zpracování dokončeno“**
-* Tlačítko Start se znovu aktivuje
-* Všechny výstupní soubory jsou v podsložce modelu fotoaparátu
+* V ladicím protokolu se zobrazí zpráva **„Zpracování dokončeno“**
+* Tlačítko Start se opět aktivuje
+* Všechny výstupní soubory se nacházejí v podsložce modelu fotoaparátu
 
 ***
 
@@ -385,8 +371,8 @@ Po dokončení zpracování:
 Po dokončení zpracování:
 
 1. **Zkontrolujte výsledky** – viz [Dokončení zpracování](finishing-the-processing.md)
-2. **Zkontrolujte výstupní složku** – ověřte, zda byly všechny soubory exportovány správně
-3. **Zkontrolujte protokol ladění** – zkontrolujte, zda neobsahuje varování nebo chyby
-4. **Zobrazte náhled zpracovaných obrázků** – použijte prohlížeč obrázků nebo externí software
+2. **Zkontrolujte výstupní složku** – ověřte, zda byly všechny soubory správně exportovány
+3. **Projděte si protokol ladění** – zkontrolujte, zda neobsahuje varování nebo chyby
+4. **Prohlédněte si náhledy zpracovaných snímků** – použijte prohlížeč obrázků nebo externí software
 
-Informace o kontrole a použití zpracovaných výsledků naleznete v části [Dokončení zpracování](finishing-the-processing.md).
+Informace o prohlížení a používání zpracovaných výsledků najdete v článku [Dokončení zpracování](finishing-the-processing.md).

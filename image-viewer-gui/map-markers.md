@@ -1,45 +1,45 @@
 # Značky na mapě
 
-Karta Mapa zobrazuje vaše snímky na interaktivní 2D mapě na základě jejich GPS souřadnic. To poskytuje geografický přehled o vaší snímací relaci a pomáhá vizualizovat prostorové pokrytí. Je to také užitečné při prvním importu snímků, abyste mohli rychle odstranit všechny snímky, které nepotřebujete zpracovat.
+Na kartě Mapa se vaše snímky zobrazují na interaktivní 2D mapě podle jejich GPS souřadnic. Získáte tak geografický přehled o vaší snímací relaci a můžete si lépe představit prostorové pokrytí. Tato funkce se hodí také při prvním importu snímků, kdy můžete rychle odstranit všechny snímky, které nepotřebujete zpracovávat.
 
 <figure><img src="../.gitbook/assets/chloros_map_markers.gif" alt=""><figcaption></figcaption></figure>
 
-## Přístup k záložce Mapa
+## Přístup na kartu Mapa
 
-1. Otevřete nebo vytvořte projekt v Chloros.
-2. Importujte obrázky, které obsahují metadata GPS.
-3. Klikněte na záložku **Mapa** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> v levém postranním panelu.
-4. Na mapě se zobrazí značky v místě GPS polohy každého snímku.
+1. Otevřete nebo vytvořte projekt v Chloros
+2. Importujte snímky, které obsahují metadata GPS
+3. Klikněte na kartu **Mapa** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> v levém postranním panelu
+4. Na mapě se zobrazí značky v GPS poloze každého snímku
 
 {% hint style="info" %}
-**Vyžaduje GPS**: Na mapě se zobrazí pouze obrázky s vloženými souřadnicemi GPS v metadatech EXIF. Ujistěte se, že máte během pořizování snímků ve fotoaparátu zapnutou funkci GPS.
+**Vyžaduje GPS**: Na mapě se zobrazí pouze snímky s GPS souřadnicemi vloženými do metadat EXIF. Ujistěte se, že máte při pořizování snímků ve fotoaparátu zapnutou funkci GPS.
 {% endhint %}
 
 ***
 
-## Úprava obrázků na kartě Mapa
+## Úprava snímků na kartě Mapa
 
-Karta **Mapa**<img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> má stejné funkce přidání  <img src="../.gitbook/assets/image.png" alt="" data-size="line">   <img src="../.gitbook/assets/image (1).png" alt="" data-size="line">  a odstranění  <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">  tlačítka jako karta [**Prohlížeč souborů**](../processing-images-gui/adding-files-to-a-project.md) <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> . Zobrazuje také stejný seznam projektových souborů, ale s jinými záhlavími sloupců:
+Karta **Mapa**<img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> má stejné tlačítko pro přidání  <img src="../.gitbook/assets/image.png" alt="" data-size="line">   <img src="../.gitbook/assets/image (1).png" alt="" data-size="line">  a odstranění  <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">  jako karta [**Prohlížeč souborů**](../processing-images-gui/adding-files-to-a-project.md) <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> . Zobrazuje také stejný seznam projektových souborů, ale s odlišnými záhlavími sloupců:
 
 ### Název souboru
 
 * Původní název souboru z fotoaparátu
 * Zachovává konvenci pojmenování fotoaparátu (např. IMG\_0001.RAW)
 
-### Zeměpisná šířka
+### Šířka
 
-* Zeměpisná šířka snímku
+* Šířka snímku
 
-### Zeměpisná délka
+### Délka
 
-* Zeměpisná délka snímku
+* Délka snímku
 
 ### Nadmořská výška
 
 * Nadmořská výška snímku
 
 {% hint style="info" %}
-Kliknutím na záhlaví sloupců tabulky se také seřadí data v řádcích.
+Kliknutím na záhlaví sloupců tabulky se data v řádcích také seřadí
 {% endhint %}
 
 ***
@@ -50,9 +50,9 @@ Každý snímek s GPS daty je na mapě znázorněn značkou:
 
 ### Zobrazení značek
 
-* Značky označují přesné GPS souřadnice, kde byl každý obrázek pořízen.
-* Při oddálení se mohou značky seskupit.
-* Přiblížením můžete zobrazit jednotlivé polohy obrázků.
+* Značky označují přesné GPS souřadnice místa, kde byl každý snímek pořízen
+* Při oddálení se mohou seskupené značky spojit dohromady
+* Přiblížením si můžete prohlédnout umístění jednotlivých snímků
 
 {% hint style="success" %}
 SUPER-ZOOM: Když dosáhnete maximální úrovně přiblížení od poskytovatele mapových dlaždic, dlaždice se při dalším přiblížení zvětší, což vám umožní vidět značky, které jsou blízko u sebe.
@@ -60,9 +60,9 @@ SUPER-ZOOM: Když dosáhnete maximální úrovně přiblížení od poskytovatel
 
 ### Náhled při najetí myší
 
-* **Najetím myší** na libovolný značkovač zobrazíte náhled daného snímku.
-* To umožňuje rychlou vizuální identifikaci, aniž byste museli opustit zobrazení mapy.
-* Užitečné pro vyhledání konkrétních snímků v rámci rozsáhlé relace pořizování snímků.
+* **Najedete-li myší** na libovolnou značku, zobrazí se náhled daného snímku
+* To umožňuje rychlou vizuální identifikaci, aniž byste museli opustit zobrazení mapy
+* Užitečné pro vyhledání konkrétních snímků v rámci rozsáhlé snímací relace
 
 ***
 
@@ -72,17 +72,17 @@ SUPER-ZOOM: Když dosáhnete maximální úrovně přiblížení od poskytovatel
 **Automatický výběr**: Chloros automaticky vybere službu dlaždic, která poskytuje nejlepší úroveň přiblížení pro vaši aktuální polohu na mapě. V případě potřeby můžete ručně přepínat mezi poskytovateli.
 {% endhint %}
 
-Karta Mapa podporuje dva poskytovatele dlaždic pro obrázky pozadí mapy:
+Karta Mapa podporuje dva poskytovatele dlaždic pro snímky pozadí mapy:
 
 ### Google Maps
 
-* Standardní satelitní a mapové snímky od společnosti Google.
-* Nejlepší pro obecné pokrytí celého světa.
+* Standardní satelitní a mapové snímky od Google
+* Nejlepší pro obecné celosvětové pokrytí
 
 ### ESRI
 
-* Satelitní a letecké snímky od společnosti ESRI ArcGIS.
-* Často poskytuje snímky s vyšším rozlišením v určitých regionech.
+* Satelitní a letecké snímky z ESRI ArcGIS
+* V určitých regionech často poskytuje snímky s vyšším rozlišením
 
 ***
 
@@ -92,19 +92,19 @@ Můžete si vybrat typ mapové vrstvy (zleva doprava):
 
  <img src="../.gitbook/assets/image (23).png" alt="" data-size="original">### Terén
 
-Zobrazuje výškové profily a mapové dlaždice s podrobnostmi (silnice atd.)
+Zobrazuje výškové profily a mapové dlaždice s detaily (silnice atd.)
 
 ### Mapa
 
-Zobrazuje standardní (nižší šířka pásma) mapové dlaždice s podrobnostmi (silnice atd.)
+Zobrazuje standardní (nižší šířka pásma) mapové dlaždice s detaily (silnice atd.)
 
 ### Satelit
 
-Zobrazuje podrobné (vyšší šířka pásma) satelitní mapové dlaždice
+Zobrazuje detailní (vyšší šířka pásma) satelitní mapové dlaždice
 
 ### Hybridní
 
-Zobrazuje satelitní mapové dlaždice s přidanými podrobnostmi (silnice atd.)
+Zobrazuje satelitní mapové dlaždice s přidanými detaily (silnice atd.)
 
 ***
 
@@ -112,32 +112,32 @@ Zobrazuje satelitní mapové dlaždice s přidanými podrobnostmi (silnice atd.)
 
 ### Ovládací prvky pro přiblížení
 
-* **Přiblížit/oddálit**: Použijte kolečko myši nebo tlačítka pro přiblížení.
-* **Celá obrazovka**: Zobrazí mapu na celou obrazovku.
+* **Přiblížení/oddálení**: Použijte kolečko myši nebo tlačítka pro přiblížení
+* **Celá obrazovka**: Zobrazte mapu na celé obrazovce
 
 ### Ovládací prvky pro posun
 
-* **Posun**: Kliknutím a tažením se můžete pohybovat po mapě.***
+* **Posun**: Klikněte a táhněte pro pohyb po mapě***
 
 ## Případy použití
 
-### Vizualizace letové dráhy
+### Vizualizace letové trasy
 
-* Zobrazení oblasti pokrytí snímků pořízených dronem
+* Zobrazení oblasti pokrytí při snímkování dronem
 * Identifikace mezer v pokrytí snímků
-* Ověření provedení letové dráhy
+* Ověření provedení letové trasy
 
 ### Kontrola pozemního průzkumu
 
 * Zobrazení prostorového rozložení pozemních snímků
 * Lokalizace kalibračních cílových snímků vzhledem k oblasti průzkumu
-* Plánování dalších míst pro pořízení snímků
+* Plánování dalších míst pro snímkování
 
 ### Kontrola kvality
 
-* Rychlá identifikace snímků pořízených na neočekávaných místech.
-* Ověření přesnosti GPS v celém datovém souboru.
-* Porovnání polohy snímků s poznámkami z terénu.
+* Rychlá identifikace snímků pořízených na neočekávaných místech
+* Ověření přesnosti GPS v celém datovém souboru
+* Porovnání polohy snímků s terénními poznámkami
 
 ***
 
@@ -147,17 +147,17 @@ Zobrazuje satelitní mapové dlaždice s přidanými podrobnostmi (silnice atd.)
 
 **Možné příčiny:**
 
-* Snímky neobsahují metadata GPS.
-* GPS bylo během snímání na fotoaparátu deaktivováno.
-* Data EXIF byla odstraněna externím softwarem.
+* Snímky neobsahují metadata GPS
+* Během snímání byla na kameře vypnutá funkce GPS
+* Data EXIF byla odstraněna externím softwarem
 
-**Řešení**: Ověřte, zda je GPS ve vašem fotoaparátu zapnuté, a znovu importujte původní soubory.
+**Řešení**: Ověřte, zda je GPS ve fotoaparátu zapnuté, a znovu importujte původní soubory
 
 ### Značky na nesprávném místě
 
 **Možné příčiny:**
 
-* GPS fotoaparátu mělo špatné satelitní připojení.
-* Během pořizování snímků došlo k odchylce GPS.
+* GPS fotoaparátu mělo špatný signál ze satelitu
+* Posun GPS během pořizování
 
-**Řešení**: Jedná se obvykle o problém s časem pořízení snímku; pro přesné aplikace zvažte použití PPK/RTK GPS.
+**Řešení**: Jedná se obvykle o problém v době pořízení; zvažte použití PPK/RTK GPS pro přesné aplikace

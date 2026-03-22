@@ -3,14 +3,14 @@
 * [Začínáme](README.md)
 * [GUI: Navigace](navigation.md)
 * [GUI: Projekty](projects.md)
-* [CLI: Příkazový řádek](CLI.md)
-* [API: Python SDK](api-python-sdk.md)
-* [Podporované fotoaparáty](supported-cameras.md)
+* [CLI : Příkazový řádek](CLI.md)
+* [API : Python SDK](api-python-sdk.md)
+* [Podporované kamery](supported-cameras.md)
 * [Formáty výstupních obrázků](output-image-formats.md)
 * [Chloros+ Přihlášení](chloros+-login.md)
-* [Kalibrační cíle](calibration-targets.md)
+* [Kalibrační terče](calibration-targets.md)
 * [Podporované jazyky](supported-languages.md)
-* [Stažení](download.md)
+* [Stáhnout](download.md)
 * [Často kladené otázky](faq.md)
 
 ## Zpracování obrázků (GUI)
@@ -25,12 +25,23 @@
 ## NASTAVENÍ PROJEKTU
 
 * [Nastavení projektu](project-settings/project-settings.md)
-* [Vzorce multispektrálního indexu](project-settings/multispectral-index-formulas.md)
+* [Vzorce multispektrálních indexů](project-settings/multispectral-index-formulas.md)
 
-## PROHLÍŽEČ OBRAZŮ (GUI)
+## PROHLÍŽEČ SNÍMKŮ (GUI)
 
-* [Mřížka obrazů](image-viewer-gui/image-grid.md)
-* [Otevření obrázku na celou obrazovku](image-viewer-gui/opening-an-image-full-screen.md)
-* [Vrstvy obrázku](image-viewer-gui/image-layers.md)
+* [Mřížka snímků](image-viewer-gui/image-grid.md)
+* [Otevření snímku na celou obrazovku](image-viewer-gui/opening-an-image-full-screen.md)
+* [Vrstvy snímků](image-viewer-gui/image-layers.md)
 * [Index/LUT Sandbox](image-viewer-gui/index-lut-sandbox.md)
-* [Značky mapy](image-viewer-gui/map-markers.md)
+* [Značky na mapě](image-viewer-gui/map-markers.md)
+
+## Linux a Edge Computing
+
+* [Linux – přehled](linux/linux-overview.md)
+* [Linux – instalace](linux/linux-installation.md)
+* [Průvodce NVIDIA Jetson](linux/nvidia-jetson-guide.md)
+
+## Architektura zpracování
+
+* [Dynamická adaptace výpočtů](processing-architecture/dynamic-compute-adaptation.md)
+* [Zpracovací pipeline](processing-architecture/processing-pipeline.md)

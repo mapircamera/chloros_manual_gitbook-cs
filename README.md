@@ -4,39 +4,51 @@ metaLinks: {}
 
 # Začínáme
 
-<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>Chloros je softwarová aplikace od [MAPIR](https://www.mapir.camera) pro zpracování obrazů a dalších dat ze senzorů.
+<div data-full-width="false"><figure><img src=".gitbook/assets/chloros_logo_transparent.png" alt=""><figcaption></figcaption></figure></div>Chloros je softwarová aplikace od [MAPIR](https://www.mapir.camera) určená ke zpracování obrazů a dalších dat ze senzorů.
 
-***
+***{% hint style="success" %}**Novinky ve verzi Chloros 1.1.0**: Nativní podpora Linux (amd64 a arm64), edge computing NVIDIA Jetson, Dynamic Compute Adaptation, 4-vláknový zpracovatelský pipeline, nové příkazy a volby CLI. Kompletní seznam změn najdete v sekci [Stáhnout](download.md).
+{% endhint %}
 
-Chloros je k dispozici ve 3 aplikačních režimech:
+Chloros je k dispozici ve 3 režimech aplikace:
 
-## Chloros: Aplikace s grafickým uživatelským rozhraním pro stolní počítače
+## Chloros: Desktopová aplikace s grafickým rozhraním
 
-Samostatné okno se všemi funkcemi.
+Samostatné okno se všemi funkcemi. _Pouze pro Windows._
 
 ## [Chloros CLI: Rozhraní příkazového řádku](CLI.md)
 
-Dávkové zpracování příkazového řádku. Ideální pro automatizaci, skriptování a pokročilé pracovní postupy. _CLI vyžaduje pro přístup licenci Chloros+._
+Dávkové zpracování z příkazového řádku. Ideální pro automatizaci, skriptování a provoz bez grafického rozhraní. K dispozici na **Windows, Linux amd64 a Linux arm64 (NVIDIA Jetson)**. _Pro přístup k CLI je vyžadována licence Chloros+._
 
 ## [Chloros API: Python SDK](api-python-sdk.md)
 
-Programové rozhraní Python pro automatizaci a vlastní pracovní postupy. Ideální pro výzkumné procesy, integraci se stávajícími aplikacemi Python a vytváření vlastních nástrojů. _API vyžaduje pro přístup licenci Chloros+._
+Programové rozhraní Python pro automatizaci a vlastní pracovní postupy. Ideální pro výzkumné procesy, integraci se stávajícími aplikacemi Python a vytváření vlastních nástrojů. K dispozici na **všech platformách** prostřednictvím `pip install chloros-sdk`. _Pro přístup k API je vyžadována licence Chloros+._***
+
+## Podporované platformy
+
+| Platforma | GUI | CLI | Python SDK |
+| --- | --- | --- | --- |
+| **Windows 10/11** | Ano | Ano | Ano |
+| **Linux amd64 (x86_64)** | Ne | Ano | Ano |
+| **Linux arm64 (NVIDIA Jetson)** | Ne | Ano | Ano |
+
+Pokyny k instalaci Linux najdete v části [Linux &amp; Edge Computing](linux/linux-overview.md).
 
 ***
 
 ## Chloros+
 
-Ačkoli je Chloros pro většinu úkolů zdarma, možná budete chtít více. V takovém případě se vám může hodit placená licence pro Chloros+. S licencí Chloros+ můžete odemknout nové funkce, jako například:
+Ačkoli je Chloros pro většinu úkolů zdarma, možná zjistíte, že potřebujete více. Právě v takovém případě vám může být užitečná placená licence pro Chloros+. S licencí Chloros+ můžete odemknout nové funkce, jako jsou:
 
-* **Vícevláknové zpracování**: výrazně zrychlete zpracování obrazu u větších projektů současným zpracováním obrazů prostřednictvím potrubí.
-* **Akcelerace GPU (CUDA)**: využijte dnešní vyšší možnosti paměti GPU k dalšímu zrychlení zpracování obrazu. Pro dosažení nejlepších výsledků doporučujeme 4 GB nebo více VRAM.
-* **Chloros+**[**CLI**](CLI.md)**Přístup**: spusťte Chloros+ z příkazového řádku a automatizujte a integrujte jej do svého vlastního softwaru.
-* **Chloros+**[**API**](api-python-sdk.md)**Přístup:** spusťte Chloros+ z Python pro programové ovládání, což umožňuje hladkou integraci s vašimi výzkumnými procesy, pracovními postupy pro analýzu dat a vlastními aplikacemi.
-* **Použití více zařízení**: každá licence Chloros+ umožňuje registraci 2 a více zařízení. K správě registrovaných zařízení použijte svůj účet MAPIR Cloud. Přidejte podporu pro více zařízení upgradováním licence Chloros+.
-* **Pokročilá metoda debayeringu s rozpoznáním textury:** vysoce kvalitní debayer s rozpoznáním hran v kombinaci s modelem AI/ML pro odstraňování šumu, který odstraní téměř veškerý šum debayeringu.
-* **Vlastní vzorce multispektrálních indexů:** zadejte vlastní multispektrální indexy do rastrových kalkulaček Chloros, a to jak pro zpracování, tak pro prohlížení obrázků v sandboxu.
+* **Vícevláknové zpracování**: výrazně zrychlete zpracování obrazu u větších projektů díky simultánnímu zpracování obrazů v rámci pipeline.
+* **Akcelerace GPU (CUDA)**: využijte dnešní možnosti vyšší paměti GPU k dalšímu zrychlení pipeline zpracování obrazu. Pro nejlepší výsledky doporučujeme 4 GB nebo více VRAM.
+* **Chloros+**[**CLI**](CLI.md)**Přístup**: spusťte Chloros+ z příkazového řádku pro automatizaci a integraci do vašeho vlastního softwaru.
+* **Chloros+**[**API**](api-python-sdk.md)**Přístup:** spusťte Chloros+ z Python pro programové ovládání, což umožňuje hladkou integraci s vašimi výzkumnými procesy, pracovními postupy analýzy dat a vlastními aplikacemi.
+* **Použití na více zařízeních**: každá licence Chloros+ umožňuje registraci 2 a více zařízení. K správě registrovaných zařízení použijte svůj účet MAPIR Cloud. Přidejte podporu pro další zařízení upgradem licence Chloros+.
+* **Pokročilá metoda debayeringu s ohledem na textury:** vysoce kvalitní debayering s ohledem na hrany v kombinaci s modelem odšumování AI/ML, který odstraní téměř veškerý šum způsobený debayeringem. 
+* **Vlastní vzorce multispektrálních indexů:** zadejte vlastní multispektrální indexy do rastrových kalkulátorů Chloros, a to jak pro zpracování, tak pro sandbox pro prohlížení obrázků.
+* **Linux a edge computing:** spusťte Chloros na platformách Linux x86_64 a ARM64, včetně NVIDIA Jetson, pro zpracování v terénu a na okraji sítě. Viz [Přehled Linux](linux/linux-overview.md).
 
-<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary" data-icon="envira">Chloros+ Ceny a registrace</a></p>
+<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary" data-icon="envira">Ceny a registrace pro Chloros+</a></p>
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
 

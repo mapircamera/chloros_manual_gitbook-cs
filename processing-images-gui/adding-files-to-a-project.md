@@ -1,41 +1,41 @@
-# Přidání souborů do projektu
+# Přidávání souborů do projektu
 
-Jakmile vytvoříte nebo otevřete projekt v Chloros, dalším krokem je přidání multispektrálních snímků, abyste mohli zahájit zpracování. Karta Prohlížeč souborů<img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> usnadňuje import obrázků a správu datových sad.
+Jakmile v programu Chloros vytvoříte nebo otevřete projekt, je dalším krokem přidání multispektrálních snímků, abyste mohli zahájit jejich zpracování. Záložka Prohlížeč souborů<img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> usnadňuje import snímků a správu datového souboru.
 
-## Přístup k prohlížeči souborů
+## Otevření prohlížeče souborů
 
 1. Otevřete nebo vytvořte projekt v Chloros
-2. Klikněte na ikonu **Prohlížeč souborů** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> v levém postranním panelu.
-3. Panel Prohlížeč souborů zobrazí seznam souborů vašeho projektu.
+2. Klikněte na ikonu **Prohlížeč souborů** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> v levém postranním panelu
+3. Panel Prohlížeč souborů zobrazí seznam souborů vašeho projektu
 
 {% hint style="info" %}
-**Podporované typy souborů**: Chloros podporuje obrazové soubory RAW+JPG a JPG z kamer MAPIR Survey3W a Survey3N. Doporučujeme pouze formát RAW+JPG.
+**Podporované typy souborů**: Chloros podporuje obrazové soubory RAW+JPG a JPG z kamer MAPIR, Survey3W a Survey3N. Doporučujeme používat pouze formát RAW+JPG.
 {% endhint %}
 
 ***
 
 ## Přidávání obrázků do projektu
 
-Existují dva základní způsoby, jak přidat obrázky do projektu:
+Existují dva hlavní způsoby, jak přidat obrázky do projektu:
 
-### Metoda 1: Přidání souborů
+### Metoda 1: Přidat soubory
 
 Tuto možnost použijte k importu jednotlivých obrazových souborů nebo malého výběru souborů.
 
-1. Klikněte na tlačítko **„Přidat soubory“** <img src="../.gitbook/assets/image.png" alt="" data-size="line"> v horní části panelu Prohlížeč souborů.
-2. Přejděte do složky obsahující vaše obrázky.
-3. Vyberte jeden nebo více obrazových souborů (podržte klávesu **Ctrl** pro výběr více souborů).
-4. Klikněte na **„Otevřít“** pro import vybraných souborů.
+1. Klikněte na tlačítko **„Přidat soubory“** <img src="../.gitbook/assets/image.png" alt="" data-size="line"> v horní části panelu Prohlížeč souborů
+2. Přejděte do složky obsahující vaše obrázky
+3. Vyberte jeden nebo více obrazových souborů (podržte klávesu **Ctrl** pro výběr více souborů)
+4. Klikněte na **„Otevřít“** pro import vybraných souborů
 
-### Metoda 2: Přidání složky
+### Metoda 2: Přidat složku
 
 Tuto možnost použijte pro import všech obrázků ze složky najednou.
 
-1. Klikněte na tlačítko **„Přidat složku“** <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> v horní části panelu Prohlížeč souborů.
-2. Přejděte do složky obsahující snímky z vaší relace a vyberte ji.
-3. Kliknutím na tlačítko **„Vybrat složku“** importujte všechny podporované snímky z této složky.***
+1. Klikněte na tlačítko **„Přidat složku“** <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> v horní části panelu Prohlížeč souborů
+2. Přejděte do složky obsahující snímky z dané relace a vyberte ji
+3. Klikněte na **„Vybrat složku“** pro import všech podporovaných snímků z této složky***
 
-## Popis tabulky prohlížeče souborů
+## Popis tabulky v prohlížeči souborů
 
 Po importu se snímky zobrazí v tabulce s následujícími sloupci:
 
@@ -46,9 +46,9 @@ Po importu se snímky zobrazí v tabulce s následujícími sloupci:
 
 ### Časové razítko
 
-* Datum a čas pořízení obrázku
-* Extrahováno z metadat EXIF obrázku
-* Používá se pro synchronizaci PPK a detekci kalibračního cíle
+* Datum a čas pořízení snímku
+* Extrahováno z metadat EXIF snímku
+* Používá se pro synchronizaci PPK a detekci kalibračních cílů
 
 ### Model fotoaparátu
 
@@ -59,8 +59,8 @@ Po importu se snímky zobrazí v tabulce s následujícími sloupci:
 ### Sloupec cíle (zaškrtávací políčko)
 
 * Zaškrtněte toto políčko u obrázků, které obsahují kalibrační cíle
-* Výrazně urychluje detekci cíle během zpracování
-* Podrobnosti najdete v části [Výběr cílových obrázků](choosing-target-images.md)
+* Výrazně urychluje detekci cílů během zpracování
+* Podrobnosti najdete v části [Výběr obrázků cílů](choosing-target-images.md)
 
 ### Zobrazení metadat obrázku
 
@@ -76,78 +76,78 @@ Kliknutím na přepínací tlačítko v pravém horním rohu nad tabulkou se v o
 
 Chcete-li z projektu odstranit nepotřebné obrázky:
 
-1. Vyberte jeden nebo více obrázků v tabulce Prohlížeč souborů
-2. Klikněte na tlačítko **„Odebrat vybrané“** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line"> .
+1. Vyberte jeden nebo více obrázků v tabulce Prohlížeče souborů
+2. Klikněte na tlačítko **„Odstranit vybrané“** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line"> .
 3. Potvrďte odstranění (soubory nejsou smazány z disku, pouze odstraněny z projektu).
 
 ### Třídění a filtrování
 
-* **Třídění podle sloupce**: Kliknutím na záhlaví libovolného sloupce můžete obrázky seřadit.
+* **Třídění podle sloupce**: Kliknutím na libovolný záhlaví sloupce můžete obrázky seřadit.
 * **Třídění podle časového razítka**: Užitečné pro uspořádání chronologických sekvencí snímků.
-* **Filtr modelu fotoaparátu**: Pokud používáte více fotoaparátů, můžete obrázky seskupit podle typu fotoaparátu.***
+* **Filtr podle modelu fotoaparátu**: Pokud používáte více fotoaparátů, seskupte obrázky podle typu fotoaparátu.***
 
 ## Náhled obrázku
 
 ### Zobrazení celého obrázku
 
-Klikněte na libovolnou miniaturu obrázku v prohlížeči souborů a zobrazí se v hlavní náhledové oblasti:
+Klikněte na libovolnou miniaturu obrázku v prohlížeči souborů, aby se zobrazil v hlavní oblasti náhledu:
 
-1. Obrázek se zobrazí ve středním náhledovém panelu.
-2. Pomocí ovládacích prvků zoomu můžete prohlížet detaily obrázku.
-3. Mezi obrázky můžete přecházet pomocí kláves se šipkami.
+1. Obrázek se zobrazí ve středním panelu náhledu
+2. Pomocí ovládacích prvků pro přiblížení si prohlédněte detaily obrázku
+3. Mezi obrázky se pohybujte pomocí kláves se šipkami
 
 ### Rychlá navigace
 
-* **Předchozí obrázek**: Klikněte na šipku vlevo nebo stiskněte klávesu ←.
-* **Další obrázek**: Klikněte na šipku vpravo nebo stiskněte klávesu →.
-* **Přiblížení/oddálení**: Použijte kolečko myši nebo tlačítka pro přiblížení.
-* **Posun**: Po přiblížení klikněte a přetáhněte obrázek.***
+* **Předchozí obrázek**: Klikněte na šipku vlevo nebo stiskněte klávesu ←
+* **Další obrázek**: Klikněte na šipku vpravo nebo stiskněte klávesu →
+* **Přiblížení/oddálení**: Použijte kolečko myši nebo tlačítka pro přiblížení
+* **Posun**: Klikněte a táhněte na obrázku při přiblížení***
 
 ## Zpracování duplicitních souborů
 
 Chloros automaticky detekuje a ignoruje duplicitní soubory:
 
-* Soubory se stejnými názvy jsou přeskočeny.
-* Zabraňuje náhodnému dvojímu zpracování.
-* Při detekci duplicit se zobrazí varovná zpráva.
+* Soubory se stejnými názvy jsou přeskočeny
+* Zabraňuje náhodnému dvojímu zpracování
+* Při detekci duplicit se zobrazí varovná zpráva
 
 {% hint style="warning" %}
-**Důležité**: Před importem nepřejmenovávejte ani neupravujte původní obrazové soubory. Chloros se při správném zpracování spoléhá na původní názvy souborů a metadata.
+**Důležité**: Před importem nepřejmenovávejte ani neupravujte původní obrazové soubory. Chloros se pro správné zpracování spoléhá na původní názvy souborů a metadata.
 {% endhint %}
 
 ***
 
-## Smíšené datové sady kamer
+## Smíšené sady dat z kamer
 
-Pokud váš projekt obsahuje obrázky z více kamer MAPIR:
+Pokud váš projekt obsahuje snímky z více kamer MAPIR:
 
 1. Chloros automaticky detekuje každý model kamery
 2. Každý typ kamery je zpracován s příslušným kalibračním profilem
-3. Prohlížeč souborů zobrazuje model kamery ve sloupci Model kamery.
-4. Zpracování aplikuje správná nastavení pro každý typ kamery.
+3. Prohlížeč souborů zobrazuje model kamery ve sloupci Model kamery
+4. Zpracování použije správná nastavení pro každý typ kamery
 
-**Příklad scénáře**: Survey3W RGN + Survey3N OCN nastavení dvou kamer.***
+**Příklad scénáře**: Survey3W RGN + Survey3N OCN konfigurace se dvěma kamerami***
 
 ## Osvědčené postupy
 
-### Uspořádejte si vše před importem
+### Uspořádejte data před importem
 
-* Uchovávejte kalibrační cílové obrázky ve stejné složce jako snímky z průzkumu.
-* Zachovejte původní strukturu složek z fotoaparátu/SD karty.
-* Nemíchejte datové soubory z různých relací v jednom projektu.
+* Uchovávejte kalibrační cílové snímky ve stejné složce jako snímky z průzkumu
+* Zachovejte původní strukturu složek z fotoaparátu/SD karty
+* Nemíchejte datové sady z různých relací v jednom projektu
 
 ### Pojmenování souborů
 
-* Zachovejte původní názvy souborů fotoaparátu (IMG\_0001.RAW atd.).
-* Před importem soubory nepřejmenovávejte.
-* Původní názvy obsahují důležité metadata.
+* Zachovejte původní názvy souborů z fotoaparátu (IMG\_0001.RAW atd.)
+* Nepřejmenovávejte soubory před importem
+* Původní názvy obsahují důležitá metadata
 
-### Kalibrační cílové snímky
+### Kalibrační snímky
 
-* Vždy zahrňte 1–2 kalibrační cílové snímky na relaci.
-* Zachyťte cíle před a po relaci zachycení.
-* Umístěte cíle do stejných světelných podmínek jako oblast zachycení.
-* Označte cílové snímky pomocí zaškrtávacího políčka Cíl, abyste urychlili zpracování.
+* Vždy zahrňte 1–2 kalibrační snímky na jednu relaci
+* Zachyťte cíle před a po snímací relaci
+* Umístěte cíle do stejných světelných podmínek jako snímací oblast
+* Označte kalibrační snímky zaškrtnutím políčka Target, abyste urychlili zpracování
 
 ***
 
@@ -158,38 +158,38 @@ Pokud váš projekt obsahuje obrázky z více kamer MAPIR:
 **Možné příčiny:**
 
 * Nepodporovaný formát souboru (pouze RAW+JPG a JPG z fotoaparátů MAPIR)
-* Obrázky pocházejí z fotoaparátů jiných než MAPIR (viz [Podporované fotoaparáty](../supported-cameras.md))
-* Poškození souboru nebo neúplný přenos z karty SD
+* Snímky pocházejí z fotoaparátů jiných než MAPIR (viz [Podporované fotoaparáty](../supported-cameras.md))
+* Poškozený soubor nebo neúplný přenos z SD karty
 
-**Řešení**: Ověřte kompatibilitu formátu souboru a modelu fotoaparátu.
+**Řešení**: Ověřte kompatibilitu formátu souboru a modelu fotoaparátu
 
-### Model fotoaparátu nebyl detekován
+### Model fotoaparátu nebyl rozpoznán
 
 **Možné příčiny:**
 
 * Upravená metadata EXIF
 * Obrázky upravené v externím softwaru
-* Neúplný přenos souboru
+* Neúplný přenos souborů
 
-**Řešení**: Znovu importujte původní, neupravené soubory z fotoaparátu/karty SD.
+**Řešení**: Znovu importujte původní, neupravené soubory z fotoaparátu/SD karty
 
 ### Chybějící časová razítka
 
 **Možné příčiny:**
 
 * Nesprávně nastavené hodiny fotoaparátu
-* EXIF data odstraněna externím softwarem
+* Data EXIF odstraněná externím softwarem
 
-**Řešení**: Ověřte, zda bylo nastavení času fotoaparátu během pořizování snímků správné.***
+**Řešení**: Ověřte, zda bylo nastavení času fotoaparátu během pořizování snímků správné***
 
 ## Další kroky
 
-Po importu souborů:
+Jakmile jsou soubory importovány:
 
-1. **Zkontrolujte seznam souborů** – ujistěte se, že všechny snímky byly načteny správně.
-2. **Zkontrolujte modely fotoaparátů** – ověřte správnou detekci fotoaparátů.
-3. **Označte cílové snímky** – viz [Výběr cílových snímků](choosing-target-images.md).
-4. **Upravte nastavení** – nakonfigurujte možnosti zpracování v [Nastavení projektu](adjusting-project-settings.md).
+1. **Zkontrolujte seznam souborů** – Ujistěte se, že se všechny snímky načtaly správně
+2. **Zkontrolujte modely fotoaparátů** – ověřte správnou detekci fotoaparátu
+3. **Označte cílové snímky** – viz [Výběr cílových snímků](choosing-target-images.md)
+4. **Upravte nastavení** – nakonfigurujte možnosti zpracování v [Nastavení projektu](adjusting-project-settings.md)
 5. **Spusťte zpracování** – viz [Spuštění zpracování](starting-the-processing.md)
 
 Podrobné informace o konfiguraci projektu najdete v části [Úprava nastavení projektu](adjusting-project-settings.md).
