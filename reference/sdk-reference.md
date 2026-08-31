@@ -1,4 +1,4 @@
-# Chloros Python SDK Odkaz
+# Chloros Python SDK Reference
 
 **Verze:**
 
@@ -8,41 +8,41 @@
 
 30. 8. 2026**Balíček:** `chloros-sdk` (PyPI)**Cílová skupina:** Optimalizováno pro použití v LLM; čitelné pro člověka.**Rozsah:** Všechny veřejné třídy, funkce a pomocná funkce zpřístupněná balíčkem `import chloros_sdk`, s příklady, které lze zkopírovat a vložit, pokrývajícími zpracování obrazu, ovládání jedné kamery, synchronizovaná pole, senzory DAQ a automatizaci projektů.
 
-Pokud potřebujete pouze nejdůležitější informace, přejděte na:
+Pokud vás zajímají pouze hlavní body, přejděte na:
 - [Instalace a rychlý start](#installation)
 - [Smart-Connect pro pole LATTICE](#smart-connect-for-lattice-cameras)
 - [Relace senzorů DAQ](#daq-sensor-sessions)
-- [Automatizace projektů](#project-automation--chlorosproject)
+- [Automatizace projektu](#project-automation--chlorosproject)
 - [Smart-AE / Smart-Capture](#smart-ae--smart-capture)
 
 ---
 
 ## Architektura za 60 sekund
 
-SDK je tenká vrstva Python nad backendem Chloros (stejný server Flask, jaký používá desktopové grafické rozhraní a CLI). Pro automatizaci importujete `chloros_sdk` a voláte metody na vyššíúrovně; v pozadí se každé volání promění v požadavek HTTP na místní backend na portu 5000 — `http://127.0.0.1:5000/api/...` (záměrně ne `localhost`, který se nejprve převede na `::1` na Windows a stojí ~2 s na jeden požadavek při backendu podporujícím pouze IPv4). Backend spravuje fond hardwaru — kamery, senzory DAQ, profily zarovnání, rámcové vyrovnávací paměti — takže skripty SDK mohou koexistovat s grafickým uživatelským rozhraním, aniž by se musely přetahovat o sériové porty nebo šířku pásma síťové karty.
+SDK je tenká vrstva typu „Python“ nad backendem Chloros (stejný server Flask, jaký používá desktopové grafické rozhraní a CLI). Pro automatizaci importujete `chloros_sdk` a voláte metody vyšší úrovně; v pozadí se každé volání promění v požadavek HTTP na místní backend na portu 5000 — `http://127.0.0.1:5000/api/...` (záměrnězáměrně ne `localhost`, který se nejprve přeloží na `::1` na adrese Windows a u backendu podporujícího pouze IPv4 stojí ~2 s na jeden požadavek). Backend spravuje hardwarový fond — kamery, senzory DAQ, profily zarovnání, rámcové vyrovnávací paměti — takže skripty SDK mohou koexistovat s grafickým uživatelským rozhraním, aniž by se musely přetahovat o sériové porty nebo šířku pásma síťové karty.
 
 K dispozici jsou tři rozhraní, která budete používat:
 
-1. **`ChlorosLocal` + volné funkce** (`process_folder`, `process_lattice_capture`) — Zpracovací pipeline obrazu. Spusťte zpracování celé složky včetně kalibrace / debayeringu / exportu indexu jedním voláním Python.
-2. **Inteligentní-connect** (`connect_camera`, `connect_array`, `connect_daq_sensor`) — Otevření trvalé relace s backendem pro živý hardware. Stejný postup „smart-prep“ jako v grafickém rozhraní: testování sítě, automatický výběr úrovněvýběr vrstvy, PTP, inicializace AE, konfigurace spouštěče GPIO.
-3. **`ChlorosProject` / `open_project`** — Načtení uloženého projektu (složka s `cameras.json` + `sensors.json` + `project.json`), připojí vše najednou a spustí snímání pomocí pojmenovaných handleů.
+1. **`ChlorosLocal` + volné funkce** (`process_folder`, `process_lattice_capture`) – Zpracovací pipeline obrazu. Spusťte zpracování celé složky včetně kalibrace, debayeringu a exportu indexu jediným voláním funkce `Python`.
+2. **Ovládací prvky Smart-connect** (`connect_camera`, `connect_array`, `connect_daq_sensor`) — Otevření trvalé relace backendu pro živý hardware. Stejný postup „smart-prep“ jako v grafickém uživatelském rozhraní: testování sítě, automatický výběr úrovně, PTP, inicializace AE, konfigurace spouštěče GPIO.
+3. **`ChlorosProject` / `open_project`** — Načtení uloženého projektu (složka obsahující `cameras.json` + `sensors.json` + `project.json`), připojte vše najednou a provádějte záznamy pomocí pojmenovaných handleů.
 
-Rozhraní 1 a 2 **automaticky spustí lokální backend**, pokud ještě žádný neposlouchá (stejný balíček binárních souborů, který spouští GUI/CLI) — takže holý skript funguje z nového terminálu, aniž byste museli nejprve spouštět backend. Pro deaktivaci předávejte `auto_start_backend=False` (např. při nasměrování na vzdálený backend, který se nikdy nespustí). Viz [Automatické spuštění backendu](#backend-auto-start). Surface 3 se chová odlišně: `open_project()` nepřijímá žádný parametr `auto_start_backend` a `connect_all()` nikdy nespouští backend — jednou zkusí kontaktovat `http://127.0.0.1:5000` a pokud nic neodpoví, tiše přejde na přímé (bez backendu) ovládání zařízení `lattice_sdk`. Pouze `proj.process()` a `stream(..., overlays=True)` odloženě vytvoří `ChlorosLocal()` (které se spouští automaticky).
+Povrchy 1 a 2 **automaticky spustí lokální backend**, pokud ještě žádný neposlouchá (stejný balíček binárních souborů, jaký spouští GUI/CLI) — takže holý skript funguje z nového terminálu, aniž byste museli nejprve spouštět backend. Předáním `auto_start_backend=False` tuto funkci deaktivujete (např. při nasměrování na vzdálený backend, který se nikdy nespustí). Viz [Automatické spuštění backendu](#backend-auto-start). Surface 3 se chová odlišně: `open_project()` nepřijímá žádný parametr `auto_start_backend` a `connect_all()` nikdy nespustí backend— jednou zkusí kontaktovat `http://127.0.0.1:5000` a pokud nic neodpoví, tiše přejde na přímé (bez backendu) ovládání zařízení `lattice_sdk`. Pouze `proj.process()` a `stream(..., overlays=True)` odloženě vytvoří `ChlorosLocal()` (které se spouští automaticky).
 
-Všechny tři jsou podmíněny autentizací: spusťte na daném počítači jednou `chloros-cli login` nebo se přihlaste přes grafické uživatelské rozhraní na ploše. Volání SDK bez platné relace vyvolá chybu `ChlorosAuthenticationError`.
+Všechny tři vyžadují autorizaci: na daném počítači je třeba jednou spustit `chloros-cli login` nebo se přihlásit přes grafické rozhraní na ploše. Volání SDK bez platné relace vyvolá chybu `ChlorosAuthenticationError`.
 
 Požadavky:
-- Python 3.7+ (jak je uvedeno v balíčku; vyvinuto/testováno na verzi 3.10)
-- Lokálně nainstalovaný Chloros Desktop (binární soubor backendu je součástí instalačního programu)
-- Aktivní přihlášení k Chloros+. Minimální úroveň SDK/CLI je **Copper**nebo vyšší (Copper / Bronze / Silver / Gold); bezplatná úroveň**Iron**nemá přístup k SDK/CLI. Toto omezení je vynucováno**na straně serveru**: každý požadavek s příznakem SDK/CLI musí obsahovat jak aktivní relaci, tak placený tarif, jinak backend vrátí `403` s `error_code: PLAN_UPGRADE_REQUIRED` (zobrazeno jako `ChlorosLicenseError` pomocí `ChlorosLocal` a jako `ChlorosConnectError` pomocí pomocných funkcí `connect_*`). Odhlášený volající obdrží místo toho `401` / `AUTH_REQUIRED` (`ChlorosAuthenticationError`) – tyto dva kódy se liší, protože opětovné spuštění `chloros-cli login` vyřeší první z nich, ale druhý vyřešit nedokáže.
-- Offline použití je podporováno v rámci ochranné lhůty tarifu: úroveň se načítá z mezipaměti pro ověření serverem (5 minut) nebo z mezipaměti podepsaných licencí vázaných na konkrétní počítač (30 dní u měsíčních tarifů, do vypršení předplatného u ročních). Po uplynutí této lhůty se tarif převede na bezplatný a přístup k SDK/CLI se zastaví, dokud se počítač se alespoň jednou připojí k serveru. `chloros-cli status` (`GET /api/license-status`) zůstává v bezplatném tarifu dostupný, takže je důvod zřejmý — je to jediná trasa SDK/CLI, která je osvobozena od omezení daného tarifu.
-- Windows 10/11 64bitová verze, **Ubuntu 22.04 LTS nebo novější**, nebo Jetson (JetPack 6). Ubuntu 20.04**není** podporován: závislosti `.deb` jsou odvozeny od toho, na co se odkazuje backend, včetně `libc6 (>= 2.34)`, a Focal dodává glibc 2.31.
+- Python 3.7+ (jak uvádí balíček; vyvinuto/testováno na verzi 3.10)
+- Lokálně nainstalovaná aplikace Chloros Desktop (binární soubor backendu je součástí instalačního balíčku)
+- Aktivní přihlašovací údaje na Chloros+. Minimální úroveň pro SDK / CLI je **Copper**nebo vyšší (Copper / Bronze / Silver / Gold); bezplatná úroveň**Iron**nemá přístup k SDK / CLI. Toto omezení je vynucováno**na straně serveru**: každý požadavek s příznakem SDK / CLI musí obsahovat jak aktivní relaci, tak placený tarif, jinak backend vrátí kód chyby `403` s kódem `error_code: PLAN_UPGRADE_REQUIRED` (zobrazený jako `ChlorosLicenseError` pomocnými funkcemi `ChlorosLocal` a jako `ChlorosConnectError` pomocnými funkcemi `connect_*`). Odvolatel, který je odhlášen, obdrží chybu `401` / `AUTH_REQUIRED` (`ChlorosAuthenticationError`) — tyto dva kódy se liší, protože opětovné spuštění `chloros-cli login` opraví první z nich, ale druhý opravit nedokáže.
+- Offline použití je podporováno v rámci ochranné lhůty tarifu: úroveň se načítá z mezipaměti pro ověření serverem (5 minut) nebo z mezipaměti podepsaných licencí vázaných na počítač (30 dní u měsíčních tarifů, do vypršení předplatného u ročních). Po uplynutí této lhůty se tarif převede na bezplatný a přístup k SDK / CLI se zastaví, dokud se počítač alespoň jednou nepřipojí k serveru. `chloros-cli status` (`GET /api/license-status`) zůstává v bezplatné úrovni dostupný, takže důvod je zřejmý – jedná se o jedinou trasu SDK / CLI, která není omezena úrovní služby.
+- Windows 10/11 64bitová verze, **Ubuntu 22.04 LTS nebo novější**, nebo Jetson (JetPack 6). Ubuntu 20.04**není** podporováno: závislosti `.deb` jsou odvozeny od toho, na co se odkazuje backend, včetně `libc6 (>= 2.34)`, a Focal dodává glibc 2.31.
 
 ---
 
 ## Instalace
 
-Python SDK je tenká vrstva Python nad backendem Chloros. Pro vše, co přesahuje několik pracovních postupů zaměřených výhradně na sběr dat (DAQ), potřebujete **lokálně nainstalovaný balíček Chloros pro stolní počítače** (instalační program Windows nebo Linux `.deb`) — ten poskytuje binární soubor backendu, runtime Arena SDK pro kamery LATTICE a kalibrační balíčky.
+Python SDK je tenká vrstva Python nad backendem Chloros. Pro vše, co přesahuje několik pracovních postupů zaměřených výhradně na sběr dat (DAQ), potřebujete **místně nainstalovaný balíček Chloros pro desktop** (instalační program Windows nebo Linux `.deb`) — ten poskytuje binární soubor backendu, runtime Arena SDK pro kamery LATTICE a kalibrační balíčky.
 
 Nejnovější soubory ke stažení: [`https://mapir.gitbook.io/chloros/download`](https://mapir.gitbook.io/chloros/download)
 
@@ -50,9 +50,9 @@ Nejnovější soubory ke stažení: [`https://mapir.gitbook.io/chloros/download`
 
 #### Windows (.exe)
 
-1. Stáhněte si `Chloros-Setup-x.y.z.exe` ze stránky pro stahování.
+1. Stáhněte si soubor `Chloros-Setup-x.y.z.exe` ze stránky pro stahování.
 2. Spusťte instalační program a postupujte podle pokynů průvodce. Výchozí instalační cesta je `C:\Program Files\MAPIR\Chloros\`.
-3. Spusťte alespoň jednou program Chloros a přihlaste se pomocí svého účtu Chloros+.
+3. Spusťte alespoň jednou stránku Chloros a přihlaste se pomocí svého účtu Chloros+.
 
 #### Linux amd64 (.deb)
 
@@ -72,25 +72,25 @@ chloros-cli --version
 chloros-cli login user@example.com 'YourPassword'
 ```
 
-### Krok 2 — Nainstalujte Python a SDK
+### Krok 2 — Nainstalujte balíček „Python“ SDK
 
-**Instalační program Chloros obsahuje odpovídající balíček SDK wheel.** Každý instalační program Windows a balíček .deb Linux umístí na disk soubor `chloros_sdk-X.Y.Z-py3-none-any.whl`, který přesně odpovídá verzi grafického rozhraní / CLI / backendu. Nemusíte musíte sledovat PyPI, abyste zůstali synchronizovaní.
+**Instalátor Chloros obsahuje odpovídající balíček „SDK“ ve formátu wheel.** Každý instalátor Windows a balíček Linux ve formátu .deb umístí na disk soubor `chloros_sdk-X.Y.Z-py3-none-any.whl`, který přesně odpovídá verzi GUI / CLI / backendu. Nemusíte sledovat PyPI, abyste zůstali v synchronizaci.
 
 #### Windows
 
-Instalační program automaticky spustí `pip install` proti přibalenému souboru wheel s využitím vašeho systémového Python (upřednostňuje se spuštění `py.exe`je preferován, v opačném případě se použije `python -m pip`). Není třeba nic dělat — `import chloros_sdk` po úspěšné instalaci funguje ve vašem prostředí Python. Pokud na počítači není nainstalován Python, instalační program tento krok tiše přeskočí a grafické rozhraní + CLI nadále fungují.
+Instalační program automaticky spustí soubor `pip install` s přiloženým balíčkem wheel pomocí vašeho systémového Python (upřednostňuje se spouštěč `py.exe`, v případě selhání se použije `python -m pip`). Není třeba nic dělat — po úspěšné instalaci bude `import chloros_sdk` fungovat ve vašem prostředí Python. Pokud na počítači není nainstalován Python, instalační program tento krok tiše přeskočítento krok a grafické rozhraní i CLI nadále fungují.
 
 #### Linux (.deb)
 
-Soubor .deb umístí wheel do adresáře `/usr/lib/chloros/sdk/`. `postinst` vypíše přesný příkaz — distribuce podle PEP 668 ve výchozím nastavení odmítají globální zápisy do pip, proto neprovádíme automatickou instalaci:
+Balíček .deb umístí wheel do adresáře `/usr/lib/chloros/sdk/`. `postinst` vypíše přesný příkaz — distribuce dodržující PEP 668 ve výchozím nastavení odmítají globální zápisy pomocí pip, proto neprovádíme automatickou instalaci:
 
 ```bash
 pip install --user /usr/lib/chloros/sdk/chloros_sdk-*.whl
 ```
 
-U nasazení Jetsonu v izolovaném prostředí (air-gapped) probíhá vše zcela offline – balíček wheel je již na disku.
+U nasazení Jetsonu v izolovaném prostředí (air-gapped) probíhá tento proces zcela offline — balíček wheel je již na disku.
 
-#### Veřejné PyPI
+#### Veřejný PyPI
 
 Pro hostitele používající pouze pip (bez nainstalovaného balíčku Chloros pro desktop; pracovní postupy s vzdáleným backendem nebo pouze s DAQ):
 
@@ -98,7 +98,7 @@ Pro hostitele používající pouze pip (bez nainstalovaného balíčku Chloros 
 pip install chloros-sdk
 ```
 
-PyPI se aktualizuje při vydáníverze instalačního balíčku, takže zveřejněný balíček typu „wheel“ odpovídá nejnovější stabilní verzi. Vývojové verze (např. `1.1.4.dev1`) se dodávají pouze prostřednictvím balíčku typu „wheel“ v rámci instalačního balíčku.
+PyPI se aktualizuje při sestavení instalačního programu pro danou verzi, takže zveřejněný balíček typu „wheel“ odpovídá nejnovější stabilní verzi. Vývojové sestavení (např. `1.1.4.dev1`) se dodávají pouze prostřednictvím balíčku typu „wheel“ v instalačním programu.
 
 #### Ověření
 
@@ -110,28 +110,28 @@ print("DAQ_AVAILABLE    =", chloros_sdk.DAQ_AVAILABLE)
 print("PROJECT_AVAILABLE =", chloros_sdk.PROJECT_AVAILABLE)
 ```
 
-> **Vyžaduje se předplatné Chloros+.** Všechna volání SDK vyžadují aktivní přihlášení k Chloros+. Spusťte `chloros-cli login user@example.com 'YourPassword'` jednou na každém počítači; přihlašovací údaje se ukládají do mezipaměti v `~/.chloros/`.
+> **Vyžaduje se předplatné Chloros+.** Všechna volání SDK vyžadují aktivní přihlášení na Chloros+. Spusťte `chloros-cli login user@example.com 'YourPassword'` jednou na každém počítači; přihlašovací údaje se ukládají do mezipaměti v `~/.chloros/`.
 
-### Potřebuji balíček Desktop?
+### Potřebuji balíček pro stolní počítače?
 
-Samotný balíček pip pro většinu pracovních postupů **nestačí**. Zde je přehled toho, co jednotlivé rozhraní SDK vyžadují:
+Samotný balíček pip pro většinu pracovních postupů **nestačí**. Zde je přehled toho, co jednotlivé povrchy SDK potřebují:
 
-| Rozhraní SDK | Je nutný balíček Desktop Package? | Proč |
+| PovrchSDKu | Potřebuje balíček Desktop Package? | Proč |
 | --- | --- | --- |
 | `ChlorosLocal`, `process_folder`, `process_lattice_capture` | **Ano** | Automaticky spouští binární soubor backendu na `/usr/lib/chloros/chloros-backend` (Linux) nebo `C:\Program Files\MAPIR\Chloros\…` (Windows). |
-| `connect_camera`, `connect_array`, `connect_daq_sensor`, `analyze_array_network`, `list_*`, `discover_*` | **Ano**(lokální)**/ Ne**(vzdálený) | Čistě klienti HTTP přes backend. Lokální backend → vyžaduje balíček pro desktop. Vzdálený backend → `backend_url=`**přes tunel** (viz Režim vzdáleného backendu — dodávané backendy se vážou pouze na smyčku). |
-| `ChlorosProject` / `open_project` | **Ano** | Spouští uložené projekty přes backend. |
-| Přímé třídy LATTICE (`LatticeCamera`, `CameraPool`, `Calibration`, `DLS`, …) | **Ano** | Vyžaduje nativní runtime Arena SDK, který je součástí balíčku pro stolní počítače. V opačném případě je `CAMERA_AVAILABLE` při importu ekvivalentní `False`. |
-| Třídy Direct DAQ (`DAQUSensor`, `DAQMSensor`, `DAQESensor`, `SensorFleet`, `discover_all`) | **Ne** | Čistě Python přes pyserial/bleak/zeroconf. Prostředí založené výhradně na pipu dokáže řídit DAQ od začátku do konce. |
+| `connect_camera`, `connect_array`, `connect_daq_sensor`, `analyze_array_network`, `list_*`, `discover_*` | **Ano**(lokální)**/ Ne**(vzdálený) | Čistě HTTP klienti přes backend. Lokální backend → vyžaduje balíček pro desktop. Vzdálený backend → `backend_url=`**přes tunel** (viz Režim vzdáleného backendu — dodávané backendy se vážou pouze na smyčku). |
+| `ChlorosProject` / `open_project` | **Ano** | Řídí uložené projekty přes backend. |
+| Přímé třídy LATTICE (`LatticeCamera`, `CameraPool`, `Calibration`, `DLS`, …) | **Ano** | Vyžaduje nativní runtime Arena SDK, který je součástí balíčku pro stolní počítače. `CAMERA_AVAILABLE` je jinak při importu `False`. |
+| Třídy Direct DAQ (`DAQUSensor`, `DAQMSensor`, `DAQESensor`, `SensorFleet`, `discover_all`) | **Ne** | Čistý Python přes pyserial/bleak/zeroconf. Prostředí využívající pouze pip dokáže řídit DAQ od začátku do konce. |
 
-### Režim vzdáleného backendu (host pouze s pip, přes tunel)
+### Režim vzdáleného backendu (hostitel pouze s pip, přes tunel)
 
 > **Dodávaný backend není dostupný přes LAN.** Produkční
 > sestavení se vážou pouze na loopback (obě rodiny loopbacků) a kategoricky odmítají
-> jediný režim bez loopbacku (`CHLOROS_CLOUD_MODE`), takže
+> režim bez loopbacku (`CHLOROS_CLOUD_MODE`), takže
 > `backend_url="http://<lan-ip>:5000"` **nemůže fungovat s nainstalovaným
-> Chloros** — tento vzor fungoval vždy pouze s backendem typu source/dev
-> . Chcete-li ovládat backend na jiném počítači, přesměrujte jeho loopbackový
+> Chloros** — tento vzor fungoval vždy pouze s backendem ze zdrojového kódu/dev
+> backendu. Chcete-li ovládat backend na jiném stroji, přesměrujte jeho loopbackový
 > port sami a nasměrujte SDK na tunel:
 
 ```bash
@@ -149,13 +149,13 @@ chloros_sdk.connect_array(serials, backend_url=BACKEND)
 chloros_sdk.connect_daq_sensor(eth_host="daq-e-1.local", backend_url=BACKEND)
 ```
 
-Hostitelé bez grafického rozhraní / CI / robotika mohou ponechat jeden počítač s plnou instalací desktopu jako „server Chloros“ a jinde `pip install chloros-sdk` — přenos mezi nimi však probíhá přes výše uvedený tunel zřízený uživatelem, nikoli přes přímé připojení v LAN URL.
+Hostitelé bez grafického rozhraní / CI / robotika mohou ponechat jeden počítač s plnou instalací desktopu jako „server Chloros“ a `pip install chloros-sdk` všude jinde — přenos mezi nimi však probíhá prostřednictvím výše uvedeného tunelu nastaveného uživatelem, nikoli přímým LAN URL.
 
-> **Známé omezení — `ChlorosLocal` nepodporuje výhradně pip.** `ChlorosLocal(backend_url=BACKEND)` v současné době vyřeší lokální binární soubor backendu ve svém konstruktoru *před* prozkoumáním URL a vyvolá chybu `ChlorosBackendError` („Chloros backend not found…“), pokud není nainstalován žádný balíček pro desktop — a to i v případě, že je vzdálený backend dostupný. Pouze rozhraní Smart-Connect uvedené výše (`connect_camera` / `connect_array` / `connect_daq_sensor`, plus `analyze_array_network` a pomocné funkce `list_*` / `discover_*`) funguje na hostitelském počítači, na kterém je nainstalován pouze balíček pip.
+> **Známé omezení — `ChlorosLocal` nepodporuje výhradně pip.** `ChlorosLocal(backend_url=BACKEND)` v současné době vyřeší lokální binární soubor backendu ve svém konstruktoru *před* prozkoumáním URL a vyvolá chybu `ChlorosBackendError` („Chloros backend not found…“), pokud není nainstalován žádný balíček pro desktop — a to i v případě, že je vzdálený backend dostupný. Pouze výše uvedené rozhraní smart-connect (`connect_camera` / `connect_array` / `connect_daq_sensor`, plus `analyze_array_network` a pomocné programy `list_*` / `discover_*`) funguje z hostitele pouze s balíčkem pip.
 
-### Pracovní postup pouze pro sběr dat (hostitelský počítač pouze s pip)
+### Pracovní postup pouze pro DAQ (hostitel pouze s balíčkem pip)
 
-Pokud potřebujete pouze senzory pro sběr dat ase nezabýváte kamerami LATTICE ani zpracováním obrazu, balíček pip je samostatný:
+Pokud potřebujete pouze senzory DAQ a nepoužíváte kamery LATTICE ani zpracování obrazu, balíček pip je samostatný:
 
 ```bash
 pip install chloros-sdk
@@ -172,7 +172,7 @@ sensor.connect()
 sensor.start_streaming()
 ```
 
-Žádný backend, žádný .deb, žádné přihlášení Chloros+ pro práci s přímým hardwarovým sběrem dat.
+Žádný backend, žádný balíček .deb, žádné přihlášení na Chloros+ není nutné pro práci s DAQ přímo na hardwaru.
 
 ---
 
@@ -271,7 +271,7 @@ chloros_sdk.PROJECT_AVAILABLE    # True iff ChlorosProject deps available
 
 ## Zpracování obrazu — `ChlorosLocal`
 
-Hlavní třída pipeline. Při prvním použití spustí backend, vytvoří a nakonfiguruje projekty, sleduje průběh a po dokončení vrátí souhrnné údaje.
+Hlavní třída pipeline. Při prvním použití spustí backend, vytvoří a nakonfiguruje projekty, sleduje průběh a vrací souhrny po dokončení běhu.
 
 ### Konstruktor
 
@@ -291,17 +291,17 @@ ChlorosLocal(
 
 | Metoda | Popis |
 | --- | --- |
-| `create_project(project_name, camera=None)` | Vytvoří nový projekt (volitelně s šablonou fotoaparátu, jako je `"Survey3N_RGN"`). |
-| `import_images(folder_path, recursive=False)` | Importuje obrázky ve formátech RAW/TIF/JPG/DNG **a záznamy z světelného**. Vrací `count` (snímky) a `scan_count` (záznamy). Vydá varování pouze v případě, že složka neobsahuje ani jedno z nich. |
-| `export_light_sensor(daq=True, csv=True)` | Zapíše kalibrované `.daq` + `.csv` pro každý záznam ze světelného senzoru v projektu do souboru `<project>/Light Sensor/`. Viz [Záznamy ze světelného senzoru](#light-sensor-recordings--calibrated-daq--csv). |
-| `configure(debayer=..., vignette_correction=..., reflectance_calibration=..., indices=[...], export_format=..., ppk=..., daq_log_path=..., input_level=..., radiometric_output=..., array_alignment=..., array_alignment_crop=..., array_alignment_interpolation=..., custom_settings=None)` | Nastavte parametry zpracování. |
-| `process(mode="parallel", wait=True, progress_callback=None, poll_interval=2.0)` | Spusťte zpracovatelský řetězec. Vrátí `{"status": "complete", "async": False}` a klíč `summary`, pokud jej backend poskytuje — viz [Souhrn a tipy po spuštění](#post-run-summary--hints). |
+| `create_project(project_name, camera=None)` | Vytvoří nový projekt (volitelně s šablonou kamery, jako je `"Survey3N_RGN"`). |
+| `import_images(folder_path, recursive=False)` | Importuje snímky ve formátech RAW/TIF/JPG/DNG **a záznamy ze světelného senzoru `.daq`**. Vrací `count` (snímky) a `scan_count` (záznamy). Vydá varování pouze v případě, že složka neobsahuje ani jedno z nich. |
+| `export_light_sensor(daq=True, csv=True)` | Zapíše kalibrované soubory `.daq` + `.csv` pro každý záznam ze světelného senzoru v projektu do souboru `<project>/Light Sensor/`. Viz [Záznamy světelného senzoru](#light-sensor-recordings--calibrated-daq--csv). |
+| `configure(debayer=..., vignette_correction=..., reflectance_calibration=..., indices=[...], export_format=..., ppk=..., daq_log_path=..., input_level=..., radiometric_output=..., array_alignment=..., array_alignment_crop=..., array_alignment_interpolation=..., custom_settings=None)` | Nastavte ovládací prvky zpracování. |
+| `process(mode="parallel", wait=True, progress_callback=None, poll_interval=2.0)` | Spusťte zpracovatelský řetězec. Vrátí `{"status": "complete", "async": False}` a navíc klíč `summary`, pokud jej backend poskytne — viz [Souhrn a tipy po spuštění](#post-run-summary--hints). |
 | `get_config()` / `get_status()` / `status()` | Zkontrolujte stav backendu. |
-| `logout()` | Vymazat uložené přihlašovací údaje z mezipaměti. |
-| `shutdown_backend()` | Ukončit backend (pokud byl spuštěn příkazem SDK). |
-| `discover_cameras()` | Vyhledat kamery LATTICE **prostřednictvím backendu této instance** (`/api/camera/discover`). Vrací seznam slovníků (`serial`, `model`, `ip`, …) — ve stejné struktuře, jakou vidí GUI/CLI. Prázdný seznam, pokud nebyly nalezeny žádné kamery nebo je backend nedostupný. |
-| `camera_capture(output_dir, format="tiff", **settings)` | Zachytí jeden snímek**prostřednictvím backendu**(automaticky spuštěného tímto identifikátorem), takže se na něj aplikuje stejná příprava jako u GUI/CLI (výchozí 12 bitů, opakované použití fondu, vložená metadata kalibrace). Cíl vyřešte pomocí `serial=` nebo `device_index=`; předávejte `exposure`/`gain`/`pixel_format`/`preset` jako `**settings`. Vrátí slovník starších metadat (`filepath`, `width`, `height`, `pixel_format`, `exposure_time`, `gain`, `timestamp`). |
-| `camera_stream(serial, *, fps=10.0, overlay=None, decode=True, connect_timeout=10.0, read_timeout=15.0)` | Vytváří překryvné kompozitní náhledové snímky z seskupené kamery — odlehčený MJPEG klient přes trasu `/api/camera/<serial>/stream-annotated` backendu (zebra / mřížka / nitkový kříž / histogram / peaking / bod nakreslený na straně serveru). `decode=True` poskytuje pole BGR; `False` poskytuje surové bajty JPEG. Dosažitelné také pro jednotlivé projekty jako `ChlorosProject.stream(overlays=True)`. |
+| `logout()` | Vymazat přihlašovací údaje z mezipaměti. |
+| `shutdown_backend()` | Ukončit backend (pokud byl spuštěSDK). |
+| `discover_cameras()` | Vyhledat kamery LATTICE **prostřednictvím backendu této instance** (`/api/camera/discover`). Vrátí seznam slovníků (`serial`, `model`, `ip`, …) — ve stejné struktuře, jakou vidí GUI/ CLI. Prázdný seznam, pokud nebyly nalezeny žádné kamery nebo je backend nedostupný. |
+| `camera_capture(output_dir, format="tiff", **settings)` | Zachycení jednoho snímku**prostřednictvím backendu**(automaticky spuštěno tímto identifikátorem), takže se na něj aplikuje stejná příprava jako v GUI/ CLI (výchozí nastavení 12bitů ve výchozím nastavení, opětovné použití poolu, vložená metadata kalibrace). Cíl vyřešte pomocí `serial=` nebo `device_index=`; předávejte `exposure`/`gain`/`pixel_format`/`preset` jako `**settings`. Vrátí slovník starších metadat (`filepath`, `width`, `height`, `pixel_format`, `exposure_time`, `gain`, `timestamp`). |
+| `camera_stream(serial, *, fps=10.0, overlay=None, decode=True, connect_timeout=10.0, read_timeout=15.0)` | Vytváří překryvné kompozitní náhledové snímky z seskupených kamer — odlehčený MJPEG klient přes trasu `/api/camera/<serial>/stream-annotated` backendu (zebra / mřížka / nitkový kříž / histogram / peaking / bod kreslené na straně serveru). `decode=True` poskytuje pole BGR; `False` poskytuje surové bajty JPEG. Dostupné také na úrovni projektu jako `ChlorosProject.stream(overlays=True)`. |
 
 Použijte jako správce kontextu pro zaručené vyčištění:
 
@@ -321,42 +321,42 @@ print(results["summary"])
 
 ### Záznamy ze světelných senzorů — kalibrované `.daq` + `.csv`
 
-Záznamy z DAQ-U / DAQ-M / DAQ-E lze pořizovat **bez** kalibračního balíčku. To je
-to, co veřejně dostupné [`chloros_scripts`](https://github.com/mapircamera/chloros_scripts)
-záznamníky (`record_daq.py`) ve výchozím nastavení: zapisují surová měření senzorů a označují
-soubor tak, aby Chloros načítal tovární kalibraci daného senzoru **podle sériového čísla** — nejprve z místní mezipaměti
-, poté z cloudu MAPIR — a aplikuje ji při importu.
+DAQ-U / DAQ-M / DAQ-E lze zaznamenávat **bez** jeho kalibračního balíčku. To je to,
+co veřejně dostupné záznamníky [`chloros_scripts`](https://github.com/mapircamera/chloros_scripts)
+( (`record_daq.py`) ve výchozím nastavení: zapisují surová data ze senzorů a označují
+soubor tak, aby Chloros načítal tovární kalibraci daného senzoru **podle sériového čísla** — nejprve z lokální mezipaměti
+, poté z cloudu MAPIR — a aplikoval ji při importu.
 
-Chloros zapíše výsledek zpět jako dva produkty na jeden záznam, pod
+Chloros Výsledek se zapíše zpět jako dva produkty na jeden záznam pod
 `<project>/Light Sensor/`:
 
 | Produkt | Co to je |
 | --- | --- |
-| `<name>_calibrated.daq` | Archiv vhodný k opětovnému zpracování — stejné schéma jako živý záznam, nyní s deklarací balíčku, který jej vytvořil. Jeho opětovný import **ne**provede** jeho kalibraci podruhé. |
-| `<name>_calibrated.csv` | Spektrální ozáření v W/m²/nm na vlastní vlnové mřížce senzoru, jeden řádek na jedno měření, plus fotometrické sloupce (celkový výkon, fotopický/skotopický lux, PPFD a jeho rozdělení na modrou/zelenou/červenou, špičková vlnová délka). |
-| `<name>_raw.daq` / `<name>_raw.csv` | **Pouze senzory bez svazku (DAQ-A).** Surové spektrální počty senzoru — *ne* ozáření. Viz níže. |
+| `<name>_calibrated.daq` | Archiv, který lze znovu zpracovat — stejné schéma jako živý záznam, nyní deklarující balíček, který jej vytvořil. Jeho opětovný import **ne** kalibruje podruhé. |
+| `<name>_calibrated.csv` | Spektrální ozáření v W/m²/nm na vlastní vlnové mřížce senzoru, jeden řádek na jedno měření, plus fotometrické sloupce (celkový výkon, fotopický/skotopický lux, PPFD a jeho modré/zelené/červené rozdělení, špičková vlnová délka). |
+| `<name>_raw.daq` / `<name>_raw.csv` | **Pouze senzory bez balíčku (DAQ-A).** Surové spektrální počty snímače — *ne* ozáření. Viz níže. |
 
 `process()` provádí tento export jako jednu ze svých fází. **Nevyžaduje** snímky:
 samostatně letící světelný senzor představuje plnohodnotný pracovní postup a takový projekt má ze své podstaty nulový
 počet snímků.
 
-**Záznamy DAQ-A se exportují jako surové počty.** Řada DAQ-A předchází systému svazků pro jednotlivé sériové
-čísla a nemá žádný svazek, který by bylo třeba načíst — místo toho se kalibruje v terénu pomocí
-reflexního terče, a proto žádný svazek nikdy nepotřebovala. Tyto záznamy se exportují
-pod kořenem `_raw` namísto `_calibrated`: jde o odlišný název souboru namísto příznaku
-uvnitř souboru, protože název musí zůstat zachován i při zaslání e-mailem jako pouhý název. Záhlaví
-Záhlaví `.csv` uvádí `raw spectral sensor counts (NOT irradiance)` a upozorňuje, že
-hodnoty jsou srovnatelné **v rámci** souboru — přesně k tomu je kalibrace pomocí terče
-určena — a nikoli napříč senzory. Fotometrické sloupce závislé na výkonu (celkový výkon,
-fotopický/skotopický lux, PPFD) se vrací jako **NULL**, namísto toho, aby byly integrovány z počtů.
+**Záznamy DAQ-A se exportují jako surové počty.** Řada DAQ-A je starší než systém svazků
+pro jednotlivé sériové čísla a nemá žádný svazek, který by bylo třeba načíst — místo toho se kalibruje v terénu proti
+reflexnímu terči, a proto žádný svazek nikdy nepotřebovala. Tyto záznamy se exportují
+pod kořenovým názvem `_raw` namísto `_calibrated`: jde o odlišný název souboru, nikoli o příznak
+uvnitř souboru, protože tento údaj musí zůstat zachován i při odeslání e-mailem jako pouhý název. Záhlaví
+`.csv` uvádí `raw spectral sensor counts (NOT irradiance)` a upozorňuje, že
+hodnoty jsou srovnatelné **v rámci** souboru — přesně k tomu je využívá kalibrace založená na cíli
+— a nikoli napříč senzory. Fotometrické sloupce závislé na výkonu (celkový výkon,
+fotopický/skotopický lux, PPFD) vrací hodnotu **NULL** namísto integrace z počtů.
 
-ZAU / DAQ-M / DAQ-E, u nichž se balíček prostě nepodařilo načíst, se stále **přeskočí**,
-nezapíše se v surovém formátu: v takovém případě balíček existuje a „znovu se připojit a znovu zpracovat“ je skutečná rada.
+DAQ-U / DAQ-M / DAQ-E, jehož balíček se prostě nepodařilo načíst, je stále **přeskočen**,
+nezapisuje se v surovém formátu: v takovém případě balíček existuje a „znovu se připojit a znovu zpracovat“ je skutečná rada.
 
-Starší záznamy **v1.01 / v1.02** (tyto zapisuje DAQ-A-SD) neobsahují epochu pro jednotlivé odečty,
-pouze čas zápisu souboru. Porovnávač image↔downwelling je stále odmítá – porovnání
-s časem zápisu by bylo neviditelně nesprávné — ale exportér je čte a
-CSV vypíše `clock=daq_created_on`, takže produkt uvádí, na jakém časovém systému běží.
+Starší záznamy **v1.01 / v1.02** (DAQ-A-SD je zapisuje) neobsahují epochu pro jednotlivé odečty,
+pouze čas zápisu souboru. Porovnávač obrazů↔světelného toku je stále odmítá — porovnání
+snímku s časem zápisu by bylo neviditelně nesprávné — ale exportér je čte a
+CSV vypíše `clock=daq_created_on`, takže produkt uvádí, na jakém časovači se nachází.
 
 ```python
 import chloros_sdk
@@ -373,8 +373,8 @@ for rec in result["skipped"]:
 ```
 
 Záznam, jehož kalibrační balíček nelze načíst (offline nebo senzor bez
-kalibrace v souboru), je nahlášen pod `skipped` **s uvedením důvodu**. Nikdy není
-zapsán jako „kalibrovaný“ soubor obsahující surová měření — připojte se k internetu a
+kalibrace v souboru) je nahlášen pod kódem `skipped` **s uvedením důvodu**. Nikdy není
+zapsán jako „kalibrovaný“ soubor obsahující surová data – připojte se k internetu a
 spusťte proces znovu, export se dokončí.
 
 ### Zpětná volání o průběhu
@@ -390,9 +390,9 @@ with chloros_sdk.ChlorosLocal() as cl:
     cl.process(progress_callback=show_progress, poll_interval=1.0)
 ```
 
-### Shrnutí a tipy po dokončení
+### Shrnutí po spuštění a tipy
 
-Po dokončení `process()` načte `GET /api/processing-summary` a připojí tělo jako `result["summary"]`. Načtení se provádí podle nejlepšího úsilí a nikdy neblokuje úspěšný návrat — pokud souhrn není k dispozici, `process()` se vrátí k jednoduchému tvaru `{"status": "complete", "async": False}`. Každý záznam v `summary["hints"]` — úplné věty s navrhovaným řešením, např. proč běh vyprodukoval nulový výstup — je rovněžemitován jako Python `UserWarning`, takže běhy s nulovým výstupem jsou samodiagnostické, i když slovník nikdy neprohlížíte:
+Po dokončení `process()` načte `GET /api/processing-summary` a připojí tělo jako `result["summary"]`. Načítání probíhá podle principu „best-effort“ a nikdy neblokuje úspěšný návrat — pokud není souhrn k dispozici, `process()` se vrátí k jednoduchému formátu `{"status": "complete", "async": False}`. Každý záznam v `summary["hints"]` — úplné věty s navrhovaným řešením, např. proč běh vyprodukoval nulový výstup — je rovněž znovu odeslán jako Python `UserWarning`, takže běhy s nulovým výstupem se diagnostikují samy, i když slovník nikdy neprohlížíte:
 
 ```python
 result = cl.process()
@@ -402,41 +402,41 @@ for hint in result.get("summary", {}).get("hints", []):
 #   python -W always::UserWarning your_script.py
 ```
 
-`summary["totals"]` je strojově čitelná polovina:
+`summary["totals"]` představuje strojově čitelnou část:
 
 | Klíč | Co počítá |
 | --- | --- |
 | `models` | Skupiny kamer v běhu. |
 | `images_in_groups` | Zdrojové snímky napříč těmito skupinami. |
-| `targets_found` | Detekované cíle odrazivosti. |
-| `images_calibrated` | Snímky, které běh kalibroval. |
-| `exported_files` | **Soubory obrazových výstupů, které běh vytvořil.** |
-| `daq_recordings_exported` / `daq_recordings_skipped` | Záznamy světelných senzorů, záměrně počítané odděleně — pocházejí z jiné fáze a existují i u běhů, které vůbec neobsahují snímky, takže jejich zahrnutí by způsobilo, že by se běh pouze s DAQ jevil, jako by exportoval snímky. |
+| `targets_found` | Detekované reflektanční cíle. |
+| `images_calibrated` | Snímky, na jejichž základě byl běh kalibrován. |
+| `exported_files` | **Soubory s obrazovými výstupy, které běh vytvořil.** |
+| `daq_recordings_exported` / `daq_recordings_skipped` | Záznamy, záměrně počítané samostatně — pocházejí z jiné fáze a existují i u běhů, které vůbec neobsahují snímky, takže jejich zahrnutí by způsobilo, že by běh pouze s DAQ vypadal, jako by exportoval snímky. |
 
 Vedle nich: `summary["output_dirs"]` (každý adresář, do kterého se zapisovalo),
 `summary["light_sensor_export"]`, `summary["stopped"]` (platí, když uživatel přerušil
-běh, takže částečné počty nejsou vyhodnocovány jako dokončený běh s nedostatečnou produkcí) a
+běh, takže částečné počty se nezobrazují jako dokončený běh s nedostatečným výstupem) a
 `summary["groups"]` (rozpis podle skupin).
 
-`exported_files` je zaznamenáván potrubím **při zápisu**, není skenován z
-objektů snímků projektu až dodatečně. Paralelní a GPU strategie vytvářejí své vlastní obrazové
-objekty (v podprocesech pracovníků pro GPU cesty), takže staré skenování hlásilo
-`0 file(s) written` pro každý takový běh a poté vysílalo nulu-exports — při bězích,
-kde vše fungovalo. Pokud píšete skripty na základě tohoto čísla, zdravý paralelní běh nyní
+`exported_files` je zaznamenán potrubím **při zápisu**, není skenován z
+objektů obrazu projektu až dodatečně. Paralelní a GPU strategie vytvářejí své vlastní obrazové
+objekty (v podprocesech pracovníků pro GPU cesty), takže starý sken hlásil
+`0 file(s) written` pro každý takový běh a poté vyslal nápovědu o nulových exportu — u běhů,
+, kde vše fungovalo. Pokud píšete skripty na základě tohoto čísla, zdravý paralelní běh nyní
 hlásí nenulový počet.
 
-Přeskočení Light-sensoru hlásí důvod, který čtečka skutečně zjistila pro každý soubor —
-nečitelné schéma, chybějící balíček, chyba zápisu — **deduplikováno**, takže dvacet souborů
+Přeskočení světelným senzorem hlásí důvod, který čtečka skutečně zjistila pro každý soubor —
+nečitelnou strukturu, chybějící balíček, chybu zápisu — **bez duplicit**, takže dvacet souborů
 přeskočených z jednoho důvodu se vyhodnotí jako jeden důvod, nikoli jako dvacet jeho opakování.
 
-> **`process()` se nevygeneruje, pokud běh nevytvoří žádné obrázky.** Toto je jediný bod, v němž se SDK a
-> CLI záměrně liší: `chloros-cli process` považuje „byly požadovány produkty, žádný nebyl
-> zapsány“ jako selhání a ukončí se s nenulovým stavem, zatímco SDK se vrátí normálně a nahlásí tento
-> stav prostřednictvím `summary` / hints. Pokud by se váš pipeline měl zastavit při prázdném běhu, zkontrolujte to
-> sami – zkontrolujte `summary` (nebo spočítejte soubory ve složce projektu), místo abyste se spoléhali na
+> **`process()` se nevyskytuje, když běh nevytvoří žádné snímky.** Toto je jediné místo, kde se SDK a
+> CLI záměrně liší: `chloros-cli process` považuje „byly vyžádány výstupy, žádné nebyly
+> zapsány“ za selhání a ukončí se nenulovým stavem, zatímco SDK se vrátí normálně a nahlásí
+> tuto situaci prostřednictvím `summary` / hints. Pokud by se váš pipeline měl zastavit při prázdném běhu, zkontrolujte to
+> sami — prozkoumejte `summary` (nebo spočítejte soubory ve složce projektu), místo abyste se spoléhali na
 > nepřítomnost výjimky. Obvyklými příčinami jsou vstupní složka, která nebyla rozpoznána jako
-> snímání a produkty přeskočené jako nepoužitelné pro přítomné kamery (např. radiance pouze z kamer RGB
->).
+> záznam, a výstupy přeskočené jako nepoužitelné pro přítomné kamery (např. radiance z kamer podporujících pouze
+> RGB).
 
 ### Pomocné funkce
 
@@ -502,7 +502,7 @@ False         # export in native sensor geometry / skip the common-overlap crop
 
 #### Radiometrický výstup (multispektrální pipeline LATTICE)
 
-Úroveň exportu multispektrálního pipeline LATTICE `process` (M3C/M3M) — `reflectance` (výchozí), `radiance`, `sensor-response` nebo `all` (každý použitelný režim pro každý snímek) — odpovídá nastavení zpracování **„Radiometrický výstup“** v projektu. `configure()` má pro to vyhrazené klíčové slovo:
+Úroveň exportu multispektrálních dat (M3C/M3M) z potrubí `process` — `reflectance` (výchozí), `radiance`, `sensor-response` nebo `all` (každý použitelný režim pro každý snímek) — odpovídá nastavení **„Radiometrický výstup“** . `configure()` má pro to vyhrazené klíčové slovo:
 
 ```python
 with chloros_sdk.ChlorosLocal() as cl:
@@ -515,7 +515,7 @@ with chloros_sdk.ChlorosLocal() as cl:
     cl.process()
 ```
 
-Pokročilý únikový východ — zápis klíče projektuklíč `"Radiometric output"` prostřednictvím `custom_settings` — stále funguje, ale mějte na paměti, že nahrazuje celý blok nastavení (viz varování níže):
+Pokročilý únikový mechanismus — zápis klíče projektu `"Radiometric output"` prostřednictvím `custom_settings` — stále funguje, ale mějte na paměti, že nahrazuje celý blok nastavení (viz varování níže):
 
 ```python
 cl.configure(custom_settings={
@@ -526,15 +526,15 @@ cl.configure(custom_settings={
 })
 ```
 
-`reflectance` (výchozí hodnota) dělí radianci kamery **sestupným tokem DAQ s odpovídajícím časovým razítkem**, který se automaticky vypočítá ze zaznamenaného `.daq` (DAQ-U/M/E)**nebo nativního DAQ-M nativní `.csv`**nalezeného společně se snímky; jakýkoli kalibrační balíček pro konkrétní kameru nebo DAQ, který lokálně chybí, se při prvním použití**automaticky načte z AWS**. CLI toto zpřístupňuje jako přepínače produktů podle typu na `chloros-cli process`: `--radiance`/`--no-radiance`, `--reflectance`/`--no-reflectance`, `--debayered`, `--preview`.
+`reflectance` (výchozí nastavení) dělí radianci kamery **sestupným tokem DAQ s odpovídajícím časovým razítkem**, který se automaticky vypočítá ze zaznamenaného `.daq` (DAQ-U/M/E)**nebo nativního `.csv`**nalezeného společně se snímky; jakýkoli balíček kalibrace pro jednotlivé kamery nebo DAQ, který lokálně chybí, je**při prvním použití automaticky stažen z AWS**. Rozhraní CLI toto zpřístupňuje jako přepínače produktů podle typu na `chloros-cli process`: `--radiance`/`--no-radiance`, `--reflectance`/`--no-reflectance`, `--debayered`, `--preview`.
 
-> `custom_settings` **nahrazuje** celý blok vypočítaných nastavení (záměrně obchází ostatní klíčová slova a ověření `configure()`). Při jeho použití zahrňte všechny klíče `Project Settings`, na kterých vám záleží, jak je uvedeno v příkladu výše.
+> `custom_settings` **nahrazuje** celý blok vypočítaných nastavení (záměrně obchází ostatní klíčová slova a ověření `configure()`). Při jeho použití zahrňte všechny klíče `Project Settings`, na kterých vám záleží, jako v příkladu výše.
 
 ---
 
 ## Smart-Connect pro kamery LATTICE
 
-Trvalé backendové relace pro živý hardware. Používají se stejné koncové body jako v grafickém rozhraní, takže chování je identické v SDK / CLI / grafickém rozhraní.
+Trvalé relace backendu pro živý hardware. Používají se stejné koncové body jako v grafickém uživatelském rozhraní (GUI), takže chování je identické na SDK / CLI / v GUI.
 
 ### Jedna kamera — `CameraSession`
 
@@ -554,7 +554,7 @@ with chloros_sdk.connect_camera("213800234") as cam:
     cam.capture("output/", ext=".tiff")
 ```
 
-#### Podpis `connect_camera()`
+#### `connect_camera()` Podpis
 
 ```python
 connect_camera(
@@ -573,26 +573,26 @@ connect_camera(
 | Metoda | Popis |
 | --- | --- |
 | `read_nodes(names, enum_names=(), timeout=30.0)` | Čte uzly GenICam; vrací `{nodes, errors, enums, device}`. |
-| `set_settings(**kwargs)` | Zapisuje uzly podle popisného názvu (`exposure_time`, `gain`, `pixel_format`, `width`, `height`, `target_brightness`, `ae_damping`, `ae_upper_limit`, `trigger_mode`, `trigger_source`, …). |
-| `capture(output_dir="output", ext=".tiff", jpeg_quality=95, processing=None, levels=None, force_daq=None, settings=None, timeout=None)` | Zachytí **jeden** snímek. Vrátí seznam s jedním prvkem obsahující slovníky metadat snímku. (Sériové/více snímkové zachycování bylo odstraněno — pokud potřebujete sérii, volajte `capture()` ve smyčce.) |
+| `set_settings(**kwargs)` | Zapisuje uzly podle popisného jména (`exposure_time`, `gain`, `pixel_format`, `width`, `height`, `target_brightness`, `ae_damping`, `ae_upper_limit`, `trigger_mode`, `trigger_source`, …). |
+| `capture(output_dir="output", ext=".tiff", jpeg_quality=95, processing=None, levels=None, force_daq=None, settings=None, timeout=None)` | Zachytí **jeden** snímek. Vrátí seznam s jedním prvkem obsahující slovníky metadat snímku. (Sériové/více snímkové zachycování bylo odstraněno — pokud potřebujete sérii, zavolejte `capture()` ve smyčce.) |
 | `disconnect()` | Uvolnění z fondu. Žádná operace, pokud jsme se připojili k již otevřené relaci. |
 
 Ovládací prvky exportu `capture()` (stejný model jako pole + grafické rozhraní):
 
-- `processing` / `levels` — `processing="all"` uloží všechny příslušné typy exportu; `levels=["raw","radiance"]` uloží pouze ty (přepíše `processing`). Vynechte obě pro výchozí nastavení backendu.
-- `force_daq=True` — uloží přiřazenou hodnotu z DAQ/DLS jako `.daq` sidecar i při snímání pouze v surovém formátu, aby bylo možné snímek později znovu zpracovat na odrazivost/index. Žádná operace, pokud není propojen žádný DAQ.
+- `processing` / `levels` — `processing="all"` uloží všechny použitelné typy exportu; `levels=["raw","radiance"]` uloží pouze ty (přepíše `processing`). Vynechte obě pro výchozí nastavení backendu.
+- `force_daq=True` — uloží přiřazené měření DAQ/DLS jako sidecar `.daq` i v případě zachycení pouze v surovém formátu, aby mohl být snímek později znovu zpracován na odrazivost/index. Žádná operace, pokud není propojen žádný DAQ.
 
 ### Synchronizované pole — `ArraySession` (Smart-Prep)
 
-`connect_array` je **doporučený vstupní bod** pro konfigurace s více kamerami. V pozadí spouští kompletní proces Smart-Prep z grafického uživatelského rozhraní:
+`connect_array` je **doporučený vstupní bod** pro konfigurace s více kamerami. V pozadí spouští kompletní proces Smart-Prep prostřednictvím grafického uživatelského rozhraní:
 
 1. **Analýza sítě** (`/api/camera/array/recommend`) — vyhledá největší velikost snímku, která se vejde do vrstvy sim-emit bez ztráty snímků.
 2. **Automatický výběr úrovně** — `sim-capture-sim-emit`, pokud to přenosová linka zvládne; jinak `sim-capture-ftd-stagger` nebo `slip-emit-and-capture`.
-3. **Automatické zmenšení**— tiše zmenší velikost snímku / zvýší binning, pokud linka nedokáže udržet požadované rozlišení.**Tato pojistka se nevztahuje na agregované přetížení**: příliš mnoho kamer pro danou linku nelze vyřešit zmenšením snímků — viz [Přetížení](#over-subscription-the-per-cam-floor).
-4. **PTP povoleno** ve výchozím nastavení — časové značky napříč kamerami jsou srovnatelné s přesností v řádu mikrosekund.
-5. **Automatický výběr formátu pixelů pro každou kameru** — kamery RGB → `BayerRG8`, multispec → `BayerRG12`.
-6. **Nastavení AE** — pořídí snímek aktuálního stavu AE každé kamery, aby se při připojení resetovat expozici uprostřed letu.
-7. **Konfigurace spouště GPIO** — `connect_array` aktivuje všechny kamery (`TriggerMode=On`, `TriggerSource=Line2`), takžeimpuls řídil podřízené kamery přes kabel M8. Jedná se o krok určený pouze pro pole: samostatná kamera otevřená příkazem `LatticeCamera` místo toho běží volně.
+3. **Automatické zmenšení**— tiše zmenší velikost rámce / zvýší binning, když přenosová linka nedokáže udržet požadované rozlišení.**Tato bezpečnostní síť neřeší agregované přetížení**: příliš mnoho kamer pro danou přenosovou linku nelze vyřešit zmenšením rámců — viz [Přetížení](#over-subscription-the-per-cam-floor).
+4. **PTP je ve výchozím nastavení zapnuto**— časová razítka napříč kamerami se synchronizují na jeden sdílený časový signál s přesností**~1 ms**. Současná expozice je zajištěna hardwarovým spouštěčem M8 (**&lt; 100 µs** mezi moduly), nikoli protokolem PTP: PTP synchronizuje *časová razítka*, nikoli expozice.
+5. **Automatický výběr formátu pixelů pro každou kameru** — kamery RGB → `BayerRG8`, multispektrální → `BayerRG12`.
+6. **Inicializace AE** — zaznamenává aktuální stav AE každé kamery, aby připojení během provozu neresetovalo expozici.
+7. **Konfigurace spouštění přes GPIO** — `connect_array` aktivuje každou kameru (`TriggerMode=On`, `TriggerSource=Line2`), takže impuls z hlavní kamery řídí podřízené kamery přes kabel M8. Jedná se o krok určený pouze pro pole kamer: v případě jedné kamery se místo toho spustí `LatticeCamera` free-běží samostatně.
 
 ```python
 import chloros_sdk
@@ -628,51 +628,51 @@ connect_array(
 
 Hodnoty `force_tier`:
 - `"sim-capture-sim-emit"` — skutečně simultánní (všechny kamery se spouštějí na stejné hraně hodinového signálu).
-- `"sim-capture-ftd-stagger"` — flexibilní časové rozložení (kamery vysílají s mírným časovým posunem, takže se pakety na lince sériově řadí).
-- `"slip-emit-and-capture"` — sekvenční snímání pro každou kameru (bez časové synchronizace; jediná možnost, pokud žádná velikost rámce neodpovídá simultánnímu režimu).
+- `"sim-capture-ftd-stagger"` — flexibilní časové rozložení (kamery vysílají s mírným časovým posunem, takže se pakety na vedení serializují).
+- `"slip-emit-and-capture"` — sekvenční snímání podle jednotlivých kamer (bez časové synchronizace; jediná možnost, pokud žádná velikost rámce neodpovídá simultánnímu režimu).
 
-`wire_ceiling_mbps` přepisuje **trvalý rozpočet hostitele pro přenos** v MB/s — jediné
-číslo, na kterém závisí alokace celého pole. Nechte nastavení na hodnotě `None`, aby se použila automaticky detekovaná
-hodnota. Snižte ji, pokud pole hlásí poškozené rámce GVSP: automatická hodnota je odvozena
-z inzerované rychlosti připojení síťové karty, která u USB adaptérů, úzkých PCIe linek a
-vytížených sdílených sítí uvádí nadhodnocené hodnoty — a tento nadhodnocený údaj se projevuje jako poškozené rámce spíše než jako
-viditelně pomalé připojení. Hodnota se ukládá dobloku zachycování pole, takže při
+`wire_ceiling_mbps` přepisuje **trvalý rozpočet hostitele na přenosovou linku** v MB/s — jediné
+číslo, na kterém závisí celá alokace pole. Nechte hodnotu `None`, aby se použila automaticky detekovaná
+hodnota. Snižte ji, pokud pole hlásí rámce poškozené GVSP: automatická hodnota je odvozena
+z inzerované rychlosti spojení síťové karty, která u USB adaptérů, úzkých PCIe linek a
+vytížených sdílených struktur — a tento nadhodnocený údaj se projeví spíše jako poškozené rámce než jako
+viditelně pomalé spojení. Hodnota je uložena v bloku zachycování pole projektu, takže při
 opětovném otevření nebo pozdějším `connect_array` se obnoví stejně jako jakékoli jiné nastavení pole.
 Viz [Stav pole](#array-health--which-subsystem-is-losing-frames).
 
-#### Nadměrné předplatné (minimální limit na kameru)
+#### Překročení kapacity (minimální limit na kameru)
 
-Pacing Sim-emit přiděluje každé kameře podíl z rozpočtu pro kolizně bezpečné připojení, jehož spodní hranice je **8 MB/s na kameru**(`per_cam_floor_bps`). Jakmile `N × floor` překročí horní hranici kolizně bezpečného připojení, dojde k**překročení kapacity sítě**— projeví se to ztrátou paketů GVSP, nikoli nižší snímkovou frekvencí — a neexistuje žádné řešení založené na velikosti snímku:**agregovaná kontrola porovnává binning a počet bajtů v oblasti zájmu (ROI) na snímek, nikoli počet bajtů za sekundu podle rozdělení**. Praktické horní limity při plném rozlišení na hostiteli s 1 GbE:**6 kamer při 1500 MTU, 9 s jumbo rámci** (`max_cams_collision_safe` v odpovědi analýzy udává horní limit pro vaše připojení). Řešení: méně kamer, jumbo rámce v celém řetězci nebo rychlejší síťová karta.
+Funkce Sim-emit pacing přiděluje každé kameře podíl z rozpočtu pro přenos bez kolizí, s minimální hodnotou **8 MB/s na kameru**(`per_cam_floor_bps`). Jakmile `N × floor` překročí horní hranici bezpečnou proti kolizím, pole**překročí kapacitu sítě**— režim selhání představuje ztráta paketů GVSP, nikoli nižší snímková frekvence — a neexistuje žádné řešení založené na velikosti snímku:**binning a ROI snižují počet bajtů na snímek, nikoli počet bajtů za sekundu s regulovaným tempem**, které porovnává agregovaná kontrola. Praktické stropy pro plné rozlišení na hostiteli s 1 GbE:**6 kamer s MTU 1500, 9 s jumbo rámci** (`max_cams_collision_safe` v odpovědi analýzy uvádí horní hranici pro vaše připojení). Řešení: méně kamer, jumbo rámce v celém řetězci nebo rychlejší síťová karta.
 
-- Odpovědi `analyze_array_network()` a `/api/camera/array/connect` obsahují `oversubscribed`, `aggregate_demand_bps`, `collision_safe_ceiling_bps`, `max_cams_collision_safe` a `per_cam_floor_bps`. Pokud je hodnota `oversubscribed` pravdivá, projekce **nastaví pole fps na nulu** (`achievable_fps_max` / `fps_bright` / `fps_dark`), místo než aby vykazovala zavádějící hodnotu pomalé, ale funkční rychlosti.
-- `POST /api/camera/array/connect` přijímá parametr těla `pin_resolution` (**pouze HTTP — nikoli klíčový argument SDK**; `connect_array` jej nezpřístupňuje). Pinning odstraňuje bezpečnostní síť v podobě postupného snižování binningu, takže připojení s nadměrným počtem požadavků a nastaveným `pin_resolution` je**tvrdě odmítnuto** s chybou uvádějící všechny možné nápravné opatření. Bez pinningu připojení pokračuje postupným snižováním, ale varuje, že zmenšení nemůže vyčistit agregát.
-- Úniková cesta pro testování: nastavte `CHLOROS_ARRAY_ALLOW_OVERSUBSCRIBED=1` v prostředí backendu, aby se odmítnutí snížilo na hlasité varování — připojíte se i tak a akceptujete ztrátu paketů.
+- Odpovědi `analyze_array_network()` a `/api/camera/array/connect` obsahují `oversubscribed`, `aggregate_demand_bps`, `collision_safe_ceiling_bps`, `max_cams_collision_safe` a `per_cam_floor_bps`. Pokud je hodnota `oversubscribed` pravdivá, projekce **vynuluje pole fps** (`achievable_fps_max` / `fps_bright` / `fps_dark`), místo než aby hlásila zavádějící hodnotu, která je sice pomalá, ale funkční.
+- `POST /api/camera/array/connect` přijímá parametr těla `pin_resolution` (**pouze HTTP — nejedná se o klíčový argument SDK**; `connect_array` jej nezpřístupňuje). Fixace odstraňuje bezpečnostní síť v podobě snižování binningu, takže připojení s nadměrnýmpočet předplatitelů s nastaveným `pin_resolution`**tvrdě odmítnuto** s chybou uvádějící všechny možné nápravné kroky. Bez fixace spojení pokračuje v postupném snižování, ale varuje, že zmenšení nemůže vyčistit agregát.
+- Únikový východ pro testování: nastavte v prostředí backendu `CHLOROS_ARRAY_ALLOW_OVERSUBSCRIBED=1`, aby se odmítnutí snížilo na hlasité varování — připojíte se i tak a akceptujete ztrátu paketů.
 
 #### Stav pole — který subsystém ztrácí rámce
 
 `GET /api/camera/array/<array_id>/capability` nese aktivní blok `health` na
 připojeném poli, který je přehodnocován v průběžném **10sekundovém** okně. Rozděluje ztrátu rámců
 na dvě příčiny, které vyžadují opačná řešení, namísto jedné míry „neúplnosti“, která
-neoznačuje ani jednu z nich:
+žádnou z nich nespecifikuje:
 
 | Pole | Co to znamená | Který subsystém |
 | --- | --- | --- |
-| `gvsp_corrupt_rate_pct` (na sériový port) | Rámec **dorazil a byl strukturálně poškozen**— ztráta paketů GVSP. |**Síť**: kapacita linky, tempo, kruh NIC RX, MTU |
-| `never_arrived_rate_pct` (na sériový port) | Rámec **vůbec nedorazil**— kamera se nespustila nebo z ní nic nevyšlo. |**Spoušť / synchronizace**: kabel M8, `line=`, `TriggerMode` |
-| `worst_gvsp_corrupt_pct` / `worst_never_arrived_pct` | Nejhoršípočet případů u první kamery pro každý z nich. | — |
-| `per_cam_rate_pct` | Kombinovaný počet neúplných snímků na kameru (obě příčiny dohromady). | — |
-| `stable_for_seconds` | Jak dlouho každá kamera zůstala pod 0,01 %. | — |
+| `gvsp_corrupt_rate_pct` (podle sériového čísla) | Snímek **dorazil a byl strukturálně poškozen**— ztráta paketů GVSP. |**Síť**: kapacita linky, tempo přenosu, kruh přijímače síťové karty, MTU |
+| `never_arrived_rate_pct` (podle sériového čísla) | Rámec **vůbec nedorazil**— kamera se nespustila, nebo z ní nic nevyšlo. |**Spoušť / synchronizace**: kabel M8, `line=`, `TriggerMode` |
+| `worst_gvsp_corrupt_pct` / `worst_never_arrived_pct` | Nejhoršípro každý případ. | — |
+| `per_cam_rate_pct` | Kombinovaná míra neúplnosti na kameru (obě příčiny dohromady). | — |
+| `stable_for_seconds` | Jak dlouho zůstala každá kamera pod 0,01 %. | — |
 
-Vedle položky `health` uvádí stejný záznam číslo, na kterém visí celá alokace:
+Vedle položky `health` uvádí stejný záznam také číslo, na kterém závisí celá alokace:
 
 | Pole | Co to znamená |
 | --- | --- |
-| `wire_ceiling_mbps` | Aktuální trvalý rozpočet šířky pásma hostitele, MB/s. |
+| `wire_ceiling_mbps` |trvalý platný rozpočet šířky pásma, MB/s. |
 | `wire_ceiling_source` | Odkud tato hodnota pochází, slovy — např. `USB-capped 200 MB/s (was theoretical 1062; …)` nebo `user override 120 MB/s (auto said 200)`. |
 | `wire_ceiling_is_user_set` | `true`, když jej nastavil `wire_ceiling_mbps=`. |
 | `nic_is_usb` | `true` pro USB ethernetový adaptér. |
 
-Pro tento koncový bod neexistuje žádný obal SDK — přečtěte si jej přímo:
+Pro tento koncový bod neexistuje žádný SDK wrapper — čtěte jej přímo:
 
 ```python
 import requests, chloros_sdk
@@ -693,54 +693,54 @@ if (health.get("worst_gvsp_corrupt_pct") or 0) > 1.0:
     arr = chloros_sdk.connect_array(serials, wire_ceiling_mbps=120)
 ```
 
-**Význam:** nenulová hodnota `gvsp_corrupt_rate_pct` s hodnotou `never_arrived_rate_pct` rovnou 0 znamená, že
-že spouštění a synchronizace kabelu jsou v pořádku a 100 % ztrát je na síťové trase — snižte
-`wire_ceiling_mbps` a znovu se připojte. Opačný vzorec poukazuje spíše na synchronizační kabel nebo
+**Čtení:** nenulová hodnota `gvsp_corrupt_rate_pct` s hodnotou `never_arrived_rate_pct` rovnou 0 znamená,
+že spouštění a synchronizace kabelu jsou v pořádku a 100 % ztráty je na síťové trase — snižte
+`wire_ceiling_mbps` a znovu se připojte. Opačný vzorec naopak ukazuje na synchronizační kabel nebo
 spouštěcí linku.
 
-> **`target_fps` není rozhodujícím faktorem pro poškozené rámce.** Frekvence GevSCPD se nastavuje jednorázově při
+> **Hodnota `target_fps` není rozhodujícím faktorem pro poškozené rámce.** Frekvence GevSCPD se nastavuje jednorázově při
 > připojení, takže snížení spouštěcí frekvence mění pracovní cyklus, nikoli
-> rychlost souběžného vysílání. Naměřené 5násobné snížení požadavků nepřineslo žádné zlepšení, zatímco
-> snížení maximální rychlosti linky z 240 na 200 MB/s snížilo u stejného zařízení podíl poškozených rámců z 10,4 % na
+> rychlost souběžného vysílání. Změřená 5× redukce požadavků nepřinesla žádné zlepšení, zatímco
+> snížení horní hranice linky z 240 na 200 MB/s snížilo u stejného zařízení podíl poškozených dat z 10,4 % na
 > 0,00 %.
 
-> **Automatické zmenšení v průběhu přenosu není ve firmwaru TRI032S k dispozici.** Běžící pole to nemůže
-> samo opravit; odpojte a znovu připojte, aby nástroj pro volbu času připojení znovu naplánoval přenos podle
-> nového limitu.
+> **Automatické zmenšení uprostřed přenosu není ve firmwaru TRI032S k dispozici.** Běžící pole nemůže
+> tento problém samo vyřešit; odpojte a znovu připojte zařízení, aby nástroj pro výběr času připojení znovu naplánoval přenos podle
+> nové horní hranice.
 
-**USB ethernetový adaptér je omezen na 200 MB/s** sondou bez ohledu na jeho
-technické údaje: tabulka účinnosti, která převádí rychlost spojení na trvalou hodnotu, je
-odvozena od PCIe a USB síťová karta udává svou rychlost ethernetového spojení, přičemž je omezena
+**USB ethernetový adaptér je sondou omezen na 200 MB/s** bez ohledu na jeho
+typové označení: tabulka účinnosti, která převádí rychlost spojení na trvalou hodnotu, je
+odvozena od PCIe a USB síťová karta inzeruje svou rychlost ethernetového spojení, přičemž je omezena
 USB sběrnicí a jejím ovladačem. Omezení je absolutní, nikoli relativní — USB adaptér 1 GbE
-dosahuje ~80 MB/s a není tímto omezením ovlivněn.
+dosahuje rychlosti ~80 MB/s a není tímto omezením ovlivněn.
 
-#### `ArraySession` Metody
+#### Metody `ArraySession`
 
 | Metoda | Popis |
 | --- | --- |
-| `status(timeout=10.0)` | Live `{fps, ptp, frame_count, last_error, …}`. |
-| `capture(output_dir="output", format="tiff", processing="debayered", levels=None, aligned=None, render_index=None, force_daq=None, smart=False, timeout=300.0)` | Jedna synchronizovaná skupina zachycování. Vrací `CaptureResult` (seznam slovníků snímků + `.skipped`). Ovládací prvky pro export níže. |
-| `capture(..., smart=True)` | **Inteligentní snímání** — čeká, až se AE ustálí na všech kamerách, a poté spustí snímání. |
-| `capture_fastest(output_dir="output", force_daq=True, render_index=True, timeout=120.0)` | Nejrychlejší snímání: pouze surová data + přiřazená hodnota DAQ (+ volný kombinovaný index). Odpovídá tlačítku „Fastest Capture“ v grafickém rozhraní. |
-| `capture_repeated(output_dir="output", count=None, duration_s=None, interval_s=0.0, on_capture=None, **capture_kwargs)` | Jednorázový / nepřetržitý / intervalový záznam v jedné ohraničené smyčce. Vrací `list[CaptureResult]`.**Vyžaduje `count` a/nebo `duration_s`**, aby se proces ukončil (SDK nemá funkci Ctrl+C). |
-| `record(output_dir="output", fps=10.0, duration_s=None, video=True, gif=False, timeout=30.0)` | Spustí záznam živého zobrazení kombinovaného indexu do videa/GIF → `RecorderHandle`. Jeden kompozitní záznamník na jedno pole. |
-| `burst(output_dir="output", duration_s=None, max_frames=None, index_config=None, serial_index_config=None, timeout=30.0)` | Spustit sériové snímání surových dat Bayer s vysokým počtem snímků za sekundu → `RecorderHandle`. Offline přepracovat pomocí `build_video()`. |
-| `build_video(burst_dir, products=None, fps=10.0, video=True, gif=False, save_tiffs=False, wait=True, poll_s=2.0, timeout=1800.0)` | Offline přepracovat uloženou sérii snímků ve formátu RAW na kalibrovaná videa. Blokuje se, dokud není hotovo (`wait=True`) a vrátí `{outputs, errors, combined}`. |
+| `status(timeout=10.0)` | Spustí `{fps, ptp, frame_count, last_error, …}`. |
+| `capture(output_dir="output", format="tiff", processing="debayered", levels=None, aligned=None, render_index=None, force_daq=None, smart=False, timeout=300.0)` | Jedna synchronizovaná skupina snímání. Vrací `CaptureResult` (seznam slovníků rámců + `.skipped`). Ovládací prvky pro export níže. |
+| `capture(..., smart=True)` | **Inteligentní snímání** — počká, až se AE ustálí na všech kamerách, a poté spustí snímání. |
+| `capture_fastest(output_dir="output", force_daq=True, render_index=True, timeout=120.0)` | Nejrychlejší snímání: pouze surová data + přiřazená hodnota DAQ (+ volný kombinovaný index). Odpovídá tlačítku „Fastest Capture“ v grafickém uživatelském rozhraní. |
+| `capture_repeated(output_dir="output", count=None, duration_s=None, interval_s=0.0, on_capture=None, **capture_kwargs)` | Jednorázové / kontinuální / intervalové snímání v jedné ohraničené smyčce. Vrací `list[CaptureResult]`.**Vyžaduje `count` a/nebo `duration_s`**, aby bylo možné proces ukončit (SDK nemá klávesovou zkratku Ctrl+C). |
+| `record(output_dir="output", fps=10.0, duration_s=None, video=True, gif=False, timeout=30.0)` | Spustí nahrávání živého zobrazení kombinovaného indexu do formátu video/GIF → `RecorderHandle`. Jeden kompozitní záznamník na jedno pole. |
+| `burst(output_dir="output", duration_s=None, max_frames=None, index_config=None, serial_index_config=None, timeout=30.0)` | Spuštění sériového snímání v surovém formátu Bayer s vysokou snímkovou frekvencí → `RecorderHandle`. Offline přepracování pomocí `build_video()`. |
+| `build_video(burst_dir, products=None, fps=10.0, video=True, gif=False, save_tiffs=False, wait=True, poll_s=2.0, timeout=1800.0)` | Offline zpracování uloženého sériového snímání ve formátu RAW do kalibrovaného videa(s). Blokuje se až do dokončení (`wait=True`) a vrací `{outputs, errors, combined}`. |
 | `build_video_status(job_id, timeout=15.0)` | Zjišťuje stav offline úlohy sestavení: `{running, result, error, burst_dir}`. |
-| `disconnect()` | Uvolnění celého pole. |
+| `disconnect()` | Uvolní celé pole. |
 
-Ovládací prvky exportu `capture()` (stejný koncový bod, jaký používá GUI/CLI):
+`capture()`vládací prvky exportu  (stejný koncový bod, jaký používá grafické rozhraní/CLI):
 
-- `processing` / `levels` — `processing="all"` (nebo `levels=["raw","radiance",…]`) ukládá každý příslušný typ exportu pro každou kameru; jediná hodnota `processing` ukládá pouze tuto úroveň.
-- `aligned=True` — přizpůsobí ne-surový export každého člena [profilu zarovnání](#array-alignment) pole (společně zaregistrovaného); surový export zůstává nepřizpůsobený, ale nese transformaci v metadatech. V případě, že pole nemá profil, se vrátí k nezarovnanému (s varováním zobrazeným v `alignment` výsledku), pokud pole nemá žádný profil.
-- `render_index=False` — přeskočí překryv indexu vegetace pro každou kameru; výchozí nastavení jej vykreslí tam, kde je nakonfigurován.
-- `force_daq=True` — uloží přiřazenou hodnotu DAQ/DLS jako sidecar `.daq`, i když to žádná z vybraných úrovní nevyžaduje.
+- `processing` / `levels` — `processing="all"` (nebo `levels=["raw","radiance",…]`) uloží všechny příslušné typy exportu pro každou kameru; jedna hodnota `processing` uloží pouze danou úroveň.
+- `aligned=True` — deformuje ne-surový export každého člena podle [profilu zarovnání](#array-alignment) pole (spoluregistrovaného); surová data zůstávají bez zarovnání, ale v metadatech nesou transformaci. Pokud pole nemá žádný profil, použije se výchozí nezarovnané zarovnání (s varováním zobrazeným v `alignment` výsledku).
+- `render_index=False` — přeskočit překryv indexu vegetace; ve výchozím nastavení se vykresluje tam, kde je nakonfigurováno.
+- `force_daq=True` — uloží přiřazenou hodnotu DAQ/DLS jako soubor sidecar `.daq`, i když to žádná zvolená úroveň nevyžaduje.
 
-**Komprese TIFF (ovládací prvek dostupný pouze pro HTTP):**`ArraySession.capture()` neodesílá klíč `compression`, takže se použije výchozí nastavení backendu — `POST /api/camera/array/capture` čte parametr těla `compression`, `"deflate"` (bezztrátová komprese zlib L1 + horizontální prediktor, ~4,1 MB na snímek v plném rozlišení). `"none"` zapisuje nekomprimovaně (~6,3 MB/snímek) s**~5× rychlejším zápisem** — oba formáty jsou bezeztrátové a při importu se čtou identicky. SDK pro to neposkytuje žádný parametr kwarg; únikovou cestou je `chloros-cli lattice array-capture --compression none` nebo surový formát HTTP. DEFLATE také drží GIL Python, takže komprimované zápisy nelze paralelizovat napříč vlákny zapisovače pro jednotlivé kamery — trvalý záznam 8kamer v plném rozlišení při rychlosti snímače vyžaduje `compression: "none"`. Podrobnosti: [CLI Reference → array-capture](cli-reference.md).**Přepsání exportu na úrovni jednotlivých členů (pouze HTTP):**stejný koncový bod přijímá také `exclude_serials` (seznam — vyřazení členů z uložené sady; pole se stále spouští jako jedna synchronizovaná skupina a vyloučení členy jsou vráceni v `excluded`), `serial_levels` (přepsání na úrovni jednotlivých kamer v `{serial: [level tokens]}`)a `serial_index` (přepsání indexového překryvu pro jednotlivé kamery v `{serial: bool}`). Jedná se o parametry těla s paritou GUI a**zatím ne o klíčové argumenty SDK**; členy, které v mapách chybí, se nahradí celopolní hodnotami `levels` / `render_index`.
+**KompreseTIFF (pouze přepínač HTTP):**`ArraySession.capture()` neodesílá žádný klíč `compression`, takže se použije výchozí nastavení backendu — `POST /api/camera/array/capture` čte parametr těla `compression`, `"deflate"` ve výchozím nastavení (bezztrátová komprese zlib L1 + horizontální prediktor, ~4,1 MB na snímek v plném rozlišení). `"none"` zapisuje nekomprimované údaje (~6,3 MB/snímek) s**~5× rychlejším zápisem** — oba jsou bezeztrátové a při importu se čtou identicky. Rozhraní SDK pro to neposkytuje žádný argument; únikovou cestou je `chloros-cli lattice array-capture --compression none` nebo surový HTTP. DEFLATE také drží GIL pro Python, takže komprimované zápisy nelze paralelizovat napříč jednotlivými— pro nepřetržité snímání v plném rozlišení s 8 kamerami při rychlosti snímače je třeba použít `compression: "none"`. Podrobnosti: [CLI Reference → array-capture](cli-reference.md).**Přepsání exportu pro jednotlivé členy (pouze HTTP):**stejný koncový bod přijímá také `exclude_serials` (seznam — odstranění prvků z uložené sady; pole se stále spouští jako jedna synchronizovaná skupina a vyloučené prvky jsou vráceny v `excluded`), `serial_levels` (přepsání na úrovni jednotlivých kamer `{serial: [level tokens]}`) a `serial_index` (přepsání překryvů indexů pro jednotlivé kamery v `{serial: bool}`). Jedná se o parametry těla s paritou s grafickým uživatelským rozhraním a**zatím ne o klíčové argumenty typu „SDK“**; členy, které v mapách chybí, se vrátí k celopoleovým parametrům `levels` / `render_index`.
 
 ##### Kontrola přeskočených kamer — `CaptureResult.skipped`
 
-`ArraySession.capture()` vrací `CaptureResult`, což je podtřída `list`: iterujte přes ni, indexujte jej, `len()` — všechny stávající vzory fungují i nadále. Nový kód může zkontrolovat atribut `.skipped`, aby zjistil, které kamery byly vyloučeny a proč. Nejběžnějším případem jsou kamery typu RGBve smíšeném filtrovém poli, když požadujete `processing="radiance"` nebo `"reflectance"` — radiance na jeden Bayerův pixel nemá pro širokopásmový snímač smysl, takže backend tyto kamery přeskočí, místo aby generoval nesmyslné údaje.
+`ArraySession.capture()` vrací `CaptureResult`, což je podtřída `list`: iterujte přes ni, indexujte ji, `len()` — všechny stávající vzory fungují i nadále. Nový kód může zkontrolovat atribut `.skipped`, aby zjistil, které kamery byly vyloučeny a proč. Nejběžnějším případem jsou kamery typu RGB ve smíšeném filtrovém poli, když požadujete `processing="radiance"` nebo `"reflectance"` — zářivost na jeden Bayerův pixel nemá u širokopásmového snímače smysl, proto backend tyto kamery přeskočí, místo aby generoval nesmyslné údaje.
 
 ```python
 with chloros_sdk.connect_array(serials) as arr:
@@ -758,24 +758,24 @@ with chloros_sdk.connect_array(serials) as arr:
         #       'filter': 'RGB'}
 ```
 
-Tokeny důvodů mají formát `<level>-not-applicable-to-rgb-cam` (jedna položka pro každou přeskočenou úroveň, z nichž každá obsahuje `level`). Přeskočení specifická pro odrazivost jsou `reflectance-skipped-no-fresh-dls` (není k dispozici žádné nové měření sestupujícího záření), `reflectance-skipped-bound-daq-unavailable (…)` (nelze dosáhnout připojeného DAQ) a `dls-uncalibrated-band-<nm>` — pásmo leží převážně mimo radiometricky kalibrovaný rozsah světelného senzoru DAQ (~374–974 nm), takže absolutní rozdělení podle odrazivosti založené na DAQ je odmítnuto a snímek se výrazně přeřadí na odezvu senzoru. Z dodávaných modelů to spouští pouze F988; podporovanou cestou této kamery je pracovní postup panelu odrazivostipanel.
+Tokeny důvodů mají vzorec `<level>-not-applicable-to-rgb-cam` (jeden záznam pro každou přeskočenou úroveň, každý s hodnotou `level`). Přeskočení specifická pro odrazivost jsou `reflectance-skipped-no-fresh-dls` (není k dispozici nové měření dopadajícího záření), `reflectance-skipped-bound-daq-unavailable (…)` (nelze se připojit k připojenému DAQ)a `dls-uncalibrated-band-<nm>` — pásmo leží převážně mimo radiometricky kalibrovaný rozsah světelného senzoru DAQ (~374–974 nm), takže absolutní dělení odrazivosti založené na DAQodmítnuto a snímek je výrazně degradován na odezvu snímače. Z dodávaných modelů to spouští pouze F988; podporovaným postupem pro tuto kameru je pracovní postup s odrazivostním panelem.
 
 Úrovně `processing`:
 
 | Úroveň | Výstup |
 | --- | --- |
-| `"raw"` | Jednokanálový Bayer (černobílé kamery: jednopásmový režim) přímo ze snímače. |
-| `"debayered"` *(výchozí nastavení SDK)* | 3kanálový BGR prostřednictvím bilineární demosaikace (černobílé kamery: 1kanálová šedá stupnice). |
-| `"radiance"` | float32 W/m²/sr/nm prostřednictvím úplného radiometrického řetězce. Pouze multispektrální — Kamery RGB jsou vynechány. |
-| `"reflectance"` | uint16 0..32768 (kompatibilní s Pix4D); vyžaduje spárování s živým DAQ pro absolutní referenci. Pouze multispektrální. |
-| `"display"` | Plný řetězec odpovídající náhledu v grafickém rozhraní (CCM + WB + gama podle profilu kamery). |
-| `"all"` | **Jeden soubor pro každou příslušnou úroveň** pro každou kameru (odpovídá výchozímu nastavení „Capture All“ v grafickém rozhraní / CLI). Vrácený soubor `CaptureResult` pak obsahuje jeden slovník snímků pro každý `(cam, level)`, přičemž úrovní v každém slovníku; neplatné úrovně se objevují v `.skipped`. Hodnota DAQ použitá pro jakýkoli snímek odrazivosti je uložena jako sidecar `.daq`. |
+| `"raw"` | Jednokanálový Bayer (mono kamery: jedno pásmo) přímo ze snímače. |
+| `"debayered"` *(výchozí nastavení SDK)* | 3kanálový BGR prostřednictvím bilineárního demosaiku (černobílé kamery: 1kanálová šedá stupnice). |
+| `"radiance"` | float32 W/m²/sr/nm prostřednictvím úplného radiometrického řetězce. Pouze multispektrální — kamery typu „RGB“ jsou přeskočeny. |
+| `"reflectance"` | uint16 0..32768 (připraveno pro Pix4D); vyžaduje živé spárování s DAQ pro absolutní referenci. Pouze multispektrální. |
+| `"display"` | Kompletní řetězec odpovídající náhledu v grafickém rozhraní (CCM + WB + gama podle profilu kamery). |
+| `"all"` | **Jeden soubor pro každou příslušnou úroveň** pro každou kameru (odpovídá výchozímu nastavení GUI „Capture All“ / CLI). Vrácený soubor `CaptureResult` pak obsahuje jeden slovník snímků pro každý soubor `(cam, level)`, přičemž úroveň je uvedena v každém slovníku; nepoužitelné úrovně se objevují v souboru `.skipped`. Hodnota z DAQ použitá pro jakýkoli rámec odrazivosti, se ukládá jako sidecar `.daq`. |
 
-> **Poznámka — výchozí nastavení se liší od CLI.** `ArraySession.capture()` má výchozí hodnotu `processing="debayered"`; příkaz `chloros-cli lattice array-capture` má výchozí hodnotu `processing="all"`. Zadejte `processing="all"` explicitně z SDK, abyste zrcadlili víceúrovňové ukládání v grafickém uživatelském rozhraní (GUI) CLI/GUI pro víceúrovňové ukládání.
+> **Poznámka — výchozí nastavení se liší od CLI.** Výchozí hodnotou pro `ArraySession.capture()` je `processing="debayered"`; výchozí hodnotou pro příkaz `chloros-cli lattice array-capture` je `processing="all"`. Zadejte explicitně `processing="all"` z SDK, abyste napodobili víceúrovňové ukládání CLI /GUI.
 
 ### Režimy snímání a záznamníky
 
-Povrch pole odráží panel snímání v grafickém uživatelském rozhraní: režimy Jednorázový / Kontinuální / Intervalový / Nejrychlejší závěrka, plus dva záznamníky (živé kompozitní video a surové snímky v sérii → offline zpracování).
+Rozhraní pole odráží panel snímání v grafickém uživatelském rozhraní (GUI): režimy Single (jednorázový), Continuous (kontinuální), Interval (intervalový) a Fastest shutter (nejrychlejší závěrka), plus dva záznamníky (živý kompozitní video signál a surová série snímků → offline zpracování).
 
 ```python
 import time, chloros_sdk
@@ -806,13 +806,13 @@ with chloros_sdk.connect_array(serials) as arr:
     print(out["outputs"])
 ```
 
-- **`capture_repeated`**je smyčka režimů Kontinuální/Interval u modelu SDK. Jelikož neexistuje model `Ctrl+C`, který by tuto smyčku přerušil ze skriptu,**musíte** předat `count` a/nebo `duration_s` (smyčka se zastaví, jakmile je dosaženo kterékoli z nich). `interval_s` se měří od začátku každého průchodu (v souladu s grafickým uživatelským rozhraním). Zbývající kwargs se předávají přímo do `capture()`.
-- **`record`** je *monitorovací*: zachycuje živý kompozit kombinovaného indexu tak, jak se zobrazuje, takže kombinovaný proud musí být otevřený, aby se snímky mohly ukládat. Jeden záznamník kompozitu na pole (vyvolá výjimku, pokud již jeden běží).
-- **`burst` → `build_video`** je *analytické*: `burst` zapisuje surové snímky + manifest prosnímkový manifest + jeden soubor `.daq` pro každé odlišné měření DLS pod `<output>/bursts/<base>/` při plné rychlosti snímací smyčky (bez řetězce, bez exiftool, bez živého náhledu). `build_video` časově přiřadí každý snímek k nejbližšímu `.daq` a znovu spustí řetězec radiance/odrazivost/index. `products` je seznam `{"kind": "per_cam"|"combined", "level": "radiance"|"reflectance"|"index"}` (výchozí: kombinovaný index). `burst().stop()` také automaticky spustí sestavení kombinovaného indexu s maximálním úsilím, jehož výsledek je vrácen jako `build_job` v výsledku zastavení.
+- **`capture_repeated`**je smyčka režimů Continuous/Interval v nástroji SDK. Jelikož neexistuje `Ctrl+C`, který by ji ze skriptu přerušil,**musíte** předat `count` a/nebo `duration_s` (smyčka se zastaví, jakmile je dosaženo jedné z těchto hodnot). `interval_s` se měří od začátku každého průchodu (stejně jako v grafickém rozhraní). Zbývající kwargs se předávají přímo do `capture()`.
+- **`record`** je *monitorovací*: zachycuje živý kompozitní obraz kombinovaného indexu tak, jak se zobrazuje, takže kombinovaný proud musí být otevřený, aby se do něj mohly ukládat snímky. Jeden záznamník kompozitního signálu na pole (vyvolá výjimku, pokud již jeden běží).
+- **`burst` → `build_video`** je určen pro *analýzu*: `burst` zapisuje surové snímky + manifest pro každý snímek + jeden `.daq` pro každou odlišnou hodnotu DLS v rámci `<output>/bursts/<base>/` při plné rychlosti snímací smyčky (bez řetězce, bez nástroje exif, bez živého náhledu). `build_video` časově přiřadí každý snímek k nejbližšímu `.daq` a znovu spustí řetězec radiance/reflektance/indexu importního potrubí. `products` je seznam `{"kind": "per_cam"|"combined", "level": "radiance"|"reflectance"|"index"}` (výchozí: kombinovaný index). `burst().stop()` také automaticky spustí sestavení kombinovaného indexu s maximálním úsilím, jehož výsledek je vrácen jako `build_job` ve výsledku zastavení.
 
 #### `RecorderHandle`
 
-Vráceno funkcemi `ArraySession.record()` a `ArraySession.burst()`. Použijte jej jako správce kontextu k automatickému zastavení při opuštění rozsahu nebo jej ovládejte ručně.
+Vráceno funkcemi `ArraySession.record()` a `ArraySession.burst()`. Použijte jej jako správce kontextu k automatickému zastavení při opuštění rozsahu, nebo jej ovládejte ručně.
 
 | Člen | Popis |
 | --- | --- |
@@ -820,7 +820,7 @@ Vráceno funkcemi `ArraySession.record()` a `ArraySession.burst()`. Použijte je
 | `kind` | `"composite"` (z `record`) nebo `"raw"` (z `burst`). |
 | `start_stats` | Slovník vrácený voláním `start`. |
 | `result` | `None` během běhu; konečný slovník výsledků zastavení po zastavení. |
-| `stats(timeout=10.0)` | Aktuální statistiky úlohy (zapsané snímky, skutečné fps, el). |
+| `stats(timeout=10.0)` | Aktuální statistiky úlohy (zapsané snímky, dosažené fps, uplynulý). |
 | `stop(timeout=60.0)` | Zastaví záznam; vrátí a uloží do mezipaměti konečný výsledek. Idempotentní (druhé volání vrátí výsledek z mezipaměti). |
 
 ```python
@@ -833,7 +833,7 @@ print(result["out_dir"], result.get("build_job"))
 
 ### Připojení k již připojenému poli — `attach_array`
 
-Pokud je pole již spuštěno (otevřelo jej grafické rozhraní nebo předchozí relace SDK zavolala `connect_array`), použijte `attach_array` k získání jeho identifikátoru namísto opětovného připojení. `connect_array` <sn><id>v této situaci</id></sn> vždy vyhodí chybu „Kamera  <sn>již </sn>je <sn>v poli <id>“, protože odeslání požadavku POST na `/array/connect` pro členav poolu není idempotentní; `attach_array` čte `/api/camera/array/list` a porovnává buď podle array_id, nebo podle sériových čísel.
+Pokud je pole již spuštěno (otevřelo jej grafické rozhraní nebo předchozí relace SDK volala `connect_array`), použijte `attach_array` k získání jeho identifikátoru namísto opětovného připojení. `connect_array` <sn><id>v této situaci</id></sn> vždy vyhodí chybu „Kamera  <sn>je již v poli<id>“, protože odeslání požadavku POST s `/array/connect` pro člena v-pool není idempotentní; `attach_array` čte `/api/camera/array/list` a porovnává podle array_id nebo sériových čísel.
 
 ```python
 import chloros_sdk
@@ -849,7 +849,7 @@ arr = chloros_sdk.attach_array("array-1779862544497")
 arr.capture("output/", processing="reflectance")
 ```
 
-Vzor: SDK skripty sdílející prostředí s grafickým uživatelským rozhraním desktopu by měly nejprve zkusit `attach_array` a přejít na `connect_array`, pokud v poolu ještě není žádné pole.
+Vzor: Skripty SDK, které sdílejí prostor s desktopovým grafickým rozhraním, by měly nejprve zkusit `attach_array` a přejít na `connect_array`, pokud v poolu ještě není žádné pole.
 
 ```python
 import chloros_sdk
@@ -860,7 +860,7 @@ except chloros_sdk.ChlorosConnectError:
     arr = chloros_sdk.connect_array(serials)
 ```
 
-> **Důležité — ukončení context-manageru VŽDY způsobí odpojení.**`ArraySession.disconnect()` vždy provede POST na `/array/disconnect`; neexistuje zde žádná ochrana typu „attached-not-owned“, jaká je u `CameraSession` / `DAQSensorSession`. Pokud sdílíte prostor s grafickým uživatelským rozhraním (GUI) a nechcete při ukončení rozsahu pole zničit,**nepoužívejte blok `with`** — uložte popisovač do běžné proměnné a přeskočte explicitní `disconnect()`:
+> **Důležité — ukončení context-manageru spojení ODPOJÍ.**`ArraySession.disconnect()` vždy odesílá POST na `/array/disconnect`; neexistuje žádná připojenástrážce typu „-not-owned“, jako je tomu u `CameraSession` / `DAQSensorSession`. Pokud používátes grafickým rozhraním a nechcete pole při ukončení rozsahu zrušit,**nepoužívejte blok `with`** — uložte popisovač do běžné proměnné a přeskočte explicitní `disconnect()`:
 >
 > ```python
 > arr = chloros_sdk.attach_array(serials)
@@ -870,7 +870,7 @@ except chloros_sdk.ChlorosConnectError:
 
 ### Pomocník pro analýzu sítě
 
-Užitečné před otevřením pole — odhadne, zda se vaše navrhovaná nastavení vejdou:
+Užitečné před otevřením pole — předpovídá, zda se vaše navrhovaná nastavení vejdou:
 
 ```python
 result = chloros_sdk.analyze_array_network(
@@ -893,14 +893,14 @@ elif result["status"] == "needs_force_slip":
     print("Sim-sync impossible on this wire; force_tier='slip-emit-and-capture' required")
 ```
 
-`status` je jedním z `ok` / `auto_capped_fps` / `auto_shrunk` / `needs_force_slip` (jinak `error`). `auto_capped_fps` znamená, že požadované rozlišení vyhovuje prstenci RX pouze při omezené frekvenci spouštění — zachovejte rozlišení a přejděte z `target_fps=result["recommended"]["recommended_target_fps"]` na `connect_array` (viz [Příklad 6](#6-capability-probe-before-connecting-a-4-cam-array)).
+`status` je jedním z `ok` / `auto_capped_fps` / `auto_shrunk` / `needs_force_slip` (jinak `error`). `auto_capped_fps` znamená, že požadované rozlišení vyhovuje prstenci RX pouze při omezené frekvenci spouštění — zachovejte rozlišení a předejte `target_fps=result["recommended"]["recommended_target_fps"]` na `connect_array` (viz [Příklad 6](#6-capability-probe-before-connecting-a-4-cam-array)).
 
-**Jak číst projekci** (stejný model jako panel Nastavení pole v grafickém uživatelském rozhraní):
+**Jak číst projekci** (stejný model jako panel Nastavení pole v grafickém rozhraní):
 
-- **Série snímků (`frame_bytes_total`) se sčítá pro každou kameru zvlášť v reálném formátu pixelů dané kamery.**Mono**M3M**kamery streamují Mono12 (2 B/px) bez ohledu na to, jakou hodnotu `pixel_format` předáte, takže snímek v plném rozlišení ze 4 kamer má velikost**~25 MB** se třemi mono kamerami, nikoli ~12,6 MB, jak by vyplývalo z předpokladu, že všechny jsou 8bitové. Backend určí formát každé kamery na základě jejího modelu.
-- **Propustnost (`burst_fits_nic_ring`) zohledňuje odběr**, nikoli porovnání celé dávky s kroužkem: sim-emit se hodí, když host vyprázdní přijímací kroužek rychleji, než jej kamery naplní. Host 10G + kamery 1 GbE**propouští** plné rozlišení, i když burst přesahuje kapacitu prstence; 1 GbE host blokuje (`needs_force_slip` / `auto_shrunk`).
-- **`achievable_fps_max` představuje konzervativní horní hranici sériového načítání** — `max(readout+emit, N×emit)` s vysíláním omezovaným na kamerový link 1 GbE pro každou kameru, nezávisle na expozici. Např.příkladu ~2,8 fps pro pole se 4 kamerami v plném rozlišení a 12 bitech (odpovídá naměřeným hodnotám běhu ~2,7–3,0). Úplný model: [CLI Reference → Model fps a sériového snímání pole](cli-reference.md#array-fps--burst-model).
-- **Nadměrné přidělení (`oversubscribed: true`) znamená, že minimální hodnota N × na kameru překračuje strop bezpečný proti kolizím-bezpečnou horní hranici** — pole fps (`achievable_fps_max` / `fps_bright` / `fps_dark`) vykazují hodnotu 0 a automatické zmenšení/binning to nedokážou napravit (snižují počet bajtů na snímek, nikoli počet bajtů za sekundu). Řešením je snížení počtu kamer, použití jumbo rámců nebo rychlejší síťová karta; `max_cams_collision_safe` udává horní limit (6 kamer s plným rozlišením na 1 GbE při 1500 MTU, 9 s jumbo rámci). Odpověď obsahuje také kódy `aggregate_demand_bps`, `collision_safe_ceiling_bps` a `per_cam_floor_bps` (8 MB/s). Viz [Překročení kapacity](#over-subscription-the-per-cam-floor).
+- **Sériový záznam (`frame_bytes_total`) se sčítá pro každou kameru v reálném formátu pixelů dané kamery.**Mono**M3M**kamery streamují Mono12 (2 B/px) bez ohledu na předaný parametr `pixel_format`, takže snímek v plném rozlišení ze 4 kamer má velikost**~25 MB** se třemi mono kamerami, nikoli ~12,6 MB, jak by vyplývalo z předpokladu, že všechny kamery používají 8bitový formát. Backend určí formát každé kamery na základě jejího modelu.
+- **Admittance (`burst_fits_nic_ring`) zohledňuje odběr**, nikoli porovnání celého burstu s-prstenec: sim-emit funguje, když host vyprázdňuje přijímací prstenec rychleji, než jej kamery naplňují. 10G hostitel + 1 GbE kamery**přijímají** plné rozlišení, i když burst přesahuje kapacitu prstence; 1 GbE hostitel blokuje (`needs_force_slip` / `auto_shrunk`).
+- **`achievable_fps_max` představuje konzervativní horní hranici sériového načítání** — `max(readout+emit, N×emit)` s vysíláním na kameru omezeným na kamerové rozhraní 1 GbE, nezávislý na expozici. Např. ~2,8 fps pro pole se 4 kamerami v plném rozlišení a 12 bitech (odpovídá naměřeným ~2,7–3,0 v běhu). Úplný model: [CLI Reference → Model snímkové frekvence pole a sériového snímání](cli-reference.md#array-fps--burst-model).
+- **Nadměrné předběžné přidělení (`oversubscribed: true`) znamená, že minimální hodnota N × na kameru překračuje strop bezpečný z hlediska kolizí** — pole snímkové frekvence (`achievable_fps_max` / `fps_bright` / `fps_dark`) vykazují hodnotu 0 a automatické zmenšení/binning to nedokáže vyřešit (tyto funkce snižují počet bajtů na snímek, nikoli počet bajtů za sekundu v rovnoměrném tempu). Řešením je snížení počtu kamer, použití jumbo rámců nebo rychlejší síťová karta; `max_cams_collision_safe` hlásí horní limit (6 kamer v plném rozlišení na 1 GbE při 1500 MTU, 9 s jumbo rámci). Odpověď obsahuje také kódy `aggregate_demand_bps`, `collision_safe_ceiling_bps` a `per_cam_floor_bps` (8 MB/s). Viz [Překročení kapacity](#over-subscription-the-per-cam-floor).
 
 ### Objevování a výpis
 
@@ -914,7 +914,7 @@ chloros_sdk.list_arrays()                # active arrays in the pool
 
 ## Smart-AE / Smart-Capture
 
-Pole LATTICE spouští nepřetržité automatické nastavení expozice (AE) na pozadí, jakmile jsou připojena, ale u nově zaměřené scény trvá chvíli, než se expozice ustálí. **Smart-capture** je praktická funkce: zjišťuje expozici každé kamery, počká, až se pole v daném okně ustálí, a poté spustí snímání. Je to ekvivalent v grafickém uživatelském rozhraní: tlačítko „smart“ capture v desktopové aplikaci volá stejný backendový endpoint.
+Pole LATTICE spouštějí nepřetržité automatické nastavení expozice (AE) na pozadí, jakmile jsou připojena, ale u nově nasměrované scény trvá chvíli, než se expozice ustálí. **Smart-Capture** je praktické řešení: zjišťuje expozici každé kamery, počká, až se pole v daném okně ustálí, a poté spustí snímání. Je to ekvivalent grafického rozhraní: tlačítko „smart“ v desktopové aplikaci volá stejný backendový endpoint.
 
 ```python
 import chloros_sdk
@@ -928,7 +928,7 @@ with chloros_sdk.connect_array([
     arr.capture("pose_b/", processing="reflectance", smart=True)
 ```
 
-Při ovládání přes `ChlorosProject` (následující část) získáte více nastavení:
+Při ovládání přes `ChlorosProject` (další sekce) máte k dispozici více nastavení:
 
 ```python
 proj.arrays["main_rig"].capture_smart(
@@ -940,13 +940,13 @@ proj.arrays["main_rig"].capture_smart(
 )
 ```
 
-Zásady inteligentní automatické expozice (smart-AE) jsou ve výchozím nastavení konzervativní. Pro náročné radiometrické práce nastavte `exposure_tolerance_pct` na přísnější hodnoty; pro rychle se měnící scény, kde vám stačí „dostatečná přesnost“, nastavte na volnější hodnoty.
+Zásady inteligentní automatické expozice (smart-AE) jsou ve výchozím nastavení konzervativní. Pro náročnou radiometrickou práci nastavte přísnější hodnoty pomocí `exposure_tolerance_pct`; pro rychle se měnící scény, kde vám stačí „dostatečná přesnost“, nastavte volnější hodnoty.
 
 ---
 
 ## Relace senzorů DAQ
 
-Trvalý fond backendů pro spektrální senzory (DAQ-U přes USB, DAQ-M přes BLE, DAQ-E přes Ethernet). Odráží vlastnosti kamery: inteligentní detekce, opakované použití fondu, idempotentní připojení.
+Trvalý fond backendů pro spektrální senzory (DAQ-U přes USB, DAQ-M přes BLE, DAQ-E přes Ethernet). Odráží chování kamery: inteligentní detekce, opakované použití fondu, idempotentní připojení.
 
 ### Inteligentní detekce (Zero-Config)
 
@@ -962,7 +962,7 @@ with chloros_sdk.connect_daq_sensor() as daq:
         print(len(spectrum), is_sat)
 ```
 
-Priorita: Ethernet → BLE → USB. Zadejte libovolný explicitní údaj k pevnému nastavení transportu.
+Priorita: Ethernet → BLE → USB. Zadejte libovolný explicitní pokyn k fixaci transportu.
 
 ### Zafixovaný přenosový kanál
 
@@ -990,18 +990,18 @@ daq = chloros_sdk.connect_daq_sensor(
 
 | Metoda | Popis |
 | --- | --- |
-| `status(timeout=10.0)` | Souhrn položky fondu (stav streamování/nahrávání, rozsah vlnových délek, kalibrační hash, integrační čas, frame_avg, stav AE). |
+| `status(timeout=10.0)` | Souhrn položky fondu (stav streamování/záznamu, rozsah vlnových délek, kalibrační SHA, doba integrace, frame_avg, stav AE). |
 | `latest(n=1, timeout=10.0)` | Vrátí až N nejnovějších spektrálních rámců. |
 | `stream_start()` / `stream_stop()` | Obnoví / pozastaví streamování (handle zůstává otevřený). |
-| `record_start(output_dir=None, device_name=None)` | Spustí záznam souboru .daq. Vrátí cestu k souboru. Odmítne se u DAQ-U/M bez kalibračního balíčku AWS (DAQ-E je výjimkou). |
-| `record_stop()` | Zastaví nahrávání. Vrátí `{path, rows}`. |
-| `disconnect()` | Uvolní z fondu. Žádná operace pro připojené handle, které nejsou ve vlastnictví. |
+| `record_start(output_dir=None, device_name=None)` | Spustí záznam souboru .daq. Vrátí cestu k souboru. Nepovolí se u DAQ-U/M bez kalibračního balíčku AWS (DAQ-E je výjimkou). |
+| `record_stop()` | Zastaví záznam. Vrátí `{path, rows}`. |
+| `disconnect()` | Uvolní z fondu. Bez účinku pro připojené, ale nevlastněné handle. |
 
-> **Profily korekce kapacity (`cap_id`) nejsou ovládacím prvkem typu SDK.** `connect_daq_sensor()` / `DAQSensorSession` neexponují žádný parametr `cap_id` ani metodu `set_cap`. Vyberte profil korekce limitu flotily prostřednictvím CLI (`chloros-cli daq pool-connect --cap-id …` / `chloros-cli daq pool-set-cap …`) nebo trasami `/api/daq` HTTP v backendu (`/api/daq/connect` a `/api/daq/<id>/cap-id` přijímají `cap_id`).
+> **Profily korekce horní hranice (`cap_id`) nejsou ovládacím prvkem typu „SDK“.** `connect_daq_sensor()` / `DAQSensorSession` neobsahují žádný parametr `cap_id` ani metodu `set_cap`. Profil korekce limitu flotily vyberte prostřednictvím CLI (`chloros-cli daq pool-connect --cap-id …` / `chloros-cli daq pool-set-cap …`) nebo trasy typu „HTTP“ (`/api/daq`) v backendu (`/api/daq/connect` a `/api/daq/<id>/cap-id` akceptují `cap_id`).
 
 ### Vyhledávání — nalezení adresy pro připojení
 
-`discover_daq_sensors()` prohledává rozhraní USB / BLE / ETH a hledá senzory, které *by* bylo možné otevřít. Jedná se o protějšek `discover_lattice_cameras()` pro DAQ a jediný způsob, jak zjistit **BLE MAC**-M** — DAQ-E má název hostitele a DAQ-U COM port, ale MAC adresa není ani vytištěna na zařízení, ani uvedena v operačním systému.
+`discover_daq_sensors()` prohledává rozhraní USB / BLE / ETH a hledá senzory, které *by* bylo možné otevřít. Jedná se o ekvivalent `discover_lattice_cameras()` pro DAQ a jediný způsob, jak získat **BLE MAC adresu zařízení DAQ-M** — zařízení DAQ-E má název hostitele a DAQ-U má COM port, ale MAC adresa není ani vytištěna na zařízení, ani uvedena v seznamu operačního systému.
 
 ```python
 for s in chloros_sdk.discover_daq_sensors():
@@ -1020,17 +1020,17 @@ for s in chloros_sdk.discover_daq_sensors(transports=["ble"]):
 | `transport` | `usb` \| `ble` \| `eth`. |
 | `address` | COM port / BLE MAC / název hostitele — předat do `connect_daq_sensor` jako `port=` / `mac=` / `eth_host=`. |
 | `display` | Člověkem čitelný popisek. |
-| `model` | `DAQ-U` \| `DAQ-M` \| `DAQ-E`, nebo `None` pro port, který skenování nedokáže identifikovat (sériové adaptéry USB nelze bez sondy rozlišit, takže neznámé položky jsou zobrazují, nikoli skrývají). |
-| `extra` | Podrobnosti o jednotlivých typech přenosu (inzerovaný název BLE, výrobce USB, IP/fw/… DAQ-E). Prázdné hodnoty jsou vynechány. |
+| `model` | `DAQ-U` \| `DAQ-M` \| `DAQ-E` nebo `None` pro port, který skenování nedokáže identifikovat (sériové adaptéry USB nelze bez sondy rozlišit, proto jsou neznámé položky zobrazeny, nikoli skryty). |
+| `extra` | Podrobnosti podle typu přenosu (inzerovaný název BLE, výrobce USB, IP/fw/… zařízení DAQ-E). Prázdné hodnoty jsou vynechány. |
 
 | Parametr | Výchozí hodnota | Popis |
 | --- | --- | --- |
-| `transports` | všechny tři | Sekvence (nebo řetězec ve formátu CSV) omezující skenování. Stojí za to ji zadat, pokud víte, co chcete — BLE je pomalejší část. |
-| `scan_timeout` | 5 | Okno skenování pro jednotlivé transporty v sekundách; backend omezuje hodnotu na 1–20. |
-| `timeout` | 60,0 | HTTP – horní limit pro celé volání (stejně jako jinde v SDK). |
+| `transports` | všechny tři | Sekvence (nebo řetězec ve formátu CSV) omezující skenování. Stojí za to zadat, pokud víte, co chcete — BLE je nejpomalejší část. |
+| `scan_timeout` | 5 | Okno skenování pro jednotlivé transporty v sekundách; backend omezuje na 1–20. |
+| `timeout` | 60,0 | Horní hranice „HTTP“ pro celé volání (stejně jako jinde v „SDK“). |
 | `auto_start_backend` | `True` | Spustí lokální backend, pokud žádný neběží. Nikdy se nespustí pro vzdálený `backend_url`. |
 
-> **Senzory, které jsou již otevřené v poolu, se nezobrazí.** Připojené periferní zařízení BLE přestane vysílat a otevřený port COM nelze prozkoumat, takže vyhledávání uvádí pouze to, co je *k dispozici pro připojení*. Hned po připojení zařízení je očekáván prázdný výsledek — pro zařízení, která již máte, použijte `list_daq_sensors()`. Transporty, jejichž skenování nelzespustit (není nainstalován bleak / zeroconf), se přeskočí, místo aby vyvolávaly chybu, takže zařízení bez Bluetooth stále dostává odpovědi pro USB a ETH.
+> **Senzory, které jsou již otevřené v poolu se nezobrazí.** Připojené periferní zařízení BLE přestane vysílat a otevřený COM port nelze prozkoumat, takže vyhledávání uvádí pouze to, co je *k dispozici pro připojení*. Hned po připojení zařízení je očekáván prázdný výsledek — pro zařízení, která již máte, použijte `list_daq_sensors()`. Transporty, u nichž nelze spustit skenování (není nainstalován bleak / zeroconf), jsou přeskočeny, místo aby vyvolávaly chybu, takže zařízení bez Bluetooth stále dostává odpovědi pro USB a ETH.
 
 ### Seznam
 
@@ -1039,15 +1039,15 @@ for s in chloros_sdk.list_daq_sensors():
     print(s["sensor_id"], s["model"], s["transport"], s["wavelength_range"])
 ```
 
-### Společné použití s GUI / CLI
+### Spolupráce s GUI / CLI
 
-Pokud má GUI již otevřený senzor, volání `connect_daq_sensor(port="COM3")` z Python vrátí popisovač označený `already_connected=True`. `disconnect()` dané relace pak neprovede žádnou akci, takže váš skript SDK při ukončení okna osciloskopu neodpojí senzor od grafického uživatelského rozhraní.
+Pokud má GUI již otevřený senzor, volání `connect_daq_sensor(port="COM3")` z Python vrátí handle označený jako `already_connected=True`. `disconnect()` dané relace pak neprovede žádnou akci, takže váš skript SDK neodstraní senzor z pod GUI při ukončení relace .
 
-### Třídy pro přímé ovládání hardwaru (Bez backendu)
+### Třídy pro přímé ovládání hardwaru (bez backendu)
 
-`daq_sdk` je znovu exportován funkcí `chloros_sdk`, takže můžete senzory ovládat také přímo v procesu bez nutnosti backendu:
+`daq_sdk` jeexportován funkcí `chloros_sdk`, takže můžete senzory ovládat také přímo v procesu bez backendu:
 
-> **Dostupnost:**`daq_sdk` je součástí instalace Chloros pro stolní počítače,**nikoli** balíčku PyPI — `pip install chloros-sdk` vám poskytne `lattice_sdk`, ale ponechá `chloros_sdk.DAQ_AVAILABLE == False`. Před použitím těchto tříd zkontrolujte tento příznak; na hostitelském počítači, kde je nainstalován pouze pip, ovládejte senzor místo toho pomocí [`connect_daq_sensor()`](#daq-sensor-sessions), který nevyžaduje žádné lokální transportní knihovny.
+> **Dostupnost:**`daq_sdk` je součástí instalace desktopové verze Chloros,**není** s balíčkem z PyPI — `pip install chloros-sdk` vám poskytuje `lattice_sdk`, ale vynechává `chloros_sdk.DAQ_AVAILABLE == False`. Před použitím těchto tříd si tento příznak zkontrolujte; na hostitelském počítači, kde je k dispozici pouze pip, ovládejte senzor místo toho pomocí [`connect_daq_sensor()`](#daq-sensor-sessions), který nevyžaduje žádné lokální transportní knihovny.
 
 ```python
 from chloros_sdk import DAQUSensor, DAQMSensor, DAQESensor, discover_all
@@ -1064,7 +1064,7 @@ sensor.start_streaming()
 sensor.stop()
 ```
 
-Upřednostněte cestu smart-connect (`connect_daq_sensor`), pokud chcete sdílené vlastnictví s grafickým uživatelským rozhraním; pro skripty bez grafického rozhraní, které vlastní senzor výlučně, použijte přímé třídy.
+Upřednostňujte cestu smart-connect (`connect_daq_sensor`) , pokud chcete sdílené vlastnictví se grafickým uživatelským rozhraním; pro skripty bez grafického rozhraní, které vlastní senzor výlučně, použijte přímé třídy.
 
 ---
 
@@ -1109,16 +1109,16 @@ with chloros_sdk.open_project("/path/to/proj") as proj:
 
 | Metoda | Popis |
 | --- | --- |
-| `connect_all(cameras=True, arrays=True, sensors=True, verbose=False, align=None)` | Vyhledá a připojí všechna uložená zařízení. Vrátí zprávu o připojení pro každou třídu. Používá spuštěný backend, pokud nějaký naslouchá na `127.0.0.1:5000`; v opačném případě se bez upozornění přepne na přímé (bez backendu) `lattice_sdk` ovládání zařízení — nikdy nespouští backend. |
+| `connect_all(cameras=True, arrays=True, sensors=True, verbose=False, align=None)` | Objeví a připojí všechna uložená zařízení. Vrátí zprávu o připojení pro každou třídu. Používá spuštěný backend, pokud nějaký naslouchá na `127.0.0.1:5000`; v opačném případě se bez upozornění přepne na přímé (bez backendu) ovládání zařízení `lattice_sdk` — nikdy nespouští backend. |
 | `disconnect_all()` | Ukončí vše. |
 | `capture_all(output_dir=".")` | Jeden snímek z každé kamery + pole + spektrum z každého senzoru. |
-| `stream(camera, overlays=False, fps=10.0)` | Generátor vytvářející snímky BGR `numpy` z pojmenované kamery (nebo pole). `overlays=False` je přímá smyčka snímání `lattice_sdk` (pole generují slovníky typu `{serial: frame}`). `overlays=True` směruje přes `ChlorosLocal.camera_stream()` → MJPEG kanál `/api/camera/<serial>/stream-annotated` backendu, přičemž uložený blok kamery `ui.overlay` je předán jako parametry dotazu. Vyžaduje režim backendu a **samostatnou kameru**: kamera v přímém režimu vyvolá výjimku `RuntimeError` (backend nemůžezískat kameru, kterou tento proces vlastní) a pole vyvolá `NotImplementedError` (složí překryvy pro každou kameru — streamuje člen podle jména). Ekvivalent pro jednorázové použití: `CameraHandle.capture(annotated=True)`. |
-| `align_arrays(align=True, verbose=False)` | Spustí zarovnání u každého aktuálně připojeného pole. |
-| `process(mode="parallel", wait=True, progress_callback=None, poll_interval=2.0)` | Spustí kalibrační / indexovací pipeline na obrázcích projektusnímcích (zahrnuje `ChlorosLocal.process`; tyto čtyři jsou **jediné** přijímané klíčové argumenty — `indices=` atd. vyvolají výjimku `TypeError`; nastavte indexy pomocí `ChlorosLocal.configure()`). Lazily vytvoří objekt `ChlorosLocal()`, který automaticky spustí backend. |
+| `stream(camera, overlays=False, fps=10.0)` | Generátor poskytující snímky BGR `numpy` z pojmenované kamery (nebo pole). `overlays=False` je přímá smyčka snímání `lattice_sdk` (pole generují slovníky `{serial: frame}`). `overlays=True` směřuje přes `ChlorosLocal.camera_stream()` → MJPEG kanál backendu `/api/camera/<serial>/stream-annotated`, přičemž uložený blok kamery `ui.overlay` blokem kamery předaným jako parametry dotazu. Vyžaduje režim backendu a **samostatnou kameru**: kamera v přímém režimu vyvolá `RuntimeError` (backend nemůže získat kameru, kterou vlastní tento proces) a pole vyvolá `NotImplementedError` (překryvy kompozitu podle kamery — streamování člena podle jména). Ekvivalent jednorázového volání: `CameraHandle.capture(annotated=True)`. |
+| `align_arrays(align=True, verbose=False)` | Spustí zarovnání na každém aktuálně připojeném poli. |
+| `process(mode="parallel", wait=True, progress_callback=None, poll_interval=2.0)` | Spustí kalibrační / indexovací pipeline na snímcích projektu (zahrnuje `ChlorosLocal.process`; tyto čtyři jsou **jediné** povolené klíčové argumenty — `indices=` atd. vyvolají chybu `TypeError`; nastavte indexy pomocí `ChlorosLocal.configure()`). Odloženě vytvoří `ChlorosLocal()`, který automaticky spustí backend. |
 
 Atributy:
-- `proj.cameras` — `Dict[str, CameraHandle]` s klíčem podle názvu A sériového čísla.
-- `proj.arrays` — `Dict[str, ArrayHandle]` s klíčem podle názvu A array_id.
+- `proj.cameras` — `Dict[str, CameraHandle]` indexovaný podle názvu A sériového čísla.
+- `proj.arrays` — `Dict[str, ArrayHandle]` indexovaný podle názvu A array_id.
 - `proj.sensors` — `Dict[str, SensorHandle]` s klíči podle názvu A slot_id.
 - `proj.config` — `project.json["config"]` slovník.
 
@@ -1147,50 +1147,50 @@ for arr in cam.frame_stream(processing="debayered", fps=5, count=100):
     my_analysis(arr)
 ```
 
-**Úrovně zpracování.** `capture()`, `grab()` a `frame_stream()` přijímají stejný token `processing`
+**Úrovně zpracování.** `capture()`, `grab()` a `frame_stream()` všechny přijímají stejný token `processing`
 a řetězec je kumulativní — každá úroveň spouští vše, co je nad ní:
 
 | Úroveň | Výstup | Poznámky |
 | --- | --- | --- |
-| `raw` | 1kanálový Bayer, nativní pro snímač | Bez demosaikování. Na této úrovni nejsou k dispozici překryvy. |
+| `raw` | 1kanálový Bayer, nativní pro snímač | Bez demosaiku. Na této úrovni nejsou k dispozici překryvy. |
 | `debayered` | 3kanálový BGR (**výchozí**) | Bilineární demosaikování. Jediná úroveň, která funguje bez režimu backendu. |
-| `radiance` | float32, W/m²/sr/nm | Plný radiometrický řetězec: demosaikování + 3×3 rozložení (multispektrální) + DSNU + flat-field + NIST scale, s odečtením expozice × zisku, takže hodnoty jsou absolutní. |
+| `radiance` | float32, W/m²/sr/nm | Úplný radiometrický řetězec: demosaikování + 3×3 separace (multispektrální) + DSNU + flat-field + NIST stupnice, s odečtením expozice × zesílení, takže hodnoty jsou absolutní. |
 | `reflectance` | uint16, 32768 = 1,0 | Radiance dělená dopadajícím zářením (ρ = π·L/E). Vyžaduje údaj z DLS/DAQ — viz poznámka níže. |
-| `display` | 8bitový, podobný sRGB | GUIekvivalentní vykreslení: CCM + vyvážení bílé + gama prostřednictvím aktivního barevného profilu kamery. |
+| `display` | 8bitový (podobný sRGB) | Zobrazení ekvivalentní grafickému rozhraní: CCM + vyvážení bílé + gama prostřednictvím aktivního barevného profilu kamery. |
 
 Cokoli jiného než `debayered` vyžaduje režim backendu; kamera v přímém režimu vyvolá
-`NotImplementedError`. `reflectance` vyžaduje použitelné měření dopadajícího světla — koncový bod snímku automaticky vtáhne
-shromážděná data DAQ do slotu DLS kamery, ale pokud není vázán žádný DAQ, řetězec odmítne
-výstup odrazivosti a upřímně označí snížení kvality ve vrácených metadatech, místo aby tiše
+`NotImplementedError`. `reflectance` vyžaduje použitelné měření dopadajícího záření — koncový bod snímku automaticky vtáhne
+shromážděná data DAQ do slotu DLS kamery, ale bez přiřazeného DAQ řetězec odmítne
+výstup odrazivosti a poctivě označí snížení kvality ve vrácených metadatech, místo aby tiše
 vrátil produkt nižší kvality.
 
-> **Stupnice DN odrazivosti — neukládat pevně.** Odrazivost LATTICE používá `32768` = ρ 1,0 a označuje
-> XMP `Chloros:PixelScale=32768`; reflektance Survey3 používá `65535` = ρ 1,0 a neobsahuje žádné
+> **Stupnice DN odrazivosti — neukládat pevně do kódu.** Odrazivost LATTICE používá `32768` = ρ 1,0 a označuje
+> XMP `Chloros:PixelScale=32768`; odrazivost Survey3 používá `65535` = ρ 1,0 a neobsahuje žádné
 > značky `Chloros:*`. Přečtěte značku a vydělte jí. Je definována v doméně uint16, takže zůstává
-> `32768` pro každý formát, který mění měřítko (16bitový TIFF, 8bitový PNG/JPG, 32bitové procento) — nejprve normalizujte
-> uložený datový typ zpět na uint16 (×257 z 8bitového, ×65535 z float). Jediná výjimka:
-> záznam z 8bitového zdroje zapsaný jako 8bitový TIFF je *oříznut*, nikoli přepočítán, takže jej nepopisuje žádné měřítko
+> `32768` pro každý formát, který mění měřítko (16bitové TIFF, 8bitové PNG /JPG, 32bitové procenta) — nejprve normalizujte
+> uložený datový typ zpět na uint16 (×257 z 8bitového, ×65535 z typu float). Jediná výjimka:
+> záznam z 8bitového zdroje uložený jako 8bitový TIFF je *oříznut*, nikoli přepočítán, takže jej žádný měřítko nepopisuje
 > — Chloros v takovém případě zcela vynechá `PixelScale` a tuple MicaSense. Chybějící
-> značku v souboru odrazivosti LATTICE považujte za „žádnou platnou měřítkovou škálu“, nikoli za výchozí hodnotu.
+> značku v souboru odrazivosti LATTICE považujte za „žádné platné měřítko“, nikoli za výchozí hodnotu.
 
 > **EXIF se přenáší do exportu.** `process()` zkopíruje blok GPS zdrojového záznamu
-> **a jeho ExifIFD** do každého produktu, takže exporty obsahují `FocalLength`, `FNumber`,
+> **a jeho ExifIFD** do každého výstupu, takže exporty obsahují `FocalLength`, `FNumber`,
 > `ExposureTime`, `ISO`, `DateTimeOriginal` a `CameraSerialNumber`, stejně jako
-> georeferencování. `FocalLength` představuje vzdálenost, kterou Pix4D vypočítává vzdálenost mezi body na zemi — bez něj
-> se rekonstrukce vrátí k naprosto nesprávnému měřítku (v jednom změřeném případě se lokalita o rozloze 411 m
-> změnila na lokalitu o rozloze 47,8 km). Kopie záměrně není `-all:all`: strukturální značky IFD0 narušují
-> výstup LATTICE výstup, a `ExifImageWidth`/`Height` jsou vyloučeny, protože popisují zdrojové
-> snímání, nikoli exportovaný rastr.
+> georeferencování. `FocalLength` je hodnota, ze které Pix4D vypočítává vzdálenost vzorku na zemi — bez ní
+> by rekonstrukce vykazovala zcela nesprávné měřítko (v jednom změřeném případě se lokalita o rozloze 411 m
+> na lokalitu o rozloze 47,8 km). Kopie záměrně neobsahuje soubor `-all:all`: strukturální značky IFD0 narušují
+> výstup LATTICE a soubory `ExifImageWidth`/`Height` jsou vyloučeny, protože popisují
+> zachycení zdroje, nikoli exportovaný rastr.
 
-Podznačky fáze snímání (vztahují se na radiometrické úrovně — `radiance`, `reflectance`, `display`):
+Podvlajky fáze snímání (vztahují se na radiometrické úrovně — `radiance`, `reflectance`, `display`):
 
-| Příznak | Výchozí hodnota | Význam |
+| Vlajka | Výchozí hodnota | Význam |
 | --- | --- | --- |
 | `apply_calibration` | `True` | DSNU + flat-field + 3x3 unmix + radiometrická stupnice NIST. |
 | `apply_white_balance` | `True` | WB LUT. Zohledňuje DLS, pokud je k kameře připojen DAQ. |
 | `apply_index` | `False` | Vyhodnocení vegetačního indexu. |
-| `index_expression` | `None` | Přepsání vzorce. Není-li prázdný → automaticky aktivuje index. |
-| `annotated` | `False` | Překrytí dekorací grafického uživatelského rozhraní (zebra/mřížka/vrcholky). Není k dispozici pro `raw`. |
+| `index_expression` | `None` | Přepsání vzorce. Prázdnéprázdné → automaticky aktivuje index. |
+| `annotated` | `False` | Překrytí dekorací GUI (zebra/mřížka/peaking). Není k dispozici pro `raw`. |
 
 ### `ArrayHandle`
 
@@ -1232,14 +1232,14 @@ print(counts)  # frames written per serial
 ```
 
 > **Typ návratové hodnoty je `CapturePathMap`, nikoli `Dict[str, str]`.**
-> `chloros_sdk.CapturePathMap` je `Dict[str, Union[str, List[str]]]`: jednoúrovňový
-> `processing` přiřazuje každému sériovému číslu jednu cestu, zatímco víceúrovňový (`"all"` nebo
+> `chloros_sdk.CapturePathMap` je `Dict[str, Union[str, List[str]]]`: jednovrstvýúrovně
+> `processing` přiřadí každému sériovému číslu jednu cestu, zatímco víceúrovňový (`"all"` nebo
 > explicitní seznam `levels`) mu poskytuje **seřazený seznam** všech produktů uložených pro danou
-> kameru. Živý kombinovaný kompozit, pokud by byl streamován, se objeví pod samostatným
-> klíče `"combined"`, nikoli pod sériovým číslem. Kód, který předpokládá `str`, selže u
-> seznamu, aniž by proti tomu vznesl námitku jakýkoli typový kontrolor — anotace uváděla `Dict[str, str]`
-> ještě nějakou dobu po vydání seznamu, proto tento alias existuje. Normalizujte
-> to, pokud chcete plochý formát:
+> kameru. Živý kombinovaný kompozit, pokud by byl streamován, se objeví pod dodatečným
+> `"combined"`, nikoli pod sériovým číslem. Kód, který předpokládá `str`, selže v
+> seznamovém formátu, aniž by proti tomu nějaký typový kontrolor namítal — anotace uváděla `Dict[str, str]`
+> ještě nějakou dobu po vydání formuláře seznamu, a proto tento alias existuje. Normalizujte
+> v případě, že chcete plochý formát:
 >
 > ```python
 > paths = arr.capture(processing="all")
@@ -1247,9 +1247,9 @@ print(counts)  # frames written per serial
 >         for p in (v if isinstance(v, list) else [v])]
 > ```
 
-### Zarovnání polí
+### Zarovnání pole
 
-`ArrayHandle` zpřístupňuje úplnou plochu zarovnání. Profily jsou ve výchozím nastavení platné pouze pro danou relaci — pro trvalé uložení explicitně zavolejte `export_alignment()`.
+`ArrayHandle` zpřístupňuje celou zarovnávací plochu. Profily jsou ve výchozím nastavení platné pouze pro danou relaci — pro trvalé uložení explicitně zavolejte `export_alignment()`.
 
 ```python
 from chloros_sdk import AlignmentSpec
@@ -1300,7 +1300,7 @@ proj.connect_all(align={
 })
 ```
 
-Pokud není zadáno, použije se `project.json["config"]["auto_align_on_connect"]`.
+Pokud není zadáno, použije se jako výchozí `project.json["config"]["auto_align_on_connect"]`.
 
 ### `SensorHandle`
 
@@ -1314,7 +1314,7 @@ spectrum = proj.sensors["Sky"].read()
 
 ## Přímý hardware (bez backendu)
 
-Pokud chcete nulovou závislost na backendu (CI, bezhlavé roboty, vestavěné systémy), importujte `lattice_sdk` a `daq_sdk` přímo — oba jsou znovu exportovány prostřednictvím `chloros_sdk`. Upozornění ohledně `CAMERA_AVAILABLE` / `DAQ_AVAILABLE`: `lattice_sdk` je součástí balíčku PyPI (vyžaduje však přítomnost runtime prostředí Arena SDK), zatímco `daq_sdk` je dodáván pouze s instalací pro stolní počítače.
+Pokud chcete nulovou závislost na backendu (CI, roboty bez grafického rozhraní, vestavěné systémy), importujte přímo `lattice_sdk` a `daq_sdk` — oba jsou znovu exportovány pomocí `chloros_sdk`. Omezení na `CAMERA_AVAILABLE` / `DAQ_AVAILABLE`: `lattice_sdk` je součástí balíčku PyPI (vyžaduje však přítomnost runtime prostředí Arena SDK), zatímco `daq_sdk` je dodáván pouze s instalací pro stolní počítače.
 
 ```python
 from chloros_sdk import (
@@ -1339,25 +1339,25 @@ with LatticeCamera(serial="213800234", settings=settings) as cam:
     print(result.filepath, result.width, result.height)
 ```
 
-##### Předvolby a spoušť
+##### Předvolby a spouštěč
 
-Tři ze čtyř předvoleb jsou typu **free-run**: kamera exponuje nepřetržitě a
-`capture()` vrátí další snímek. Výjimkou je `triggered` — připraví
-kameru na hardwarový signál na linku 2, takže nic nezachytí, dokud signál nepřijde.
+Tři ze čtyř předvoleb fungují v režimu **free-run**: kamera exponuje nepřetržitě a
+`capture()` vrátí další snímek. `triggered` je výjimkou — připraví
+kameru na hardwarový signál na lince 2, takže nic nezachytí, dokud signál nepřijde.
 
-| Přednastavení | Spouštěč | Použijte, když |
+| Předvolba | Spouštěč | Použijte, když |
 | --- | --- | --- |
 | `default` | volný běh | obecné použití |
 | `high_speed` | volný běh | 8 bitů, omezení na 60 fps, krátká expozice |
-| `high_quality` | volný běh | 12 bitů, bez omezení fps — obvyklá volba pro fotografie |
-| `triggered` | **aktivní, linka 2** | fotoaparát je připojen k synchronizačnímu kabelu M8 a spouští ho něco jiného |
+| `high_quality` | volný běh | 12 bitů, bez omezení fps — obvyklá volba pro statické snímky |
+| `triggered` | **připraven, linka 2** | fotoaparát je připojen k synchronizačnímu kabelu M8 a spouští ho něco jiného |
 
-Pokud zvolíte `triggered` (nebo sami nastavíte `trigger_mode="On"`) bez
-spouštěcího signálu na lince 2, každý `capture()` vyprší — správně, protože jste
-fotoaparát požádali o čekání. SDK to vysvětluje, když k tomu dojde; viz
+Pokud zvolíte `triggered` (nebo si sami nastavíte `trigger_mode="On"`) a nic
+neřídí Linku 2, každý `capture()` vyprší — správně, protože jste
+kameru požádali, aby čekala. SDK to vysvětluje, když k tomu dojde; viz
 [SC_ERR_TIMEOUT během snímání](#direct-hardware-backend-free).
 
-> **Poznámka — Zprávy „GVSP probe“ / `SC_ERR_TIMEOUT -1011` při připojení nejsou chybami.**&gt; Při připojení se SDK pokouší vyjednat**jumbo rámce** (9000-bajtové pakety GVSP) pro vyšší propustnost. Na přímém bod-bodovém síťovém spojení (např. adresa `169.254.x.x` v rámci link-local) síť obvykle nedokáže přenášet jumbo rámce, takže tato sonda vyprší a do protokolu se zapíší řádky jako:
+> **Poznámka — Zprávy „GVSP probe“ / zprávy `SC_ERR_TIMEOUT -1011` při připojení nejsou chyby.**&gt; Při připojení se SDK pokusí vyjednat**jumbo rámce** (9000-byte GVSP pakety) pro vyšší propustnost. Na přímém spojení-k-bodovém propojení síťových karet (např. adresa `169.254.x.x` v rámci lokální sítě) síť obvykle nedokáže přenášet jumbo rámce, takže tato sonda vyprší a do protokolu se zapíší řádky jako:
 >
 > ```
 > [Network] GVSP probe: unexpected error (TimeoutError: ... SC_ERR_TIMEOUT -1011)
@@ -1365,15 +1365,15 @@ fotoaparát požádali o čekání. SDK to vysvětluje, když k tomu dojde; viz
 > [Network] GVSP packet size: 1500 bytes (standard)
 > ```
 >
-> Jedná se o **předvídané nouzové řešení**: zařízení SDK se automaticky vrátí ke standardním paketům o velikosti 1500 bajtů a kamera pokračuje v připojování normálně (následující řádky `[chunk-enable …]` jsou součástí běžné sekvence připojení). Zachycování stále funguje.
+> Toto je **předem navržený záložní postup**: síťová karta SDK se automaticky vrátí ke standardním paketům o velikosti 1500 bajtů a kamera se nadále připojuje normálně (následující řádky `[chunk-enable …]` jsou součástí běžné sekvence připojení). Zachycování stále funguje.
 >
-> Tuto sondu můžete přeskočit, ale **nejedná se pouze o potlačení záznamů v protokolu — vypíná jumbo rámce.** Kamera odpovídá na pingy s parametrem „Don&#x27;t-Fragment“ pouze do velikosti 1500 bajtů bez ohledu na to, jak kvalitní je vaše síť, takže samotný ping test nikdy nedokáže jumbo rámce odhalit; tato sonda je jediná, která to dokáže. Pokud ji deaktivujete, kamera bude v jakékoli síti navždy odesílat standardní pakety o velikosti 1500 bajtů:
+> Tuto kontrolu můžete přeskočit, ale **nejedná se pouze o potlačení záznamů v logu – vypíná to jumbo rámce.** Kamera odpovídá na pingy s příkazem „Don&#x27;t-Fragment“ pouze do velikosti 1500 bajtů, bez ohledu na to, jak kvalitní je vaše síť, takže samotný pingový test nikdy nedokáže odhalit podporu jumbo rámců; to dokáže pouze tato sonda. Pokud ji deaktivujete, kamera bude v jakékoli síti navždy používat standardní 1500-bajtové pakety:
 >
 > ```bash
 > CHLOROS_GVSP_PROBE_FALLBACK=0   # gives up jumbo — see the warning it prints
 > ```
 >
-> Stojí to za to pouze v síti, o které *víte*, že nepodporuje jumbo rámce, kde to ušetří zhruba jednu sekundu času připojení na každou kameru. Jelikož se jedná o skutečný kompromis, nikoli jen kosmetický, SDK to nyní při použití oznamuje:
+> Vyplatí se to pouze v síti, o které *víte*, , že nepodporuje jumbo pakety, kde to ušetří zhruba jednu sekundu času připojení na každou kameru. Jelikož se jedná o skutečný kompromis, nikoli jen kosmetickou změnu, SDK to nyní při použití jasně uvádí:
 >
 > ```
 > [Network] ⚠️ GVSP probe disabled (CHLOROS_GVSP_PROBE_FALLBACK=0) — staying at
@@ -1381,11 +1381,11 @@ fotoaparát požádali o čekání. SDK to vysvětluje, když k tomu dojde; viz
 > up ~1.45x wire ceiling. Unset the variable to test for jumbo.
 > ```
 >
-> **Nechte to být, pokud k tomu nemáte důvod.** Pokud zůstane povoleno, při každém připojení se znovu změří síť, kterou skutečně máte: připojte se k switch podporující jumbo pak další připojení automaticky rozpozná jumbo, bez nutnosti konfigurace a restartu.
+> **Nechte to být, pokud k tomu nemáte důvod.** Pokud zůstane povoleno, při každém připojení se znovu změří vaše aktuální síť: připojte se ke switchi podporujícímu jumbo pakety a při dalším připojení se jumbo pakety nastaví automaticky, bez nutnosti jakékoli konfigurace a restartu.
 >
-> Pokud *chcete* jumbo propustnost, povolte jumbo end-to-end (MTU síťové karty 9000 + switch, který je propouští), nebo to zafixujte pomocí `CHLOROS_GVSP_PACKET_SIZE_FORCE=9000`, pokud víte, že spoj jumbové pakety přenáší — upřednostňujte však použití `CHLOROS_GVSP_PACKET_SIZE_FORCE=9000 python …` pro jednotlivé příkazy před trvalým nastavením, protože pevně nastavená velikost přeskočí testování a přestane se přizpůsobovat síti před ním. **Každé** zařízení na trase musí jumbo pakety propouštět — včetně jakéhokoli PoE rozbočovače nebo injektoru, což je obvyklý důvod, proč jinak jumbo-kompatibilní konfigurace tyto pakety nedokáže přenášet.
+> Pokud *chcete* dosáhnout jumbo propustnosti, povolte jumbo end-to-end (MTU síťové karty 9000 + přepínač, který je propouští), nebo ji zafixujte pomocí `CHLOROS_GVSP_PACKET_SIZE_FORCE=9000`, pokud víte, že dané připojení tuto funkci podporuje — upřednostňujte však použití `CHLOROS_GVSP_PACKET_SIZE_FORCE=9000 python …` pro jednotlivé příkazy před trvalým nastavením, protože pevně nastavená velikost přeskočí test a přestane se přizpůsobovat síti před ním. **Každé** zařízení na trase musí jumbo pakety propouštět — včetně jakéhokoli PoE rozbočovače nebo injektoru, což je obvyklý důvod, proč jinak jumbo-kompatibilní konfigurace nedokáže tyto pakety přenášet.
 
-> **`SC_ERR_TIMEOUT -1011` během `capture()` / `grab*()` je jiný problém – ten je skutečnou chybou.**&gt; Výše uvedená poznámka se týká pouze chyby `-1011` zaznamenané**sondou connect-time**. Stejná chyba vyvolaná**zachycením** znamená, že se kamera připojila v pořádku, ale neodesílá žádné snímky:
+> **`SC_ERR_TIMEOUT -1011` během `capture()` / `grab*()` je jiný problém — ten je skutečnou chybou.**&gt; Výše uvedená poznámka se týká pouze chyby `-1011` zaznamenané**sondou connect-time**. Stejná chyba vyvolaná**zachycením** znamená, že kamera se připojila v pořádku, ale neodesílá žádné snímky:
 >
 > ```
 > File ".../lattice_sdk/camera.py", line ..., in grab_frame_with_metadata
@@ -1393,34 +1393,34 @@ fotoaparát požádali o čekání. SDK to vysvětluje, když k tomu dojde; viz
 > lattice_sdk.exceptions.CaptureError: Capture failed: ... SC_ERR_TIMEOUT -1011
 > ```
 >
-> Rozhodujícím znakem je kamera, jejíž *řídicí* kanál je v pořádku — vyhledávání funguje, nastavení i zápisy `[chunk-enable …]` jsou úspěšné — zatímco u *každého* snímku dochází k vypršení časového limitu.
+> Rozhodujícím znakem je kamera, jejíž *řídicí* kanál je v pořádku — vyhledání funguje, nastavení i zápisy `[chunk-enable …]` jsou úspěšné — zatímco *každý* snímek vyprší časový limit.
 >
-> **Obvyklou příčinou je, že kamera je nastavena na hardwarové spouštění.** V případě kódů `trigger_mode="On"` a `trigger_source="Line2"` kamera nevysílá vůbec nic, dokud na synchronizačním kabelu M8 nedojde k elektrické změně stavu. Pokud nemáte kabel, který by tuto linku řídil, každé načtení snímku čeká donekonečna. Kamera není poškozená a síť je v pořádku — dělá přesně to, co má.
+> **Obvyklou příčinou je, že je kamera nastavena na hardwarové spuštění.** V případě `trigger_mode="On"` a `trigger_source="Line2"` kamera nevysílá vůbec nic, dokud na synchronizačním kabelu M8 nedojde k elektrické změně stavu. Pokud nemáte kabel, který by tuto linku řídil, každý pokus o zachycení snímku čeká donekonečna. Kamera není rozbitá a síť je v pořádku — dělá přesně to, co má.
 >
-> `CameraSettings()` a předvolby `default` / `high_speed` / `high_quality` předvolby běží volněa snímání, u kterého dojde k vypršení časového limitu v aktivovaném režimu, se vysvětlí samo, místo aby se zobrazilo pouhé `-1011`. `PRESETS["triggered"]` aktivuje Line2, jak je zamýšleno.
+> Chyby `CameraSettings()` a předvolby `default` / `high_speed` / `high_quality` umožňují volný provoz, a snímání, u kterého dojde k vypršení časového limitu při aktivaci, zobrazí vysvětlení namísto pouhého `-1011`. `PRESETS["triggered"]` aktivuje Line2, jak je navrženo.
 >
-> Chcete-li vynutit volný běh u jakékoli kamery:
+> Chcete-li vynutit volný provoz u jakékoli kamery:
 >
 > ```python
 > settings = PRESETS["high_quality"]
 > settings.trigger_mode = "Off"        # free-run; don't wait for an M8 edge
 > ```
 >
-> Pokud i s `trigger_mode="Off"` stále dochází k vypršení časového limitu, kamera skutečně nedodává data — zašlete nám protokol a `ip link show`.
+> Pokud i s `trigger_mode="Off"` stále dochází k vypršení časového limitu, kamera skutečně neposílá data — zašlete nám protokol a `ip link show`.
 
-#### Barevné profily (RGB živý náhled) — `set_color_profile`
+#### Barevné profily (živý náhled RGB) — `set_color_profile`
 
-`LatticeCamera.set_color_profile(profile, custom_cct_k=None)` volí profil barev displeje pro **živý náhled** u kamer RGB (multispektrální kamery toto nastavení ignorují):
+`LatticeCamera.set_color_profile(profile, custom_cct_k=None)` volí barevný profil displeje pro **živý náhled** u kamer typu „RGB“ (kamery typu multispec toto nastavení ignorují):
 
 | Profil | Význam |
 | --- | --- |
 | `raw` | Úplně obejít radiometrický řetězec. |
-| `linear` | DSNU + flat + WB, bez CCM, bez gama. |
-| `natural` | Lineární + naměřený CCM + gama sRGB, pouze s jednoduchým dokončením (vyhlazení sytosti + desaturace světlých oblastí) — realistické výchozí nastavení. |
-| `enhanced` | `natural` plus kompletní úprava s paritou hubu (odstranění barevných pruhů, živost, lokální kontrast CLAHE). Bohatější vzhled za zhruba **dvojnásobné náklady na zpracování každého snímku**, tedy nižší snímkovou frekvenci v režimu LIVE. |
+| `linear` | DSNU + flat + WB, bez CCM, žádná gama. |
+| `natural` | Lineární + naměřený CCM + gama sRGB, pouze s levným dokončením (vyhlazení chrominance + desaturace světlých oblastí) — realistické výchozí nastavení. |
+| `enhanced` | `natural` plus kompletní úprava s paritou hubu (odstranění pruhů, živost, lokální kontrast CLAHE). Bohatější vzhled za zhruba **dvojnásobné náklady na úpravy na snímek**, tedy nižší snímkovou frekvenci v reálném čase. |
 | `custom_temp` | `natural`, ale vyvážení bílé (WB) pevně nastaveno na `custom_cct_k` Kelvin (DLS ignorováno; omezeno na 2000–10000 K na straně backendustraně). |
 
-Profil je **ovládací prvek pro rychlost/vzhled pouze v živém náhledu**pouze pro živý náhled**: uložené snímky vždy získají plnou a bohatou úpravu bez ohledu na vybraný profil, takže volba `natural` za účelem ušetření času na snímku nesnižuje kvalitu toho, co se uloží na disk. Neznámý profil zvýší hodnotu `ValueError`; když je dostupný backend chloros, změna se do něj také odešle metodou POST, takže se projeví v následujícím náhledovém snímku (uživatelé direct-SDK bez backendu stále dostávají změnu nastavení).
+Profil je **pouze pro živý náhled**, slouží k nastavení rychlosti a vzhledu: uložené snímky vždy získají plně bohatý vzhled bez ohledu na vybraný profil, takže výběr `natural` za účelem získání času na snímku nesnižuje kvalitu toho, co se uloží na disk. Neznámý profil zvýší hodnotu `ValueError`; je-li dostupný backend chloros, je změna odeslána i na něj, takže ji zohlední již další náhledový snímek (uživatelé s přímým připojením SDK bez backendu stále dostávají změnu nastavení).
 
 ```python
 with LatticeCamera(serial="214701292") as cam:   # RGB cam
@@ -1430,7 +1430,7 @@ with LatticeCamera(serial="214701292") as cam:   # RGB cam
 
 #### Mono (M3M) kamery a `Calibration`
 
-Mono **M3M** kamera (`M3M-<lens>-F<wavelength>`) je jednopásmová: jedna rovina v odstínech šedé, bez Bayerovy mozaiky, bez spektrální. `Calibration` ji rozpoznává a zpřístupňuje příznak `is_mono`. Odrazivost se stále uplatňuje jako radiometrická mapa pro jednotlivé pásma (demix je identitní matice), avšak vícepásmové výpočty na jedné kameře vedou k smysluplným výsledkům, nikoli k nesmyslům:
+Mono **M3M** kamera (`M3M-<lens>-F<wavelength>`) je jednopásmová: jedna rovina v odstínech šedé, bez Bayerovy mozaiky, bez matice spektrálního přeslechu 3×3. `Calibration` ji rozpozná a zpřístupní příznak `is_mono`. Odrazivost se stále uplatňuje jako radiometrická mapa pro jednotlivé pásma (demix je identitní matice), ale vícepásmové výpočty na jedné kameře vedou spíše k smysluplným výsledkům než k nesmyslům:
 
 ```python
 from chloros_sdk import Calibration, CalibrationError
@@ -1446,7 +1446,7 @@ except CalibrationError as e:
     print(e)   # "...single-band mono (M3M) camera. Combine multiple..."
 ```
 
-Chcete-li vytvořit vegetační index z monochromatického hardwaru, zkombinujte několik kamer M3M s různými vlnovými délkami do zarovnaného vícepásmového stohu (viz [Zarovnání poleignment](#array-alignment)) a vypočítejte index pro celý tento stack namísto jedné kamery.
+Chcete-li vytvořit vegetační index z monochromatického hardwaru, zkombinujte několik kamer M3M s různými vlnovými délkami do zarovnaného vícepásmového stohu (viz [Zarovnání pole](#array-alignment)) a vypočítejte index napříč tímto stohem namísto na jedné kameře.
 
 Přímý režim DAQ:
 
@@ -1468,9 +1468,9 @@ sensor.start_streaming()
 sensor.stop()
 ```
 
-> **`apply_sensor_settings` přijímané klíče**— přesně `integration_time_ms`, `frame_avg`, `ae_enabled`, `sunshine_diffuser_installed` (DAQ-E; zastaralé, nahrazeno `cap_id`), `filter_model` (DAQ-M) a `cap_id` (všechny typy DAQ; `None`/`""`/`"none"` = holý snímač, bez korekce kapacity). Neznámé klíče jsou**bez upozornění ignorovány** — např. `{"integration_time": 64}` neprovede žádnou akci (musí to být `integration_time_ms`). Vrátí `{"applied": [...], "errors": {...}}` a nikdy nevyvolá výjimku.
+> **`apply_sensor_settings` přijímané klíče**— přesně `integration_time_ms`, `frame_avg`, `ae_enabled`, `sunshine_diffuser_installed` (DAQ-E; zastaralé, nahrazeno `cap_id`), `filter_model` (DAQ-M)a `cap_id` (všechny typy DAQ; `None`/`""`/`"none"` = holý snímač, bez korekce krytu). Neznámé klíče jsou**tichým způsobem ignorovány** — např. `{"integration_time": 64}` neprovede nic (musí to být `integration_time_ms`). Vrací `{"applied": [...], "errors": {...}}` a nikdy nevyvolá výjimku.
 
-`chloros_sdk`exportuje pouze základní povrch použitý výše. Úplný veřejný `daq_sdk` API (22 názvů) přidává následující — importujte je přímo z `daq_sdk`:
+`chloros_sdk` reexportuje pouze základní rozhraní použité výše. Úplné veřejné rozhraní `daq_sdk` (API, 22 názvů) přidává následující — importujte je přímo z `daq_sdk`:
 
 ```python
 from daq_sdk import (
@@ -1488,7 +1488,7 @@ from daq_sdk import (
 
 ## Výjimky
 
-Zachyťte základní třídu pro zpracování „všech chyb Chloros“:
+Zachyťte základní třídu pro zpracování „všeho, co se v souboru Chloros pokazilo“:
 
 ```python
 import chloros_sdk
@@ -1535,7 +1535,7 @@ LatticeError
 
 ---
 
-## Příklady od začátku do konce
+## Kompletní příklady
 
 ### 1. Zpracování složky s vlastním ukazatelem průběhu
 
@@ -1560,7 +1560,7 @@ with ChlorosLocal() as cl:
 print()
 ```
 
-### 2. Pole LATTICE v reálném čase → odrazivost + referenční data DAQ
+### 2. Pole LATTICE v reálném čase → odrazivost + reference DAQ
 
 ```python
 import chloros_sdk
@@ -1581,7 +1581,7 @@ with chloros_sdk.connect_daq_sensor() as daq:
         print(info["path"], info["rows"])
 ```
 
-### 3. Sběr dat řízený projektem
+### 3. Snímací kampaň řízená projektem
 
 ```python
 import time, chloros_sdk
@@ -1613,7 +1613,7 @@ with chloros_sdk.open_project("/home/user/Chloros Projects/Field_A") as proj:
     proj.process()
 ```
 
-### 4. Proud snímků z více kamer → pipeline NumPy
+### 4. Proud snímků z více kamer → Pipeline NumPy
 
 ```python
 import chloros_sdk
@@ -1648,7 +1648,7 @@ for c in cams:
         print(c.serial, result.filepath)
 ```
 
-### 6. Test funkčnosti před připojením pole 4 kamer
+### 6. Test funkčnosti před připojením sestavy se 4 kamerami
 
 ```python
 import chloros_sdk
@@ -1690,7 +1690,7 @@ else:
 
 ### 7. Ekvivalent receptu pro snímání (čistý Python)
 
-Receptový DSL v CLI má přímý ekvivalent v Python:
+Receptový jazyk DSL nástroje „CLI“ má ekvivalent v přímém Python:
 
 ```python
 import time, chloros_sdk
@@ -1724,13 +1724,13 @@ with chloros_sdk.open_project("/path/to/proj") as proj:
 
 ## Automatické spuštění backendu
 
-Vstupní body inteligentního připojení — `connect_camera`, `connect_array`, `connect_daq_sensor` a `discover_lattice_cameras` — jsou odlehčené klienty typu HTTP, které předpokládají, že backend naslouchá na adrese `127.0.0.1:5000` (výchozí adresa rozhraní Smart-Connect je URL). Pokud již běží grafické rozhraní nebo CLI, jeden z nich již běží. V případě prostého skriptu tomu tak nemusí být — proto tyto funkce **automaticky spustí přiložený binární soubor backendu** (bez okna, stejně jako to dělá `ChlorosLocal`) před svým prvním voláním a poté čekají až do `backend_startup_timeout`, než se spustí.
+Vstupní body smart-connect — `connect_camera`, `connect_array`, `connect_daq_sensor` a `discover_lattice_cameras` — jsou tenké klienty typu „HTTP“, které předpokládají, že backend naslouchá na `127.0.0.1:5000` (výchozí adresa URL rozhraní Smart-Connect). Pokud již běží grafické rozhraní (GUI) nebo CLI, backend již běží. V případě prostého skriptu tomu tak nemusí být — proto tyto funkce **automaticky spustí přiložený binární soubor backendu** (bez okna, stejným způsobem jako `ChlorosLocal`) před svým prvním voláním a poté čekají až do `backend_startup_timeout`, než se spustí.
 
 Pravidla:
 
-- **Spouští se vždy pouze lokální URL.** Je přípustný `backend_url` směřující na `localhost` / `127.0.0.1` / `[::1]`; jakýkoli jiný hostitel se považuje za stroj někoho jinéhopočítač a nikdy není spuštěn.
-- **Backend zůstává spuštěný pro opětovné použití** (stejně jako u CLI) — při ukončení skriptu nedochází k implicitnímu vypnutí. Při opětovném spuštění skriptu se znovu použije aktivní backend.
-- **Odhlášení pomocí `auto_start_backend=False`** při kterémkoli z těchto volání (např. pokud jste zadali vzdálený backend nebo pokud životnost backendu spravujete sami).
+- **Spouští se vždy pouze lokální URL.** `backend_url` odkazující na `localhost` / `127.0.0.1` / `[::1]` je přípustný; jakýkoli jiný host je považován za stroj někoho jiného a nikdy se nespustí.
+- **Backend zůstává spuštěný pro opětovné použití** (stejně jako v případě CLI) — při ukončení skriptu nedochází k implicitnímu vypnutí. Při opětovném spuštění skriptu se znovu použije aktivní backend.
+- **Odhlášení pomocí `auto_start_backend=False`** při kterémkoli z těchto volání (např. když jste nasměrovali na vzdálený backend, nebo pokud životný cyklus backendu spravujete sami).
 
 ```python
 import chloros_sdk
@@ -1745,17 +1745,17 @@ arr = chloros_sdk.connect_array(serials,
                                 auto_start_backend=False)
 ```
 
-Pokud nelze najít nebo spustit přibalený binární soubor, následující volání HTTP vyvolá akční, **platformově specifickou** chybu `ChlorosConnectError` namísto pouhé stopy o odmítnutí připojení — v případě Windows vás nasměruje na desktopovou aplikaci nebo na příkaz `chloros-cli`; v případě Linux (bez grafického rozhraní) vás nasměruje k příkazu `chloros-cli` nebo k `.deb`.
+Pokud nelze najít nebo spustit přiložený binární soubor, následující volání HTTP vyvolá akční, **platformově specifickou** chybu `ChlorosConnectError` namísto prostého hlášení o odmítnutí připojení — na Windows vás nasměruje na desktopovou aplikaci nebo na příkaz `chloros-cli`; na Linux (bez grafického rozhraní) vás nasměruje na příkaz `chloros-cli` nebo na `.deb`.
 
 ---
 
 ## Prostředí a hlavičky
 
-SDK označuje každé volání backendu HTTP pomocí `X-Chloros-Client: sdk`. Backend uplatňuje licenční pravidla SDK/CLI (vyžaduje přihlášení **a** je vyžadován placený tarif Chloros+), nikoli bezplatnou variantu v grafickém uživatelském rozhraní. Toto nastavení se provede automaticky při importu — nemusíte nic dělat.
+SDK označuje každé volání backendu HTTP pomocí `X-Chloros-Client: sdk`. Backend uplatňuje licenční pravidla SDK / CLI (vyžaduje se přihlášení **a** placený tarif Chloros+), nikoli bezplatnou verzi s grafickým rozhraním. Toto nastavení se provede automaticky při importu — nemusíte nic dělat.
 
-`http://localhost` a `http://127.0.0.1` jsou detekovány jako lokální backend. Volání na jiné hostitele (např. na vaši vlastní analytickou službu) zůstávají beze změny.
+`http://localhost` a `http://127.0.0.1` jsou detekovány jako lokální backend. Volání na jiné hostitele (např. vaši vlastní analytickou službu) zůstávají beze změny.
 
-Backend URL můžete přepsat předáním `backend_url=` (nebo `api_url=` na `ChlorosLocal`):
+PřepišURLu backendu předáním `backend_url=` (nebo `api_url=` na `ChlorosLocal`):
 
 ```python
 chloros_sdk.connect_camera("213800234", backend_url="http://127.0.0.1:5000")
@@ -1765,33 +1765,33 @@ chloros_sdk.connect_daq_sensor(eth_host="daq-e-1.local",
 chloros_sdk.ChlorosLocal(backend_url="http://127.0.0.1:5000")
 ```
 
-(`backend_url` bez smyčky se dostane pouze k backendu typu source/dev — dodávané backendy se vážou pouze na smyčku; viz Režim vzdáleného backendu pro vzor tunelu.)
+(`backend_url` bez loopbacku dosáhne pouze backendu source/dev — dodávané backendy se vážou pouze na loopback; viz Režim vzdáleného backendu pro vzor tunelu.)
 
 ---
 
 ## Verze a kompatibilita
 
-- Verze SDK je dostupná jako `chloros_sdk.__version__`.
-- SDK omezuje chování na verzi dodaného backendu. Kombinace staršího SDK s novějším backendem obvykle funguje (koncové body jsou kompatibilní s novějšími verzemi), ale kombinace novějšího SDK se starším backendem může na nových koncových bodech vyvolat chyby `404` — aktualizujte desktopovou aplikaci tak, aby odpovídala.
-- Rozhraní Smart-Connect (`connect_camera` / `connect_array` / `connect_daq_sensor`) a koncový bod pro analýzu sítě vrací stabilní schémata JSON; nová pole jsou doplňková.
+- Verze „SDK“ je dostupná jako `chloros_sdk.__version__`.
+- „SDK“ vázá chování na verzi dodaného backendu. Kombinace staršího „SDK“ s novějším backendem obvykle funguje (koncové body jsou kompatibilní s novějšími verzemi), ale kombinace novějšího SDK se starším backendem může na nových koncových bodech vyvolat chyby `404` — v takovém případě aktualizujte desktopovou aplikaci tak, aby odpovídala.
+- Rozhraní Smart Connect (`connect_camera` / `connect_array` / `connect_daq_sensor`) a koncový bod pro analýzu sítě vrací stabilní schémata JSON; nová pole jsou doplňková.
 
 ---
 
 ## Tipy pro řešení problémů
 
 - **`ChlorosAuthenticationError: Login required`** → Spusťte na tomto počítači jednou příkaz `chloros-cli login EMAIL PASSWORD` nebo se přihlaste prostřednictvím desktopové aplikace Chloros.
-- **`ChlorosConnectError: No Chloros backend is running …`** → Funkce Smart-Connect automaticky spouští lokální backend, takže se tato zpráva zobrazí pouze v případě, že nelze najít nebo spustit přiložený binární soubor (např. na hostitelském počítači, kde je nainstalován pouze pip a není k dispozici balíček pro desktop). Zpráva se liší podle platformy: na Windows otevřete desktopovou aplikaci nebo spusťte libovolný příkaz `chloros-cli`; na Linux spusťte příkaz `chloros-cli` (neexistuje žádné grafické rozhraní) nebo nainstalujte `.deb`. Pro vzdálený backend předávejte `backend_url=` (a `auto_start_backend=False`).
-- **`CAMERA_AVAILABLE == False`** při importu → `lattice_sdk` se nepodařilo načíst (obvykle nejsou nainstalovány runtime DLL knihovny Arena SDK). Povrch kamery bezpovrch mimo kameru stále funguje.
-- **Funkce Array connect vrací rozlišení nižší než nativní**→ Funkce smart-prep backendu automaticky zmenšuje velikost snímku, aby se vešel do přenosové linky. Použijte `analyze_array_network()` k zjištění příčiny, poté buď vylepšete připojení, přijměte zmenšení, nebo předávejte `force_tier="slip-emit-and-capture"` pro sekvenční snímání. Bezpečnostní síť zmenšení**nepokrývá** agregované přetížení (`oversubscribed: true`, pole fps 0) – příliš mnoho kamer pro dané připojení nelze vyřešit seskupením snímků (binning) ani oblastí zájmu (ROI) — snižte počet kamer, povolte jumbo rámce nebo přejděte na rychlejší síťovou kartu (viz [Překročení kapacity](#over-subscription-the-per-cam-floor)).
-- **`analyze_array_network()` hlásí, že přijímací kruh síťové karty je velmi malý (~0,26 MB) / připojovací brány s hlášením „FRAMES WILL DROP“** → Příjemní prstenec hostitelské síťové karty je nastaven na výchozí hodnotu (často se po aktualizaci ovladače síťové karty resetuje na 32). U adaptéru Realtek USB 10GbE nastavte `ReceiveBufferLen=256` a `PendingReceives=64` (s rozšířenými oprávněními) a poté restartujte backend, aby znovu načítal kruh. Kompletní postup: [CLI Odkaz → Nastavení a ladění hostitelské síťové karty](cli-reference.md#host-nic-setup--tuning-lattice-arrays).
-- **Host se zasekne při restartu/vypnutí, později dochází k chybám WMI `Invalid class` / síťová karta se neaktivuje** → Zastaralý ovladač USB 10GbE způsobuje `DRIVER_POWER_STATE_FAILURE` (modrá obrazovka `0x9F`). Aktualizujte ovladač adaptéru na aktuální verzi (≥ 2026) a znovu použijte nastavení přijímacího kruhu. Viz [CLI Referenční příručka → Nastavení a ladění síťové karty hostitele](cli-reference.md#host-nic-setup--tuning-lattice-arrays).
-- **Odrazivost odmítnuta** → Pro měření odrazivosti v absolutním měřítku musí být ke kameře (nebo soustavě) přiřazen živý DAQ. Proveďte přiřazení buď přes grafické uživatelské rozhraní, nebo použijte `processing="radiance"` (W/m²/sr/nm), který nevyžaduje spárovaný senzor.
-- **Zaznamenávání pomocí `smart=True` trvá déle, než se očekávalo** → Konvergence AE závisí na dynamice scény; pokud chcete rychlejší (méně stabilní) spouštění, zkraťte časový interval `exposure_tolerance_pct` nebo zkraťte časový interval `stability_window_s`.
+- **`ChlorosConnectError: No Chloros backend is running …`** → Funkce Smart-Connect automaticky spouští lokální backend, takže se tato chyba zobrazí pouze v případě, že nelze najít nebo spustit přiložený binární soubor (např. na hostiteli, kde je k dispozici pouze pip a není nainstalován balíček pro desktop). Zpráva je závislá na platformě: na Windows otevřete desktopovou aplikaci nebo spusťte libovolný příkaz `chloros-cli`; na Linux spusťte příkaz `chloros-cli` (neexistuje žádné grafické rozhraní) nebo nainstalujte `.deb`. V případě vzdáleného backendu předávejte `backend_url=` (a `auto_start_backend=False`).
+- **`CAMERA_AVAILABLE == False`** při importu → `lattice_sdk` se nepodařilo načíst (obvykle nejsou nainstalovány runtime DLL Arena SDK). Povrch bez kamery stále funguje.
+- **Funkce Array connect vrací rozlišení nižší než nativní**→ Funkce smart-prep backendu automaticky zmenšuje velikost snímku, aby se vešel do přenosové linky. Použijte `analyze_array_network()` k zjištění příčiny, poté buď vylepšete připojení, přijměte zmenšení, nebo předávejte `force_tier="slip-emit-and-capture"` pro sekvenční snímání. Bezpečnostní opatření proti zmenšení**ne** pokrývá agregované přetížení (`oversubscribed: true`, pole fps 0): příliš mnoho kamer pro dané připojení nelze vyřešit binningem/ROI – snižte počet kamer, povolte jumbo rámce, nebo přejděte na rychlejší síťovou kartu (viz [Nadměrné předplatné](#over-subscription-the-per-cam-floor)).
+- **`analyze_array_network()` hlásí, že přijímací kruh síťové karty je příliš malý (~0,26 MB) / připojte brány s hlášením „FRAMES WILL DROP“** → Příjmový kruh hostitelské síťové karty je nastaven na výchozí hodnotu (často se po aktualizaci ovladače síťové karty resetuje na 32). U adaptéru Realtek USB 10GbE nastavte `ReceiveBufferLen=256` a `PendingReceives=64` (s vyššími oprávněními) a poté restartujte backend, aby znovu načítal kruh. Kompletní postup: [CLI Reference → Nastavení a ladění hostitelské síťové karty](cli-reference.md#host-nic-setup--tuning-lattice-arrays).
+- **Host se zasekne při restartu/vypnutí, později dochází k chybám WMI `Invalid class` / síťová karta se neaktivuje** → Zastaralý ovladač USB 10GbE způsobuje `DRIVER_POWER_STATE_FAILURE` (BSOD `0x9F`). Aktualizujte ovladač adaptéru na aktuální verzi (≥ 2026) a znovu použijte nastavení přijímacího kruhu. Viz [CLI Reference → Nastavení a ladění hostitelské síťové karty](cli-reference.md#host-nic-setup--tuning-lattice-arrays).
+- **Reflexe odmítnuta** → Pro měření odrazivosti v absolutním měřítku musí být ke kameře (nebo soustavě) přiřazen aktivní DAQ. Proveďte přiřazení buď přes grafické rozhraní, nebo použijte `processing="radiance"` (W/m²/sr/nm), kterývyžaduje spárovaný senzor.
+- **Zaznamenávání pomocí `smart=True` trvá déle, než se očekávalo** → Konvergence AE závisí na dynamice scény; pokud chcete rychlejší (méně stabilní) spouštění.
 
 ---
 
 ## Viz také
 
-- [CLI Referenční příručka](cli-reference.md) — každý podpříkaz CLI odpovídá volání SDK.
+- [Referenční příručka k CLI](cli-reference.md) — každý podpříkaz „CLI“ odpovídá volání „SDK“.
 - [Průvodce senzory DAQ](../daq/README.md) — pravidla pro zapojení, kalibraci a záznam specifická pro jednotlivé senzory.
 - Online dokumentace: `https://mapir.gitbook.io/chloros/api-python-sdk`</id></sn>
