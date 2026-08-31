@@ -1,212 +1,226 @@
 # Otevření obrázku na celou obrazovku
 
-Prohlížeč obrázků Chloros nabízí specializované rozhraní na celou obrazovku pro prohlížení, analýzu a úpravy vašich multispektrálních snímků. Ať už prohlížíte původní snímky nebo zpracované výstupy, prohlížeč obrázků poskytuje výkonné nástroje pro kontrolu a analýzu.
+<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>Obrázek otevřený na celou obrazovku, s výběrem vrstev v pravém horním rohu</p></figcaption></figure>
 
-## Přístup k prohlížeči obrázků
+Prohlížeč obrázků Chloros je rozhraní na celou obrazovku určené k prohlížení, kontrole a měření vašich obrázků. Právě zde můžete číst **skutečné hodnoty pixelů** — DN pro každý kanál, procentuální odrazivost nebo radianci v W/m²/sr/nm — namísto roztaženého náhledu, který se zobrazuje na obrazovce.
+
+## Spuštění prohlížeče obrázků
 
 ### Z prohlížeče souborů
 
-Nejběžnější způsob otevření obrázku v prohlížeči obrázků:
+1. Otevřete kartu **Prohlížeč souborů** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line">
+2. Klikněte na libovolnou **miniaturu** v [mřížce snímků](image-grid.md)
+3. Snímek se otevře na celé obrazovce na záložce **Prohlížeč snímků**
 
-1. Ujistěte se, že jste na záložce **Prohlížeč souborů** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line">
-2. Klikněte na libovolnou **miniaturu snímku** v mřížce snímků
-3. Snímek se otevře v **hlavní oblasti náhledu** (uprostřed obrazovky)
-4. Snímek je nyní načten a připraven k prohlížení na celé obrazovce
+Snímek se otevře v tom produktu, který byl zobrazen v mřížce. Pokud je mřížka nastavena na `RAW (Reflectance)`, otevře se právě tato vrstva.
 
-### Otevření karty prohlížeče snímků
+### Otevření postranního panelu prohlížeče obrázků
 
-Jakmile je snímek načten v oblasti náhledu:
+Kliknutím na ikonu **Prohlížeč obrázků** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> v levém postranním panelu vysunete panel analýzy. Obsahuje (shora dolů):
 
-1. Klikněte na ikonu **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> v levém postranním panelu
-2. Otevře se karta Prohlížeč obrázků, která zobrazí vybraný obrázek na celé obrazovce
-3. V levém postranním panelu se zobrazí pokročilé nástroje pro prohlížení a analýzu
+* název snímku a model fotoaparátu
+* tlačítko **Exportovat/Uložit snímky** (pouze pokud je aktivní index nebo LUT)
+* zaškrtávací políčka **Index**a**LUT** a panel konfigurace indexu — viz [Index/LUT Sandbox](index-lut-sandbox.md)
+* panel **Hodnoty kurzoru**: odečet podle kanálů, histogram vrstvy a ovládací prvek GSD***
+
+## Navigace a přiblížení
+
+### Procházení snímků
+
+* **Další snímek**: tlačítko → nebo klávesa**→** (šipka vpravo)
+* **Předchozí snímek**: tlačítko ← nebo klávesa**←** (šipka vlevo)
+* **Přeskočení na konkrétní snímek**: vraťte se do mřížky a klikněte na jeho miniaturu
+
+Přiblížení a posun zůstávají zachovány při přecházení mezi snímky, takže můžete procházet sadu snímků a přitom zůstat na stejné části snímku.
+
+### Přiblížení
+
+Přiblížení se ovládá pomocí **kolečka myši** v krocích po 15 %, s ukotvením na kurzoru — bod pod ukazatelem zůstává pod ukazatelem. Rozsah je omezen velikostí obrázku a okna: nelze oddálit více, než je velikost okna, a horní hranice je dána nativním rozlišením obrázku.
+
+V prohlížeči na celou obrazovku nejsou žádné speciální klávesy pro změnu měřítka. (V mřížce slouží kombinace **Ctrl + `+` / `−`** ke změně velikosti miniatur – jedná se o jinou funkci.)
+
+### Posun při přiblížení
+
+Klikněte a podržte levé tlačítko myši nad obrázkem a táhněte. Posun je omezen, takže obrázek nelze přetáhnout mimo obrazovku.
+
+### Kontrola jednotlivých pixelů při vysokém zvětšení
+
+Jakmile efektivní zvětšení překročí **60×**, Chloros nakreslí zvýrazňovací rámeček kolem jednotlivého zobrazeného pixelu pod kurzorem a vedle něj se zobrazí plovoucí hodnota.
+
+„Efektivní“ zvětšení zohledňuje velikost bloku GSD: při velikosti bloku 8 se zvýraznění objeví již při zvětšení 7,5×, nikoli až při 60×, protože jeden zobrazený pixel již odpovídá 8 × 8 zdrojovým pixelům. Pokud se vrátíte k menšímu zvětšení pod tuto prahovou hodnotu, zvýraznění zmizí.
+
+### Klávesové zkratky
+
+| Klávesa                             | Kde       | Akce                              |
+| ------------------------------- | ----------- | ----------------------------------- |
+| **→**                           | Celá obrazovka | Další obrázek                          |
+| **←**                           | Celá obrazovka | Předchozí obrázek                      |
+| **Ctrl + R**                    | Celá obrazovka | Obnovit index/LUT sandbox         |
+| **Ctrl + `+`**/**Ctrl + `=`** | Mřížka        | Větší miniatury (4 px za stisk)  |
+| **Ctrl + `−`**                  | Mřížka        | Menší miniatury (4 px za stisk) |***
+
+## Hodnoty kurzoru
+
+Pohybujte kurzorem po obrázku a panel **Hodnoty kurzoru** zobrazí hodnotu každého kanálu pod ním.
+
+{% hint style="success" %}
+**Jedná se o skutečné hodnoty souboru.** Plátno na obrazovce je 8bitový roztažený náhled a nemůže tyto hodnoty poskytnout, proto Chloros pro zobrazení vzorkuje skutečný produktový soubor. Proto 12bitový surový snímek zobrazuje hodnoty nad 255 a vrstva s jasem typu float32 zobrazuje fyzikální jednotky.
+{% endhint %}
+
+### Co znamenají jednotlivé sloupce
+
+Panel se přizpůsobuje vrstvě, kterou právě prohlížíte:
+
+| Prohlížená vrstva              | Zobrazené sloupce    | Poznámky                                                                                           |
+| ---------------------------------- | ---------------- | ----------------------------------------------------------------------------------------------- |
+| Odrazivost                        | **DN**a**%** | Procento se počítá podle vlastního měřítka daného souboru — viz níže                                      |
+| Radiance                           | **W/m²/sr/nm**   | Fyzikální hodnoty typu float; sloupec DN není k dispozici, protože DN zde nemá smysl                           |
+| Raw / Debayered / náhled / JPG    | **DN**           | Celá čísla                                                                         |
+| 32bitové exporty procentuální odrazivosti | pouze **%**       | Uložená hodnota typu float není DN, takže zaokrouhlení na celé číslo by vedlo k zobrazení nesmyslného `0` nebo `1` |
+
+Každý řádek je označen názvem kanálu filtru vaší kamery — `Red / Green / NIR` pro RGN, `Orange / Cyan / NIR` pro OCN, `NIR / Green / Blue` pro NGB, `Red / Green / Blue` pro RGB a název jediného pásma pro kamery RE, NIR a pro monokromní kamery M3M. Každý štítek nese barevnou tečku, která odpovídá kruhům kanálů používaným v editoru indexových vzorců.
+
+Uložené obrázky **indexu a LUT** představují zvláštní případ: obsahují komponenty barevné mapy namísto spektrálních pásem, takže jejich řádky jsou označeny jako `Red / Green / Blue` (nebo `Index` u jednokanálového indexového souboru) namísto názvů filtrů kamery.
+
+Je-li v testovacím prostředí aktivní index, objeví se pod kanály další řádek zobrazující **hodnotu indexu** v místě kurzoru, spolu s názvem indexu a bílou tečkou, která odpovídá jeho značce na histogramu.
+
+### Procentuální odrazivost používá vlastní stupnici každého souboru
+
+{% hint style="warning" %}
+**Nepředpokládejte, že 65535 = 100 %.** Chloros ukládá odrazivost v různých měřítkách v závislosti na tom, který fotoaparát ji vyprodukoval, a prohlížeč pro každý soubor určí to správné.
+{% endhint %}
+
+| Zdroj                  | Hodnota DN odpovídající odrazivosti 1,0 | Jak se identifikuje                                                                                                                               |
+| ----------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LATTICE**(M3C / M3M) |**32768**                      | XMP tag `Chloros:PixelScale=32768` zapsaný do každého exportu odrazivosti LATTICE. 2× rezerva umožňuje souboru nést ρ nad 1,0 bez oříznutí |
+| **Survey3**|**65535**                      | Žádný XMP tag měřítka Chloros — kalibrace Survey3 zapisuje ρ × dtype-max a ořezává na hodnotu 1,0                                                               |
+
+Prohlížeč, index/LUT sandbox a export indexu všechny řeší škálování prostřednictvím stejné jediné implementace, takže hodnota, kterou přečtete na kurzoru, je stejná jako hodnota použitá v indexových výpočtech.
+
+Dva důsledky, o kterých je dobré vědět:
+
+* **32bitové procentní**TIFF ukládá hodnotu DN/65535 jako číslo typu float a**8bitové** PNG/JPG ukládá hodnotu DN × 255/65535 — prohlížeč před zobrazením procenta obě hodnoty převede zpět.
+* Jeden případ nelze obnovit: **8bitový export TIFF ze snímku s 8bitovým zdrojem** je oříznut na rozsah 0–255 namísto přepočítání a záměrně neobsahuje žádný tag měřítka. U těchto souborů panel zobrazuje pouze hodnotu DN, bez sloupce s procenty. Toto je upřímná odpověď, nejedná se o chybu.***
+
+## Histogram vrstvy
+
+Pod řádky kurzoru se nachází živý histogram vrstvy, kterou právě prohlížíte, v **256 bodech**. Ve výchozím nastavení vykresluje jednu kombinovanou křivku, váženou `(R + 2G + B) / 4` — stejný měřicí prostor, jaký používají histogramy kamery LATTICE. Zapnutím**RGB** se tato křivka nahradí křivkami pro jednotlivé kanály v barvách kanálů, které jsou aditivně smíchány, aby překryvy zůstaly čitelné. Mono vrstvy vždy vykreslují jedinou křivku.
+
+Vodorovná osa je v jednotkách dané vrstvy:
+
+| Vrstva       | Jednotka osy  | Maximální hodnota osy                                               |
+| ----------- | ---------- | ---------------------------------------------------------- |
+| Odrazivost | procenta    | 125 % — rezerva produktu umožňuje ρ nad 1,0           |
+| Radiance    | W/m²/sr/nm | Vlastní maximum snímku, zaokrouhleno nahoru na dvě platné číslice |
+| 8bitová data  | DN         | 255                                                        |
+| 12bitová data | DN         | 4095                                                       |
+| 16bitová data | DN         | 65535                                                      |
+
+Pokud je osa nastavena na DN a dosáhne jedné z těchto tří horních hranic, Chloros také rozpozná bitovou hloubku zobrazeného obrazu.
+
+Nad histogramem se nacházejí tři tlačítka:
+
+| Tlačítko     | Výchozí nastavení | Účinek                                                                                                                                                                                                                                                                                   |
+| ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **KURZOR** | Zapnuto | Nakreslí na histogramu značky v přesných hodnotách uvedených v řádcích výše, takže můžete vidět, kde se pixel pod kurzorem nachází v rozložení snímku. V režimu RGB je pro každý kanál jedna značka ve své vlastní barvě; v ostatních případech je zobrazena jedna bílá značka na kombinované hodnotě |
+| **INDEX**| Zapnuto      | Zobrazuje se pouze při aktivním indexu. Přepne histogram ze zdrojových pásem na**rozdělení indexových hodnot**, přičemž obě prahové hodnoty oříznutí jsou znázorněny oranžovými přerušovanými čarami a indexová hodnota kurzoru bílou čarou                                                          |
+| **RGB**| Vypnuto     | Přepne z kombinované křivky na křivky pro jednotlivé kanály. U monochromatického snímače se na tomto tlačítku zobrazuje**MONO** a je deaktivováno — k zobrazení je k dispozici pouze jeden kanál                                                                                                                                  |
+
+Histogram se počítá na základě **viditelných bloků**, nikoli zdrojových pixelů za nimi: při změně velikosti bloku GSD se rozložení přepočítá, takže histogram, značka kurzoru a zobrazený obrázek se vždy shodují.***
+
+## Velikost bloku GSD
+
+Ve spodní části panelu se nachází ovládací prvek **GSD (px)**: číselné pole, posuvník v rozsahu**1 až 256**a tlačítko**RESET**.
+
+Zhrubšuje _zobrazený_ obrázek tím, že zprůměruje blok zdrojových pixelů o rozměrech N × N do jednoho zobrazeného pixelu. `1` je nativní rozlišení.
+
+* Ovlivňuje **zobrazení na celé obrazovce, miniatury v mřížce, údaje kurzoru a oba histogramy** — vše, co zobrazuje obrázek, používá stejné základní rozlišení.
+* Jedná se **pouze o zobrazení**. Zpracování a export zůstávají nedotčeny. Jediná výjimka je záměrná: export do [Index/LUT Sandbox](index-lut-sandbox.md) uloží to, na co se právě díváte, takže přebírá aktuální velikost bloku, a panel exportu vás upozorní, pokud je velikost bloku vyšší než 1.
+* Hodnota je uložena **pro každý projekt zvlášť** jako `viewer_display.gsd_bin` v souboru `project.json`, takže zůstává zachována i po zavření a opětovném otevření.
+* Pokud je velikost bloku větší než 1, kurzor zobrazuje hodnotu bloku, nikoli zdrojového pixelu – zobrazená hodnota je průměr bloku pod vaším kurzorem.
+
+{% hint style="info" %}
+**Proč „velikost bloku“ a ne centimetry na pixel?** Hodnota v cm/px vyžaduje údaj o výšce nad zemí. EXIF údaje jednoho snímku obsahují GPS nadmořskou výšku nad průměrnou hladinou moře, nikoli nad terénem, na který byl fotoaparát namířen, proto Chloros nevytiskne vzdálenost k zemi, kterou nemůže spolehlivě odvodit. Velikost bloku ve zdrojových pixelech je stejným náhradním řešením, jaké používají nástroje pro práci s mraky v MAPIR, když není známa vzdálenost vzorku k zemi.
+{% endhint %}
 
 ***
 
-## Přehled rozhraní prohlížeče obrázků
+## Typy obrázků, které lze zobrazit
 
-### Hlavní zobrazovací oblast
+Rozbalovací nabídka vrstev v pravém horním rohu prohlížeče obsahuje seznam všech verzí aktuálního obrázku. To, které položky se zobrazí, závisí na kameře a na tom, co bylo zpracováno — úplný seznam a informace o fungování rozevíracího seznamu najdete v části [Obrázkové vrstvy](image-layers.md).
 
-Největší část obrazovky zobrazuje váš obrázek:
+### Survey3
 
-* **Plné rozlišení**: Obrázky se zobrazují v nativním rozlišení
-* **Možnost přiblížení**: K přiblížení použijte ovládací prvky nebo kolečko myši
-* **Možnost posunu**: Po přiblížení klikněte a táhněte pro posun po obrázku
-* **Zachování poměru stran**: Obrázky se mění proporcionálně***
+* **JPG** — vlastní náhledový soubor kamery
+* **RAW (Original)** — zdrojový soubor `.RAW`, zbavený bayerského filtru pro zobrazení, bez korekcí
+* **RAW (Target)** — snímek identifikovaný jako obsahující kalibrační cíl
+* **RAW (odrazivost)** — kalibrovaný produkt odrazivosti (65535 = ρ 1,0)
+* **S korekcí vinětace**/**Odpověď snímače** — nekalibrovaný záložní produkt
+* **S vyvážením bílé** — produkt s vyvážením bílé
+* **RAW (`<INDEX>` Index)**a**`<INDEX>` LUT** — vypočítané indexové snímky
 
-## Možnosti prohlížení
+### LATTICE
 
-### Základní navigace v obrázcích
+Snímky LATTICE využívají stejné rozbalovací menu s názvy úrovní zpracovatelského řetězce:
 
-#### Procházení obrázků
+| Vrstva                 | Co obsahuje                                                        |
+| --------------------- | -------------------------------------------------------------------- |
+| **RAW (originál)**    | Zdrojový snímek ve formátu RAW v době pořízení                                     |
+| **RAW (bez bayerského filtru)**   | Lineární obraz bez bayerského filtru                                           |
+| **RAW (Náhled)**     | Náhled na displeji — roztažení do falešných barev pro multispektrální kamery |
+| **Vyvážení bílé**    | Náhled na displeji pro hlavní kamery RGB (vyvážení bílé + gama)   |
+| **RAW (zář)**    | Spektrální zář typu Float32 v jednotkách W/m²/sr/nm                              |
+| **RAW (odrazivost)** | Odrazivost typu uint16, 32768 = ρ 1,0                                    |
 
-V sadě obrázků se pohybujte pomocí klávesových zkratek nebo tlačítek:
-
-* **Další obrázek**: Klikněte na tlačítko → nebo stiskněte klávesu**→** (šipka vpravo)
-* **Předchozí obrázek**: Klikněte na tlačítko ← nebo stiskněte klávesu**←** (šipka vlevo)
-* **Přejít na konkrétní obrázek**: Vraťte se do prohlížeče souborů a klikněte na požadovanou miniaturu
-
-#### Ovládací prvky pro přiblížení
-
-Upravte zvětšení pro prohlížení detailů obrázku:
-
-**Přiblížení:*** Klikněte na tlačítko **+** (plus)
-* Stiskněte klávesu **+**nebo**=*** Posuňte kolečko myši **nahoru**
-
-**Oddalení:*** Klikněte na tlačítko **−** (mínus)
-* Stiskněte klávesu **−** (mínus)
-* Posuňte kolečko myši **dolů**
-
-#### Posun při přiblížení
-
-Při přiblížení nad velikost obrazovky:
-
-1. Přesuňte kurzor myši nad obrázek
-2. Klikněte a **podržte levé tlačítko myši**
-
-3.**Přetažením** posuňte obrázek
-4. Uvolněním tlačítka zastavte posun
-
-**Alternativa**: Použijte šipky k posunu v malých krocích***
-
-## Kontrola hodnot pixelů
-
-### Zobrazení hodnot pixelů u kurzoru
-
-Při pohybu kurzoru myši nad obrázkem se hodnoty pixelů zobrazují v reálném čase:**Umístění zobrazení hodnot:*** **Plovoucí číslo a červená čára v legendě gradientu LUT na pravé straně*** **Při dalším přiblížení plovoucí hodnota poblíž kurzoru a zvýrazněného pixelu*** Zobrazuje hodnoty pro pixel **pod kurzorem nebo zvýrazněný*** Aktualizuje se při pohybu myši
-
-***
-
-## Typy obrázků, které můžete prohlížet
-
-### JPG
-
-**Obrázky JPG z fotoaparátu:**
-
-* Zobrazí data JPG tak, jak jsou v náhledu
-* Zobrazí původní, neopravené hodnoty
-* Užitečné pro kontrolu kvality obrázku před zpracováním
-
-### RAW (původní)
-
-### RAW (odrazivost)
-
-**Po zpracování:**
-
-* Opravená viněta
-* Kalibrovaná odrazivost
-* Vícepásmové TIFF (Red, Green, NIR atd.)
-* Vědecká data připravená k analýze
-
-### RAW (Index)
-
-**NDVI, NDRE, GNDVI atd. (soubory \_NDVI.tif):**
-
-* Jednopásmové snímky ve stupních šedi
-* Hodnoty pixelů představují výsledky výpočtu indexu
-* Rozsah obvykle -1 až +1 pro normalizované indexy
-* Pro vizualizaci lze použít barevné LUT
+Zářivost a odrazivost jsou k dispozici pouze v multispektrálním režimu: hlavní kamera RGB nemá radiometrii pro jednotlivá pásma, takže tyto vrstvy pro ni nejsou generovány.
 
 ***
 
 ## Použití indexů a LUT
 
-Použijte multispektrální indexy a barevné Look-Up Tables:
+Multispektrální indexy a barevné vyhledávací tabulky (LUT) aplikujte z postranního panelu:
 
-1. Najděte **Index/LUT Sandbox**v**Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> postranní liště
-2. Vyberte vegetační index (NDVI, NDRE atd.)
-3. Vyberte multispektrální vzorec nebo si vytvořte vlastní (pouze Chloros+)
-4. Pro vizualizaci použijte barevný LUT gradient
-5. Upravte rozsahy hodnot a prahové hodnoty
+1. Otevřete postranní panel **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line">
+2. Zaškrtněte **Index**
 
-Podrobné pokyny najdete v [Index/LUT Sandbox](index-lut-sandbox.md).
+3. Vyberte filtr své kamery a vzorec indexu, poté přetáhněte kruhy kanálů do příslušných polí vzorce
+4. Přidejte LUT a vyberte gradient, prahové hodnoty a režim ořezání
+5. Přečtěte si hodnoty v místě kurzoru a výsledek uložte pomocí **Export/Save Image(s)**Kompletní návod najdete na stránce [Index/LUT Sandbox](index-lut-sandbox.md).***
 
-***
-
-## Klávesové zkratky
-
-### Navigace
-
-* **→** (šipka vpravo): Další obrázek
-* **←** (šipka vlevo): Předchozí obrázek
-* **Home**: První obrázek v seznamu
-* **End**: Poslední obrázek v seznamu
-
-### Přiblížení
-
-* **+**nebo**=**: Přiblížit
-* **−**: Oddálit
-* **Kolečko myši**: Přiblížit/oddálit***
-
-### Ověření výpočtů indexů
-
-Zkontrolujte, zda jsou indexy vypočítány správně:
-
-1. Otevřete NDVI nebo jiný obrázek s indexem
-2. Zkontrolujte oblasti vegetace:
-   * **NDVI**: U zdravých rostlin by měla být hodnota 0,4–0,9
-   * **NDRE**: Vyšší hodnoty pro bujný růst
-   * **GNDVI**: Podobné jako NDVI, ale citlivé na chlorofyl
-3. Zkontrolujte neporost:
-   * **Půda**: Blízko 0 nebo mírně záporné
-   * **Voda**: Záporné hodnoty (-0,5 až 0)***
-
-## Řešení problémů s prohlížením
+## Řešení problémů
 
 ### Obrázek se neotevře
 
-**Možné příčiny:**
+**Možné příčiny**: soubor byl po importu přesunut nebo smazán; produkt nebyl nikdy zapsán; nedostatek paměti pro velmi velký obrázek.**Co dělat**:
 
-* Soubor byl během zpracování poškozen
-* Nepodporovaný formát souboru
-* Nedostatek paměti pro velký obrázek
-
-**Řešení:**
-
-1. Zkuste soubor otevřít v externím prohlížeči a ověřte jeho integritu
-2. Zkontrolujte, zda formát souboru odpovídá očekávanému typu
+1. Zkontrolujte, zda soubor vrstvy stále existuje ve výstupním stromu projektu
+2. Otevřete soubor v externím prohlížeči a ověřte, zda je neporušený
 3. Ukončete ostatní aplikace, abyste uvolnili paměť
-4. Zkuste menší/jiný obrázek
 
-### Zobrazení černého nebo bílého obrázku
+### Obrázek je černý, bílý nebo má nepřirozené barvy
 
-**Možné příčiny:**
+**Možné příčiny**: roztažení obrazu nemá s čím pracovat (téměř konstantní snímek); vrstva typu float32 s neobvyklými hodnotami; index, který nevytvořil žádná platná data.**Co dělat**:
 
-* Rozsah hodnot mimo zobrazovací schopnosti
-* 32bitový obrázek typu float s neobvyklými hodnotami
-* Chyba při výpočtu indexu
+1. Zkontrolujte hodnoty kurzoru — pokud je každý kanál na nule nebo blízko nuly, problém je v datech, nikoli ve zobrazení
+2. Zkontrolujte histogram: jediný výkyv na jednom konci znamená, že snímek je oříznutý nebo prázdný
+3. Zkontrolujte protokol zpracování pro běh, který vrstvu vygeneroval
 
-**Řešení:**
+### Hodnoty vypadají nesprávně
 
-1. Zkontrolujte hodnoty pixelů – pokud jsou všechny velmi nízké nebo velmi vysoké, upravte rozsah zobrazení
-2. Zkuste soubor otevřít v QGIS nebo podobném programu s automatickým nastavením rozsahu
-3. Zkontrolujte protokol ladění ze zpracování, zda neobsahuje chyby
+**Možné příčiny**: pracujete s jinou vrstvou, než si myslíte; porovnáváte procenta s nezpracovanou hodnotou DN; porovnáváte soubor LATTICE se souborem Survey3 při použití stejného dělitele.**Co dělat**:
 
-### Hodnoty pixelů se zdají být nesprávné
-
-**Možné příčiny:**
-
-* Prohlížíte nesprávný obrázek (originál vs. zpracovaný)
-* Kalibrace nebyla provedena správně
-* Data ze světelného senzoru nebyla zahrnuta do vstupu
-* Režim procent byl přepnut nesprávně
-
-**Řešení:**
-
-1. Ověřte, zda prohlížíte zpracovaný výstup (zkontrolujte příponu názvu souboru)
-2. Zkontrolujte stav tlačítka režimu procent
-3. Porovnejte s obrázky ze stejného datového souboru, o kterých víte, že jsou v pořádku
+1. Ověřte vybranou vrstvu v rozevíracím seznamu – jednotky v panelu se řídí vrstvou
+2. U odrazivosti použijte sloupec **%** namísto toho, abyste hodnotu DN dělili sami; pokud musíte hodnotu dělit, použijte hodnotu `Chloros:PixelScale` daného souboru (32768 pro LATTICE, pokud není uveden, znamená to 65535 pro Survey3)
+3. Nastavte velikost bloku GSD zpět na 1 – při hodnotě vyšší než 1 čtete průměr bloku, nikoli hodnotu pixelu
+4. Zkontrolujte, zda pro daný snímek skutečně proběhla kalibrace odrazivosti; nekalibrovaný náhradní produkt (Sensor Response / Vignette Corrected) není odrazivostí
 
 ***
 
 ## Další kroky
 
-Nyní, když můžete prohlížet snímky na celé obrazovce:
+* [**Obrázkové vrstvy**](image-layers.md) — názvy všech vrstev (pokud existují) a význam jejich hodnot
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) — vytváření, ladění a export vizualizací indexů
+* [**Mapové značky**](map-markers.md) — stejná sada snímků na mapě
+* [**Vzorce multispektrálních indexů**](../project-settings/multispectral-index-formulas.md) — reference k indexům
 
-* [**Vrstvy snímků**](image-layers.md) – Seznamte se s vizualizací v několika pásmech
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) – Použijte vlastní indexy a mapování barev
-* [**Vzorce multispektrálních indexů**](../project-settings/multispectral-index-formulas.md) – Seznamte se s dostupnými indexy
-
-Informace o pracovním postupu zpracování naleznete zde:
-
-* [**Zpracování snímků (GUI)**](../processing-images-gui/adding-files-to-a-project.md) – Kompletní průvodce zpracováním
+Informace o pracovním postupu zpracování najdete v části [Zpracování snímků (GUI)](../processing-images-gui/adding-files-to-a-project.md).
