@@ -63,7 +63,7 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 2. **Zpracování** – Aplikace kalibrace a export snímků**Doba zpracování:**
 
 * Mnohem pomalejší než paralelní režim Chloros+
-* Vhodné pro malé až střední datové sady (&lt; 200 snímků)
+* Vhodné pro malé až střední datové sady (< 200 snímků)
 
 ### Režim Chloros+ (paralelní zpracování)
 
@@ -306,7 +306,7 @@ Spuštění, které požadovalo výstupy v podobě obrázků, ale žádný nezap
 **Řešení:**
 
 1. Ukládejte projekty do složky s kratším názvem — změňte**Pracovní adresář** v [Nastavení projektu](../project-settings/project-settings.md) a projekt vytvořte znovu, nebo
-2. Zapněte dlouhé cesty ve Windows a restartujte Chloros: spusťte instalační program Chloros znovu s zaškrtnutou volbou **Povolit dlouhé cesty ve Windows** (ve výchozím nastavení je zaškrtnuta), nebo použijte zásady skupiny: *Konfigurace počítače &gt; Šablony pro správu &gt; Systém &gt; Souborový systém &gt; Povolit dlouhé cesty Win32*.
+2. Zapněte dlouhé cesty ve Windows a restartujte Chloros: spusťte instalační program Chloros znovu s zaškrtnutou volbou **Povolit dlouhé cesty ve Windows** (ve výchozím nastavení je zaškrtnuta), nebo použijte zásady skupiny: *Konfigurace počítače > Šablony pro správu > Systém > Souborový systém > Povolit dlouhé cesty Win32*.
 
 ### Varování „Nebyly detekovány žádné cíle“
 

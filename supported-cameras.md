@@ -6,23 +6,10 @@ metaLinks:
 
 # Podporované kamery
 
-Chloros
-zpracovává snímky ze dvou řad kamer MAPIR
-na **všech platformách** (Windows
-, Linux
-amd64 a Linux
-arm64/Jetson):
+Chloros zpracovává snímky ze dvou řad kamer MAPIR na **všech platformách** (Windows, Linux amd64 a Linux arm64/Jetson):
 
-* **Survey3** — kamery Survey3W
-(širokoúhlé) a Survey3N
-(úzké). Vstup: `RAW+JPG`.
-* **LATTICE**— multispektrální kamerové moduly M3C a M3M. Vstup: snímky `.tif`/`.tiff`. Kamery LATTICE lze také**ovládat v reálném čase** z aplikace Chloros
-— prostřednictvím záložky „Kamery“ v grafickém uživatelském rozhraní (Windows
-) nebo pomocí `chloros-cli lattice` / Python
-ového SDK
-(Windows
-a Linux
-) — včetně synchronizovaných sestav více kamer. Viz [příručka k LATTICE](lattice/).
+* **Survey3** — kamery Survey3W (širokoúhlé) a Survey3N (úzké). Vstup: `RAW+JPG`.
+* **LATTICE**— multispektrální kamerové moduly M3C a M3M. Vstup: snímky `.tif`/`.tiff`. Kamery LATTICE lze také**ovládat v reálném čase** z aplikace Chloros — prostřednictvím záložky „Kamery“ v grafickém uživatelském rozhraní (Windows) nebo pomocí `chloros-cli lattice` / Python ového SDK (Windows a Linux) — včetně synchronizovaných sestav více kamer. Viz [příručka k LATTICE](lattice/).
 
 Zpracovací pipeline také přijímá vstupní soubory formátu `.dng`.
 
@@ -36,9 +23,7 @@ Zpracovací pipeline také přijímá vstupní soubory formátu `.dng`.
 <sensor>-<lens>-F<filter>        e.g.  M3C-L41-FRGN,  M3M-L87-F550
 ```. Aplikace
 
-Chloros
-
-ji zobrazuje s předponou `LATT-` (například `LATT-M3M-L41-F550`), a tento řetězec modelu řídí vše, co následuje – profil snímače, rozložení pásem a kalibrace se řeší automaticky; není třeba nic konfigurovat pro jednotlivé kamery. Číslo objektivu udává **horizontální zorné pole ve stupních**: `L41` = úzké 41°, `L87` = široké 87°.
+Chloros ji zobrazuje s předponou `LATT-` (například `LATT-M3M-L41-F550`), a tento řetězec modelu řídí vše, co následuje – profil snímače, rozložení pásem a kalibrace se řeší automaticky; není třeba nic konfigurovat pro jednotlivé kamery. Číslo objektivu udává **horizontální zorné pole ve stupních**: `L41` = úzké 41°, `L87` = široké 87°.
 
 Existují dvě konfigurace snímače:
 
@@ -49,52 +34,20 @@ Existují dvě konfigurace snímače:
 
 ### Možnosti filtrů M3C (Bayer)
 
-| Filtr | Pásma (název @ středová vlnová délka v nm / FWHM
-
-v nm)       |
+| Filtr | Pásma (název @ středová vlnová délka v nm / FWHM v nm)       |
 | ------ | ---------------------------------------- |
-| `FRGB` | Blue
+| `FRGB` | Blue 475/30 · Green 550/30 · Red 625/30  |
+| `FRGN` | Red 660/21 · Green 550/30 · NIR 850/30   |
+| `FOCN` | Orange 618,4/46 · Cyan 494,1/40 · NIR 821,6/54 (naměřeno — viz níže) |
+| `FNGB` | Blue 475/30 · Green 550/30 · NIR 850/30  |
 
-475/30 · Green
-
-550/30 · Red
-
-625/30  |
-| `FRGN` | Red
-
-660/21 · Green
-
-550/30 · NIR
-
-850/30   |
-| `FOCN` | Orange
-
-618,4/46 · Cyan
-
-494,1/40 · NIR
-
-821,6/54 (naměřeno — viz níže) |
-| `FNGB` | Blue
-
-475/30 · Green
-
-550/30 · NIR
-
-850/30  |
-
-U modelu `FOCN` se jedná o **naměřené** hodnoty poloviny maximálního pásma filtru (Chloros
-
-1.3.0 a novější; starší verze používaly hodnoty z technického listu 615/21 · 490/38 · 808/14). Názvy pásem zůstávají `Orange_615`, `Cyan_490` a `NIR_808`, přičemž naměřené středové hodnoty a šířky jsou údaje, které Chloros
-
-vkládá do každého kalibrovaného exportu.
+U modelu `FOCN` se jedná o **naměřené** hodnoty poloviny maximálního pásma filtru (Chloros 1.3.0 a novější; starší verze používaly hodnoty z technického listu 615/21 · 490/38 · 808/14). Názvy pásem zůstávají `Orange_615`, `Cyan_490` a `NIR_808`, přičemž naměřené středové hodnoty a šířky jsou údaje, které Chloros vkládá do každého kalibrovaného exportu.
 
 ### Katalog filtrů M3M (mono) — 23 položek
 
 Číslo F je označení položky; naměřené pásmo (vyražené na každém kalibrovaném výstupu) je sken filtru pro danou šarži:
 
-| Položka    | Střed (nm, naměřený) | Okraje FWHM
-
-(nm) | Šířka (nm) |
+| Položka    | Střed (nm, naměřený) | Okraje FWHM (nm) | Šířka (nm) |
 | ------ | --------------------- | --------------- | ---------- |
 | F385   | 379,4                 | 367–392         | 25         |
 | F405   | 403,9                 | 390–417         | 27         |
@@ -120,14 +73,8 @@ vkládá do každého kalibrovaného exportu.
 | F950   | 945,1                 | 929–961         | 32         |
 | F988 † | 985,3                 | 968–1003        | 35         |
 
-_„Hranice pásem jsou měřeny jako hodnoty plné šířky v polovině maxima z filtrovaných skenů MAPIR
+_„Hranice pásem jsou měřeny jako hodnoty plné šířky v polovině maxima z filtrovaných skenů MAPIR pro jednotlivé šarže — stejné hodnoty, které Chloros vtiskne do každého kalibrovaného exportu.“_ „— (nominální)“ = zatím není k dispozici sken dané šarže; u těchto SKU je jako střed uvedeno číslo SKU a šířka odpovídá údajům výrobce.
 
-pro jednotlivé šarže — stejné hodnoty, které Chloros
-
-vtiskne do každého kalibrovaného exportu.“_ „— (nominální)“ = zatím není k dispozici sken dané šarže; u těchto SKU je jako střed uvedeno číslo SKU a šířka odpovídá údajům výrobce.
-
-† „Reflexe F988 je kalibrována pomocí reflexního panelu v rámci scény: pásmo leží mimo kalibrovaný rozsah světelného senzoru DAQ, proto Chloros
-
-použije váš nejnovější záznam panelu a zachová jej mezi jednotlivými měřeními panelu.“ Viz [Kalibrační terče](calibration-targets.md).
+† „Reflexe F988 je kalibrována pomocí reflexního panelu v rámci scény: pásmo leží mimo kalibrovaný rozsah světelného senzoru DAQ, proto Chloros použije váš nejnovější záznam panelu a zachová jej mezi jednotlivými měřeními panelu.“ Viz [Kalibrační terče](calibration-targets.md).
 
 Informace o živém ovládání kamery, maticích, nastavení sítě a radiometrickém zpracovatelském řetězci najdete v [příručce LATTICE](lattice/).

@@ -84,7 +84,7 @@ Každý snímek s GPS údaji je označen značkou na svých souřadnicích.
 
 Vyberte typ mapové vrstvy pomocí tlačítek (zleva doprava):
 
-![](&lt;../.gitbook/assets/image (14).png&gt;)
+![](<../.gitbook/assets/image (14).png>)
 
 | Typ                 | Zobrazuje                                                                |
 | -------------------- | -------------------------------------------------------------------- |

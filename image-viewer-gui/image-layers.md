@@ -4,11 +4,7 @@ Pomocí **rozevíracího seznamu vrstev** v pravém horním rohu prohlížeče o
 
 ## Co jsou vrstvy snímků?
 
-„Vrstva“ v programu Chloros
-
-je jeden **soubor produktu**přiřazený k jednomu zdrojovému snímku. Import vám poskytne zdrojové soubory; zpracování přidá vrstvu pro každý produkt, který byl v daném běhu vytvořen. Exportované soubory si zachovávají název zdrojového souboru — produkt identifikuje**složka** a název vrstvy je označení, které této složce přiřazuje Chloros
-
-.
+„Vrstva“ v programu Chloros je jeden **soubor produktu**přiřazený k jednomu zdrojovému snímku. Import vám poskytne zdrojové soubory; zpracování přidá vrstvu pro každý produkt, který byl v daném běhu vytvořen. Exportované soubory si zachovávají název zdrojového souboru — produkt identifikuje**složka** a název vrstvy je označení, které této složce přiřazuje Chloros.
 
 <!-- SCREENSHOT-NEEDED: Image Viewer full screen with the layer dropdown open on a processed LATTICE multispectral image, showing the full list: TIFF base, RAW (Original), RAW (Debayered), RAW (Preview), RAW (Radiance), RAW (Reflectance), and one RAW (NDVI Index) entry. -->
 
@@ -20,17 +16,7 @@ je jeden **soubor produktu**přiřazený k jednomu zdrojovému snímku. Import v
 
 | Vrstva | Co to je |
 | --- | --- |
-| **JPG**(nebo**PNG
-
-**/**TIFF
-
-**) | Základní soubor, který byl získán při snímání. Survey3
-
-importuje soubor `.JPG` vedle každého souboru `.RAW`; snímky z LATTICE přinášejí náhled pro zobrazení ve formátu PNG
-
-nebo TIFF
-
-. Označeno podle toho, co bylo skutečně importováno |
+| **JPG**(nebo**PNG**/**TIFF**) | Základní soubor, který byl získán při snímání. Survey3 importuje soubor `.JPG` vedle každého souboru `.RAW`; snímky z LATTICE přinášejí náhled pro zobrazení ve formátu PNG nebo TIFF. Označeno podle toho, co bylo skutečně importováno |
 | **RAW (originál)** | Zdrojový surový snímek, zbavený bayesovského kódování pro zobrazení bez aplikovaných korekcí. K dispozici od okamžiku importu — nevyžaduje žádné zpracování |
 
 Záznam LATTICE, jehož základním souborem **je** jeho surový snímek, nemá samostatný základní záznam: `RAW (Original)` jej již pokrývá.
@@ -57,31 +43,19 @@ LATTICE zachycuje rozložení do těchto úrovní v jediném kroku zpracování.
 
 | Vrstva | Zapsáno do | Platí pro |
 | --- | --- | --- |
-| **RAW (Debayered)** | `Debayered_Images/` | RGB
-
-a multispektrální |
+| **RAW (Debayered)** | `Debayered_Images/` | RGB a multispektrální |
 | **RAW (náhled)** | `Preview_Images/` | Multispektrální (roztažení falešných barev) |
-| **Vyvážení bílé** | `Preview_Images/` | RGB
-
-hlavní kamery — náhled RGB
-
-je zaregistrován pod tímto názvem, aby odpovídal stejnojmenné vrstvě v programu Survey3
-
-|
+| **Vyvážení bílé** | `Preview_Images/` | RGB hlavní kamery — náhled RGB je zaregistrován pod tímto názvem, aby odpovídal stejnojmenné vrstvě v programu Survey3 |
 | **RAW (radiance)** | `Radiance_Images/` | Pouze multispektrální |
 | **RAW (odrazivost)** | `Reflectance_Calibrated_Images/` | Pouze multispektrální, a to pouze v případě, že snímek pokrývá odpovídající záznam `.daq` směřující dolů nebo cíl v rámci snímku, který prošel kontrolou kvality |
 
-Hlavní kamery RGB
-
-nemají radiometrii pro jednotlivá pásma, takže u nich jsou zářivost a odrazivost vynechány jako **neplatné** — protokol to uvádí, místo aby došlo k tichému selhání.
+Hlavní kamery RGB nemají radiometrii pro jednotlivá pásma, takže u nich jsou zářivost a odrazivost vynechány jako **neplatné** — protokol to uvádí, místo aby došlo k tichému selhání.
 
 {% hint style="info" %}
 **Surové a debayered vrstvy se zarovnávají s produkty (novinka ve verzi 1.3.0).**Surové a debayered soubory LATTICE se ukládají v nativní orientaci snímače a do XMP zaznamenávají orientaci, která k nim patří; ostatní produkty se ukládají s již aplikovanou touto orientací. Prohlížeč a mřížka snímků pro účely zobrazení přepínají mezi**RAW (originál)**a**RAW (po odstranění bayesovského kódu)** podle tohoto záznamu, takže se snímek již neotočí, když přepínáte mezi vrstvou výstupu a surovou vrstvou. Jedná se pouze o zobrazení — soubory se nikdy nepřepisují. Soubory bez záznamu o orientaci (pořízené před verzí 1.3.0 nebo vytvořené jiným softwarem) se zobrazují tak, jak jsou uloženy. Viz [Výstupní formáty obrázků](../output-image-formats.md#orientation).
 {% endhint %}
 
-Masky omezovače (`*_clampmask.tif` ve složce `clamp_masks/`) nejsou vrstvy: Chloros
-
-je při importu přeskočí. Viz [Výstupní formáty obrázků](../output-image-formats.md#clamp-masks).
+Masky omezovače (`*_clampmask.tif` ve složce `clamp_masks/`) nejsou vrstvy: Chloros je při importu přeskočí. Viz [Výstupní formáty obrázků](../output-image-formats.md#clamp-masks).
 
 ### Vrstvy indexu, LUT a sandboxu
 
@@ -124,87 +98,41 @@ Panel [Hodnoty kurzoru](opening-an-image-full-screen.md#cursor-values) zobrazuje
 
 | Vrstva | Zobrazená jednotka | Poznámky |
 | --- | --- | --- |
-| Základní (náhled JPG / PNG
-
-/ TIFF
-
-) | DN, 0–255 | Zobrazené hodnoty, s korekcí gama pro RGB
-
-. Pouze pro vizuální kontrolu |
+| Základní (náhled JPG / PNG / TIFF) | DN, 0–255 | Zobrazené hodnoty, s korekcí gama pro RGB. Pouze pro vizuální kontrolu |
 | RAW (originál) | DN | Surová digitální čísla ze snímače. Osa histogramu udává hloubku: 255 (8 bitů), 4095 (12 bitů) nebo 65535 (16 bitů) |
 | RAW (po odstranění bayerského filtru) | DN | Lineární, bez roztažení pro zobrazení |
 | RAW (náhled) / s vyvážením bílé | DN | Výstup pro zobrazení — roztažený nebo s korekcí gama. Není určen k měření |
 | RAW (radiance) | **W/m²/sr/nm** | Fyzická radiance typu Float32. Žádný sloupec DN |
 | RAW (odrazivost) | DN **a %** | Procento vypočítané podle vlastní stupnice daného souboru — viz níže |
-| Exporty indexu / LUT / sandbox | Hodnota indexu nebo složky RGB
-
-| Jednokanálový indexový soubor uvádí hodnotu indexu; soubor LUT s barevným mapováním uvádí složky Red
-
-/Green
-
-/Blue
-
-|
+| Exporty indexu / LUT / sandbox | Hodnota indexu nebo složky RGB | Jednokanálový indexový soubor uvádí hodnotu indexu; soubor LUT s barevným mapováním uvádí složky Red /Green /Blue |
 
 ### Odrazivost: měřítko je specifické pro každý soubor
 
 {% hint style="warning" %}
-**„Vydělit 65 535“ platí pouze pro Survey3
-
-.** Odrazivost LATTICE je uložena v jiném měřítku a smíchání těchto dvou dělitelů je nejčastějším způsobem, jak získat hodnoty odrazivosti, které jsou přesně poloviční oproti tomu, jaké by měly být.
+**„Vydělit 65 535“ platí pouze pro Survey3.** Odrazivost LATTICE je uložena v jiném měřítku a smíchání těchto dvou dělitelů je nejčastějším způsobem, jak získat hodnoty odrazivosti, které jsou přesně poloviční oproti tomu, jaké by měly být.
 {% endhint %}
 
 | Zdroj | DN odpovídající odrazivosti 1,0 | Identifikováno podle |
 | --- | --- | --- |
 | **LATTICE**(M3C / M3M) |**32768** | XMP značka `Chloros:PixelScale=32768` vložená do každého exportu odrazivosti LATTICE. Dvojnásobná rezerva znamená, že hodnoty ρ nad 1,0 lze zobrazit, místo aby byly oříznuty |
-| **Survey3**| **65535** | Žádný XMP tag měřítka Chloros
+| **Survey3**| **65535** | Žádný XMP tag měřítka Chloros — kalibrace Survey3 zapisuje ρ × dtype-max a ořezává na hodnotu 1,0 |
 
-— kalibrace Survey3
-
-zapisuje ρ × dtype-max a ořezává na hodnotu 1,0 |
-
-Pro GIS a skriptování: načtěte z souboru `Chloros:PixelScale` a vydělte tím. Pokud značka chybí, soubor má měřítko Survey3
-
-(65535). Prohlížeč, index/LUT sandbox i export indexu určují měřítko stejným způsobem, takže číslo, které vidíte u kurzoru, je číslo použité při výpočtu indexu.
+Pro GIS a skriptování: načtěte z souboru `Chloros:PixelScale` a vydělte tím. Pokud značka chybí, soubor má měřítko Survey3 (65535). Prohlížeč, index/LUT sandbox i export indexu určují měřítko stejným způsobem, takže číslo, které vidíte u kurzoru, je číslo použité při výpočtu indexu.
 
 Ukládání specifické pro daný formát nad rámec tohoto měřítka:
 
-* **Formát TIFF
-
-(32bitový, procenta)** ukládá hodnotu DN / 65535 jako číslo typu float
-* **Formáty PNG
-
-(8bitový)**a**JPG (8bitový)** ukládají hodnotu DN × 255 / 65535
+* **Formát TIFF (32bitový, procenta)** ukládá hodnotu DN / 65535 jako číslo typu float
+* **Formáty PNG (8bitový)**a**JPG (8bitový)** ukládají hodnotu DN × 255 / 65535
 * **8bitový DN získaný z 8bitového snímku** nebo soubor odrazivosti vytvořený před verzí 1.3.0 je oříznut na rozsah 0–255 a neobsahuje značku měřítka. Panel u těchto souborů zobrazuje pouze hodnotu DN, bez sloupce s procenty
 
 ### Rozsahy hodnot indexů
 
 | Rodina indexů | Typický rozsah | Hodnota |
 | --- | --- | --- |
-| Normalizovaný rozdíl (NDVI
-
-, GNDVI
-
-, NDRE
-
-, ENDVI…) | −1 až +1 | Zdravá vegetace obvykle 0,4–0,9; holá půda blízko 0; voda záporná |
-| Opravené o půdu (SAVI
-
-, OSAVI
-
-, MSAVI2…) | přibližně −1 až +1,5 | Hodnoty podobné NDVI
-
-, avšak s potlačeným půdním pozadím |
-| Poměr (GRVI
-
-, GCI
-
-, MSR, CIRE…) | neomezeně nad | Poměry rostou bez omezení, jak se jmenovatel blíží nule |
-| EVI
-
-/ LAI
-
-| 0 až ~1, 0 až ~3,5 | Mraky a další nasycené pixely posouvají obě hodnoty mimo rozsah — nejprve je zamaskujte |
+| Normalizovaný rozdíl (NDVI, GNDVI, NDRE, ENDVI…) | −1 až +1 | Zdravá vegetace obvykle 0,4–0,9; holá půda blízko 0; voda záporná |
+| Opravené o půdu (SAVI, OSAVI, MSAVI2…) | přibližně −1 až +1,5 | Hodnoty podobné NDVI, avšak s potlačeným půdním pozadím |
+| Poměr (GRVI, GCI, MSR, CIRE…) | neomezeně nad | Poměry rostou bez omezení, jak se jmenovatel blíží nule |
+| EVI / LAI | 0 až ~1, 0 až ~3,5 | Mraky a další nasycené pixely posouvají obě hodnoty mimo rozsah — nejprve je zamaskujte |
 
 Přesné vzorce pro každou předvolbu najdete v [Vzorcích multispektrálních indexů](../project-settings/multispectral-index-formulas.md).
 
@@ -237,9 +165,7 @@ Přesné vzorce pro každou předvolbu najdete v [Vzorcích multispektrálních 
 1. Vyberte **RAW (Reflectance)**
 
 2. Přečtěte si sloupec**%** v panelu Hodnoty kurzoru — pro daný soubor je již správně škálován
-3. Proveďte kontrolu správnosti porovnáním se známými materiály v snímku: zdravá vegetace má vysokou odrazivost v NIR
-
-a nízkou v červené; kalibrační cíl by měl vykazovat hodnoty blízké jeho publikované odrazivosti
+3. Proveďte kontrolu správnosti porovnáním se známými materiály v snímku: zdravá vegetace má vysokou odrazivost v NIR a nízkou v červené; kalibrační cíl by měl vykazovat hodnoty blízké jeho publikované odrazivosti
 
 ***
 
@@ -251,25 +177,19 @@ a nízkou v červené; kalibrační cíl by měl vykazovat hodnoty blízké jeho
 
 * Snímek nebyl nikdy zpracován — existují pouze vrstvy „base“ a „`RAW (Original)`“
 * V nastavení projektu není zaškrtnuto přepínací tlačítko pro export produktu
-* Produkt se na danou kameru nevztahuje (radiance a odrazivost u RGB
-
-master; jakýkoli index u jednopásmové monochromatické kamery M3M)
+* Produkt se na danou kameru nevztahuje (radiance a odrazivost u RGB master; jakýkoli index u jednopásmové monochromatické kamery M3M)
 * Kalibrace odrazivosti neměla s čím pracovat — chybí pokrytí `.daq` směrem dolů a žádný cíl v rámci snímku, který by prošel kontrolou kvality — proto se snímek vrátil k režimu „Vignette Corrected“ nebo „Sensor Response“
 
 **Co dělat**
 
-1. Zkontrolujte protokol běhu: Chloros
-
-uvádí, kdy nebylo možné vygenerovat požadovaný exportní produkt a proč
+1. Zkontrolujte protokol běhu: Chloros uvádí, kdy nebylo možné vygenerovat požadovaný exportní produkt a proč
 2. Zkontrolujte přepínače exportu pro jednotlivé produkty v [Nastavení projektu](../project-settings/project-settings.md)
 3. Ověřte, zda složka produktu existuje ve výstupní struktuře projektu
 4. Zpracujte znovu s povoleným produktem
 
 ### Seznam vrstev vypadá zastarale
 
-Program Chloros
-
-během probíhajícího běhu znovu prohledává složky produktů projektu a opravuje chybějící registrace vrstev na základě toho, co se skutečně nachází na disku, takže vrstva, jejíž export byl dokončen, se obvykle sama objeví v rámci dotazu. Přepnutí pryč od obrázku a zpět vynutí nové vyřešení.
+Program Chloros během probíhajícího běhu znovu prohledává složky produktů projektu a opravuje chybějící registrace vrstev na základě toho, co se skutečně nachází na disku, takže vrstva, jejíž export byl dokončen, se obvykle sama objeví v rámci dotazu. Přepnutí pryč od obrázku a zpět vynutí nové vyřešení.
 
 ### Hodnoty odrazivosti se zdají být poloviční oproti očekávaným hodnotám
 

@@ -43,9 +43,7 @@ Každý připojený senzor má jeden řádek (plus jeden řádek na skupinu „A
 | Štítek přenosu | `DAQ-U` / `DAQ-M` / `DAQ-E`, případně zelený štítek `REF` pro skupinu odrazivosti Ambient+Object. |
 | Název zařízení | Výchozí hodnota je sériové číslo senzoru (jeho stabilní identifikátor pro kalibraci, názvy souborů `.daq` a přiřazování při importu); vlastní názvy zůstávají zachovány pro každý projekt. |
 | Ikona **Kalibrováno** (zelená) | Zobrazuje se, když je načten tovární kalibrační balíček snímače, tj. spektra jsou v jednotkách W/m²/nm. |
-| Ikona **K dispozici aktualizace** (jantarová, pouze DAQ-E) | Aktuální firmware je starší než obraz dodaný s touto verzí Chloros
-
-. Během aktualizace zobrazuje průběh v reálném čase (`Flashing… N%`, `Restarting sensor…`, poté `Updated X → Y` nebo `Failed`). |
+| Ikona **K dispozici aktualizace** (jantarová, pouze DAQ-E) | Aktuální firmware je starší než obraz dodaný s touto verzí Chloros. Během aktualizace zobrazuje průběh v reálném čase (`Flashing… N%`, `Restarting sensor…`, poté `Updated X → Y` nebo `Failed`). |
 | Oko | Přepíná viditelnost tohoto senzoru v grafu. |
 | Ozubené kolečko | Otevře modální okno nastavení pro jednotlivé senzory (níže). |
 | ✕ (červené) | Odpojí senzor nebo odstraní skupinu „Ambient+Object“. |
@@ -84,15 +82,9 @@ Otevřete pomocí ikony ozubeného kola v řádku snímače. Obsah v pořadí:
 
 tlačítko</version\>
 
-**Aktualizovat na \<version\>** se zobrazí, pokud tato verze Chloros
-
-obsahuje novější obraz firmwaru pro DAQ-E. Aktualizace se přes síť nainstaluje za přibližně 30 sekund; senzor se automaticky restartuje a znovu připojí, přičemž přerušený přenos ponechá aktuální firmware beze změny. Průběh se zobrazuje v reálném čase (`Flashing… N%` → `Restarting sensor…` → `Updated X → Y`) a při aktuálním stavu se v buňce zobrazuje hodnota `Up to date`.
-* **Synchronizace PTP** — aktuální stav PTP (v případě výpadku se vrátí na `unknown`). Firmware DAQ-E verze 1.2.0 a vyšší se účastní standardu IEEE 1588 PTPv2 pouze jako podřízený časovač; backend hostitele Chloros
-
-je PTP grandmaster a každá kamera DAQ-E a LATTICE v síti LAN se k němu připojuje jako slave v doméně 0, přičemž časová razítka se udržují s odchylkou přibližně 1 ms.
-* **Síť**— adresa, na které jednotka běží, a způsob jejího získání (DHCP, link-local nebo statická), a uložené nastavení, které se použije po restartu.**Změnit…**otevře formulář:**Automaticky (DHCP)**nebo**Statická IP**s IP adresou, maskou podsítě a volitelnou bránou.**Použít a restartovat** nastavení uloží, restartuje senzor a znovu jej připojí. Statická adresa mimo síť tohoto počítače je odmítnuta, protože Chloros
-
-by po restartu nemohl senzor kontaktovat; následně se zobrazí pole, které to přesto povolí, a to pro počítač, který bude přadresován nebo směrován do této sítě. **Streamovat při zapnutí**určuje, zda senzor začne streamovat ihned po zapnutí, ještě před připojením jakéhokoli softwaru.**Restartovat senzor** senzor restartuje a znovu jej připojí s aktuálním nastavením. Restart je zamítnut, pokud senzor právě zaznamenává data. Novinka ve verzi 1.3.0.
+**Aktualizovat na \<version\>** se zobrazí, pokud tato verze Chloros obsahuje novější obraz firmwaru pro DAQ-E. Aktualizace se přes síť nainstaluje za přibližně 30 sekund; senzor se automaticky restartuje a znovu připojí, přičemž přerušený přenos ponechá aktuální firmware beze změny. Průběh se zobrazuje v reálném čase (`Flashing… N%` → `Restarting sensor…` → `Updated X → Y`) a při aktuálním stavu se v buňce zobrazuje hodnota `Up to date`.
+* **Synchronizace PTP** — aktuální stav PTP (v případě výpadku se vrátí na `unknown`). Firmware DAQ-E verze 1.2.0 a vyšší se účastní standardu IEEE 1588 PTPv2 pouze jako podřízený časovač; backend hostitele Chloros je PTP grandmaster a každá kamera DAQ-E a LATTICE v síti LAN se k němu připojuje jako slave v doméně 0, přičemž časová razítka se udržují s odchylkou přibližně 1 ms.
+* **Síť**— adresa, na které jednotka běží, a způsob jejího získání (DHCP, link-local nebo statická), a uložené nastavení, které se použije po restartu.**Změnit…**otevře formulář:**Automaticky (DHCP)**nebo**Statická IP**s IP adresou, maskou podsítě a volitelnou bránou.**Použít a restartovat** nastavení uloží, restartuje senzor a znovu jej připojí. Statická adresa mimo síť tohoto počítače je odmítnuta, protože Chloros by po restartu nemohl senzor kontaktovat; následně se zobrazí pole, které to přesto povolí, a to pro počítač, který bude přadresován nebo směrován do této sítě. **Streamovat při zapnutí**určuje, zda senzor začne streamovat ihned po zapnutí, ještě před připojením jakéhokoli softwaru.**Restartovat senzor** senzor restartuje a znovu jej připojí s aktuálním nastavením. Restart je zamítnut, pokud senzor právě zaznamenává data. Novinka ve verzi 1.3.0.
 
 U skupiny „Ambient+Object“ zobrazuje modální okno s ozubeným kolečkem pouze zdrojové senzory skupiny, název zařízení a barvu čáry grafu.
 
@@ -102,9 +94,7 @@ U skupiny „Ambient+Object“ zobrazuje modální okno s ozubeným kolečkem po
 
 ### Výběr krytky
 
-Rozbalovací nabídka **Krytka** sděluje aplikaci Chloros
-
-, která fyzická krytka je nasazena na difuzor senzoru, a na každé spektrum aplikuje korekční profil této krytky naměřený při výrobě. Možnosti výběru závisí na modelu:
+Rozbalovací nabídka **Krytka** sděluje aplikaci Chloros, která fyzická krytka je nasazena na difuzor senzoru, a na každé spektrum aplikuje korekční profil této krytky naměřený při výrobě. Možnosti výběru závisí na modelu:
 
 | Model | Možnosti krytky |
 | --- | --- |
@@ -112,9 +102,7 @@ Rozbalovací nabídka **Krytka** sděluje aplikaci Chloros
 | DAQ-M | Žádný (holý senzor), Sunshine (kosinový korektor) |
 | DAQ-E | Žádný (holý senzor), zorné pole 15°, zorné pole 45°, zorné pole 90°, Sunshine (kosinový korektor) |
 
-**Výchozí nastavení pro každý model je „Sunshine“ (kosinová korekce)** — společnost MAPIR
-
-dodává každý model DAQ s nainstalovaným krytem „Sunshine“, což je standardní konfigurace pro venkovní použití: 180° polokulový záběr s kosinovou chybou ≤ ±4 % do 60° a ≤ ±4,5 % do 70° (nedoporučuje se při elevaci Slunce pod ~15°), konstrukčně zeslabený (~12×). Váš výběr zůstane v projektu zachován.
+**Výchozí nastavení pro každý model je „Sunshine“ (kosinová korekce)** — společnost MAPIR dodává každý model DAQ s nainstalovaným krytem „Sunshine“, což je standardní konfigurace pro venkovní použití: 180° polokulový záběr s kosinovou chybou ≤ ±4 % do 60° a ≤ ±4,5 % do 70° (nedoporučuje se při elevaci Slunce pod ~15°), konstrukčně zeslabený (~12×). Váš výběr zůstane v projektu zachován.
 
 {% hint style="warning" %}
 **Výběr krytky musí odpovídat fyzicky nasazené krytce.**Ani senzor, ani software nedokážou rozpoznat, která krytka je nasazena. Tento výběr ovlivňuje jak korekci v reálném čase, tak i záznam zapsaný do každého souboru `.daq` — vzhledem k ~12× útlumu krytky Sunshine nedeklarovaná změna krytky způsobí nesprávnou korekci spektra přibližně o tento faktor. (Odstranění a opětovné nasazení stejné krytky vede k odchylce přibližně 1,5 %.) Volbu**None (holý senzor)** použijte pouze v případě, že je krytka fyzicky odstraněna; u zařízení DAQ-E se i při volbě „None“ stále aplikuje tovární geometrický profil pro jeho zapuštěný skleněný difuzor – nejedná se o nečinnost – a holé zařízení DAQ-E představuje laboratorní konfiguraci, nikoli podporovanou konfiguraci pro použití v terénu.
@@ -150,13 +138,7 @@ V horní liště, která zůstává vždy viditelná, se nachází **přepínač
 Pod grafem v zobrazení seznamu, aktualizováno každých 500 ms:
 
 * **Všechny modely**: Vzorek barvy světla (sRGB z CIE XYZ), Nasycený (Ano/Ne), CIE 1931 X/Y/Z, Chromatickost x/y, CIE u′/v′, CCT (K), CRI (Ra), dominantní vlnová délka (nm), špičková vlnová délka (nm), čistota excitace, Duv, CIE L\*/a\*/b\* a Munsell H/V/C.
-* **Pouze kalibrované senzory**(libovolný z modelů DAQ-U / DAQ-M / DAQ-E po načtení balíčku tovární kalibrace — poznáte to podle zeleného označení**Kalibrováno** v řádku senzoru): Celkový výkon (W/m²), fotopický lux (lx), skotopický lux (lx), poměr S/P, PPFD a PPFD Red
-
-/Green
-
-/Blue
-
-(µmol/m²/s) a opické ozáření — S-kónus, melanopické, rhodopické, M-kónus, L-kónus (vše v jednotkách W/m²).
+* **Pouze kalibrované senzory**(libovolný z modelů DAQ-U / DAQ-M / DAQ-E po načtení balíčku tovární kalibrace — poznáte to podle zeleného označení**Kalibrováno** v řádku senzoru): Celkový výkon (W/m²), fotopický lux (lx), skotopický lux (lx), poměr S/P, PPFD a PPFD Red /Green /Blue (µmol/m²/s) a opické ozáření — S-kónus, melanopické, rhodopické, M-kónus, L-kónus (vše v jednotkách W/m²).
 
 <!-- SCREENSHOT-NEEDED: list view live data table for a DAQ-E showing both the colorimetric rows and the power-calibrated rows (Total Power, Photopic/Scotopic Lux, PPFD, opic irradiances) -->
 
@@ -169,9 +151,7 @@ Dva propojené senzory lze zkombinovat do živého zobrazení odrazivosti — be
 1. V mřížkovém zobrazení klikněte na **+**na dlaždici grafu a vyberte**Kombinovat okolní světlo + objekt**.
 2. Vyberte senzor **Zdroje okolního světla**a senzor**Skeneru objektu**(dva odlišné senzory) a poté klikněte na**Vytvořit**.
 
-Chloros
-
-vypočítá R(λ) = objekt(λ) / okolí(λ) pro každou vlnovou délku ze dvou živých datových toků (0, pokud okolí ≤ 0). Název skupiny se řídí kalibrační třídou senzorů:
+Chloros vypočítá R(λ) = objekt(λ) / okolí(λ) pro každou vlnovou délku ze dvou živých datových toků (0, pokud okolí ≤ 0). Název skupiny se řídí kalibrační třídou senzorů:
 
 * Oba senzory jsou kalibrované (balíček načten) → **„Zdánlivá odrazivost“**.
 * Jeden ze senzorů není kalibrován → **„Relativní odrazivost“**.
@@ -186,34 +166,10 @@ Nabídka **+**také nabízí možnost**Přidat nový senzor** se třemi možnost
 
 ### Tabulka vegetačních indexů
 
-V zobrazení seznamu se pod grafem skupiny odrazivosti nachází tabulka vegetačních indexů, vypočítaná z aktuální odrazivosti ve středních frekvencích pásem **modrá 450 / zelená 550 / červená 670 / NIR
+V zobrazení seznamu se pod grafem skupiny odrazivosti nachází tabulka vegetačních indexů, vypočítaná z aktuální odrazivosti ve středních frekvencích pásem **modrá 450 / zelená 550 / červená 670 / NIR 800 nm** (hodnoty s přesností na 4 desetinná místa, `---`, pokud nelze vypočítat; najedete-li kurzorem na název indexu, zobrazí se jeho plný název):
 
-800 nm** (hodnoty s přesností na 4 desetinná místa, `---`, pokud nelze vypočítat; najedete-li kurzorem na název indexu, zobrazí se jeho plný název):
-
-* **Vždy zobrazeno** (nezávislé na měřítku, libovolná kombinace senzorů): NDVI
-
-, GNDVI
-
-, ENDVI, WDRVI
-
-, GRVI
-
-, CVI
-
-, GCI
-
-, MSR.
-* **Pouze pokud jsou oba senzory kalibrovány na výkon** (načteny oba balíčky): EVI
-
-, SAVI
-
-, OSAVI
-
-, GSAVI, GOSAVI, MSAVI2, RDVI, TDVI, LAI
-
-, NLI, MNLI, FCI, GEMI
-
-.
+* **Vždy zobrazeno** (nezávislé na měřítku, libovolná kombinace senzorů): NDVI, GNDVI, ENDVI, WDRVI, GRVI, CVI, GCI, MSR.
+* **Pouze pokud jsou oba senzory kalibrovány na výkon** (načteny oba balíčky): EVI, SAVI, OSAVI, GSAVI, GOSAVI, MSAVI2, RDVI, TDVI, LAI, NLI, MNLI, FCI, GEMI.
 
 <!-- SCREENSHOT-NEEDED: an Ambient+Object reflectance group in list view — reflectance chart labeled "Apparent Reflectance" with the vegetation index table below it showing live NDVI etc. -->
 
@@ -237,13 +193,9 @@ Pro získání kvantitativních hodnot ozáření je třeba průměrovat data z 
 ## Rozložení více senzorů a uchování nastavení projektu
 
 * Kombinujte několik senzorů na jednom grafu (sdílené osy), udržujte samostatné grafy (automatické rozložení mřížky), přesouvejte senzory mezi grafy, přetahujte a měňte pořadí řádků/dlaždic a skryjte jednotlivé senzory pomocí přepínače ve tvaru oka.
-* Chloros
-
-si pro každý projekt uchovává: názvy zařízení, barvy grafů, velikost grafu, režim zobrazení a nastavení každého senzoru (integrační čas, průměrování snímků, stav AE, výběr krytky).
+* Chloros si pro každý projekt uchovává: názvy zařízení, barvy grafů, velikost grafu, režim zobrazení a nastavení každého senzoru (integrační čas, průměrování snímků, stav AE, výběr krytky).
 * **Při opětovném otevření projektu se senzory automaticky znovu připojí** podle adresy – COM port pro DAQ-U, zařízení BLE pro DAQ-M, název hostitele mDNS pro DAQ-E (vyřešeno i v případě změny IP adresy zařízení) — a znovu použije uložený profil krytu, průměrování snímků, stav AE a ručně nastavenou integrační dobu každého senzoru.***
 
 ## Spárování kamery (DLS)
 
-Není třeba nic spárovat. Na rozdíl od pracovních postupů DLS u dronů, které předem propojují světelný senzor s kamerou, Chloros
-
-přiřazuje data DAQ k snímkům až v následném zpracování: při importu/zpracování jsou hodnoty `.daq` interpolovány k časovému razítku expozice každého snímku. Zaznamenávejte pomocí libovolného připojeného senzoru (`.daq` se do projektu přidá automaticky) a zpracování odrazivosti najde správné hodnoty podle času — viz [Světelné senzory DAQ](README.md), kde se dozvíte, jak se používají data o dopadajícím světle. U **živých**snímků LATTICE vyberte snímač v rozevíracím seznamu**Light Sensor** na kartě Cameras; každý záznam pak uloží naměřenou hodnotu, která byla použita, a která odpovídá pouze kamerám daného záznamu (viz [Pracovní postupy s odrazivostí](reflectance.md)).</version\>
+Není třeba nic spárovat. Na rozdíl od pracovních postupů DLS u dronů, které předem propojují světelný senzor s kamerou, Chloros přiřazuje data DAQ k snímkům až v následném zpracování: při importu/zpracování jsou hodnoty `.daq` interpolovány k časovému razítku expozice každého snímku. Zaznamenávejte pomocí libovolného připojeného senzoru (`.daq` se do projektu přidá automaticky) a zpracování odrazivosti najde správné hodnoty podle času — viz [Světelné senzory DAQ](README.md), kde se dozvíte, jak se používají data o dopadajícím světle. U **živých**snímků LATTICE vyberte snímač v rozevíracím seznamu**Light Sensor** na kartě Cameras; každý záznam pak uloží naměřenou hodnotu, která byla použita, a která odpovídá pouze kamerám daného záznamu (viz [Pracovní postupy s odrazivostí](reflectance.md)).</version\>

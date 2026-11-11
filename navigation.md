@@ -22,19 +22,7 @@ Horní záhlaví obsahuje zleva doprava:
 * **Připojit k světelnému senzoru** — přejde na [kartu Světelné senzory](daq/) pro připojení světelného senzoru DAQ. Funguje i bez otevřeného projektu.
 
 {% hint style="info" %}
-**Pouze pro Windows**: Grafické uživatelské rozhraní Chloros
-
-Desktop je k dispozici pro systém Windows
-
-. Uživatelé systému Linux
-
-by si měli pro zpracování bez grafického rozhraní prostudovat dokumentaci k [CLI
-
-](CLI.md) a [Python
-
-SDK
-
-](api-python-sdk.md).
+**Pouze pro Windows**: Grafické uživatelské rozhraní Chloros Desktop je k dispozici pro systém Windows. Uživatelé systému Linux by si měli pro zpracování bez grafického rozhraní prostudovat dokumentaci k [CLI](CLI.md) a [Python SDK](api-python-sdk.md).
 {% endhint %}
 
 ### <img src=".gitbook/assets/image (2) (1) (1).png" alt="" data-size="line">
@@ -49,15 +37,9 @@ Ukazatel průběhu <img src=".gitbook/assets/image (5).png" alt="" data-size="li
 
 
 
-V bezplatném režimu Chloros
+V bezplatném režimu Chloros, který zpracovává všechny soubory postupně, ukazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
 
-, který zpracovává všechny soubory postupně, ukazuje ukazatel průběhu 2 fáze: Detekce cíle a Zpracování.
-
-V placeném režimu s licencí Chloros
-
-+, který zpracovává všechny soubory současně, ukazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud najedete kurzorem myši na ukazatel průběhu Chloros
-
-+, rozbalí se rozšířený panel se čtyřmi ukazateli průběhu, díky čemuž můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu panel rozbalený stav pozastavíte, dalším kliknutím jej opět obnovíte.
+V placeném režimu s licencí Chloros+, který zpracovává všechny soubory současně, ukazuje ukazatel průběhu 4 fáze: Detekce, Analýza, Kalibrace, Export. Pokud najedete kurzorem myši na ukazatel průběhu Chloros+, rozbalí se rozšířený panel se čtyřmi ukazateli průběhu, díky čemuž můžete sledovat průběh zpracování. Kliknutím na horní ukazatel průběhu panel rozbalený stav pozastavíte, dalším kliknutím jej opět obnovíte.
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
 

@@ -27,15 +27,9 @@ Ano. Chloros 1.3.0 podporuje kamerové moduly LATTICE M3C a M3M v plném rozsahu
 
 <summary>Mohu kalibrovat své snímky na odrazivost bez kalibračního terče?</summary>
 
-**Survey3
+**Survey3:** Ne. Bez snímku kalibračního terče pořízeného přibližně ve stejnou dobu, kdy byly pořízeny snímky bez terče, nebudete schopni přiřadit hodnoty pixelů snímku ke známému procentuálnímu podílu odrazivosti. Pokud navíc nepřiložíte záznam ze světelného senzoru MAPIR, nebude změřeno spektrum okolního světla a výsledky odrazivosti nebudou přesné.
 
-:** Ne. Bez snímku kalibračního terče pořízeného přibližně ve stejnou dobu, kdy byly pořízeny snímky bez terče, nebudete schopni přiřadit hodnoty pixelů snímku ke známému procentuálnímu podílu odrazivosti. Pokud navíc nepřiložíte záznam ze světelného senzoru MAPIR
-
-, nebude změřeno spektrum okolního světla a výsledky odrazivosti nebudou přesné.
-
-**LATTICE:** Ano. Odrazivost lze odvodit z intenzity slunečního záření směřujícího dolů, měřené světelným senzorem DAQ namísto panelu (ρ = π·L/E). Pokud je v záběru přítomen cíl, který prošel kontrolou kvality (QA), stává se ve výchozím nastavení absolutní referencí (`--reflectance-source auto`), ledaže by prošel s příznakem, v takovém případě se cíl a řetězce DAQ porovnávají na základě naměřeného skóre. Jedna výjimka: „Odrazivost F988 se kalibruje pomocí panelu odrazivosti v záběru: pásmo leží mimo kalibrovaný rozsah světelného senzoru DAQ, proto Chloros
-
-použije váš nejnovější záznam panelu a zachová jej mezi jednotlivými pozorováními panelu.“ Viz [Kalibrační cíle](calibration-targets.md).
+**LATTICE:** Ano. Odrazivost lze odvodit z intenzity slunečního záření směřujícího dolů, měřené světelným senzorem DAQ namísto panelu (ρ = π·L/E). Pokud je v záběru přítomen cíl, který prošel kontrolou kvality (QA), stává se ve výchozím nastavení absolutní referencí (`--reflectance-source auto`), ledaže by prošel s příznakem, v takovém případě se cíl a řetězce DAQ porovnávají na základě naměřeného skóre. Jedna výjimka: „Odrazivost F988 se kalibruje pomocí panelu odrazivosti v záběru: pásmo leží mimo kalibrovaný rozsah světelného senzoru DAQ, proto Chloros použije váš nejnovější záznam panelu a zachová jej mezi jednotlivými pozorováními panelu.“ Viz [Kalibrační cíle](calibration-targets.md).
 
 </details>
 
@@ -43,9 +37,7 @@ použije váš nejnovější záznam panelu a zachová jej mezi jednotlivými po
 
 <summary>Potřebuji světelný senzor DAQ?</summary>
 
-Ne pro radianci: Exporty radiance v LATTICE vycházejí z tovární radiometrické kalibrace každé kamery a nevyžadují ani snímač DAQ, ani kalibrační cíl. Pro **odrazivost**potřebujete referenci pro okolní světlo — buď měření sestupujícího světla snímačem DAQ, nebo kalibrační cíl v záběru. Snímač DAQ vám umožňuje získat kalibrovanou odrazivost**bez umístění jakýchkoli panelů do scény**. Zaznamenané soubory `.daq` se automaticky přiřadí k vašim snímkům podle časového razítka. Viz [Kalibrační terče](calibration-targets.md) a [Referenční příručka k CLI
-
-](reference/cli-reference.md).
+Ne pro radianci: Exporty radiance v LATTICE vycházejí z tovární radiometrické kalibrace každé kamery a nevyžadují ani snímač DAQ, ani kalibrační cíl. Pro **odrazivost**potřebujete referenci pro okolní světlo — buď měření sestupujícího světla snímačem DAQ, nebo kalibrační cíl v záběru. Snímač DAQ vám umožňuje získat kalibrovanou odrazivost**bez umístění jakýchkoli panelů do scény**. Zaznamenané soubory `.daq` se automaticky přiřadí k vašim snímkům podle časového razítka. Viz [Kalibrační terče](calibration-targets.md) a [Referenční příručka k CLI](reference/cli-reference.md).
 
 </details>
 
@@ -143,9 +135,7 @@ V tabulce prohlížeče souborů předvolbou cílových snímků v pravém sloup
 
 <summary>Pokud hodlám nahrát své snímky do <a href="https://www.mapir.camera/collections/software/products/mapir-cloud-subscription">MAPIR Cloud,</a> měl bych je před nahráním zpracovat v programu Chloros?</summary>
 
-Pokud plánujete nahrát snímky na naši online platformu pro zpracování [MAPIR
-
-Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription), neupravujte je před nahráním. Cloud provede stejné zpracování a ještě více.
+Pokud plánujete nahrát snímky na naši online platformu pro zpracování [MAPIR Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription), neupravujte je před nahráním. Cloud provede stejné zpracování a ještě více.
 
 </details>
 
@@ -185,9 +175,7 @@ Ano! Chloros obsahuje funkci [Dynamic Compute Adaptation](processing-architectur
 
 <summary>Co je to 4-vláknový zpracovatelský pipeline?</summary>
 
-Chloros
-využívá pro uživatele Chloros
-+ architekturu s 4-vláknovým zpracováním: Vlákno 1 (Detekce) načítá obrázky a detekuje kalibrační cíle, vlákno 2 (Kalibrace) provádí výpočet kalibrace odrazivosti, vlákno 3 (Zpracování) provádí GPU-akcelerované odstraňování bayerského vzoru a výpočet indexu a vlákno 4 (Export) zapisuje výstupní soubory. Pro maximální propustnost může být v různých vláknech současně zpracováno více snímků. Podrobnosti najdete v části [Zpracovací pipeline](processing-architecture/processing-pipeline.md).
+Chloros využívá pro uživatele Chloros+ architekturu s 4-vláknovým zpracováním: Vlákno 1 (Detekce) načítá obrázky a detekuje kalibrační cíle, vlákno 2 (Kalibrace) provádí výpočet kalibrace odrazivosti, vlákno 3 (Zpracování) provádí GPU-akcelerované odstraňování bayerského vzoru a výpočet indexu a vlákno 4 (Export) zapisuje výstupní soubory. Pro maximální propustnost může být v různých vláknech současně zpracováno více snímků. Podrobnosti najdete v části [Zpracovací pipeline](processing-architecture/processing-pipeline.md).
 
 </details>
 

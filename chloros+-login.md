@@ -16,49 +16,21 @@ Po přihlášení se zobrazí podrobnosti vašeho účtu:
 | Tarif | `plan_id` | Typ |
 | --- | --- | --- |
 | Iron | `0` | Zdarma |
-| Copper | `1` | Placený (Chloros
-
-+) |
-| Bronze | `2` | Placený (Chloros
-
-+) |
-| Silver | `3` | Placený (Chloros
-
-+) |
-| Zlato | `4` | Placené (Chloros
-
-+) |
+| Copper | `1` | Placený (Chloros+) |
+| Bronze | `2` | Placený (Chloros+) |
+| Silver | `3` | Placený (Chloros+) |
+| Zlato | `4` | Placené (Chloros+) |
 
 Co jednotlivé placené úrovně zahrnují, najdete v [tarifech a cenách](https://cloud.mapir.camera/pricing).
 
-### Přístup k CLI
+### Přístup k CLI / SDK vyžaduje placenou úroveň
 
-/ SDK
+Přístup k CLI a Python SDK vyžaduje **jakýkoli placený tarif Chloros+ (Copper nebo vyšší)**. Toto omezení je vynucováno**na straně serveru** — každý požadavek CLI/SDK musí obsahovat jak aktivní relaci, tak placený tarif:
 
-vyžaduje placenou úroveň
-
-Přístup k CLI
-
-a Python
-
-SDK
-
-vyžaduje **jakýkoli placený tarif Chloros
-
-+ (Copper nebo vyšší)**. Toto omezení je vynucováno**na straně serveru** — každý požadavek CLI
-
-/SDK
-
-musí obsahovat jak aktivní relaci, tak placený tarif:
-
-| Stav HTTP
-
-| `error_code` | Význam | Řešení |
+| Stav HTTP | `error_code` | Význam | Řešení |
 | --- | --- | --- | --- |
 | `401` | `AUTH_REQUIRED` | Na tomto zařízení nejste přihlášeni | `chloros-cli login <email> <password>` |
-| `403` | `PLAN_UPGRADE_REQUIRED` | Přihlášeno, ale úroveň tarifu je příliš nízká (bezplatná úroveň Iron) | Upgradujte na jakýkoli placený tarif Chloros
-
-+ |
+| `403` | `PLAN_UPGRADE_REQUIRED` | Přihlášeno, ale úroveň tarifu je příliš nízká (bezplatná úroveň Iron) | Upgradujte na jakýkoli placený tarif Chloros+ |
 
 `chloros-cli status` zůstává dostupný i v bezplatném tarifu, takže si vždy můžete zkontrolovat svůj aktuální tarif a důvod, proč byl přístup odepřen.
 
@@ -77,13 +49,7 @@ Každý tarif omezuje počet kamer LATTICE a světelných senzorů DAQ, které l
 
 
 
-Přihlaste se pomocí svých přihlašovacích údajů pro Chloros
-
-+, abyste povolili zpracování přes CLI
-
-. V systému Linux
-
-(bez grafického rozhraní) je to jediný způsob, jak aktivovat licenci.
+Přihlaste se pomocí svých přihlašovacích údajů pro Chloros+, abyste povolili zpracování přes CLI. V systému Linux (bez grafického rozhraní) je to jediný způsob, jak aktivovat licenci.
 
 **Syntaxe:**
 
@@ -92,13 +58,7 @@ chloros-cli login <email> <password>
 ```
 
 {% hint style="info" %}
-**Uživatelé SDK**: Python
-
-SDK
-
-také poskytuje programovou metodu `logout()` pro vymazání přihlašovacích údajů z mezipaměti. Podrobnosti najdete v [referenční příručce SDK
-
-](reference/sdk-reference.md).
+**Uživatelé SDK**: Python SDK také poskytuje programovou metodu `logout()` pro vymazání přihlašovacích údajů z mezipaměti. Podrobnosti najdete v [referenční příručce SDK](reference/sdk-reference.md).
 {% endhint %}
 
 **Příklad:**
@@ -125,23 +85,13 @@ Uložené přihlašovací údaje a konfigurace se na **všech platformách** ukl
 | **Windows** | `%USERPROFILE%\.chloros\` |
 | **Linux** | `~/.chloros/` |
 
-Při instalaci novější verze přes stávající verzi se vaše přihlašovací údaje v systému Windows
-
-u (instalační program) a v systému Linux
-
-u (složka `.deb`, včetně `chloros-cli update`) zachovají. Odinstalování programu Chloros
-
-— nebo odstranění balíčku pro Linux
-
-— vymaže přihlašovací údaje uložené v mezipaměti, takže se po nové instalaci budete muset přihlásit znovu.
+Při instalaci novější verze přes stávající verzi se vaše přihlašovací údaje v systému Windows u (instalační program) a v systému Linux u (složka `.deb`, včetně `chloros-cli update`) zachovají. Odinstalování programu Chloros — nebo odstranění balíčku pro Linux — vymaže přihlašovací údaje uložené v mezipaměti, takže se po nové instalaci budete muset přihlásit znovu.
 
 ### Vypršení platnosti předplatného a offline lhůta
 
 Datum vypršení platnosti předplatného v grafickém uživatelském rozhraní udává, kdy vaše licence přestane platit. U opakujících se měsíčních předplatných je vypršení platnosti na konci měsíce; u ročních předplatných je to rok od zahájení předplatného.
 
-Aplikace Chloros
-
-ověřuje vaši licenci online, ale práce v režimu offline je podporována v rámci přechodného období:
+Aplikace Chloros ověřuje vaši licenci online, ale práce v režimu offline je podporována v rámci přechodného období:
 
 * Úspěšná ověření na serveru se ukládají do mezipaměti na **5 minut**, takže při běžném používání dochází k velmi malému počtu volání licence.
 * Podepsaná mezipaměť licence vázaná na konkrétní zařízení pokrývá delší období bez připojení: **30 dní u měsíčních tarifů**a**až do data vypršení platnosti předplatného (maximálně 365 dní) u ročních tarifů**.
@@ -149,13 +99,7 @@ ověřuje vaši licenci online, ale práce v režimu offline je podporována v r
 
 ### Limit zařízení
 
-Každý tarif Chloros
-
-+ nabízí odlišný počet registrovaných zařízení. Každé zařízení, na kterém se přihlásíte pomocí účtu Chloros
-
-+, se započítává do počtu vašich registrovaných zařízení. Na stránce svého účtu MAPIR
-
-Cloud můžete zařízení přejmenovat nebo odstranit.
+Každý tarif Chloros+ nabízí odlišný počet registrovaných zařízení. Každé zařízení, na kterém se přihlásíte pomocí účtu Chloros+, se započítává do počtu vašich registrovaných zařízení. Na stránce svého účtu MAPIR Cloud můžete zařízení přejmenovat nebo odstranit.
 
 <table><thead><tr><th width="168.5999755859375" align="right">Tarif Chloros</th><th align="center">COPPER</th><th align="center">BRONZE</th><th align="center">SILVER</th><th align="center">GOLD</th></tr></thead><tbody><tr><td align="right">Podporovaná zařízení</td><td align="center">2</td><td align="center">2</td><td align="center">5</td><td align="center">10</td></tr></tbody></table>
 

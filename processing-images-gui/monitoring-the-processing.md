@@ -1,10 +1,6 @@
 # Sledování zpracování
 
-Jakmile se zpracování spustí, Chloros
-
-nabízí několik způsobů, jak sledovat průběh, kontrolovat případné problémy a zjistit, co se s vaším datovým souborem děje. Na této stránce se dozvíte, jak sledovat průběh zpracování a jak interpretovat informace, které Chloros
-
-poskytuje.
+Jakmile se zpracování spustí, Chloros nabízí několik způsobů, jak sledovat průběh, kontrolovat případné problémy a zjistit, co se s vaším datovým souborem děje. Na této stránce se dozvíte, jak sledovat průběh zpracování a jak interpretovat informace, které Chloros poskytuje.
 
 ## Přehled ukazatele průběhu
 
@@ -12,9 +8,7 @@ Ukazatel průběhu v horní záhlaví zobrazuje stav zpracování v reálném č
 
 ### Ukazatel průběhu v bezplatném režimu
 
-Pro uživatele bez licence Chloros
-
-+:
+Pro uživatele bez licence Chloros+:
 
 **Zobrazení průběhu ve 2 fázích:**
 
@@ -25,13 +19,9 @@ Pro uživatele bez licence Chloros
 * Název aktuální fáze
 * Jednoduchá vizualizace v podobě vodorovného pruhu
 
-### Indikátor průběhu v Chloros
+### Indikátor průběhu v Chloros+
 
-+
-
-Pro uživatele s licencí Chloros
-
-+:
+Pro uživatele s licencí Chloros+:
 
 **Zobrazení průběhu ve 4 fázích:**
 
@@ -44,9 +34,7 @@ Pro uživatele s licencí Chloros
 * Každá fáze zobrazuje individuální průběh (0–100 %)
 
 {% hint style="info" %}
-**Parita CLI**: během běhu `chloros-cli process` hlásí stejná čtyři vlákna stavy „Detecting“, „Analyzing“, „Processing“ a „Exporting“, zatímco `chloros-cli export-status` zobrazuje v reálném čase průběh exportu vlákna 4 z jiného terminálu. Viz [Referenční příručka k CLI
-
-](../reference/cli-reference.md).
+**Parita CLI**: během běhu `chloros-cli process` hlásí stejná čtyři vlákna stavy „Detecting“, „Analyzing“, „Processing“ a „Exporting“, zatímco `chloros-cli export-status` zobrazuje v reálném čase průběh exportu vlákna 4 z jiného terminálu. Viz [Referenční příručka k CLI](../reference/cli-reference.md).
 {% endhint %}
 
 ***
@@ -61,9 +49,7 @@ Pro uživatele s licencí Chloros
 
 **Co se děje:**
 
-* Chloros
-
-prohledává obrázky, které jste označili zaškrtnutím políčka „Cíl“ (všechny obrázky, pokud není zaškrtnuto žádné)
+* Chloros prohledává obrázky, které jste označili zaškrtnutím políčka „Cíl“ (všechny obrázky, pokud není zaškrtnuto žádné)
 * Algoritmy počítačového vidění identifikují kalibrační panely
 * Z každého panelu jsou extrahovány hodnoty odrazivosti
 * Zaznamenávají se časová razítka cílů pro správné naplánování kalibrace
@@ -92,9 +78,7 @@ prohledává obrázky, které jste označili zaškrtnutím políčka „Cíl“ 
 * Čtení metadat EXIF snímků (časová razítka, nastavení expozice)
 * Stanovení kalibrační strategie na základě časových razítek cílů a dostupných dat DAQ o slunečním záření směřujícím k Zemi
 * Uspořádání fronty pro zpracování snímků
-* Příprava procesů pro paralelní zpracování (pouze Chloros
-
-+)
+* Příprava procesů pro paralelní zpracování (pouze Chloros+)
 
 **Trvání:** 5–30 sekund**Ukazatel průběhu:**
 
@@ -121,9 +105,7 @@ prohledává obrázky, které jste označili zaškrtnutím políčka „Cíl“ 
 * Zpracované snímky / Celkový počet snímků
 
 **Chování při zpracování:*** **Režim Free**: Zpracovává jeden snímek po druhém postupně
-* **Režim Chloros
-
-+**: Spouští pracovní skupinu přizpůsobenou hardwaru — 1–4 souběžné pracovní procesy na systémech s GPU (podle VRAM), jeden pracovní proces na fyzické jádro (minus jeden) na systémech pouze s CPU. Viz [Dynamická adaptace výpočtů](../processing-architecture/dynamic-compute-adaptation.md)
+* **Režim Chloros+**: Spouští pracovní skupinu přizpůsobenou hardwaru — 1–4 souběžné pracovní procesy na systémech s GPU (podle VRAM), jeden pracovní proces na fyzické jádro (minus jeden) na systémech pouze s CPU. Viz [Dynamická adaptace výpočtů](../processing-architecture/dynamic-compute-adaptation.md)
 * **Akcelerace GPU**: Výrazně urychluje tuto fázi**Na co si dát pozor:**
 
 * Plynulý postup podle počtu obrázků
@@ -169,17 +151,13 @@ v levém postranním panelu
 
 ### Vysvětlení zpráv v protokolu Řádky protokolu
 
-Chloros
-
-u mají na začátku značky v závorkách, které označují subsystém — například `[PROCESSING]`, `[RUN-SUMMARY]`, `[LATTICE-EXPORT]`, `[EXPORT-CHECK]`, `[IMPORT-LEVEL]`. Nejdůležitější je znát **souhrn běhu**, který se zobrazuje na konci každého běhu (včetně zastavených běhů):
+Chloros u mají na začátku značky v závorkách, které označují subsystém — například `[PROCESSING]`, `[RUN-SUMMARY]`, `[LATTICE-EXPORT]`, `[EXPORT-CHECK]`, `[IMPORT-LEVEL]`. Nejdůležitější je znát **souhrn běhu**, který se zobrazuje na konci každého běhu (včetně zastavených běhů):
 
 ```
 [RUN-SUMMARY] 49 image(s) in 2 camera group(s); 4 target(s) detected; 45 image(s) calibrated; 180 file(s) written.
 ```
 
-Další řádky s tipy `[RUN-SUMMARY]` následují vždy, když je třeba něco vysvětlit — například běh, který nic nevytvořil, nebo kamera, jejíž požadovaný výstup byl vynechán jako nepoužitelný. Řádky `[EXPORT-CHECK]` vysvětlují vynechání u jednotlivých kamer (např. proč kamera RGB
-
-nezískala žádný výstup radiance).
+Další řádky s tipy `[RUN-SUMMARY]` následují vždy, když je třeba něco vysvětlit — například běh, který nic nevytvořil, nebo kamera, jejíž požadovaný výstup byl vynechán jako nepoužitelný. Řádky `[EXPORT-CHECK]` vysvětlují vynechání u jednotlivých kamer (např. proč kamera RGB nezískala žádný výstup radiance).
 
 Obecné úrovně závažnosti zpráv (níže uvedené příklady jsou ilustrativní, nikoli doslovné):
 
@@ -193,9 +171,7 @@ Nekritické problémy, které nezastaví zpracování — např. chybějící GP
 
 **Akce:** Zkontrolujte varování po dokončení zpracování, ale nepřerušujte ho
 
-#### Chybové zprávy (červené – Red
-
-)
+#### Chybové zprávy (červené – Red)
 
 Kritické problémy, které mohou způsobit selhání zpracování — např. zaplněný disk, poškozený obrazový soubor nebo nezjištění žádných cílů při požadavku na kalibraci odrazivosti.
 
@@ -210,17 +186,9 @@ Kritické problémy, které mohou způsobit selhání zpracování — např. za
 | Nebyly nalezeny žádné cíle                      | Nebyly detekovány žádné kalibrační cíle               | Označte obrázky cílů nebo deaktivujte kalibraci odrazivosti |
 | Nedostatek místa na disku               | Nedostatek úložného prostoru pro výstup                 | Uvolněte místo na disku                                    |
 | Přeskočení poškozeného souboru               | Obrazový soubor je poškozen                         | Znovu zkopírujte soubor z SD karty                             |
-| `[IMPORT-LEVEL] Skipping ... no raw source` | Snímání bez surového snímku nelze zpracovat | Proveďte nové snímání se surovým snímkem, nebo použijte CLI
-
-`--input-level`  |
+| `[IMPORT-LEVEL] Skipping ... no raw source` | Snímání bez surového snímku nelze zpracovat | Proveďte nové snímání se surovým snímkem, nebo použijte CLI `--input-level`  |
 | `[RUN-SUMMARY] ... 0 file(s) written` | Spuštění nevytvořilo žádné obrazové výstupy — hlášeno jako selhání s nápovědou | Přečtěte si řádky s nápovědou; zkontrolujte, co bylo přeskočeno a proč |
-| `[PROCESS] refused: The project folder is too deep for this computer…` | Dlouhé cesty v systému Windows
-
-jsou vypnuté a složka projektu je příliš hluboko pro limit 260 znaků v cestě; nic nebylo zpracováno | Použijte kratší složku projektu (zpráva uvádí nejdelší možnou cestu, která se vejde), nebo zapněte dlouhé cesty ve Windows
-
-u a restartujte Chloros
-
-— viz [Spuštění zpracování](starting-the-processing.md#the-project-folder-is-too-deep-for-this-computer) |
+| `[PROCESS] refused: The project folder is too deep for this computer…` | Dlouhé cesty v systému Windows jsou vypnuté a složka projektu je příliš hluboko pro limit 260 znaků v cestě; nic nebylo zpracováno | Použijte kratší složku projektu (zpráva uvádí nejdelší možnou cestu, která se vejde), nebo zapněte dlouhé cesty ve Windows u a restartujte Chloros — viz [Spuštění zpracování](starting-the-processing.md#the-project-folder-is-too-deep-for-this-computer) |
 | `[unmix-clamp-mask] …` | Nelze zapsat masku clamp produktu LATTICE; samotný produkt je v pořádku a hlásí `Chloros:UnmixClampMask=unavailable` | Zkontrolujte místo na disku a oprávnění ke složce, poté proveďte zpracování znovu, pokud masku potřebujete |
 
 ### Kopírování dat protokolu
@@ -236,26 +204,14 @@ Chcete-li zkopírovat protokol pro účely řešení problémů nebo technické 
 
 ### Nahlášení chyby z karty protokolu
 
-Novinka ve verzi 1.3.0: ikona chyby (**Nahlásit chybu**) v horní části karty Debug Log odešle hlášení přímo do MAPIR
-
-.
+Novinka ve verzi 1.3.0: ikona chyby (**Nahlásit chybu**) v horní části karty Debug Log odešle hlášení přímo do MAPIR.
 
 1. Klikněte na ikonu chyby v horní části karty Debug Log
 2. Popište problém: co jste dělali, co jste očekávali a co se místo toho stalo (povinné)
 3. Volitelně zaškrtněte **Přidat několik obrázků (až 10)**a vyberte obrázky z otevřeného projektu, nebo použijte**Procházet...** pro jakýkoli jiný obrazový soubor
 4. Klikněte na **Odeslat**
 
-Zpráva obsahuje váš popis, všechny přiložené obrázky, protokoly Chloros
-
-a podrobnosti o systému (verze Chloros
-
-, operační systém, GPU a nastavení projektu). Abyste mohli zprávu odeslat, musíte být přihlášeni do Chloros
-
-(karta „User“). Během odesílání můžete okno zavřít; po dokončení se do protokolu zapíše odkaz, například `Bug report sent. Reference: BR-…` – uveďte jej, když budete kontaktovat MAPIR
-
-. Pokud nelze zprávu odeslat (například kvůli chybějícímu připojení k internetu), Chloros
-
-ji uloží do vašeho počítače a zobrazí cestu k ní, abyste ji mohli odeslat e-mailem na adresu support@mapir.camera.
+Zpráva obsahuje váš popis, všechny přiložené obrázky, protokoly Chloros a podrobnosti o systému (verze Chloros, operační systém, GPU a nastavení projektu). Abyste mohli zprávu odeslat, musíte být přihlášeni do Chloros (karta „User“). Během odesílání můžete okno zavřít; po dokončení se do protokolu zapíše odkaz, například `Bug report sent. Reference: BR-…` – uveďte jej, když budete kontaktovat MAPIR. Pokud nelze zprávu odeslat (například kvůli chybějícímu připojení k internetu), Chloros ji uloží do vašeho počítače a zobrazí cestu k ní, abyste ji mohli odeslat e-mailem na adresu support@mapir.camera.
 
 ***
 
@@ -269,33 +225,25 @@ ji uloží do vašeho počítače a zobrazí cestu k ní, abyste ji mohli odesla
 * Ostatní jádra jsou nečinná nebo k dispozici
 * Systém zůstává odezvu
 
-**Paralelní režim Chloros
-
-+:**
+**Paralelní režim Chloros+:**
 
 * Vysoké využití více jader — počet závisí na strategii zvolené v [Dynamic Compute Adaptation](../processing-architecture/dynamic-compute-adaptation.md)
 * Systém může působit méně odezvě
 
 **Jak sledovat:**
 
-* Správce úloh systému Windows
-
-(Ctrl+Shift+Esc)
+* Správce úloh systému Windows (Ctrl+Shift+Esc)
 * Karta Výkon → sekce CPU
-* Hledejte procesy „Chloros
-
-“ nebo „chloros-backend“
+* Hledejte procesy „Chloros “ nebo „chloros-backend“
 
 ### Využití paměti (RAM)
 
 **Typické využití:**
 
-* Malé projekty (&lt; 100 obrázků): 2–4 GB
+* Malé projekty (< 100 obrázků): 2–4 GB
 * Střední projekty (100–500 obrázků): 4–8 GB
 * Velké projekty (500 a více obrázků): 8–16 GB
-* Paralelní režim Chloros
-
-+ spotřebovává více paměti RAM
+* Paralelní režim Chloros+ spotřebovává více paměti RAM
 
 **Pokud je paměť nedostatečná:**
 
@@ -303,9 +251,7 @@ ji uloží do vašeho počítače a zobrazí cestu k ní, abyste ji mohli odesla
 * Ukončete ostatní aplikace
 * Pokud pravidelně zpracováváte velké datové sady, navýšte kapacitu RAM
 
-### Využití GPU (Chloros
-
-+ s CUDA)
+### Využití GPU (Chloros+ s CUDA)
 
 Je-li povoleno akcelerace GPU:
 
@@ -343,11 +289,7 @@ Je-li povoleno akcelerace GPU:
 
 * Zkontrolujte, zda v ladicím protokolu nejsou chyby
 * Ověřte, zda je k dispozici dostatek místa na disku
-* V Správci úloh zkontrolujte, zda běží Chloros
-
-
-
-**Často se zobrazují chybové zprávy:**
+* V Správci úloh zkontrolujte, zda běží Chloros **Často se zobrazují chybové zprávy:**
 
 * Zastavte zpracování a zkontrolujte chyby
 * Časté příčiny: nedostatek místa na disku, poškozené soubory, problémy s pamětí
@@ -355,9 +297,7 @@ Je-li povoleno akcelerace GPU:
 
 **Systém přestane reagovat:**
 
-* Paralelní režim Chloros
-
-u+ spotřebovává příliš mnoho zdrojů
+* Paralelní režim Chloros u+ spotřebovává příliš mnoho zdrojů
 * Zvažte snížení počtu souběžných úloh nebo upgrade hardwaru
 * Režim Free je méně náročný na zdroje
 
@@ -396,9 +336,7 @@ Zastavte zpracování, pokud se objeví:
 
 1. Pokud se proces právě spustil a je ve fázi detekce: Zastavte ho, označte cíle a restartujte
 2. Pro budoucnost: Používejte SSD, snižte počet indexů, vylepšete hardware
-3. Zvažte použití příkazového řádku (CLI
-
-) pro dávkové zpracování velkých datových sad
+3. Zvažte použití příkazového řádku (CLI) pro dávkové zpracování velkých datových sad
 
 ### Varování „Místo na disku“
 
@@ -408,9 +346,7 @@ Zastavte zpracování, pokud se objeví:
 2. Přesuňte projekt na disk s větším prostorem
 3. Snižte počet indexů k exportu
 4. Deaktivujte exportní produkty LATTICE, které nepotřebujete (Nastavení projektu → Zpracování)
-5. Používejte formát JPG místo TIFF
-
-u (menší soubory)
+5. Používejte formát JPG místo TIFF u (menší soubory)
 
 ### Časté zprávy o „poškozených souborech“
 
@@ -427,9 +363,7 @@ u (menší soubory)
 
 1. Zajistěte dostatečné větrání
 2. Odstraňte prach z ventilačních otvorů počítače
-3. Snižte zátěž při zpracování (použijte režim „Free“ namísto „Chloros
-
-+“)
+3. Snižte zátěž při zpracování (použijte režim „Free“ namísto „Chloros+“)
 4. Zpracovávejte v chladnějších částech dne
 
 ***

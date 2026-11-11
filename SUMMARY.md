@@ -66,7 +66,7 @@
 * [Dynamická adaptace výpočetního výkonu](processing-architecture/dynamic-compute-adaptation.md)
 * [Zpracovací pipeline](processing-architecture/processing-pipeline.md)
 
-## Odkazy (CLI &amp; SDK)
+## Odkazy (CLI & SDK)
 
 * [Chloros CLI Reference](reference/cli-reference.md)
 * [Chloros Python SDK Reference](reference/sdk-reference.md)

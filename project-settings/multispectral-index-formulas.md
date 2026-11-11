@@ -163,7 +163,7 @@ $$
 
 V grafickém uživatelském rozhraní (GUI) a v seznamu předvoleb CLI/SDK se jedná o symbolový vzorec `(z/y)*(x/y)`, kde x = Red, y = Green, z = NIR (pásma kamery typu RGN); předvolba indexového modulu LATTICE je `nir * red / green**2`. Každý povrch vypočítává stejný index.
 
-_Odkaz: Vincini, M., E. Frazzi a P. D&#x27;Alessio. „A Broad-Band Leaf Chlorophyll Vegetation Index at the Canopy Scale.“ Precision Agriculture 9 (2008): 303–319._
+_Odkaz: Vincini, M., E. Frazzi a P. D'Alessio. „A Broad-Band Leaf Chlorophyll Vegetation Index at the Canopy Scale.“ Precision Agriculture 9 (2008): 303–319._
 
 ***
 
@@ -205,7 +205,7 @@ $$
 
 Lesnaté oblasti budou mít nižší hodnoty FCI1 kvůli nižší odrazivosti stromů a přítomnosti stínů v korunách stromů.
 
-_Odkaz: Becker, Sarah J., Craig S.T. Daughtry a Andrew L. Russ. „Robustní indexy lesního porostu pro multispektrální snímky.“ Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505–512._
+_Odkaz: Becker, Sarah J., Craig S.T. Daughtry a Andrew L. Russ. „Robustní indexy lesního porostu pro multispektrální snímky.“ Photogrammetric Engineering & Remote Sensing 84.8 (2018): 505–512._
 
 ***
 
@@ -221,7 +221,7 @@ $$
 
 Lesnaté oblasti budou mít nižší hodnoty FCI2 kvůli nižší odrazivosti stromů a přítomnosti stínů v korunách stromů.
 
-_Odkaz: Becker, Sarah J., Craig S.T. Daughtry a Andrew L. Russ. „Robustní indexy lesního porostu pro multispektrální snímky.“ Photogrammetric Engineering &amp; Remote Sensing 84.8 (2018): 505–512._
+_Odkaz: Becker, Sarah J., Craig S.T. Daughtry a Andrew L. Russ. „Robustní indexy lesního porostu pro multispektrální snímky.“ Photogrammetric Engineering & Remote Sensing 84.8 (2018): 505–512._
 
 ***
 
@@ -487,7 +487,7 @@ $$
 TDVI = 1.5 * {(NIR- Red) \over \sqrt{NIR^{2} + Red + 0.5}  }
 $$
 
-_Odkaz: Bannari, A., H. Asalhi a P. Teillet. „Transformovaný rozdílový vegetační index (TDVI) pro mapování vegetačního pokryvu“ In Sborník z sympozia o geovědách a dálkovém průzkumu Země, IGARSS &#x27;02, IEEE International, svazek 5 (2002)._
+_Odkaz: Bannari, A., H. Asalhi a P. Teillet. „Transformovaný rozdílový vegetační index (TDVI) pro mapování vegetačního pokryvu“ In Sborník z sympozia o geovědách a dálkovém průzkumu Země, IGARSS '02, IEEE International, svazek 5 (2002)._
 
 ***
 
