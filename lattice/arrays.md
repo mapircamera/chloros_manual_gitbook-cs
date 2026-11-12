@@ -200,7 +200,7 @@ Zobrazení fps dlaždice pole také informuje o stavu streamu:**„Aplikuji nast
 Užitečné informace o kombinovaném režimu:
 
 * Kompozit je zarovnán k snímku **hlavní**kamery. Zaměření AE-ROI a bodové měření expozice na kompozitu jsou přesné pro hlavní kameru a přibližné pro podřízené kamery; použijte**Split View** (nastavení pole → „Zobrazit členské kamery“) pro dlaždice s pixelovou přesností pro každou kameru, aniž byste museli otevírat další připojení kamer.
-* ****Zobrazit vrstvy**(nastavení pole; výchozí nastavení vypnuto) umožňuje vybrat vrstvu v popředí a na pozadí — libovolnou členskou kameru nebo**Index**. Pokud je v popředí nastaveno**Index**, pixely mimo rozsah LUT Min/Max zobrazují vrstvu na pozadí.
+* **Zobrazit vrstvy** (nastavení pole; výchozí nastavení vypnuto) umožňuje vybrat vrstvu v popředí a na pozadí — libovolnou členskou kameru nebo**Index**. Pokud je v popředí nastaveno**Index**, pixely mimo rozsah LUT Min/Max zobrazují vrstvu na pozadí.
 * **Rozlišení renderování** (výchozí 720p) nastavuje výšku živého přenosu *a* velikost exportovaného kompozitu. Obrázky jednotlivých kamer se vždy exportují v plném rozlišení.
 * Zarovnání se počítá pro každou relaci a nikdy se neukládá. Chloros **automaticky zarovná každou matici po připojení, v obou režimech zobrazení**, jakmile se ustálí automatická expozice členů (pokouší se o to až 5 minut). Sekce**Zarovnání**v panelu nastavení pole zobrazuje zbytkové hodnoty RMS a tlačítko**Pře kalibrovat zarovnání** — a to i pro samostatná pole, která nemají kompozitní dlaždici.
 

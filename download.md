@@ -262,10 +262,15 @@ u 1.3.0** na stránce [Začínáme](./).**Verze 1.2.0**— viz**Co je nového v 
 
 **Datum vydání: 10. února 2026**
 
-**Nové funkce*** **Metoda debayeringu s ohledem na textury \[pouze Chloros+] –** Metoda s ohledem na textury využívá vysoce kvalitní debayering s ohledem na hrany v kombinaci s modelem odšumování založeným na AI/ML, který odstraňuje téměř veškerý šum vznikající při debayeringu.
-* **Podpora kalibračních terčů T4P*** **Rychlejší zpracování na GPU v Chloros+, lepší správa paměti**
+**Nové funkce**
 
-**Opravy chyb*** Zcela nové uživatelské rozhraní (GUI), které by nyní mělo fungovat na všech počítačích s operačním systémem Windows.
+* **Metoda debayeringu s ohledem na textury \[pouze Chloros+] –** Metoda s ohledem na textury využívá vysoce kvalitní debayering s ohledem na hrany v kombinaci s modelem odšumování založeným na AI/ML, který odstraňuje téměř veškerý šum vznikající při debayeringu.
+* **Podpora kalibračních terčů T4P**
+* **Rychlejší zpracování na GPU v Chloros+, lepší správa paměti**
+
+**Opravy chyb**
+
+* Zcela nové uživatelské rozhraní (GUI), které by nyní mělo fungovat na všech počítačích s operačním systémem Windows.
 
 </details>
 
@@ -275,14 +280,18 @@ u 1.3.0** na stránce [Začínáme](./).**Verze 1.2.0**— viz**Co je nového v 
 
 **Datum vydání: 5. ledna 2026**
 
-**Nové funkce*** **Přepínání mezi obrázky a metadaty**: Do prohlížeče souborů bylo přidáno přepínání, které umožňuje zobrazit metadata vybraného obrázku v tabulce namísto mřížky obrázků
+**Nové funkce**
+
+* **Přepínání mezi obrázky a metadaty**: Do prohlížeče souborů bylo přidáno přepínání, které umožňuje zobrazit metadata vybraného obrázku v tabulce namísto mřížky obrázků
 * **Posuvník pro změnu měřítka mřížky obrázků**: Nový posuvník v uživatelském rozhraní pro úpravu velikosti miniatur (podporuje také klávesovou zkratku CTRL + kolečko myši)
 * **Tlačítka pro export mřížky obrázků**: Tlačítka v horním řádku pro přepnutí miniatur z formátu JPG na zpracované výstupy (Targets, Reflectance, Index, LUT)
 * **Záložka Mapa**: Nová interaktivní 2D mapa zobrazující značky GPS polohy obrázků
   * Podporuje mapové dlaždice Google Maps a ESRI (automaticky vybírá nejlepší službu dlaždic na základě dostupnosti úrovně přiblížení)
   * Náhled miniatury při najetí myší na značky na mapě
 
-**Opravy chyb*** Vylepšená podpora instalace aplikace Chloros na počítačích s jiným než anglickým jazykem
+**Opravy chyb**
+
+* Vylepšená podpora instalace aplikace Chloros na počítačích s jiným než anglickým jazykem
 
 </details>
 
@@ -292,13 +301,21 @@ u 1.3.0** na stránce [Začínáme](./).**Verze 1.2.0**— viz**Co je nového v 
 
 **Datum vydání: 20. prosince 2025**
 
-**Nové funkce*** První vydání
+**Nové funkce**
 
-**Vylepšení*** První vydání
+* První vydání
 
-**Opravy chyb*** První vydání
+**Vylepšení**
 
-**Známé problémy*** První vydání
+* První vydání
+
+**Opravy chyb**
+
+* První vydání
+
+**Známé problémy**
+
+* První vydání
 
 </details>
 

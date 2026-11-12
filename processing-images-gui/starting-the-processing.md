@@ -79,7 +79,11 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 1. **Detekce** (vlákno 1) – Vyhledávání kalibračních cílů
 2. **Analýza** (vlákno 2) – Prozkoumání metadat obrázku a výpočet kalibrace
 3. **Kalibrace** (vlákno 3) – Odstranění bayesovského efektu, korekce vinětace, kalibrace, výpočet indexu
-4. **Export** (vlákno 4) – Uložení zpracovaných obrázků a indexů**Interakce s ukazatelem průběhu:*** **Přejděte myší** nad ukazatel a zobrazí se podrobný rozbalovací panel se 4 fázemi
+4. **Export** (vlákno 4) – Uložení zpracovaných obrázků a indexů
+
+**Interakce s ukazatelem průběhu:**
+
+* **Přejděte myší** nad ukazatel a zobrazí se podrobný rozbalovací panel se 4 fázemi
 * **Kliknutím** na ukazatel průběhu panel zafixujete na místě
 * **Dalším kliknutím** panel uvolníte a skryjete**Doba zpracování:**
 
@@ -117,7 +121,9 @@ Chloros pracuje ve dvou různých režimech zpracování v závislosti na vaší
 
 ### Fáze 3: Kalibrace
 
-**Co Chloros dělá:*** **Korekce vinětace**: Odstraňuje ztmavnutí okrajů způsobené objektivem
+**Co Chloros dělá:**
+
+* **Korekce vinětace**: Odstraňuje ztmavnutí okrajů způsobené objektivem
 * **Kalibrace odrazivosti**: Normalizuje pomocí cílových hodnot odrazivosti a/nebo dat o slunečním záření z DAQ
 * Aplikuje korekce napříč všemi pásmy/kanály
 * Používá pro každý snímek vhodnou kalibrační referenci na základě časového razítka

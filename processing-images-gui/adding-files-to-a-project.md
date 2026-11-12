@@ -57,7 +57,11 @@ output/
 └── *.daq          the downwelling reading matched to the capture
 ```
 
-**Nastavte možnost „Přidat složku“ na kořenový adresář snímků** (`output/` výše). Pokud vybraná složka sama o sobě neobsahuje žádné obrázky, ale má podsložky, Chloros do nich automaticky sestoupí — podsložky dané úrovně i kořenová složka `.daq` jsou načteny najednou.**Jak se snímky importují:*** Každý snímek se importuje jako **jediný obrázek**, seskupený podle snímku (ne jeden záznam na úroveň). Ostatní úrovně téhož snímku se zobrazují jako režimy zobrazení tohoto jediného obrázku.
+**Nastavte možnost „Přidat složku“ na kořenový adresář snímků** (`output/` výše). Pokud vybraná složka sama o sobě neobsahuje žádné obrázky, ale má podsložky, Chloros do nich automaticky sestoupí — podsložky dané úrovně i kořenová složka `.daq` jsou načteny najednou.
+
+**Jak se snímky importují:**
+
+* Každý snímek se importuje jako **jediný obrázek**, seskupený podle snímku (ne jeden záznam na úroveň). Ostatní úrovně téhož snímku se zobrazují jako režimy zobrazení tohoto jediného obrázku.
 * **Zpracování vždy začíná od surového snímku.** Ostatní úrovně jsou viditelné, ale do zpracovatelského řetězce se vždy dostane pouze `raw` — opětovné zpracování již zpracovaného produktu by znamenalo dvojí použití korekcí, což Chloros odmítá. Znovu importovaný export nemůže nikdy obsadit slot pro surový snímek.
 * Složka se snímky uložená **bez** surových snímků se importuje a zobrazuje normálně, ale zpracování ji přeskočí a tuto skutečnost zaznamená do protokolu. (Příkazový řádek CLI s příznakem `--input-level` může v tomto případě vynutit vstupní bod — viz [Referenční příručka CLI](../reference/cli-reference.md#what-a-captures-folder-looks-like).)
 * Od verze 1.3.0 může složka snímků obsahovat také složku `clamp_masks/` (masky na úrovni jednotlivých pixelů pro úrovně radiance a odrazivosti — viz [Formáty výstupních obrázků](../output-image-formats.md#clamp-masks)). Masky nejsou obrázky scény a Chloros je při importu přeskočí, ať se nacházejí kdekoli.
@@ -91,7 +95,8 @@ Jakmile jsou snímky importovány, zobrazí se v tabulce s následujícími slou
 ### Sloupec cílů (zaškrtávací políčko)
 
 * Toto políčko zaškrtněte u snímků, které obsahují kalibrační cíle
-* Je-li zaškrtnut alespoň jeden snímek, **jsou pro vyhledání cílů prohledávány pouze zaškrtnuté snímky*** Podrobnosti najdete v části [Výběr snímků s cíli](choosing-target-images.md)
+* Je-li zaškrtnut alespoň jeden snímek, **jsou pro vyhledání cílů prohledávány pouze zaškrtnuté snímky**
+* Podrobnosti najdete v části [Výběr snímků s cíli](choosing-target-images.md)
 
 ### Zobrazení metadat snímků
 

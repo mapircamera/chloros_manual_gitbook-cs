@@ -28,7 +28,11 @@ Pro uživatele s licencí Chloros+:
 1.**Detekce** – Vyhledávání kalibračních cílů
 2. **Analýza** – Prozkoumání snímků a příprava zpracovatelského řetězce
 3. **Kalibrace** – Aplikace korekcí vinětace a odrazivosti
-4. **Export** – Uložení zpracovaných souborů**Interaktivní funkce:*** **Přejděte kurzorem myši** nad ukazatel průběhu a zobrazte rozbalený panel se 4 fázemi
+4. **Export** – Uložení zpracovaných souborů
+
+**Interaktivní funkce:**
+
+* **Přejděte kurzorem myši** nad ukazatel průběhu a zobrazte rozbalený panel se 4 fázemi
 * **Kliknutím** na ukazatel průběhu rozbalený panel zafixujete
 * **Klikněte znovu** pro uvolnění a automatické skrytí při odjetí myši
 * Každá fáze zobrazuje individuální průběh (0–100 %)
@@ -92,7 +96,9 @@ Pro uživatele s licencí Chloros+:
 
 ### Fáze 3: Kalibrace
 
-**Co se děje:*** **Debayering**: Převod RAW vzoru Bayer na 3 kanály (u monochromatických modulů LATTICE se tento krok přeskočí, s poznámkou)
+**Co se děje:**
+
+* **Debayering**: Převod RAW vzoru Bayer na 3 kanály (u monochromatických modulů LATTICE se tento krok přeskočí, s poznámkou)
 * **Korekce vinětace**: Odstranění ztmavnutí okrajů objektivu
 * **Kalibrace odrazivosti**: Normalizace podle cílových hodnot a/nebo sestupného toku dat (DAQ downwelling)
 * **Výpočet indexů**: Výpočet multispektrálních indexů
@@ -104,7 +110,9 @@ Pro uživatele s licencí Chloros+:
 * Právě se zpracovává snímek
 * Zpracované snímky / Celkový počet snímků
 
-**Chování při zpracování:*** **Režim Free**: Zpracovává jeden snímek po druhém postupně
+**Chování při zpracování:**
+
+* **Režim Free**: Zpracovává jeden snímek po druhém postupně
 * **Režim Chloros+**: Spouští pracovní skupinu přizpůsobenou hardwaru — 1–4 souběžné pracovní procesy na systémech s GPU (podle VRAM), jeden pracovní proces na fyzické jádro (minus jeden) na systémech pouze s CPU. Viz [Dynamická adaptace výpočtů](../processing-architecture/dynamic-compute-adaptation.md)
 * **Akcelerace GPU**: Výrazně urychluje tuto fázi**Na co si dát pozor:**
 

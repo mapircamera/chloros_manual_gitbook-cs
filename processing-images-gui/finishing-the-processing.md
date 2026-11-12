@@ -82,7 +82,9 @@ Nepočítejte podle vzorce — počet výstupů závisí na tom, které produkty
 
 ### Náhled v externích prohlížečích obrázků
 
-**Doporučené prohlížeče:*** **QGIS** – bezplatný GIS software (nejlepší pro georeferencovanou multispektrální analýzu)
+**Doporučené prohlížeče:**
+
+* **QGIS** – bezplatný GIS software (nejlepší pro georeferencovanou multispektrální analýzu)
 * **IrfanView** – rychlý a nenáročný prohlížeč obrázků (podporuje formát TIFF)
 * **Adobe Photoshop** – profesionální úpravy (podpora formátu TIFF)
 * **GIMP** – bezplatná alternativa k programu Photoshop
@@ -226,7 +228,9 @@ Chcete-li si uchovat záznam o zpracování nebo jej odeslat technické podpoře
 
 ### Problém: Hodnoty NDVI se zdají nesprávné
 
-**Očekávané rozsahy hodnot NDVI:*** **Voda, skály, půda**: -0,1 až 0,2
+**Očekávané rozsahy hodnot NDVI:**
+
+* **Voda, skály, půda**: -0,1 až 0,2
 * **Řídká/nezdravá vegetace**: 0,2 až 0,4
 * **Středně hustá vegetace**: 0,4 až 0,6
 * **Zdravá, hustá vegetace**: 0,6 až 0,9**Pokud hodnoty leží mimo tyto rozsahy:**
@@ -280,12 +284,18 @@ Chcete-li si uchovat záznam o zpracování nebo jej odeslat technické podpoře
 
 ### Doporučená strategie zálohování
 
-**Co ukládat:*** ✅ **Původní snímky ve formátu RAW/JPG nebo surové záznamy LATTICE** – archivujte na samostatném disku/v cloudu; surové údaje jsou zdrojem pro zpracování a vše ostatní lze z nich znovu vygenerovat
+**Co ukládat:**
+
+* ✅ **Původní snímky ve formátu RAW/JPG nebo surové záznamy LATTICE** – archivujte na samostatném disku/v cloudu; surové údaje jsou zdrojem pro zpracování a vše ostatní lze z nich znovu vygenerovat
 * ✅ **Soubory ze světelných senzorů `.daq` / `.csv`** – Potřebné pro pozdější opětovný výpočet odrazivosti
 * ✅ **Zpracované výstupy** – Uchovejte kalibrované snímky a indexy
 * ✅ **Projektová složka** (`project.json` a související soubory) – Obsahuje všechna nastavení pro případné opětovné zpracování
 * ✅ **Log ladění** – Dokumentuje podrobnosti zpracování
-* ✅ **Snímky kalibračních terčů** – Pro ověření a opětovné zpracování**Doporučení pro ukládání:*** **Okamžitá záloha**: Externí pevný disk
+* ✅ **Snímky kalibračních terčů** – Pro ověření a opětovné zpracování
+
+**Doporučení pro ukládání:**
+
+* **Okamžitá záloha**: Externí pevný disk
 * **Dlouhodobý archiv**: Cloudové úložiště (Google Drive, Dropbox atd.)
 * **Kritická data**: Uchovejte 2–3 kopie na různých místech***
 

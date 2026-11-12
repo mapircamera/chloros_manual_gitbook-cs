@@ -21,9 +21,9 @@ Zpracovací pipeline také přijímá vstupní soubory formátu `.dng`.
 
 ```
 <sensor>-<lens>-F<filter>        e.g.  M3C-L41-FRGN,  M3M-L87-F550
-```. Aplikace
+```
 
-Chloros ji zobrazuje s předponou `LATT-` (například `LATT-M3M-L41-F550`), a tento řetězec modelu řídí vše, co následuje – profil snímače, rozložení pásem a kalibrace se řeší automaticky; není třeba nic konfigurovat pro jednotlivé kamery. Číslo objektivu udává **horizontální zorné pole ve stupních**: `L41` = úzké 41°, `L87` = široké 87°.
+Aplikace Chloros ji zobrazuje s předponou `LATT-` (například `LATT-M3M-L41-F550`), a tento řetězec modelu řídí vše, co následuje – profil snímače, rozložení pásem a kalibrace se řeší automaticky; není třeba nic konfigurovat pro jednotlivé kamery. Číslo objektivu udává **horizontální zorné pole ve stupních**: `L41` = úzké 41°, `L87` = široké 87°.
 
 Existují dvě konfigurace snímače:
 

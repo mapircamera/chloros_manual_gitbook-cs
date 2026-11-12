@@ -44,7 +44,9 @@ Panel Nastavení projektu je rozdělen do níže uvedených sekcí. Dvě další
 
 Určuje, jak Chloros identifikuje kalibrační cíle ve vašich snímcích.
 
-**Klíčová nastavení:*** **Minimální plocha kalibračního vzorku (px)**: Prahová hodnota velikosti pro detekci cílů (výchozí:**25**, rozsah 0–10 000)
+**Klíčová nastavení:**
+
+* **Minimální plocha kalibračního vzorku (px)**: Prahová hodnota velikosti pro detekci cílů (výchozí:**25**, rozsah 0–10 000)
 * **Minimální shlukování cílů (0–100)**: Prahová hodnota podobnosti pro seskupování oblastí cílů (výchozí:**60**)**Kdy upravit:**
 
 * Zvětšete vzorkovou plochu, pokud dochází k falešným detekcím
@@ -59,19 +61,26 @@ Tato nastavení jsou zašedlá, pokud je vypnutá **kalibrace odrazivosti / vyv�
 
 Hlavní možnosti zpracování snímků a kalibrace.
 
-**Klíčová nastavení:*** **Korekce vinětace**: Kompenzuje ztmavnutí okrajů objektivu ✅ Doporučeno
+**Klíčová nastavení:**
+
+* **Korekce vinětace**: Kompenzuje ztmavnutí okrajů objektivu ✅ Doporučeno
 * **Kalibrace odrazivosti / vyvážení bílé**: Kalibruje snímky pomocí detekovaných cílů (program Survey3) a/nebo dat světelného senzoru DAQ (LATTICE) ✅ Doporučeno
 * **Metoda debayeringu**: Algoritmus pro převod formátu RAW na tříkanálový multispektrální formát
 * **Minimální interval rekalibrace**: Minimální čas v sekundách mezi použitím kalibračního cíle (výchozí:**0** = použít všechny, rozsah 0–3600)**Nekalibrované náhradní výstupy:**Pokud nelze u snímku provést kalibraci odrazivosti (není k dispozici žádný cíl nebo je kalibrace deaktivována), je exportován jako jeden ze dvou náhradních výstupů —**z této dvojice existuje přesně jeden na jeden běh**, vybraný přepínačem korekce vinětace:
 
-* **Exportovat odezvu snímače**: zapíše `Sensor_Response_Images` — používá se, když je korekce vinětace**vypnutá*** **Export s korekcí vinětace**: zapíše `Vignette_Corrected_Images` — používá se, když je korekce vinětace**zapnutá**Zaškrtávací políčko, které není aktivní, je šedé. Odškrtnutím aktivního políčka se zápis daného souboru zcela zastaví.**Výstupní soubory LATTICE** (zobrazují se u každého projektu; vztahují se na snímky pořízené systémem LATTICE):
+* **Exportovat odezvu snímače**: zapíše `Sensor_Response_Images` — používá se, když je korekce vinětace**vypnutá**
+* **Export s korekcí vinětace**: zapíše `Vignette_Corrected_Images` — používá se, když je korekce vinětace**zapnutá**Zaškrtávací políčko, které není aktivní, je šedé. Odškrtnutím aktivního políčka se zápis daného souboru zcela zastaví.**Výstupní soubory LATTICE** (zobrazují se u každého projektu; vztahují se na snímky pořízené systémem LATTICE):
 
 * **Exportovat s odstraněným bayesovým filtrem**: lineární obraz po odstranění mozaiky (`Debayered_Images`): odstraněn tmavý offset kalibračního balíčku, následně provedeno odstranění mozaiky, bez plochého pole ani odmíchání — stejný soubor, jaký záznam ukládá na úrovni po odstranění mozaiky — v nativní orientaci snímače. Platí pro RGB a multispektrální moduly.
 * **Export náhledu**: náhled na displeji (`Preview_Images`). RGB = vyvážení bílé (DAQ-illuminant, je-li k dispozici, jinak gray-world) + gama; multispektrální = roztažení falešných barev.
 * **Export radiance**: spektrální radiance typu float32 (`Radiance_Images`, W/m²/sr/nm). Pouze multispektrální moduly – nevztahuje se na RGB mastery.
 * **Export odrazivosti**: odrazivost typu uint16 (`Reflectance_Calibrated_Images`, DN 32768 = ρ 1,0), pokud snímek pokrývá hodnota `.daq` pro sestupující záření nebo cíl v rámci snímku. Pouze multispektrální moduly.
 
-Všechny čtyři jsou **ve výchozím nastavení zapnuté**— jeden importovaný surový snímek LATTICE se v jediném cyklu zpracování rozdělí do všech povolených a použitelných produktů. Zaškrtávací políčko**Exportovat odrazivost** je zašedlé, pokud je kalibrace odrazivosti vypnutá. Nastavení, která nelze provést kvůli nastavení nadřazeného přepínače, jsou vždy zašedlá a obsahují popisek s názvem přepínače, který je třeba změnit.**Pokročilá nastavení:*** **Časový posun světelného senzoru**: Počet hodin od UTC pro synchronizaci času světelného senzoru (výchozí: 0, rozsah −12 až +12)
+Všechny čtyři jsou **ve výchozím nastavení zapnuté**— jeden importovaný surový snímek LATTICE se v jediném cyklu zpracování rozdělí do všech povolených a použitelných produktů. Zaškrtávací políčko**Exportovat odrazivost** je zašedlé, pokud je kalibrace odrazivosti vypnutá. Nastavení, která nelze provést kvůli nastavení nadřazeného přepínače, jsou vždy zašedlá a obsahují popisek s názvem přepínače, který je třeba změnit.
+
+**Pokročilá nastavení:**
+
+* **Časový posun světelného senzoru**: Počet hodin od UTC pro synchronizaci času světelného senzoru (výchozí: 0, rozsah −12 až +12)
 * **Použít korekce PPK**: Používá data GPS/expozičních pinů ze souborů `.daq` (výchozí: vypnuto)
 * **Expoziční piny 1/2**: Přiřazuje kamery k expozičním pinům pro konfigurace se dvěma kamerami
 
@@ -105,7 +114,9 @@ Nastavte, které vegetační indexy se mají vypočítat a exportovat. Rozbalova
 3. Nastavte parametry vizualizace (barvy LUT, rozsahy hodnot)
 4. Podle potřeby přidejte více indexů
 
-**Oblíbené indexy:*** **NDVI**: Celkový zdravotní stav vegetace (nejběžnější)
+**Oblíbené indexy:**
+
+* **NDVI**: Celkový zdravotní stav vegetace (nejběžnější)
 * **NDRE**: Včasná detekce stresu pomocí RedEdge
 * **GNDVI**: Citlivý na koncentraci chlorofylu
 * **OSAVI**: Dobře funguje u viditelné půdy
@@ -217,7 +228,11 @@ Při použití záznamníků MAPIR DAQ s GPS pro přesnou geolokaci:
 3. V případě potřeby nastavte**„Časový posun světelného senzoru“** (výchozí hodnota: 0 pro UTC)
 4. Přiřaďte kamery k expozičním pinům:
    * **Jedna kamera**: Automaticky přiřazena k pinu 1
-   * **Dvě kamery**: Ručně přiřaďte každou kameru ke správnému pinu**Přiřazení expozičních pinů:*** **Expoziční pin 1**: Vyberte model kamery z rozevíracího seznamu
+   * **Dvě kamery**: Ručně přiřaďte každou kameru ke správnému pinu
+
+**Přiřazení expozičních pinů:**
+
+* **Expoziční pin 1**: Vyberte model kamery z rozevíracího seznamu
 * **Expoziční pin 2**: Vyberte druhou kameru nebo možnost „Nepoužívat“
 * Stejnou kameru nelze přiřadit k oběma pinům
 
