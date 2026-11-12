@@ -71,7 +71,9 @@ Kompletní přehled vzorců – všechny tři seznamy předvoleb a informace o t
 
 ### S zaškrtnutou volbou Index, ale bez LUT
 
-Obrázek je vykreslen v **stupních šedi**, roztažený mezi dvěma prahovými hodnotami. Je to záměrné: indexový obrázek představuje skalární data a stupně šedi jsou jejich věrným zobrazením. Chcete-li barvy, přidejte LUT.***
+Obrázek je vykreslen v **stupních šedi**, roztažený mezi dvěma prahovými hodnotami. Je to záměrné: indexový obrázek představuje skalární data a stupně šedi jsou jejich věrným zobrazením. Chcete-li barvy, přidejte LUT.
+
+***
 
 ## Práce s LUT (vyhledávacími tabulkami)**Vyhledávací tabulka** přiřazuje indexové hodnoty k barvám: vstup NDVI 0,65, výstup konkrétní odstín zelené. Nemění data – mění způsob, jakým je interpretujete.
 
@@ -135,7 +137,9 @@ Příklad oken NDVI:
 | Pouze zdravá vegetace                 | 0,5  | 0,9 |
 | Zdůraznit stres                        | 0,2  | 0,5 |
 
-Zúžením okna zvýšíte kontrast uvnitř oblasti zájmu a vše ostatní se dostane mimo rozsah — kde **režim oříznutí** rozhoduje o tom, co se s tím stane.***
+Zúžením okna zvýšíte kontrast uvnitř oblasti zájmu a vše ostatní se dostane mimo rozsah — kde **režim oříznutí** rozhoduje o tom, co se s tím stane.
+
+***
 
 ## Režimy oříznutí
 

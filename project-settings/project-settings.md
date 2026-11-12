@@ -32,7 +32,9 @@ v levém postranním panelu.
 * **Možnosti**: `Default (512 px)`, `1024 px`, `2048 px`, `Full resolution`
 * **Výchozí**: Výchozí (512 px)
 * **Popis**: Rozlišení (nejdelší hrana, v pixelech), ve kterém se vykreslují miniatury v mřížce obrázků. Vyšší hodnoty vypadají při přiblížení ostřeji, ale načítají se pomaleji a zabírají více paměti. Plné rozlišení odpovídá původní velikosti obrázku.
-* **Poznámka**: Pouze pro zobrazení — toto nikdy neovlivňuje zpracování ani exportované soubory.***
+* **Poznámka**: Pouze pro zobrazení — toto nikdy neovlivňuje zpracování ani exportované soubory.
+
+***
 
 ## Detekce cílů
 
@@ -184,7 +186,9 @@ Skeny **naměřených** cílů pro jednotlivé jednotky se vyhledávají podle s
   * Jedna kamera + jeden pin: Pin 2 se automaticky nastaví na „Nepoužívat“
   * Jedna kamera + dva piny: Pin 2 se automaticky nastaví na „Nepoužívat“
   * Více kamer: Je vyžadován ruční výběr
-* **Poznámka**: Stejnou kameru nelze přiřadit současně k pinu 1 i k pinu 2.***
+* **Poznámka**: Stejnou kameru nelze přiřadit současně k pinu 1 i k pinu 2.
+
+***
 
 ## Světelný senzor DAQ
 
@@ -205,7 +209,9 @@ Každý řádek zobrazuje soubor, model senzoru a korekci difuzorového krytu, k
 * **Popis**: `Auto` používá kryt zaznamenaný v každém souboru (pokud není nic zaznamenáno, předpokládá se kryt Sunshine, ale DAQ-U, DAQ-M a DAQ-E se dodávají bez krytu a program Chloros nedokáže rozpoznat, jaký kryt je nasazen, proto zpracování vydá varování ohledně předpokládaného krytu: vyberte kryt, který byl nasazen). Výběr konkrétního krytu přepíše **všechny** soubory s daty o slunečním záření v projektu s výjimkou souboru z DAQ-E-S, jehož difuzor je součástí jeho kalibrace; projekt obsahující pouze DAQ-E-S nezobrazuje rozevírací seznam: surové záznamy jsou korigovány pomocí tohoto krytu, a záznamy, které již obsahují krytku, jsou znovu referencovány (zaznamenaná korekce je zrušena a je aplikována vybraná korekce).
 * **Důležité**: Vybraná krytka se musí shodovat s krytkou, která byla fyzicky nasazena během záznamu. Ani senzor, ani software nedokážou detekovat fyzickou krytku — nesprávné ID krytky vede k nesprávné korekci spekter.
 
-Záměrně je k dispozici **jedno** nastavení pro celý projekt namísto rozevíracích nabídek pro jednotlivé soubory: toto nastavení se vztahuje na všechny zdroje s dopadem dolů v projektu.***
+Záměrně je k dispozici **jedno** nastavení pro celý projekt namísto rozevíracích nabídek pro jednotlivé soubory: toto nastavení se vztahuje na všechny zdroje s dopadem dolů v projektu.
+
+***
 
 ## Zarovnání pole
 

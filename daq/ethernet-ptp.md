@@ -102,4 +102,4 @@ Podrobnosti pro uživatele vyžadující přísné synchronizace:
 | Vysílací doména | Hostitel a senzor jsou ve stejném segmentu L2; mDNS nesměruje |
 | Firewall | Windows: pravidlo **Chloros Backend (UDP-In)** v instalačním programu povoluje vstup datového proudu DAQ-E (UDP 5002), mDNS (5353) a PTP (319/320); u firewallu jiného výrobce je třeba nastavit totéž. Linux: `.deb` otevírá tyto porty v `ufw` / `firewalld` pouze v případě, že byl firewall aktivní v době instalace — v případě pozdějšího zapnutí je musíte povolit ručně |
 | Hostitel s více síťovými kartami | Vyhledávání prochází mDNS s náhradním řešením ARP; `--eth-host <ip-or-hostname>` vynechá vyhledávání a připojí se přímo |
-| Opětovné prohledání v grafickém rozhraní | Vyhledávání běží pouze při otevřeném dialogovém okně pro připojení; použijte tlačítko Obnovit |</version>
+| Opětovné prohledání v grafickém rozhraní | Vyhledávání běží pouze při otevřeném dialogovém okně pro připojení; použijte tlačítko Obnovit |

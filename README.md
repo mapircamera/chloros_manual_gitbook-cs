@@ -64,7 +64,9 @@ Kompletní průvodce: [Používání Chloros u s AI asistenty](ai-assistants.md)
 * **Transparentní sémantika selhání.** Spuštění `chloros-cli process`, které požadovalo produkty, ale žádný nezapsalo, nyní hlasitě selže a ukončí se s nenulovým stavem; úspěšná spuštění hlásí, kolik obrazových produktů zapsala.
 * **Nové uspořádání výstupu.** Produkty se ukládají do složek `<project>/<camera>/<format>/<Product>_Images/` a zachovávají název zdrojového souboru — produkt identifikuje složka, nikoli přípona souboru. Viz [Formáty výstupních snímků](output-image-formats.md).
 * **Více vstupů, plánů a jazyků.** Podpora vstupů `.dng`; všech 38 jazyků rozhraní je plně obsazeno; hardwarová omezení pro jednotlivé plány s bezplatným (bez přihlášení) použitím až 4 kamer a 2 světelných senzorů.
-* **Spolehlivost.** Funkce „Zastavit zpracování“ se ukončuje korektně s přesným souhrnem běhu, projekty s více kamerami exportují data ze všech kamer a aktualizace instalačního programu již nezpůsobují odhlášení.***
+* **Spolehlivost.** Funkce „Zastavit zpracování“ se ukončuje korektně s přesným souhrnem běhu, projekty s více kamerami exportují data ze všech kamer a aktualizace instalačního programu již nezpůsobují odhlášení.
+
+***
 
 Aplikace Chloros je k dispozici ve 3 uživatelských rozhraních:
 

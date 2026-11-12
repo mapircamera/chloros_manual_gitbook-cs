@@ -154,7 +154,9 @@ Tato sekce se zobrazí **pouze** v případě, že alespoň jeden snímek v proj
 
 * **Použít zarovnání pole** (výchozí: zapnuto): deformuje každý zpracovaný výstup (odbyzerovaný / náhled / radiance / odrazivost / index) do sdílené referenční geometrie pole. Vypnuto = export v nativní geometrii snímače.
 * **Oříznout na společný překryv** (výchozí: zapnuto): ořízne zarovnané exporty na oblast, kterou sdílejí všechny moduly, takže každé pásmo má stejnou stopu. Vypnuto zachovává plnou plochu snímače (černá výplň mimo zdroj).
-* **Převzorkování**:**Bilineární (hladké, výchozí)**,**Nejbližší (zachování přesných hodnot)**— bez míchání mezi pixely, pro přísnou radiometrickou analýzu — nebo**Kubické (nejostřejší)**.***
+* **Převzorkování**:**Bilineární (hladké, výchozí)**,**Nejbližší (zachování přesných hodnot)**— bez míchání mezi pixely, pro přísnou radiometrickou analýzu — nebo**Kubické (nejostřejší)**.
+
+***
 
 ## Ukládání a načítání nastavení
 

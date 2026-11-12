@@ -194,7 +194,9 @@ Pro získání kvantitativních hodnot ozáření je třeba průměrovat data z 
 
 * Kombinujte několik senzorů na jednom grafu (sdílené osy), udržujte samostatné grafy (automatické rozložení mřížky), přesouvejte senzory mezi grafy, přetahujte a měňte pořadí řádků/dlaždic a skryjte jednotlivé senzory pomocí přepínače ve tvaru oka.
 * Chloros si pro každý projekt uchovává: názvy zařízení, barvy grafů, velikost grafu, režim zobrazení a nastavení každého senzoru (integrační čas, průměrování snímků, stav AE, výběr krytky).
-* **Při opětovném otevření projektu se senzory automaticky znovu připojí** podle adresy – COM port pro DAQ-U, zařízení BLE pro DAQ-M, název hostitele mDNS pro DAQ-E (vyřešeno i v případě změny IP adresy zařízení) — a znovu použije uložený profil krytu, průměrování snímků, stav AE a ručně nastavenou integrační dobu každého senzoru.***
+* **Při opětovném otevření projektu se senzory automaticky znovu připojí** podle adresy – COM port pro DAQ-U, zařízení BLE pro DAQ-M, název hostitele mDNS pro DAQ-E (vyřešeno i v případě změny IP adresy zařízení) — a znovu použije uložený profil krytu, průměrování snímků, stav AE a ručně nastavenou integrační dobu každého senzoru.
+
+***
 
 ## Spárování kamery (DLS)
 

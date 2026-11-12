@@ -57,7 +57,9 @@ Jakmile efektivní zvětšení překročí **60×**, Chloros nakreslí zvýrazň
 | **←**                           | Celá obrazovka | Předchozí obrázek                      |
 | **Ctrl + R**                    | Celá obrazovka | Obnovit index/LUT sandbox         |
 | **Ctrl + `+`**/**Ctrl + `=`** | Mřížka        | Větší miniatury (4 px za stisk)  |
-| **Ctrl + `−`**                  | Mřížka        | Menší miniatury (4 px za stisk) |***
+| **Ctrl + `−`**                  | Mřížka        | Menší miniatury (4 px za stisk) |
+
+***
 
 ## Hodnoty kurzoru
 
@@ -100,7 +102,9 @@ Prohlížeč, index/LUT sandbox a export indexu všechny řeší škálování p
 Dva důsledky, o kterých je dobré vědět:
 
 * **32bitové procentní**TIFF ukládá hodnotu DN/65535 jako číslo typu float a**8bitové** PNG/JPG ukládá hodnotu DN × 255/65535 — prohlížeč před zobrazením procenta obě hodnoty převede zpět.
-* Jeden případ nelze obnovit: **8bitový export TIFF ze snímku s 8bitovým zdrojem** je oříznut na rozsah 0–255 namísto přepočítání a záměrně neobsahuje žádný tag měřítka. U těchto souborů panel zobrazuje pouze hodnotu DN, bez sloupce s procenty. Toto je upřímná odpověď, nejedná se o chybu.***
+* Jeden případ nelze obnovit: **8bitový export TIFF ze snímku s 8bitovým zdrojem** je oříznut na rozsah 0–255 namísto přepočítání a záměrně neobsahuje žádný tag měřítka. U těchto souborů panel zobrazuje pouze hodnotu DN, bez sloupce s procenty. Toto je upřímná odpověď, nejedná se o chybu.
+
+***
 
 ## Histogram vrstvy
 
@@ -126,7 +130,9 @@ Nad histogramem se nacházejí tři tlačítka:
 | **INDEX**| Zapnuto      | Zobrazuje se pouze při aktivním indexu. Přepne histogram ze zdrojových pásem na**rozdělení indexových hodnot**, přičemž obě prahové hodnoty oříznutí jsou znázorněny oranžovými přerušovanými čarami a indexová hodnota kurzoru bílou čarou                                                          |
 | **RGB**| Vypnuto     | Přepne z kombinované křivky na křivky pro jednotlivé kanály. U monochromatického snímače se na tomto tlačítku zobrazuje**MONO** a je deaktivováno — k zobrazení je k dispozici pouze jeden kanál                                                                                                                                  |
 
-Histogram se počítá na základě **viditelných bloků**, nikoli zdrojových pixelů za nimi: při změně velikosti bloku GSD se rozložení přepočítá, takže histogram, značka kurzoru a zobrazený obrázek se vždy shodují.***
+Histogram se počítá na základě **viditelných bloků**, nikoli zdrojových pixelů za nimi: při změně velikosti bloku GSD se rozložení přepočítá, takže histogram, značka kurzoru a zobrazený obrázek se vždy shodují.
+
+***
 
 ## Velikost bloku GSD
 
@@ -185,7 +191,9 @@ Multispektrální indexy a barevné vyhledávací tabulky (LUT) aplikujte z post
 
 3. Vyberte filtr své kamery a vzorec indexu, poté přetáhněte kruhy kanálů do příslušných polí vzorce
 4. Přidejte LUT a vyberte gradient, prahové hodnoty a režim ořezání
-5. Přečtěte si hodnoty v místě kurzoru a výsledek uložte pomocí **Export/Save Image(s)**Kompletní návod najdete na stránce [Index/LUT Sandbox](index-lut-sandbox.md).***
+5. Přečtěte si hodnoty v místě kurzoru a výsledek uložte pomocí **Export/Save Image(s)**Kompletní návod najdete na stránce [Index/LUT Sandbox](index-lut-sandbox.md).
+
+***
 
 ## Řešení problémů
 

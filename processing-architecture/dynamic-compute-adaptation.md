@@ -136,7 +136,9 @@ Vlákna 1, 2 a 4 jsou pro GPU nenáročná; vlákno 3 je to nejnáročnější. 
 * Vlákno, které je **jediným** aktivním, obdrží maximální alokaci podle svého profilu.
 * Je-li aktivních více než jeden *náročný* úkol na GPU, základní alokace každého náročného úkolu se mezi ně rozdělí (nikdy však neklesne pod nakonfigurované minimum).
 
-Hodnota skutečně použitá při běhu je **nižší** z alokace profilu platformy a aktuálního doporučení z monitoru paměti GPU, takže zaneprázdněná karta vždy zvítězí nad optimistickým profilem.***
+Hodnota skutečně použitá při běhu je **nižší** z alokace profilu platformy a aktuálního doporučení z monitoru paměti GPU, takže zaneprázdněná karta vždy zvítězí nad optimistickým profilem.
+
+***
 
 ## Zpracování s ohledem na textury
 

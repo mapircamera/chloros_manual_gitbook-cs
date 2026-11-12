@@ -170,7 +170,9 @@ chloros-cli daq pool-reboot --sensor-id daq-e-def330
 chloros-cli daq pool-update-firmware --sensor-id daq-e-def330
 ```
 
-`pool-info` zobrazí firmware senzoru (a zda tato verze Chloros obsahuje novější verzi), jeho adresu a způsob, jakým ji získal, uložené síťové nastavení, pokud se liší od aktuálního, streamování při zapnutí a PTP. `pool-set-network` restartuje senzor, aby se změna uplatnila, a znovu jej připojí s původními nastaveními; `--no-reboot` nastavení pouze uloží. V síti tohoto počítače musí být k dispozici statická adresa, jinak ji Chloros odmítne; `--force` toto omezení obejde, avšak pouze pro počítač, kterému bude přiřazena nová adresa nebo který bude na ni přesměrován. Restarty jsou odmítnuty, pokud senzor právě zaznamenává data. `pool-update-firmware` je ekvivalentem položky **Aktualizovat na \<version\>** </version\>v grafickém uživatelském rozhraní <version\>pro příkazový řádek a slouží k aktualizaci zařízení DAQ-E v systému Linux, který nemá grafické uživatelské rozhraní. Novinka ve verzi 1.3.0.***
+`pool-info` zobrazí firmware senzoru (a zda tato verze Chloros obsahuje novější verzi), jeho adresu a způsob, jakým ji získal, uložené síťové nastavení, pokud se liší od aktuálního, streamování při zapnutí a PTP. `pool-set-network` restartuje senzor, aby se změna uplatnila, a znovu jej připojí s původními nastaveními; `--no-reboot` nastavení pouze uloží. V síti tohoto počítače musí být k dispozici statická adresa, jinak ji Chloros odmítne; `--force` toto omezení obejde, avšak pouze pro počítač, kterému bude přiřazena nová adresa nebo který bude na ni přesměrován. Restarty jsou odmítnuty, pokud senzor právě zaznamenává data. `pool-update-firmware` je ekvivalentem položky **Aktualizovat na \<version\>** </version\>v grafickém uživatelském rozhraní <version\>pro příkazový řádek a slouží k aktualizaci zařízení DAQ-E v systému Linux, který nemá grafické uživatelské rozhraní. Novinka ve verzi 1.3.0.
+
+***
 
 ## Přehled příkazů
 

@@ -181,7 +181,9 @@ Po spuštění běží celý řetězec automaticky:
 * Zastavený běh poctivě vykazuje, co dokončil (viz řádky `[RUN-SUMMARY]` v protokolu)
 * Nový běh spustí proces od začátku
 
-**Tip pro plánování:** U velmi rozsáhlých projektů zvažte zpracování v dávkách nebo použití příkazového řádku (CLI) pro lepší kontrolu.***
+**Tip pro plánování:** U velmi rozsáhlých projektů zvažte zpracování v dávkách nebo použití příkazového řádku (CLI) pro lepší kontrolu.
+
+***
 
 ## Sledování zpracování
 

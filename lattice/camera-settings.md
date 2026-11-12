@@ -196,7 +196,9 @@ Vše v této sekci se týká **pouze zobrazení**— mění to, co vidíte v ži
 | **Sytost** | 0–200 (100 = neutrální) | 100 | Pouze RGB | Sytost HSV v živém náhledu. |
 | **Kontrast** | 0–200 (100 = neutrální) | 100 | Pouze RGB | Lineární kontrast kolem střední šedé v živém náhledu. |
 | **Zrcadlit vodorovně / Zrcadlit svisle** | Zaškrtávací políčka | Vypnuto | Vše | Otočit náhled vodorovně / svisle. |
-| **Otočení**| 0° / 90° / 180° / 270° | 0° | Vše | Otočit náhled. Orientace se aplikuje na konci řetězce náhledů na straně backendu.**Uložené snímky (1.3.0):**produkty samostatného fotoaparátu (Preview, Radiance, Reflectance a Index) se otáčejí pomocí funkcí Zrcadlení/Otočení, zatímco**formáty Raw a Debayered zůstávají v nativní orientaci kamery**; každý soubor snímku zaznamenává toto nastavení do svého XMP, takže při pozdějším zpracování formátu Raw se toto nastavení aplikuje stejným způsobem.**Soubory v poli zůstávají v nativní orientaci** (nastavení je zaznamenáno, ale není aplikováno) a kompozitní pohledy pole jej ignorují. |**Sémantika barevných profilů** (kamery RGB):
+| **Otočení**| 0° / 90° / 180° / 270° | 0° | Vše | Otočit náhled. Orientace se aplikuje na konci řetězce náhledů na straně backendu.**Uložené snímky (1.3.0):**produkty samostatného fotoaparátu (Preview, Radiance, Reflectance a Index) se otáčejí pomocí funkcí Zrcadlení/Otočení, zatímco**formáty Raw a Debayered zůstávají v nativní orientaci kamery**; každý soubor snímku zaznamenává toto nastavení do svého XMP, takže při pozdějším zpracování formátu Raw se toto nastavení aplikuje stejným způsobem.**Soubory v poli zůstávají v nativní orientaci** (nastavení je zaznamenáno, ale není aplikováno) a kompozitní pohledy pole jej ignorují. |
+
+**Sémantika barevných profilů** (kamery RGB):
 
 * **Raw** — zcela obejde zpracovatelský řetězec.
 * **Lineární** — tmavý signál + vyrovnání pole + vyvážení bílé; bez barevné matice, bez gama.

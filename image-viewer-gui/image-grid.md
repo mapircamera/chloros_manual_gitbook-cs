@@ -10,7 +10,9 @@ Pomocí posuvníku zvětšení v pravém horním rohu můžete upravit velikost 
 * **Ctrl + `+`**/**Ctrl + `=`**a**Ctrl + `−`** mění velikost o 4 px při každém stisknutí. Rozsah klávesových zkratek končí na 64 px na spodní hranici a na horní hranici na jakékoli velikosti, která se přesně vejde do dvou miniatur v jednom řádku v aktuálním okně.
 * Velikost, kterou zvolíte, se uloží spolu s projektem (`UI → Grid thumbnail size` v `project.json`, výchozí `160`), takže při opětovném otevření projektu se obnoví.
 
-<figure><img src="../.gitbook/assets/chloros_grid_zoom.gif" alt=""><figcaption></figcaption></figure>*Rozlišení* miniatur je nastavení odlišné od *velikosti* miniatur: viz **Zobrazení → Rozlišení miniatur obrázků** v [Nastavení projektu](../project-settings/project-settings.md) (výchozí hodnota 512 px na delší straně). Velikost udává, jak velká je dlaždice vykreslena; rozlišení udává, kolik detailů se načte k jejímu vyplnění.***
+<figure><img src="../.gitbook/assets/chloros_grid_zoom.gif" alt=""><figcaption></figcaption></figure>*Rozlišení* miniatur je nastavení odlišné od *velikosti* miniatur: viz **Zobrazení → Rozlišení miniatur obrázků** v [Nastavení projektu](../project-settings/project-settings.md) (výchozí hodnota 512 px na delší straně). Velikost udává, jak velká je dlaždice vykreslena; rozlišení udává, kolik detailů se načte k jejímu vyplnění.
+
+***
 
 ## Panel nástrojů mřížky
 

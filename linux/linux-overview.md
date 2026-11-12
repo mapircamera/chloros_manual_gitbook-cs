@@ -10,7 +10,8 @@ Chloros 1.3.0 nabízí nativní podporu pro Linux v rámci **CLI**a**Python SDK*
 
 ## Matice podpory platforem
 
-| Funkce | Windows (GUI) | Windows (CLI/SDK) | Linux amd64 (CLI/ --- | --- | --- | --- |
+| Funkce | Windows (GUI) | Windows (CLI/SDK) | Linux amd64 (CLI/SDK) | Linux arm64 / Jetson (CLI/SDK) |
+| --- | --- | --- | --- | --- |
 | **GUI pro stolní počítače** | Ano | N/A | Ne | Ne |
 | **CLI** (`chloros-cli`) | Ano | Ano | Ano | Ano |
 | **Python SDK** (`chloros-sdk`) | Ano | Ano | Ano | Ano |
@@ -22,7 +23,9 @@ Chloros 1.3.0 nabízí nativní podporu pro Linux v rámci **CLI**a**Python SDK*
 | **Debayer s podporou textur** (vyžaduje GPU s podporou CUDA) | Ano (Chloros+) | Ano (Chloros+) | Ano (Chloros+) | Ano (Chloros+) |
 | **Dynamická adaptace výpočtů** | Ano | Ano | Ano | Ano |
 | **Backend jako systémová služba** (`chloros-backend@<user>.service`) | Ne | Ne | Ano (na přání) | Ano (na přání) |
-| **Aktualizace na místě** (`chloros-cli update`) | Ne (spusťte instalační program) | Ne (spusťte instalační program) | Ano | Ano |***
+| **Aktualizace na místě** (`chloros-cli update`) | Ne (spusťte instalační program) | Ne (spusťte instalační program) | Ano | Ano |
+
+***
 
 ## Podporované architektury
 
@@ -35,7 +38,9 @@ Chloros 1.3.0 nabízí nativní podporu pro Linux v rámci **CLI**a**Python SDK*
 
 * **Ubuntu 22.04 LTS nebo novější** (amd64)
 * **Debian 12 nebo novější** (amd64)
-* **NVIDIA JetPack 6** (arm64 — platformy Jetson Orin)***
+* **NVIDIA JetPack 6** (arm64 — platformy Jetson Orin)
+
+***
 
 ## Co získají uživatelé Linuxu
 
@@ -54,7 +59,9 @@ Chloros 1.3.0 nabízí nativní podporu pro Linux v rámci **CLI**a**Python SDK*
 
 * **Grafické uživatelské rozhraní** — žádné grafické rozhraní; veškerá interakce probíhá přes CLI nebo Python SDK
 * **Prohlížeč snímků** — žádný interaktivní prohlížeč snímků, mřížkové zobrazení ani mapové značky
-* **Vizuální správa projektů** — projekty se vytvářejí a řídí pomocí příkazů CLI a volání SDK (samotný hardware — kamery, senzory, snímání — zůstává plně ovladatelný z terminálu)***
+* **Vizuální správa projektů** — projekty se vytvářejí a řídí pomocí příkazů CLI a volání SDK (samotný hardware — kamery, senzory, snímání — zůstává plně ovladatelný z terminálu)
+
+***
 
 ## Licenční požadavky
 

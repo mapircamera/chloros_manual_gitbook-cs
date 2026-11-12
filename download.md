@@ -197,7 +197,9 @@ Odemkněte pokročilé funkce předplatným Chloros+:
 * **🐻 Pokročilá metoda debayeringu s ohledem na textury** – vysoce kvalitní debayering s ohledem na hrany v kombinaci s modelem odšumování založeným na AI/ML, který odstraňuje téměř veškerý šum vznikající při debayeringu.
 * 🧮 **Vlastní vzorce** – vytvářejte vlastní multispektrální indexy
 
-<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Zobrazit tarify a ceny Chloros+</a></p>***
+<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Zobrazit tarify a ceny Chloros+</a></p>
+
+***
 
 ## Nápověda k instalaci
 
@@ -240,7 +242,9 @@ Potřebujete pomoc s instalací nebo nastavením?
 * 📧 **E-mail**: info@mapir.camera
 * 🌐 **Webové stránky**: [https://www.mapir.camera/community/contact](https://www.mapir.camera/community/contact)
 * 📚 **Dokumentace**: [Začínáme](./)
-* ❓ **Často kladené otázky**: [Často kladené otázky](faq.md)***
+* ❓ **Často kladené otázky**: [Často kladené otázky](faq.md)
+
+***
 
 ## Aktualizace softwaru
 
