@@ -170,7 +170,7 @@ chloros-cli daq pool-reboot --sensor-id daq-e-def330
 chloros-cli daq pool-update-firmware --sensor-id daq-e-def330
 ```
 
-`pool-info` zobrazí firmware senzoru (a zda tato verze Chloros obsahuje novější verzi), jeho adresu a způsob, jakým ji získal, uložené síťové nastavení, pokud se liší od aktuálního, streamování při zapnutí a PTP. `pool-set-network` restartuje senzor, aby se změna uplatnila, a znovu jej připojí s původními nastaveními; `--no-reboot` nastavení pouze uloží. V síti tohoto počítače musí být k dispozici statická adresa, jinak ji Chloros odmítne; `--force` toto omezení obejde, avšak pouze pro počítač, kterému bude přiřazena nová adresa nebo který bude na ni přesměrován. Restarty jsou odmítnuty, pokud senzor právě zaznamenává data. `pool-update-firmware` je ekvivalentem položky **Aktualizovat na \<version\>** </version\>v grafickém uživatelském rozhraní <version\>pro příkazový řádek a slouží k aktualizaci zařízení DAQ-E v systému Linux, který nemá grafické uživatelské rozhraní. Novinka ve verzi 1.3.0.
+`pool-info` zobrazí firmware senzoru (a zda tato verze Chloros obsahuje novější verzi), jeho adresu a způsob, jakým ji získal, uložené síťové nastavení, pokud se liší od aktuálního, streamování při zapnutí a PTP. `pool-set-network` restartuje senzor, aby se změna uplatnila, a znovu jej připojí s původními nastaveními; `--no-reboot` nastavení pouze uloží. V síti tohoto počítače musí být k dispozici statická adresa, jinak ji Chloros odmítne; `--force` toto omezení obejde, avšak pouze pro počítač, kterému bude přiřazena nová adresa nebo který bude na ni přesměrován. Restarty jsou odmítnuty, pokud senzor právě zaznamenává data. `pool-update-firmware` je ekvivalentem položky **Aktualizovat na \<version\>** v grafickém uživatelském rozhraní pro příkazový řádek a slouží k aktualizaci zařízení DAQ-E v systému Linux, který nemá grafické uživatelské rozhraní. Novinka ve verzi 1.3.0.
 
 ***
 
@@ -206,4 +206,3 @@ chloros-cli daq pool-update-firmware --sensor-id daq-e-def330
 {% hint style="info" %}
 **Tip pro AI asistenty.** Každá stránka tohoto manuálu je poskytována ve formátu Markdown – připojte `.md` k malým písmenům URLu stránky (tato stránka: `https://mapir.gitbook.io/chloros/daq/cli-quick-start.md`); strojově čitelný index je `https://mapir.gitbook.io/chloros/llms.txt`. Kompletní dokumentaci na úrovni příznaků pro `chloros-cli daq` a všechny ostatní rodiny příkazů najdete v [referenční příručce k CLI](../reference/cli-reference.md) (`https://mapir.gitbook.io/chloros/reference/cli-reference.md`); Pythonová cesta je `chloros_sdk.connect_daq_sensor()` v [SDK Reference](../reference/sdk-reference.md).
 {% endhint %}
-</version\>
